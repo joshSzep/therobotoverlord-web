@@ -8,6 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import { ContentFeed } from '@/components/feed/ContentFeed';
 import { FeedFilters } from '@/components/feed/FeedFilters';
+import { PersonalizedRecommendations } from '@/components/feed/PersonalizedRecommendations';
 import { Card, CardContent, CardHeader } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
@@ -239,7 +240,7 @@ export default function FeedPage() {
         </div>
 
         {/* Feed Content */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-2">
           <LoadingState
             isLoading={isLoading}
             error={error}
@@ -270,14 +271,12 @@ export default function FeedPage() {
             }
           >
             {feedItems.length > 0 ? (
-              <div className="space-y-6">
-                <ContentFeed
-                  items={feedItems}
-                  onLoadMore={handleLoadMore}
-                  hasMore={hasMore}
-                  isLoadingMore={isLoadingMore}
-                />
-              </div>
+              <ContentFeed
+                items={feedItems}
+                onLoadMore={handleLoadMore}
+                hasMore={hasMore}
+                isLoadingMore={isLoadingMore}
+              />
             ) : (
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">📰</div>
@@ -317,6 +316,15 @@ export default function FeedPage() {
               </div>
             )}
           </LoadingState>
+        </div>
+
+        {/* Recommendations Sidebar */}
+        <div className="lg:col-span-1">
+          <PersonalizedRecommendations
+            limit={6}
+            categories={filters.categories}
+            className="sticky top-6"
+          />
         </div>
       </div>
     </div>

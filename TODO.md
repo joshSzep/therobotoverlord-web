@@ -111,8 +111,8 @@
   - [x] Create main content feed
   - [x] Implement infinite scrolling/pagination
   - [x] Add content filtering options
-  - [ ] Create personalized recommendations
-  - [ ] Add content status indicators
+  - [x] Create personalized recommendations
+  - [x] Add content status indicators
 
 ## 👤 Phase 4: User Experience (Priority: Medium)
 
