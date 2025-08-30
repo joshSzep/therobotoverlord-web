@@ -118,6 +118,8 @@ interface LoadingStateProps {
   children: React.ReactNode;
   loadingComponent?: React.ReactNode;
   errorComponent?: React.ReactNode;
+  skeleton?: React.ReactNode;
+  useSkeleton?: boolean;
 }
 
 export function LoadingState({
@@ -125,7 +127,9 @@ export function LoadingState({
   error,
   children,
   loadingComponent,
-  errorComponent
+  errorComponent,
+  skeleton,
+  useSkeleton = false
 }: LoadingStateProps) {
   if (error) {
     return (
@@ -144,14 +148,14 @@ export function LoadingState({
   if (isLoading) {
     return (
       <div>
-        {loadingComponent || (
+        {useSkeleton && skeleton ? skeleton : (loadingComponent || (
           <div className="text-center py-8">
             <LoadingSpinner size="lg" />
             <div className="mt-2 text-muted-light font-mono text-sm">
               Processing request...
             </div>
           </div>
-        )}
+        ))}
       </div>
     );
   }

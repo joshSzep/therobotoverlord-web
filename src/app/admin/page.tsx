@@ -12,6 +12,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
+import { StatsCardSkeleton, ListItemSkeleton } from '@/components/ui/Skeleton';
 import { OverlordMessage, OverlordHeader, OverlordContent } from '@/components/overlord/OverlordMessage';
 import { useAppStore } from '@/stores/appStore';
 import { useAuth } from '@/contexts/AuthContext';
@@ -206,6 +207,28 @@ function AdminDashboardContent() {
     <LoadingState
       isLoading={isLoading}
       error={null}
+      useSkeleton={true}
+      skeleton={
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <StatsCardSkeleton key={index} />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              {Array.from({ length: 3 }).map((_, index) => (
+                <ListItemSkeleton key={index} />
+              ))}
+            </div>
+            <div className="space-y-4">
+              {Array.from({ length: 3 }).map((_, index) => (
+                <ListItemSkeleton key={index} />
+              ))}
+            </div>
+          </div>
+        </div>
+      }
       loadingComponent={
         <div className="space-y-6">
           <div className="animate-pulse">

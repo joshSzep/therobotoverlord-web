@@ -12,6 +12,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
+import { NotificationSkeleton } from '@/components/ui/Skeleton';
 import { OverlordMessage, OverlordHeader, OverlordContent } from '@/components/overlord/OverlordMessage';
 import { useAppStore } from '@/stores/appStore';
 import { useAuth } from '@/contexts/AuthContext';
@@ -228,6 +229,14 @@ function NotificationsContent() {
     <LoadingState
       isLoading={isLoading}
       error={null}
+      useSkeleton={true}
+      skeleton={
+        <div className="space-y-4">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <NotificationSkeleton key={index} />
+          ))}
+        </div>
+      }
       loadingComponent={
         <div className="space-y-6">
           <div className="animate-pulse">

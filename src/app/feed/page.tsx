@@ -15,6 +15,7 @@ import { useRealTimeUpdates } from '@/hooks/useRealTimeUpdates';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
+import { FeedPostSkeleton, StatsCardSkeleton } from '@/components/ui/Skeleton';
 import { useAppStore } from '@/stores/appStore';
 import { postsService, topicsService } from '@/services';
 import { Post } from '@/types/posts';
@@ -282,6 +283,14 @@ export default function FeedContent() {
           <LoadingState
             isLoading={isLoading}
             error={error}
+            useSkeleton={true}
+            skeleton={
+              <div className="space-y-6">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <FeedPostSkeleton key={index} />
+                ))}
+              </div>
+            }
             loadingComponent={
               <div className="space-y-6">
                 {[...Array(5)].map((_, i) => (
