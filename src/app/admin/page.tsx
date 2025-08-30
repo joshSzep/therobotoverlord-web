@@ -502,6 +502,11 @@ function AdminDashboardContent() {
                     🚨 Sanctions Management
                   </Button>
                 </Link>
+                <Link href="/admin/flags">
+                  <Button variant="secondary" size="sm" className="w-full">
+                    🚩 Flag Management
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
