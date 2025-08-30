@@ -15,9 +15,18 @@
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:debug": "playwright test --debug",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build:analyze": "ANALYZE=true npm run build",
+    "build:staging": "NODE_ENV=production NEXT_PUBLIC_APP_ENV=staging npm run build",
+    "build:production": "NODE_ENV=production NEXT_PUBLIC_APP_ENV=production npm run build",
+    "deploy:staging": "./scripts/deploy.sh staging",
+    "deploy:production": "./scripts/deploy.sh production",
+    "docker:build": "docker build -t therobotoverlord-web .",
+    "docker:run": "docker run -p 3000:3000 therobotoverlord-web",
+    "health:check": "curl -f http://localhost:3000/api/health"
   },
   "dependencies": {
+    "@sentry/nextjs": "^10.8.0",
     "axios": "^1.11.0",
     "clsx": "^2.1.1",
     "next": "15.4.6",

@@ -163,6 +163,9 @@ const nextConfig = {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
 
+  // CDN and asset configuration
+  assetPrefix: process.env.NEXT_PUBLIC_CDN_URL || '',
+  
   // Output configuration
   output: 'standalone',
   
