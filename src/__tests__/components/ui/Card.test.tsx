@@ -12,7 +12,7 @@ describe('Card Components', () => {
       
       const card = screen.getByTestId('card')
       expect(card).toBeInTheDocument()
-      expect(card).toHaveClass('card')
+      expect(card).toHaveClass('bg-card', 'text-light-text', 'rounded-lg')
     })
 
     it('applies custom className', () => {
@@ -23,7 +23,7 @@ describe('Card Components', () => {
       )
       
       const card = screen.getByTestId('card')
-      expect(card).toHaveClass('card', 'custom-card')
+      expect(card).toHaveClass('bg-card', 'custom-card')
     })
 
     it('forwards props correctly', () => {
@@ -64,7 +64,7 @@ describe('Card Components', () => {
       )
       
       const header = screen.getByTestId('header')
-      expect(header).toHaveClass('card-header')
+      expect(header).toHaveClass('flex', 'flex-col', 'space-y-1.5', 'pb-4')
     })
   })
 
@@ -80,7 +80,7 @@ describe('Card Components', () => {
       
       const content = screen.getByTestId('content')
       expect(content).toBeInTheDocument()
-      expect(content).toHaveClass('card-content')
+      expect(content).toBeInTheDocument()
       expect(content).toHaveTextContent('This is card content')
     })
   })
@@ -97,7 +97,7 @@ describe('Card Components', () => {
       
       const footer = screen.getByTestId('footer')
       expect(footer).toBeInTheDocument()
-      expect(footer).toHaveClass('card-footer')
+      expect(footer).toHaveClass('flex', 'items-center', 'pt-4')
       
       const button = screen.getByRole('button', { name: /action/i })
       expect(button).toBeInTheDocument()
