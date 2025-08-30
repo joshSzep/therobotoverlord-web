@@ -124,12 +124,12 @@
   - [x] Create user activity feed
   - [x] Add user badge showcase
 
-- [ ] **Personal Dashboard**
-  - [ ] Create user dashboard layout
-  - [ ] Add loyalty score display
-  - [ ] Implement personal statistics
-  - [ ] Create user graveyard (rejected posts)
-  - [ ] Add account management options
+- [x] **Personal Dashboard**
+  - [x] Create user dashboard layout
+  - [x] Add loyalty score display
+  - [x] Implement personal statistics
+  - [x] Create user graveyard (rejected posts)
+  - [x] Add account management options
 
 ### Gamification Features
 - [ ] **Badges System**
