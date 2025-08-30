@@ -291,12 +291,27 @@ export class TopicsService extends BaseService {
   }
 
   /**
+   * Get moderation queue with filters
+   */
+  async getModerationQueue(filters?: {
+    status?: 'pending' | 'approved' | 'rejected' | 'flagged';
+    category?: string;
+    sortBy?: 'newest' | 'oldest' | 'priority';
+    page?: number;
+    limit?: number;
+  }): Promise<PaginatedResponse<Topic>> {
+    const params = filters ? this.buildParams(filters) : undefined;
+    return this.getPaginated<Topic>('/moderation/queue', params);
+  }
+
+  /**
    * Moderate topic
    */
   async moderateTopic(id: string, action: {
-    action: 'approve' | 'reject' | 'lock' | 'unlock' | 'pin' | 'unpin' | 'feature' | 'unfeature' | 'archive';
+    action: 'approve' | 'reject' | 'flag' | 'lock' | 'unlock' | 'pin' | 'unpin' | 'feature' | 'unfeature' | 'archive';
     reason?: string;
     notifyCreator?: boolean;
+    notifyAuthor?: boolean;
   }): Promise<ApiResponse<Topic>> {
     return this.post(`/${id}/moderate`, action);
   }
@@ -317,8 +332,9 @@ export class TopicsService extends BaseService {
    * Bulk moderate topics
    */
   async bulkModerate(topicIds: string[], action: {
-    action: 'approve' | 'reject' | 'lock' | 'unlock' | 'archive';
+    action: 'approve' | 'reject' | 'flag' | 'lock' | 'unlock' | 'archive';
     reason?: string;
+    notifyAuthor?: boolean;
   }): Promise<ApiResponse<{
     success: string[];
     failed: Array<{ id: string; error: string }>;
