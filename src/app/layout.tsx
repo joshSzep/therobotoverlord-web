@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AuthProvider } from '@/contexts/AuthContext';
-import { PageErrorBoundary, setupGlobalErrorHandlers } from '@/components/ui/ErrorBoundary';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { PageErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { SkipLink } from '@/components/ui/AccessibilityHelpers';
+import { MetaTags } from '@/components/seo/MetaTags';
+import { OrganizationStructuredData, WebSiteStructuredData } from '@/components/seo/StructuredData';
 import { AppProviders } from '@/components/providers/AppProviders';
 import { ToastContainer } from '@/components/ui/Toast';
 
@@ -40,15 +43,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-deep-black text-light-text">
-        <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <SkipLink href="#main-navigation">Skip to navigation</SkipLink>
         <PageErrorBoundary>
+          <MetaTags />
+          <OrganizationStructuredData />
+          <WebSiteStructuredData />
+          
+          <SkipLink href="#main-content" text="Skip to main content" />
+          <SkipLink href="#navigation" text="Skip to navigation" />
+          
           <AppProviders>
-            <AuthProvider>
-              {children}
-              <ToastContainer />
-            </AuthProvider>
+            {children}
           </AppProviders>
+          
+          <ToastContainer />
         </PageErrorBoundary>
       </body>
     </html>
