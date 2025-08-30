@@ -507,6 +507,11 @@ function AdminDashboardContent() {
                     🚩 Flag Management
                   </Button>
                 </Link>
+                <Link href="/admin/reports">
+                  <Button variant="secondary" size="sm" className="w-full">
+                    📊 Moderation Reports
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
