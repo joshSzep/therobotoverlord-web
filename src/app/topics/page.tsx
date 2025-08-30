@@ -60,6 +60,7 @@ function TopicsContent() {
             Create New Topic
           </Button>
         </div>
+        </div>
       </div>
     </AppLayout>
   );

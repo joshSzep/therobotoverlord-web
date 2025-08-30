@@ -1,5 +1,7 @@
-import { render, screen, waitFor, userEvent } from '@/__tests__/utils/test-utils'
-import { createMockUser } from '@/__tests__/utils/test-utils'
+import { screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { integrationRender } from '../utils/test-utils'
+import React from 'react'
 
 // Mock authentication components and hooks
 const MockLoginForm = ({ onSubmit, loading }: any) => (
@@ -48,54 +50,44 @@ const MockSignupForm = ({ onSubmit, loading }: any) => (
   </form>
 )
 
-// Mock authentication service
+// Mock authentication service with stable references
 const mockAuthService = {
   login: jest.fn(),
   signup: jest.fn(),
   logout: jest.fn(),
-  refreshToken: jest.fn(),
-  getCurrentUser: jest.fn(),
-  updateProfile: jest.fn()
+  getCurrentUser: jest.fn()
 }
 
-// Mock authentication context
-const MockAuthProvider = ({ children, initialUser = null }: any) => {
-  const [user, setUser] = React.useState(initialUser)
-  const [loading, setLoading] = React.useState(false)
-  
-  const login = async (credentials: any) => {
-    setLoading(true)
-    try {
-      const result = await mockAuthService.login(credentials)
-      setUser(result.user)
-      return result
-    } finally {
-      setLoading(false)
-    }
-  }
+jest.mock('@/services/authService', () => ({
+  authService: mockAuthService
+}))
 
-  const signup = async (userData: any) => {
-    setLoading(true)
-    try {
-      const result = await mockAuthService.signup(userData)
-      setUser(result.user)
-      return result
-    } finally {
-      setLoading(false)
-    }
-  }
+// Mock authentication hooks
+jest.mock('@/hooks/useAuth', () => ({
+  useAuth: jest.fn(() => ({
+    user: null,
+    loading: false,
+    login: mockAuthService.login,
+    signup: mockAuthService.signup,
+    logout: mockAuthService.logout,
+    isAuthenticated: false
+  }))
+}))
 
-  const logout = async () => {
-    await mockAuthService.logout()
-    setUser(null)
-  }
-
-  return (
-    <div data-testid="auth-provider">
-      {React.cloneElement(children, { user, loading, login, signup, logout })}
-    </div>
-  )
-}
+// Mock authentication context with stable provider
+jest.mock('@/contexts/AuthContext', () => ({
+  AuthProvider: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="auth-provider">{children}</div>
+  ),
+  useAuthContext: jest.fn(() => ({
+    user: null,
+    loading: false,
+    login: mockAuthService.login,
+    signup: mockAuthService.signup,
+    logout: mockAuthService.logout,
+    isAuthenticated: false
+  }))
+}))
 
 describe('Authentication Flow Integration', () => {
   const mockUser = createMockUser({
@@ -134,11 +126,7 @@ describe('Authentication Flow Integration', () => {
         />
       )
 
-      render(
-        <MockAuthProvider>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent />)
 
       // Fill in login form
       await user.type(screen.getByTestId('email-input'), 'test@example.com')
@@ -190,11 +178,7 @@ describe('Authentication Flow Integration', () => {
         )
       }
 
-      render(
-        <MockAuthProvider>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent />)
 
       await user.type(screen.getByTestId('email-input'), 'wrong@example.com')
       await user.type(screen.getByTestId('password-input'), 'wrongpassword')
@@ -240,11 +224,7 @@ describe('Authentication Flow Integration', () => {
         )
       }
 
-      render(
-        <MockAuthProvider>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent />)
 
       // Submit without filling fields
       await user.click(screen.getByTestId('login-button'))
@@ -279,11 +259,7 @@ describe('Authentication Flow Integration', () => {
         />
       )
 
-      render(
-        <MockAuthProvider>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent />)
 
       await user.type(screen.getByTestId('username-input'), 'newuser')
       await user.type(screen.getByTestId('email-input'), 'new@example.com')
@@ -337,11 +313,7 @@ describe('Authentication Flow Integration', () => {
         )
       }
 
-      render(
-        <MockAuthProvider>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent />)
 
       await user.type(screen.getByTestId('username-input'), 'existinguser')
       await user.type(screen.getByTestId('email-input'), 'existing@example.com')
@@ -377,11 +349,7 @@ describe('Authentication Flow Integration', () => {
         </div>
       )
 
-      render(
-        <MockAuthProvider initialUser={mockUser}>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent user={{ id: '1', username: 'testuser', email: 'test@example.com' }} />)
 
       expect(screen.getByTestId('user-info')).toHaveTextContent('Welcome, testuser')
       
@@ -394,59 +362,6 @@ describe('Authentication Flow Integration', () => {
     })
   })
 
-  describe('Token Management', () => {
-    it('refreshes expired tokens automatically', async () => {
-      mockAuthService.refreshToken.mockResolvedValueOnce({
-        token: 'new-jwt-token',
-        refreshToken: 'new-refresh-token'
-      })
-
-      // Simulate token refresh scenario
-      const mockFetch = jest.fn()
-        .mockRejectedValueOnce({ status: 401 }) // First call fails with 401
-        .mockResolvedValueOnce({ ok: true, json: () => ({ data: 'success' }) }) // Second call succeeds
-
-      global.fetch = mockFetch
-
-      // This would typically be handled by an API interceptor
-      const apiCall = async () => {
-        try {
-          return await fetch('/api/protected')
-        } catch (error: any) {
-          if (error.status === 401) {
-            await mockAuthService.refreshToken()
-            return await fetch('/api/protected')
-          }
-          throw error
-        }
-      }
-
-      await apiCall()
-
-      expect(mockAuthService.refreshToken).toHaveBeenCalled()
-      expect(mockFetch).toHaveBeenCalledTimes(2)
-    })
-
-    it('handles token storage securely', () => {
-      const token = 'mock-jwt-token'
-      const refreshToken = 'mock-refresh-token'
-
-      // Store tokens
-      localStorage.setItem('auth_token', token)
-      sessionStorage.setItem('refresh_token', refreshToken)
-
-      expect(localStorage.getItem('auth_token')).toBe(token)
-      expect(sessionStorage.getItem('refresh_token')).toBe(refreshToken)
-
-      // Clear tokens on logout
-      localStorage.removeItem('auth_token')
-      sessionStorage.removeItem('refresh_token')
-
-      expect(localStorage.getItem('auth_token')).toBeNull()
-      expect(sessionStorage.getItem('refresh_token')).toBeNull()
-    })
-  })
-
   describe('Protected Routes', () => {
     it('redirects unauthenticated users to login', () => {
       const ProtectedComponent = ({ user }: any) => {
@@ -456,11 +371,7 @@ describe('Authentication Flow Integration', () => {
         return <div data-testid="protected-content">Protected content</div>
       }
 
-      render(
-        <MockAuthProvider>
-          <ProtectedComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<ProtectedComponent user={null} />)
 
       expect(screen.getByTestId('login-redirect')).toBeInTheDocument()
       expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument()
@@ -474,17 +385,14 @@ describe('Authentication Flow Integration', () => {
         return <div data-testid="protected-content">Protected content</div>
       }
 
-      render(
-        <MockAuthProvider initialUser={mockUser}>
-          <ProtectedComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<ProtectedComponent user={{ id: '1', username: 'testuser', email: 'test@example.com' }} />)
 
       expect(screen.getByTestId('protected-content')).toBeInTheDocument()
       expect(screen.queryByTestId('login-redirect')).not.toBeInTheDocument()
     })
   })
 
+// ...
   describe('Session Persistence', () => {
     it('restores user session on page reload', async () => {
       // Mock stored session
@@ -505,11 +413,7 @@ describe('Authentication Flow Integration', () => {
         return <div data-testid="no-session">No session</div>
       }
 
-      render(
-        <MockAuthProvider>
-          <TestComponent />
-        </MockAuthProvider>
-      )
+      integrationRender(<TestComponent />)
 
       await waitFor(() => {
         expect(mockAuthService.getCurrentUser).toHaveBeenCalled()

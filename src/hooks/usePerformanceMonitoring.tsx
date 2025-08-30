@@ -19,18 +19,25 @@ export const usePerformanceMonitoring = (componentName?: string) => {
     renderTime: 0,
     interactionTime: 0
   });
+  const performanceEntries = useRef<PerformanceEntry[]>([]);
 
   // Measure component render time
-  const measureRenderTime = useCallback(() => {
-    const renderTime = Date.now() - startTimeRef.current;
-    metricsRef.current.renderTime = renderTime;
+  const measureRenderTime = useCallback((componentName: string, renderTime: number) => {
+    const entry = {
+      name: componentName,
+      entryType: 'measure' as const,
+      startTime: performance.now() - renderTime,
+      duration: renderTime
+    };
     
-    if (componentName && renderTime > 100) {
-      console.warn(`Slow render detected in ${componentName}: ${renderTime}ms`);
+    performanceEntries.current.push(entry);
+    
+    if (renderTime > 16) { // > 16ms indicates potential performance issue
+      console.warn(`Slow render: ${componentName} took ${renderTime}ms`);
     }
     
     return renderTime;
-  }, [componentName]);
+  }, []);
 
   // Measure interaction response time
   const measureInteraction = useCallback((interactionName: string) => {
