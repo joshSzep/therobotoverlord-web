@@ -6,8 +6,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ContentFeed } from '@/components/feed/ContentFeed';
-import { PersonalizedRecommendations } from '@/components/feed/PersonalizedRecommendations';
+import { LazyContentFeed, LazyPersonalizedRecommendations } from '@/components/lazy/LazyComponents';
 import { ContentStatusIndicators } from '@/components/feed/ContentStatusIndicators';
 import { FeedFilters } from '@/components/feed/FeedFilters';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
@@ -322,7 +321,7 @@ export default function FeedContent() {
             }
           >
             {feedItems.length > 0 ? (
-              <ContentFeed
+              <LazyContentFeed
                 items={feedItems}
                 onLoadMore={handleLoadMore}
                 hasMore={hasMore}
@@ -338,7 +337,7 @@ export default function FeedContent() {
         {/* Recommendations Sidebar */}
         <div className="lg:col-span-1">
           <ComponentErrorBoundary>
-            <PersonalizedRecommendations
+            <LazyPersonalizedRecommendations
               limit={6}
               categories={filters.categories}
               className="sticky top-6"
