@@ -5,6 +5,11 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   glow?: boolean;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+  'aria-pressed'?: boolean;
+  'aria-expanded'?: boolean;
+  'aria-controls'?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
