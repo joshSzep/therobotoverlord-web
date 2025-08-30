@@ -12,6 +12,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
+import { EmptyAuditLogsState } from '@/components/ui/EmptyState';
 import { OverlordMessage, OverlordHeader, OverlordContent } from '@/components/overlord/OverlordMessage';
 import { useAppStore } from '@/stores/appStore';
 import { useAuth } from '@/contexts/AuthContext';
@@ -388,27 +389,7 @@ function AuditLogContent() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12">
-                <div className="text-6xl mb-4">📋</div>
-                <h3 className="text-xl font-bold text-light-text mb-2">
-                  No Audit Logs Found
-                </h3>
-                <p className="text-muted-light mb-6">
-                  No audit log entries match your current filters
-                </p>
-                <Button
-                  variant="primary"
-                  onClick={() => handleFiltersChange({
-                    category: 'all',
-                    severity: 'all',
-                    dateRange: '7d',
-                    userId: '',
-                    action: ''
-                  })}
-                >
-                  Clear Filters
-                </Button>
-              </div>
+              <EmptyAuditLogsState onRefresh={() => loadAuditLogs()} />
             )}
           </CardContent>
         </Card>

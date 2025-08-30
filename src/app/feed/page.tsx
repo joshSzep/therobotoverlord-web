@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
 import { FeedPostSkeleton, StatsCardSkeleton } from '@/components/ui/Skeleton';
+import { EmptyFeedState } from '@/components/ui/EmptyState';
 import { useAppStore } from '@/stores/appStore';
 import { postsService, topicsService } from '@/services';
 import { Post } from '@/types/posts';
@@ -325,42 +326,7 @@ export default function FeedContent() {
                 isLoadingMore={isLoadingMore}
               />
             ) : (
-              <div className="text-center py-12">
-                <div className="text-6xl mb-4">📰</div>
-                <h3 className="text-xl font-bold text-light-text mb-2">
-                  No Content Found
-                </h3>
-                <p className="text-muted-light mb-6">
-                  Try adjusting your filters or check back later for new content
-                </p>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-light">Suggestions:</p>
-                  <ul className="text-sm text-muted-light space-y-1">
-                    <li>• Expand your time range</li>
-                    <li>• Include more categories</li>
-                    <li>• Switch to "All Content" view</li>
-                    <li>• Follow more users or topics</li>
-                  </ul>
-                </div>
-                <div className="mt-6 space-x-3">
-                  <Button
-                    variant="primary"
-                    onClick={() => handleFiltersChange({ 
-                      contentType: 'all', 
-                      timeRange: 'all', 
-                      categories: [] 
-                    })}
-                  >
-                    Show All Content
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={handleRefresh}
-                  >
-                    Refresh Feed
-                  </Button>
-                </div>
-              </div>
+              <EmptyFeedState onRefresh={handleRefresh} />
             )}
           </LoadingState>
         </div>

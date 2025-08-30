@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
 import { NotificationSkeleton } from '@/components/ui/Skeleton';
+import { EmptyNotificationsState } from '@/components/ui/EmptyState';
 import { OverlordMessage, OverlordHeader, OverlordContent } from '@/components/overlord/OverlordMessage';
 import { useAppStore } from '@/stores/appStore';
 import { useAuth } from '@/contexts/AuthContext';
@@ -332,17 +333,7 @@ function NotificationsContent() {
         {/* Notifications List */}
         <div className="space-y-3">
           {filteredNotifications.length === 0 ? (
-            <Card>
-              <CardContent className="p-8 text-center">
-                <div className="text-4xl mb-4">📭</div>
-                <h3 className="text-lg font-medium text-light-text mb-2">No Notifications</h3>
-                <p className="text-muted-light">
-                  {selectedFilter === 'unread' 
-                    ? "You're all caught up! No unread notifications."
-                    : "No notifications match your current filter."}
-                </p>
-              </CardContent>
-            </Card>
+            <EmptyNotificationsState />
           ) : (
             filteredNotifications.map((notification) => (
               <Card
