@@ -23,6 +23,11 @@ export interface Post {
     id: string;
     title: string;
     slug: string;
+    category: {
+      id: string;
+      name: string;
+      color: string;
+    };
   };
   status: 'draft' | 'published' | 'moderated' | 'removed';
   moderationStatus: 'pending' | 'approved' | 'rejected' | 'flagged';
@@ -32,17 +37,27 @@ export interface Post {
   tags: string[];
   upvotes: number;
   downvotes: number;
+  score: number;
   userVote?: 'up' | 'down' | null;
   replyCount: number;
   viewCount: number;
   isPinned: boolean;
   isLocked: boolean;
+  isEdited: boolean;
   createdAt: string;
   updatedAt: string;
   editedAt?: string;
+  userPermissions?: {
+    canEdit: boolean;
+    canDelete: boolean;
+    canModerate: boolean;
+    canReport: boolean;
+  };
   editHistory?: Array<{
+    id: string;
     content: string;
     editedAt: string;
+    editedBy: string;
     reason?: string;
   }>;
 }
@@ -141,6 +156,13 @@ export class PostsService extends BaseService {
   }
 
   /**
+   * Get replies for a post (alias for getPostReplies)
+   */
+  async getReplies(id: string, page = 1, limit = 20): Promise<PaginatedResponse<Post>> {
+    return this.getPostReplies(id, page, limit);
+  }
+
+  /**
    * Reply to post
    */
   async replyToPost(id: string, content: string): Promise<ApiResponse<Post>> {
@@ -162,8 +184,8 @@ export class PostsService extends BaseService {
   /**
    * Report post for moderation
    */
-  async reportPost(id: string, reason: string, details?: string): Promise<ApiResponse<{ message: string }>> {
-    return this.post(`/${id}/report`, { reason, details });
+  async reportPost(id: string, reportData: { reason: string; details?: string }): Promise<ApiResponse<{ message: string }>> {
+    return this.post(`/${id}/report`, reportData);
   }
 
   /**

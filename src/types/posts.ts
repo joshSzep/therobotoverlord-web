@@ -43,6 +43,7 @@ export interface Post {
   tags: string[];
   upvotes: number;
   downvotes: number;
+  score: number;
   userVote?: 'up' | 'down' | null;
   replyCount: number;
   viewCount: number;
@@ -53,6 +54,12 @@ export interface Post {
   updatedAt: string;
   editedAt?: string;
   publishedAt?: string;
+  userPermissions?: {
+    canEdit: boolean;
+    canDelete: boolean;
+    canModerate: boolean;
+    canReport: boolean;
+  };
   editHistory?: Array<{
     id: string;
     content: string;
