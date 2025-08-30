@@ -7,26 +7,26 @@ describe('Button Component', () => {
     
     const button = screen.getByRole('button', { name: /click me/i })
     expect(button).toBeInTheDocument()
-    expect(button).toHaveClass('btn-primary')
+    expect(button).toHaveClass('bg-overlord-red', 'text-light-text')
   })
 
   it('renders different variants correctly', () => {
     const { rerender } = render(<Button variant="secondary">Secondary</Button>)
-    expect(screen.getByRole('button')).toHaveClass('btn-secondary')
+    expect(screen.getByRole('button')).toHaveClass('border', 'border-muted-light')
 
     rerender(<Button variant="danger">Danger</Button>)
-    expect(screen.getByRole('button')).toHaveClass('btn-danger')
+    expect(screen.getByRole('button')).toHaveClass('bg-rejected-red')
 
     rerender(<Button variant="ghost">Ghost</Button>)
-    expect(screen.getByRole('button')).toHaveClass('btn-ghost')
+    expect(screen.getByRole('button')).toHaveClass('text-muted-light')
   })
 
   it('renders different sizes correctly', () => {
     const { rerender } = render(<Button size="sm">Small</Button>)
-    expect(screen.getByRole('button')).toHaveClass('btn-sm')
+    expect(screen.getByRole('button')).toHaveClass('px-4', 'py-2', 'text-sm')
 
     rerender(<Button size="lg">Large</Button>)
-    expect(screen.getByRole('button')).toHaveClass('btn-lg')
+    expect(screen.getByRole('button')).toHaveClass('px-8', 'py-4', 'text-lg')
   })
 
   it('handles disabled state', () => {
@@ -34,15 +34,14 @@ describe('Button Component', () => {
     
     const button = screen.getByRole('button')
     expect(button).toBeDisabled()
-    expect(button).toHaveClass('btn-disabled')
+    expect(button).toHaveClass('disabled:opacity-50', 'disabled:cursor-not-allowed')
   })
 
-  it('handles loading state', () => {
-    render(<Button loading>Loading</Button>)
+  it('handles glow effect', () => {
+    render(<Button glow>Glow Button</Button>)
     
     const button = screen.getByRole('button')
-    expect(button).toBeDisabled()
-    expect(button).toHaveClass('btn-loading')
+    expect(button).toHaveClass('glow-red')
   })
 
   it('calls onClick handler when clicked', async () => {
@@ -87,7 +86,7 @@ describe('Button Component', () => {
     
     const button = screen.getByRole('button')
     expect(button).toHaveClass('custom-class')
-    expect(button).toHaveClass('btn-primary') // Should still have default classes
+    expect(button).toHaveClass('bg-overlord-red') // Should still have default classes
   })
 
   it('forwards ref correctly', () => {
@@ -113,15 +112,11 @@ describe('Button Component', () => {
     expect(button).toHaveAttribute('aria-describedby', 'description')
   })
 
-  it('renders as different HTML elements when using asChild', () => {
-    render(
-      <Button asChild>
-        <a href="/test">Link Button</a>
-      </Button>
-    )
+  it('renders with glow prop', () => {
+    render(<Button glow>Glow Button</Button>)
     
-    const link = screen.getByRole('link')
-    expect(link).toBeInTheDocument()
-    expect(link).toHaveClass('btn-primary')
+    const button = screen.getByRole('button')
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveClass('glow-red')
   })
 })
