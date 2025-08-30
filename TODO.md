@@ -40,8 +40,8 @@
 ### Navigation & Layout
 - [x] **Main Layout**
   - [x] Create main application layout
-  - [ ] Implement navigation header
-  - [ ] Add user menu/profile dropdown
+  - [x] Implement navigation header
+  - [x] Add user menu/profile dropdown
   - [ ] Create responsive sidebar navigation
   - [ ] Add breadcrumb navigation
 

@@ -7,16 +7,18 @@
 
 import React from 'react';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import { AppLayout } from '@/components/layout/AppLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { OverlordMessage, OverlordHeader, OverlordContent } from '@/components/overlord/OverlordMessage';
 
 function TopicsContent() {
   return (
-    <div className="min-h-screen bg-background p-4">
-      <div className="max-w-4xl mx-auto space-y-6">
-        {/* Header */}
-        <OverlordMessage variant="default">
+    <AppLayout>
+      <div className="p-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          {/* Header */}
+          <OverlordMessage variant="default">
           <OverlordHeader>
             <div className="text-sm text-muted-light mt-2">
               APPROVED DISCUSSION TOPICS
@@ -59,7 +61,7 @@ function TopicsContent() {
           </Button>
         </div>
       </div>
-    </div>
+    </AppLayout>
   );
 }
 
