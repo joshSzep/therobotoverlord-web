@@ -7,10 +7,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { ContentFeed } from '@/components/feed/ContentFeed';
-import { FeedFilters } from '@/components/feed/FeedFilters';
 import { PersonalizedRecommendations } from '@/components/feed/PersonalizedRecommendations';
-import { Card, CardContent, CardHeader } from '@/components/ui/Card';
+import { ContentStatusIndicators } from '@/components/feed/ContentStatusIndicators';
+import { useRealTimeUpdates } from '@/hooks/useRealTimeUpdates';
 import { Button } from '@/components/ui/Button';
+import { Card, CardContent } from '@/components/ui/Card';
 import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
 import { useAppStore } from '@/stores/appStore';
 import { postsService, topicsService } from '@/services';
@@ -33,12 +34,17 @@ interface FeedFilters {
   showFollowing: boolean;
 }
 
-export default function FeedPage() {
+export default function FeedContent() {
   const { addNotification } = useAppStore();
-  
   const [feedItems, setFeedItems] = useState<FeedItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<'all' | 'posts' | 'topics'>('all');
+  const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'trending'>('recent');
+  
+  // Enable real-time updates
+  const { connected, isRealTimeEnabled } = useRealTimeUpdates();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
@@ -171,6 +177,35 @@ export default function FeedPage() {
 
   return (
     <div className="space-y-6">
+      {/* Real-time Status Indicator */}
+      <div className="flex items-center space-x-2 text-sm">
+        <div className={`w-2 h-2 rounded-full ${connected ? 'bg-approved-green' : 'bg-muted'}`}></div>
+        <span className="text-muted-light">
+          {connected ? 'Live updates enabled' : 'Offline mode'}
+        </span>
+      </div>
+
+      {/* Simple Filter Buttons */}
+      <div className="flex items-center space-x-2">
+        <span className="text-sm font-medium text-light-text">Show:</span>
+        <div className="flex space-x-1">
+          {[
+            { value: 'all', label: 'All' },
+            { value: 'posts', label: 'Posts' },
+            { value: 'topics', label: 'Topics' },
+          ].map((filter) => (
+            <Button
+              key={filter.value}
+              variant={selectedFilter === filter.value ? 'primary' : 'ghost'}
+              size="sm"
+              onClick={() => setSelectedFilter(filter.value as any)}
+            >
+              {filter.label}
+            </Button>
+          ))}
+        </div>
+      </div>
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
