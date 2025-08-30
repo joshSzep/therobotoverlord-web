@@ -62,17 +62,7 @@ jest.mock('@/services/authService', () => ({
   authService: mockAuthService
 }))
 
-// Mock authentication hooks
-jest.mock('@/hooks/useAuth', () => ({
-  useAuth: jest.fn(() => ({
-    user: null,
-    loading: false,
-    login: mockAuthService.login,
-    signup: mockAuthService.signup,
-    logout: mockAuthService.logout,
-    isAuthenticated: false
-  }))
-}))
+// Mock authentication hooks - removed non-existent module
 
 // Mock authentication context with stable provider
 jest.mock('@/contexts/AuthContext', () => ({
@@ -90,11 +80,11 @@ jest.mock('@/contexts/AuthContext', () => ({
 }))
 
 describe('Authentication Flow Integration', () => {
-  const mockUser = createMockUser({
+  const mockUser = {
     id: '1',
     username: 'testuser',
     email: 'test@example.com'
-  })
+  }
 
   beforeEach(() => {
     jest.clearAllMocks()
