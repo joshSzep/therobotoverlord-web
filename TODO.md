@@ -170,7 +170,7 @@
   - [x] Add audit log viewer
 
 - [ ] **Moderation Workflows**
-  - [ ] Create appeals system interface
+  - [x] Create appeals system interface
   - [ ] Implement sanctions management
   - [ ] Add flag management system
   - [ ] Create moderation reporting tools

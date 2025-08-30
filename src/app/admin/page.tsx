@@ -492,6 +492,11 @@ function AdminDashboardContent() {
                     📋 Audit Logs
                   </Button>
                 </Link>
+                <Link href="/admin/appeals">
+                  <Button variant="secondary" size="sm" className="w-full">
+                    ⚖️ Appeals System
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
