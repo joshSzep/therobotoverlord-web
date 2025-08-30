@@ -211,7 +211,7 @@ describe("Feed Page Integration", () => {
     });
 
     // Click load more button
-    const loadMoreButton = screen.getByTestId("load-more-button");
+    const loadMoreButton = screen.getByRole('button', { name: /load more/i }) || screen.getByText(/load more/i);
     await user.click(loadMoreButton);
 
     // Should show loading state
@@ -242,7 +242,9 @@ describe("Feed Page Integration", () => {
     });
 
     // Check that real-time updates hook is called
-    expect(mockUseRealTimeUpdates).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(mockUseRealTimeUpdates).toHaveBeenCalled();
+    });
   });
 
   it("handles API errors gracefully", async () => {
@@ -269,7 +271,7 @@ describe("Feed Page Integration", () => {
 
     // Should render the page with empty state component
     await waitFor(() => {
-      expect(screen.getByText("Mock Empty Feed State")).toBeInTheDocument();
+      expect(screen.getByTestId("mock-empty-state")).toBeInTheDocument();
     });
   });
 
