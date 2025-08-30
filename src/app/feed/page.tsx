@@ -17,6 +17,7 @@ import { Card, CardContent } from '@/components/ui/Card';
 import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
 import { FeedPostSkeleton, StatsCardSkeleton } from '@/components/ui/Skeleton';
 import { EmptyFeedState } from '@/components/ui/EmptyState';
+import { ComponentErrorBoundary, AsyncErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { useAppStore } from '@/stores/appStore';
 import { postsService, topicsService } from '@/services';
 import { Post } from '@/types/posts';
@@ -281,7 +282,8 @@ export default function FeedContent() {
 
         {/* Feed Content */}
         <div className="lg:col-span-2">
-          <LoadingState
+          <AsyncErrorBoundary onRetry={handleRefresh}>
+            <LoadingState
             isLoading={isLoading}
             error={error}
             useSkeleton={true}
@@ -329,15 +331,18 @@ export default function FeedContent() {
               <EmptyFeedState onRefresh={handleRefresh} />
             )}
           </LoadingState>
+          </AsyncErrorBoundary>
         </div>
 
         {/* Recommendations Sidebar */}
         <div className="lg:col-span-1">
-          <PersonalizedRecommendations
-            limit={6}
-            categories={filters.categories}
-            className="sticky top-6"
-          />
+          <ComponentErrorBoundary>
+            <PersonalizedRecommendations
+              limit={6}
+              categories={filters.categories}
+              className="sticky top-6"
+            />
+          </ComponentErrorBoundary>
         </div>
       </div>
       </div>

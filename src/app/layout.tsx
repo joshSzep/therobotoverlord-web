@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from '@/contexts/AuthContext';
+import { PageErrorBoundary, setupGlobalErrorHandlers } from '@/components/ui/ErrorBoundary';
 import { AppProviders } from '@/components/providers/AppProviders';
 import { ToastContainer } from '@/components/ui/Toast';
 
@@ -29,13 +31,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Setup global error handlers
+  if (typeof window !== 'undefined') {
+    setupGlobalErrorHandlers();
+  }
+
   return (
     <html lang="en">
       <body className="antialiased bg-background text-foreground min-h-screen">
-        <AppProviders>
-          {children}
-          <ToastContainer />
-        </AppProviders>
+        <PageErrorBoundary>
+          <AppProviders>
+            {children}
+            <ToastContainer />
+          </AppProviders>
+        </PageErrorBoundary>
       </body>
     </html>
   );
