@@ -1,4 +1,7 @@
-import { render, screen, waitFor, act } from '@/__tests__/utils/test-utils'
+import React from 'react'
+import { render, screen, waitFor } from '@testing-library/react'
+import { act } from 'react'
+import userEvent from '@testing-library/user-event'
 import { createMockPost, createMockUser } from '@/__tests__/utils/test-utils'
 
 // Mock WebSocket
