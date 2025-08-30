@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppProviders } from "@/components/providers/AppProviders";
+import { AppProviders } from '@/components/providers/AppProviders';
+import { ToastContainer } from '@/components/ui/Toast';
 
 export const metadata: Metadata = {
   title: "The Robot Overlord",
@@ -25,14 +26,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className="antialiased bg-background text-foreground min-h-screen">
         <AppProviders>
           {children}
+          <ToastContainer />
         </AppProviders>
       </body>
     </html>

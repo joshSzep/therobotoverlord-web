@@ -5,9 +5,10 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Header } from '@/components/navigation/Header';
 import { Sidebar } from '@/components/navigation/Sidebar';
+import { useUI } from '@/stores/appStore';
 
 interface AppLayoutWithSidebarProps {
   children: React.ReactNode;
@@ -18,23 +19,20 @@ interface AppLayoutWithSidebarProps {
 
 export function AppLayoutWithSidebar({ 
   children, 
-  showHeader = true, 
-  showSidebar = false,
-  sidebarOpen = false 
+  showHeader = true,
+  showSidebar = true,
+  sidebarOpen: propSidebarOpen
 }: AppLayoutWithSidebarProps) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(sidebarOpen);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const { ui, setSidebarOpen, toggleSidebar } = useUI();
+  const sidebarOpen = propSidebarOpen ?? ui.sidebarOpen;
 
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
       {showSidebar && (
         <Sidebar 
-          isOpen={isSidebarOpen} 
-          onClose={() => setIsSidebarOpen(false)} 
+          isOpen={sidebarOpen} 
+          onClose={() => setSidebarOpen(false)} 
         />
       )}
 
