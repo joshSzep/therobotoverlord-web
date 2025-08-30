@@ -15,6 +15,8 @@ interface LogContext {
   requestId?: string
   component?: string
   action?: string
+  userAgent?: string
+  ip?: string
   metadata?: Record<string, any>
 }
 

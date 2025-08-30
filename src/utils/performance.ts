@@ -15,6 +15,12 @@ interface PerformanceMetrics {
     total: number
     limit: number
   }
+  dns?: number
+  tcp?: number
+  tls?: number
+  download?: number
+  domProcessing?: number
+  total?: number
 }
 
 interface PerformanceEntry {
@@ -24,6 +30,29 @@ interface PerformanceEntry {
   type: string
 }
 
+interface NetworkInfo {
+  effectiveType?: string
+  downlink?: number
+  rtt?: number
+  saveData?: boolean
+}
+
+/**
+ * Get network information if available
+ */
+export function getNetworkInfo(): NetworkInfo | null {
+  if (typeof navigator === 'undefined') return null
+  
+  try {
+    // Type assertion for experimental API
+    const nav = navigator as any
+    const connection = nav.connection || nav.mozConnection || nav.webkitConnection
+    return connection || null
+  } catch {
+    return null
+  }
+}
+
 /**
  * Collect Core Web Vitals and performance metrics
  */
@@ -31,7 +60,7 @@ export function collectPerformanceMetrics(): Promise<PerformanceMetrics> {
   return new Promise((resolve) => {
     const metrics: PerformanceMetrics = {}
     let metricsCollected = 0
-    const totalMetrics = 6
+    const totalMetrics = 7
 
     function checkComplete() {
       metricsCollected++
@@ -320,7 +349,7 @@ export const performanceUtils = {
     const memory = (navigator as any).deviceMemory || 4
     
     // Check connection (if available)
-    const connection = (navigator as any).connection
+    const connection = getNetworkInfo()
     const effectiveType = connection?.effectiveType || '4g'
     
     return cores >= 4 && memory >= 4 && effectiveType !== 'slow-2g'
@@ -328,9 +357,10 @@ export const performanceUtils = {
 
   // Adaptive loading based on device capabilities
   shouldLoadHighQualityAssets(): boolean {
+    const connection = getNetworkInfo()
     return this.isHighPerformanceDevice() && 
-           !navigator.connection?.saveData &&
-           navigator.connection?.effectiveType !== 'slow-2g'
+           !connection?.saveData &&
+           connection?.effectiveType !== 'slow-2g'
   },
 }
 
