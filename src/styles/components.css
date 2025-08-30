@@ -1,0 +1,400 @@
+/**
+ * Component Styling Consistency for The Robot Overlord
+ * Standardizes component styles across the application
+ */
+
+/* Base component classes for consistency */
+.component-base {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+/* Interactive elements */
+.interactive-element {
+  @apply component-base hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-overlord-red/50 focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Card variants */
+.card-elevated {
+  @apply shadow-lg hover:shadow-xl transition-shadow duration-200;
+}
+
+.card-bordered {
+  @apply border-2 border-border hover:border-overlord-red/30 transition-colors duration-200;
+}
+
+.card-interactive {
+  @apply interactive-element cursor-pointer;
+}
+
+/* Status indicators */
+.status-indicator {
+  @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-pending {
+  @apply status-indicator bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+}
+
+.status-approved {
+  @apply status-indicator bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+}
+
+.status-rejected {
+  @apply status-indicator bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.status-under-review {
+  @apply status-indicator bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+}
+
+.status-resolved {
+  @apply status-indicator bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+}
+
+.status-dismissed {
+  @apply status-indicator bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400;
+}
+
+/* Priority indicators */
+.priority-urgent {
+  @apply status-indicator bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.priority-high {
+  @apply status-indicator bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400;
+}
+
+.priority-medium {
+  @apply status-indicator bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+}
+
+.priority-low {
+  @apply status-indicator bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+}
+
+/* Form elements */
+.form-input {
+  @apply w-full px-3 py-2 border border-border rounded-md bg-card text-light-text placeholder-muted-light focus:outline-none focus:ring-2 focus:ring-overlord-red/50 focus:border-overlord-red/50 transition-colors duration-200;
+}
+
+.form-textarea {
+  @apply form-input resize-vertical min-h-[100px];
+}
+
+.form-select {
+  @apply form-input cursor-pointer;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-light-text mb-2;
+}
+
+.form-error {
+  @apply text-sm text-rejected-red mt-1;
+}
+
+.form-help {
+  @apply text-sm text-muted-light mt-1;
+}
+
+/* Navigation elements */
+.nav-item {
+  @apply interactive-element flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium;
+}
+
+.nav-item-active {
+  @apply nav-item bg-overlord-red/10 text-overlord-red border-r-2 border-overlord-red;
+}
+
+.nav-item-inactive {
+  @apply nav-item text-muted-light hover:text-light-text hover:bg-muted/30;
+}
+
+/* Content sections */
+.content-section {
+  @apply space-y-6;
+}
+
+.content-header {
+  @apply flex items-center justify-between mb-6;
+}
+
+.content-title {
+  @apply text-2xl font-bold text-light-text;
+}
+
+.content-subtitle {
+  @apply text-muted-light mt-1;
+}
+
+.content-actions {
+  @apply flex items-center space-x-3;
+}
+
+/* List items */
+.list-item {
+  @apply interactive-element flex items-start space-x-3 p-4 border border-border rounded-lg;
+}
+
+.list-item-header {
+  @apply flex items-center justify-between w-full mb-2;
+}
+
+.list-item-title {
+  @apply font-semibold text-light-text;
+}
+
+.list-item-meta {
+  @apply text-sm text-muted-light;
+}
+
+.list-item-content {
+  @apply text-muted-light mt-2;
+}
+
+.list-item-actions {
+  @apply flex items-center space-x-2 mt-3;
+}
+
+/* Modal and overlay styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+}
+
+.modal-content {
+  @apply bg-card border border-border rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl;
+}
+
+.modal-header {
+  @apply flex items-center justify-between p-6 border-b border-border;
+}
+
+.modal-title {
+  @apply text-xl font-bold text-light-text;
+}
+
+.modal-body {
+  @apply p-6 space-y-4;
+}
+
+.modal-footer {
+  @apply flex items-center justify-end space-x-3 p-6 border-t border-border;
+}
+
+/* Loading and skeleton styles */
+.skeleton-base {
+  @apply animate-pulse bg-muted rounded;
+}
+
+.skeleton-text {
+  @apply skeleton-base h-4;
+}
+
+.skeleton-title {
+  @apply skeleton-base h-6;
+}
+
+.skeleton-avatar {
+  @apply skeleton-base rounded-full;
+}
+
+.skeleton-button {
+  @apply skeleton-base h-10 rounded-md;
+}
+
+/* Notification styles */
+.notification-item {
+  @apply list-item transition-all duration-200;
+}
+
+.notification-unread {
+  @apply notification-item border-overlord-red/30 bg-overlord-red/5;
+}
+
+.notification-read {
+  @apply notification-item border-muted/20 opacity-75;
+}
+
+/* Feed and content styles */
+.feed-item {
+  @apply list-item hover:shadow-md transition-shadow duration-200;
+}
+
+.feed-header {
+  @apply flex items-center space-x-3 mb-4;
+}
+
+.feed-avatar {
+  @apply w-10 h-10 rounded-full bg-muted flex items-center justify-center text-light-text font-bold;
+}
+
+.feed-author {
+  @apply font-semibold text-light-text;
+}
+
+.feed-timestamp {
+  @apply text-sm text-muted-light;
+}
+
+.feed-content {
+  @apply text-light-text leading-relaxed mb-4;
+}
+
+.feed-actions {
+  @apply flex items-center space-x-4 pt-3 border-t border-border;
+}
+
+/* Statistics and metrics */
+.stat-card {
+  @apply bg-card border border-border rounded-lg p-4 hover:shadow-md transition-shadow duration-200;
+}
+
+.stat-icon {
+  @apply w-12 h-12 rounded-lg flex items-center justify-center text-2xl;
+}
+
+.stat-value {
+  @apply text-2xl font-bold text-light-text;
+}
+
+.stat-label {
+  @apply text-sm text-muted-light;
+}
+
+.stat-change {
+  @apply text-xs font-medium;
+}
+
+.stat-change-positive {
+  @apply stat-change text-green-600;
+}
+
+.stat-change-negative {
+  @apply stat-change text-red-600;
+}
+
+.stat-change-neutral {
+  @apply stat-change text-muted-light;
+}
+
+/* Filter and search styles */
+.filter-group {
+  @apply space-y-4;
+}
+
+.filter-row {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+.search-input {
+  @apply form-input pl-10 relative;
+}
+
+.search-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-light;
+}
+
+/* Table styles */
+.table-container {
+  @apply overflow-x-auto border border-border rounded-lg;
+}
+
+.table-base {
+  @apply w-full divide-y divide-border;
+}
+
+.table-header {
+  @apply bg-muted/30;
+}
+
+.table-header-cell {
+  @apply px-4 py-3 text-left text-xs font-medium text-light-text uppercase tracking-wider;
+}
+
+.table-body {
+  @apply bg-card divide-y divide-border;
+}
+
+.table-row {
+  @apply hover:bg-muted/20 transition-colors duration-150;
+}
+
+.table-cell {
+  @apply px-4 py-3 whitespace-nowrap text-sm text-light-text;
+}
+
+/* Progress and loading bars */
+.progress-bar {
+  @apply w-full bg-muted rounded-full h-2;
+}
+
+.progress-fill {
+  @apply bg-overlord-red h-2 rounded-full transition-all duration-300 ease-in-out;
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 rounded shadow-lg pointer-events-none;
+}
+
+.tooltip-arrow {
+  @apply absolute w-2 h-2 bg-gray-900 transform rotate-45;
+}
+
+/* Responsive utilities */
+.mobile-hidden {
+  @apply hidden md:block;
+}
+
+.mobile-only {
+  @apply block md:hidden;
+}
+
+.tablet-hidden {
+  @apply hidden lg:block;
+}
+
+.desktop-only {
+  @apply hidden lg:block;
+}
+
+/* Animation utilities */
+.fade-in {
+  @apply animate-in fade-in duration-200;
+}
+
+.slide-in-from-right {
+  @apply animate-in slide-in-from-right duration-300;
+}
+
+.slide-in-from-left {
+  @apply animate-in slide-in-from-left duration-300;
+}
+
+.scale-in {
+  @apply animate-in zoom-in duration-200;
+}
+
+/* Focus management */
+.focus-visible {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-overlord-red/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* Print styles */
+@media print {
+  .print-hidden {
+    @apply hidden;
+  }
+  
+  .print-only {
+    @apply block;
+  }
+  
+  .print-break-before {
+    page-break-before: always;
+  }
+  
+  .print-break-after {
+    page-break-after: always;
+  }
+}
