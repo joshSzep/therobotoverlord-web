@@ -171,7 +171,7 @@
 
 - [ ] **Moderation Workflows**
   - [x] Create appeals system interface
-  - [ ] Implement sanctions management
+  - [x] Implement sanctions management
   - [ ] Add flag management system
   - [ ] Create moderation reporting tools
 

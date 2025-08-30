@@ -497,6 +497,11 @@ function AdminDashboardContent() {
                     ⚖️ Appeals System
                   </Button>
                 </Link>
+                <Link href="/admin/sanctions">
+                  <Button variant="secondary" size="sm" className="w-full">
+                    🚨 Sanctions Management
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
