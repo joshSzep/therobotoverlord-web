@@ -79,6 +79,18 @@ global.sessionStorage = sessionStorageMock
 // Mock fetch
 global.fetch = jest.fn()
 
+// Mock API client
+jest.mock('@/lib/api-client', () => ({
+  apiClient: {
+    get: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    delete: jest.fn(),
+    setAuthToken: jest.fn(),
+    clearAuthToken: jest.fn(),
+  },
+}))
+
 // Mock console methods to reduce noise in tests
 global.console = {
   ...console,

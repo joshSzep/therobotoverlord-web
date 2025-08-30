@@ -25,10 +25,109 @@ interface User {
   createdAt?: string
 }
 
-// Mock providers for testing
+// Create stable mock functions to prevent re-renders
+const mockLogin = jest.fn()
+const mockLoginWithGoogle = jest.fn()
+const mockLogout = jest.fn()
+const mockRefreshToken = jest.fn()
+const mockClearError = jest.fn()
+const mockUpdateUser = jest.fn()
+
+// Mock AuthContext for testing
+const mockAuthContext = {
+  user: null,
+  isAuthenticated: false,
+  isLoading: false,
+  error: null,
+  login: mockLogin,
+  loginWithGoogle: mockLoginWithGoogle,
+  logout: mockLogout,
+  refreshToken: mockRefreshToken,
+  clearError: mockClearError,
+  updateUser: mockUpdateUser,
+}
+
+// Mock the AuthContext
+jest.mock('@/contexts/AuthContext', () => ({
+  AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  useAuth: () => mockAuthContext,
+  useRequireAuth: () => mockAuthContext,
+}))
+
+// Mock Zustand store
+const mockAddNotification = jest.fn()
+const mockSetSidebarOpen = jest.fn()
+const mockToggleSidebar = jest.fn()
+
+jest.mock('@/stores/appStore', () => ({
+  useAppStore: () => ({
+    addNotification: mockAddNotification,
+    notifications: [],
+    removeNotification: jest.fn(),
+  }),
+  useUI: () => ({
+    ui: {
+      sidebarOpen: false,
+      theme: 'dark',
+      isLoading: false,
+    },
+    setSidebarOpen: mockSetSidebarOpen,
+    toggleSidebar: mockToggleSidebar,
+    setTheme: jest.fn(),
+    setLoading: jest.fn(),
+  })
+}))
+
+// Mock API services with sample data
+const mockPosts = [
+  {
+    id: '1',
+    title: 'Test Post',
+    content: 'Test content',
+    author: 'testuser',
+    createdAt: '2023-01-01T00:00:00Z',
+    updatedAt: '2023-01-01T00:00:00Z',
+    tags: ['test'],
+    category: 'general',
+    score: 10
+  }
+]
+
+jest.mock('@/services', () => ({
+  postsService: {
+    getFeed: jest.fn().mockResolvedValue({
+      data: mockPosts,
+      hasMore: true,
+      total: 1
+    })
+  },
+  topicsService: {
+    getFeed: jest.fn().mockResolvedValue({
+      data: [],
+      hasMore: false,
+      total: 0
+    })
+  }
+}))
+
+// Mock real-time updates hook
+jest.mock('@/hooks/useRealTimeUpdates', () => ({
+  useRealTimeUpdates: () => ({
+    connected: true,
+    isRealTimeEnabled: true,
+    lastUpdate: null
+  })
+}))
+
+// Basic mock provider for simple component tests
 const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <>{children}</>
+}
+
+// Specialized mock provider for integration tests with stable state
+const IntegrationMockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div data-testid="mock-providers">
+    <div data-testid="mock-provider-wrapper">
       {children}
     </div>
   )
@@ -39,6 +138,12 @@ const customRender = (
   ui: React.ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
 ) => rtlRender(ui, { wrapper: MockProviders, ...options })
+
+// Integration test render function with stable providers
+const integrationRender = (
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>
+) => rtlRender(ui, { wrapper: IntegrationMockProviders, ...options })
 
 // Mock data creators
 export const createMockPost = (overrides: Partial<Post> = {}): Post => ({
@@ -186,4 +291,4 @@ export const customMatchers = {
 
 // Re-export testing library functions
 export { screen, waitFor, userEvent }
-export { customRender as render }
+export { customRender as render, integrationRender }

@@ -1,278 +1,174 @@
-# The Robot Overlord Frontend - Development TODO
+# Jest Test Suite - Fix All Failing Tests
 
-## 🚀 Phase 1: Core Infrastructure (Priority: Critical)
-
-### Authentication & Authorization
-- [x] **API Client Setup**
-  - [x] Create HTTP client with axios/fetch wrapper
-  - [x] Implement request/response interceptors
-  - [x] Add error handling and retry logic
-  - [x] Configure base URL and environment variables
-
-- [x] **Authentication Flow**
-  - [x] Create auth context and provider
-  - [x] Implement Google OAuth login flow
-  - [x] Add token management (access/refresh)
-  - [x] Create login/logout pages
-  - [x] Add protected route wrapper
-  - [x] Implement auth middleware for API calls
-
-- [x] **User Management**
-  - [x] Create user context and state management
-  - [x] Implement current user fetching
-  - [x] Add user profile management
-  - [x] Create user type definitions
-
-### Environment & Configuration
-- [x] **Environment Setup**
-  - [x] Create `.env.local` file
-  - [x] Add API base URL configuration
-  - [x] Configure OAuth client credentials
-  - [x] Add WebSocket URL configuration
-
-- [x] **Build Configuration**
-  - [x] Update Next.js config for API proxy (if needed)
-  - [x] Configure TypeScript paths
-  - [x] Add environment variable validation
-
-## 🏗️ Phase 2: Core Application Structure (Priority: High)
-
-### Navigation & Layout
-- [x] **Main Layout**
-  - [x] Create main application layout
-  - [x] Implement navigation header
-  - [x] Add user menu/profile dropdown
-  - [x] Create responsive sidebar navigation
-  - [x] Add breadcrumb navigation
-
-- [x] **Routing Structure**
-  - [x] Set up main application routes
-  - [x] Create route groups for organization
-  - [x] Implement nested layouts
-  - [x] Add 404 and error pages
-
-### State Management
-- [x] **Global State**
-  - [x] Choose state management solution (Context/Zustand/Redux)
-  - [x] Create global app state structure
-  - [x] Implement user state management
-  - [x] Add notification/toast system
-  - [x] Create loading states management
-
-### API Integration Layer
-- [x] **Service Layer**
-  - [x] Create API service classes
-  - [x] Implement auth service
-  - [x] Create posts service
-  - [x] Create topics service
-  - [x] Create users service
-  - [x] Create leaderboard service
-  - [x] Create badges service
-
-- [x] **Type Definitions**
-  - [x] Generate/create TypeScript types from backend schemas
-  - [x] Create API response types
-  - [x] Add form validation schemas
-  - [x] Create component prop types
-
-## 📝 Phase 3: Content Management (Priority: High)
-
-### Topics System
-- [x] **Topic Pages**
-  - [x] Create topics listing page
-  - [x] Implement topic detail/thread view
-  - [x] Add topic creation form
-  - [x] Create topic search functionality
-  - [x] Add topic filtering and sorting
-
-- [x] **Topic Management**
-  - [x] Implement topic approval workflow (moderators)
-  - [x] Add topic editing capabilities
-  - [x] Create related topics display
-  - [x] Add topic tagging system
-
-### Posts System
-- [x] **Post Management**
-  - [x] Create post creation form
-  - [x] Implement post editing
-  - [x] Add post deletion functionality
-  - [x] Create post thread view
-  - [x] Add post search and filtering
-
-- [x] **Post Moderation**
-  - [x] Create moderation queue interface
-  - [x] Implement post approval/rejection
-  - [x] Add moderation feedback display
-  - [x] Create post reporting system
-  - [x] Add ToS violation indicators
-
-### Content Display
-- [x] **Feed Systems**
-  - [x] Create main content feed
-  - [x] Implement infinite scrolling/pagination
-  - [x] Add content filtering options
-  - [x] Create personalized recommendations
-  - [x] Add content status indicators
-
-## 👤 Phase 4: User Experience (Priority: Medium)
-
-### User Profiles & Dashboard
-- [x] **Profile Pages**
-  - [x] Create user profile view
-  - [x] Implement profile editing
-  - [x] Add user statistics display
-  - [x] Create user activity feed
-  - [x] Add user badge showcase
-
-- [x] **Personal Dashboard**
-  - [x] Create user dashboard layout
-  - [x] Add loyalty score display
-  - [x] Implement personal statistics
-  - [x] Create user graveyard (rejected posts)
-  - [x] Add account management options
-
-### Gamification Features
-- [x] **Badges System**
-  - [x] Create badges gallery
-  - [x] Implement badge earning notifications
-  - [x] Add badge progress tracking
-  - [x] Create badge sharing functionality
-
-- [x] **Leaderboard**
-  - [x] Create leaderboard page
-  - [x] Implement ranking displays
-  - [x] Add leaderboard filtering
-  - [x] Create user search in leaderboard
-  - [x] Add personal rank tracking
-
-## 🔧 Phase 5: Advanced Features (Priority: Medium)
-
-### Real-time Features
-- [x] **WebSocket Integration**
-  - [x] Connect existing WebSocket to backend events
-  - [x] Implement real-time post updates
-  - [x] Add live moderation queue updates
-  - [x] Create real-time notifications
-  - [x] Add typing indicators for chat
-
-- [x] **Notifications System**
-  - [x] Create notification center
-  - [x] Implement push notifications
-  - [x] Add email notification preferences
-  - [x] Create notification history
-
-### Moderation Tools
-- [x] **Admin Interface**
-  - [x] Create admin dashboard
-  - [x] Implement user management tools
-  - [x] Add content moderation interface
-  - [x] Create system statistics view
-  - [x] Add audit log viewer
-
-- [x] **Moderation Workflows**
-  - [x] Create appeals system interface
-  - [x] Implement sanctions management
-  - [x] Add flag management system
-  - [x] Create moderation reporting tools
-
-## 🎨 Phase 6: Polish & Optimization (Priority: Low)
-
-### UI/UX Enhancements
-- [x] **Design Polish**
-  - [x] Refine component styling
-  - [x] Add micro-interactions
-  - [x] Implement loading skeletons
-  - [x] Add empty states
-  - [x] Create error boundaries
-
-- [x] **Accessibility**
-  - [x] Add ARIA labels and roles
-  - [x] Implement keyboard navigation
-  - [x] Add screen reader support
-  - [x] Test color contrast compliance
-  - [x] Add focus management
-
-### Performance Optimization
-- [x] **Code Optimization**
-  - [x] Implement code splitting for better performance
-  - [x] Add lazy loading for components
-  - [x] Optimize bundle size
-  - [x] Add performance monitoring
-  - [x] Implement caching strategies
-
-- [x] **SEO & Meta**
-  - [x] Add meta tags and Open Graph
-  - [x] Implement structured data
-  - [x] Create sitemap
-  - [x] Add robots.txt
-  - [x] Optimize for search engines
-
-## 🧪 Phase 7: Testing & Quality (Priority: Medium)
-
-### Testing Infrastructure
-- [x] **Unit Testing**
-  - [x] Set up Jest and React Testing Library
-  - [x] Create component tests
-  - [x] Add utility function tests
-  - [x] Test API service layer
-  - [x] Add form validation tests
-
-- [x] **Integration Testing**
-  - [x] Create page-level tests
-  - [x] Test authentication flows
-  - [x] Add API integration tests
-  - [x] Test WebSocket functionality
-
-- [x] **E2E Testing**
-  - [x] Set up Playwright/Cypress
-  - [x] Create user journey tests
-  - [x] Test critical workflows
-  - [x] Add cross-browser testing
-
-### Quality Assurance
-- [x] **Code Quality**
-  - [x] Set up pre-commit hooks
-  - [x] Add TypeScript strict mode
-  - [x] Implement ESLint rules
-  - [x] Add Prettier formatting
-  - [x] Create code review guidelines
-
-## 🚀 Phase 8: Deployment & DevOps (Priority: Low)
-
-### Deployment Setup
-- [x] **Build & Deploy**
-  - [x] Configure production build
-  - [x] Set up deployment pipeline
-  - [x] Add environment-specific configs
-  - [x] Configure CDN and assets
-  - [x] Add health checks
-
-- [x] **Monitoring**
-  - [x] Add error tracking (Sentry)
-  - [x] Implement analytics
-  - [x] Add performance monitoring
-  - [x] Create deployment notifications
-  - [x] Set up logging
+## 🧪 **Current Status: 91 Passed, 49 Failed**
+**Test Suites: 4 passed, 7 failed**
 
 ---
 
-## 📋 Immediate Next Steps
+## 🚨 **Critical Issues (Priority: High)**
 
-1. **Start with Phase 1** - Set up authentication and API client
-2. **Create environment configuration** - Add `.env.local` with backend API URLs
-3. **Implement basic routing** - Set up main application structure
-4. **Connect to backend** - Test API integration with existing endpoints
+### 1. Infinite Re-render Loops in Integration Tests
+**Status:** ❌ **Failing Tests:** ~30+ integration tests
+**Root Cause:** Mock providers causing unstable state updates
 
-## 🔗 Dependencies
+**Tasks:**
+- [x] **Fix Feed Integration Tests** (`feed.integration.test.tsx`)
+  - [x] Investigate mock provider stability in complex components
+  - [x] Fix "preserves scroll position on navigation" test ✅
+  - [ ] Fix "integrates with performance monitoring" test
+  - [x] Review all feed page integration test mocks
+  
+- [ ] **Fix Other Integration Test Files**
+  - [ ] Audit all integration test files for similar infinite loop issues
+  - [ ] Standardize mock provider usage across integration tests
+  - [ ] Ensure stable mock functions for complex state management
 
-- Backend API must be running on `http://localhost:8000`
-- Google OAuth credentials configured
-- Database and Redis services available
-- WebSocket endpoint accessible
+### 2. Component Test Expectations
+**Status:** ❌ **Failing Tests:** ~15+ component tests
+**Root Cause:** Outdated test expectations and mock configurations
 
-## 📚 Resources
+**Tasks:**
+- [ ] **Review Component Test Failures**
+  - [ ] Audit failing component tests for incorrect expectations
+  - [ ] Update test assertions to match current component behavior
+  - [ ] Fix mock configurations for component dependencies
+  
+- [ ] **Update Test Data and Mocks**
+  - [ ] Ensure test data matches current component prop requirements
+  - [ ] Update mock API responses to match current backend schemas
+  - [ ] Fix TypeScript type mismatches in test files
 
-- Backend API documentation: `/api/docs`
-- Existing components in `/src/components/`
-- WebSocket client: `/src/lib/websocket.ts`
-- Design system: `/src/app/globals.css`
+---
+
+## ✅ **Completed Fixes**
+
+### Jest Configuration
+- [x] Fixed `watchPlugins` validation error in Jest config
+- [x] Resolved Jest setup and configuration issues
+
+### Test Utilities
+- [x] Fixed infinite re-render loops in basic test utilities
+- [x] Implemented stable Jest mock functions for AuthContext
+- [x] Simplified MockProviders to use React fragments
+
+### Form Validation Tests
+- [x] Completely rewrote `validation.test.tsx` (15/15 tests passing)
+- [x] Fixed React component structure and JSX syntax errors
+- [x] Implemented proper form submission testing with `fireEvent.submit`
+- [x] Added comprehensive validation logic for all form fields
+- [x] Fixed test data to provide complete valid form inputs
+
+---
+
+## 🔧 **Systematic Fix Strategy**
+
+### Phase 1: Stabilize Mock Infrastructure ✅ **COMPLETED**
+**Priority: Critical** | **Estimated Time: 2-3 hours**
+
+1. **Audit Mock Providers** ✅
+   - [x] Review `test-utils.tsx` for any remaining instability
+   - [x] Check all context mocks for stable function references
+   - [x] Ensure no circular dependencies in mock setup
+
+2. **Create Stable Integration Test Utilities** ✅
+   - [x] Create specialized mock providers for integration tests
+   - [x] Implement mock state management that doesn't trigger re-renders
+   - [x] Add comprehensive mocks for Zustand store, API services, and hooks
+
+### Phase 2: Fix Integration Tests
+**Priority: High** | **Estimated Time: 4-5 hours**
+
+1. **Feed Integration Tests** 🔄 **IN PROGRESS**
+   - [x] Fix scroll position preservation test ✅
+   - [ ] Fix performance monitoring integration test
+   - [ ] Review and fix remaining feed integration tests
+
+2. **Other Integration Test Suites**
+   - [ ] Identify all files with infinite re-render issues
+   - [ ] Apply systematic fixes using stable mock patterns
+   - [ ] Test each integration suite individually
+
+### Phase 3: Component Test Cleanup
+**Priority: Medium** | **Estimated Time: 2-3 hours**
+
+1. **Component Test Audit**
+   - [ ] Run each component test file individually
+   - [ ] Identify specific assertion failures
+   - [ ] Update test expectations to match current component behavior
+
+2. **Mock and Data Updates**
+   - [ ] Update mock API responses
+   - [ ] Fix TypeScript type issues in tests
+   - [ ] Ensure test data matches component requirements
+
+### Phase 4: Test Suite Optimization
+**Priority: Low** | **Estimated Time: 1-2 hours**
+
+1. **Performance Improvements**
+   - [ ] Optimize test execution speed
+   - [ ] Reduce test setup overhead
+   - [ ] Add test parallelization where appropriate
+
+2. **Test Coverage Analysis**
+   - [ ] Review test coverage reports
+   - [ ] Add missing test cases for critical paths
+   - [ ] Remove redundant or obsolete tests
+
+---
+
+## 🎯 **Success Criteria**
+
+- [ ] **All 140 tests passing** (currently 91/140)
+- [ ] **All 11 test suites passing** (currently 4/11)
+- [ ] **No infinite re-render errors**
+- [ ] **No TypeScript errors in test files**
+- [ ] **Stable test execution** (consistent results across runs)
+
+---
+
+## 🔍 **Debugging Tools & Commands**
+
+### Run Specific Test Categories
+```bash
+# Run only integration tests
+npm test -- --testPathPattern="integration"
+
+# Run only component tests  
+npm test -- --testPathPattern="components"
+
+# Run specific failing test file
+npm test -- --testPathPattern="feed.integration.test.tsx"
+
+# Run with verbose output
+npm test -- --verbose
+
+# Run single test by name
+npm test -- --testNamePattern="preserves scroll position"
+```
+
+### Debug Infinite Re-renders
+```bash
+# Run with React DevTools profiler
+npm test -- --testPathPattern="feed.integration" --verbose
+```
+
+---
+
+## 📊 **Progress Tracking**
+
+### Test Suite Status
+- **Form Validation Tests:** ✅ 15/15 passing
+- **Feed Integration Tests:** ❌ Multiple failures (infinite loops)
+- **Component Tests:** ❌ Mixed results (assertion failures)
+- **Utility Tests:** ✅ Most passing
+- **API Tests:** ❌ Some mock configuration issues
+
+### Next Immediate Actions
+1. **Focus on feed integration tests** - highest impact
+2. **Create debugging branch** for systematic fixes
+3. **Run tests in isolation** to identify specific failure patterns
+4. **Document mock patterns** that work vs. those that cause issues
+
+---
+
+**Goal: Achieve 100% test pass rate with stable, maintainable test suite**
