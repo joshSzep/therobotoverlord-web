@@ -273,7 +273,21 @@ export class PostsService extends BaseService {
     success: string[];
     failed: Array<{ id: string; error: string }>;
   }>> {
-    return this.post('/moderation/bulk', { postIds, action });
+    return this.post('/moderation/bulk', { postIds, ...action });
+  }
+
+  /**
+   * Get moderation queue with filters
+   */
+  async getModerationQueue(filters: {
+    status?: 'pending' | 'approved' | 'rejected' | 'flagged' | 'all';
+    category?: string;
+    dateRange?: 'day' | 'week' | 'month' | 'all';
+    sortBy?: 'newest' | 'oldest' | 'priority';
+    page?: number;
+    limit?: number;
+  } = {}): Promise<PaginatedResponse<Post>> {
+    return this.getPaginated<Post>('/moderation/queue', filters);
   }
 
   /**
