@@ -293,15 +293,28 @@ export class TopicsService extends BaseService {
   /**
    * Get moderation queue with filters
    */
-  async getModerationQueue(filters?: {
-    status?: 'pending' | 'approved' | 'rejected' | 'flagged';
+  async getModerationQueue(filters: {
+    status?: 'pending' | 'approved' | 'rejected' | 'flagged' | 'all';
     category?: string;
+    dateRange?: 'day' | 'week' | 'month' | 'all';
     sortBy?: 'newest' | 'oldest' | 'priority';
     page?: number;
     limit?: number;
-  }): Promise<PaginatedResponse<Topic>> {
-    const params = filters ? this.buildParams(filters) : undefined;
-    return this.getPaginated<Topic>('/moderation/queue', params);
+  } = {}): Promise<PaginatedResponse<Topic>> {
+    return this.getPaginated<Topic>('/moderation/queue', filters);
+  }
+
+  /**
+   * Get topics feed
+   */
+  async getFeed(filters: {
+    page?: number;
+    limit?: number;
+    timeRange?: 'day' | 'week' | 'month' | 'all';
+    categories?: string[];
+    sortBy?: 'newest' | 'popular' | 'trending' | 'personalized';
+  } = {}): Promise<PaginatedResponse<Topic>> {
+    return this.getPaginated<Topic>('/feed', filters);
   }
 
   /**

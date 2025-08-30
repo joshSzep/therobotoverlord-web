@@ -291,6 +291,20 @@ export class PostsService extends BaseService {
   }
 
   /**
+   * Get personalized feed
+   */
+  async getFeed(filters: {
+    page?: number;
+    limit?: number;
+    timeRange?: 'day' | 'week' | 'month' | 'all';
+    categories?: string[];
+    sortBy?: 'newest' | 'popular' | 'trending' | 'personalized';
+    following?: boolean;
+  } = {}): Promise<PaginatedResponse<Post>> {
+    return this.getPaginated<Post>('/feed', filters);
+  }
+
+  /**
    * Search posts with advanced filters
    */
   async searchPosts(filters: {
