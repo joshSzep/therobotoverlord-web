@@ -9,6 +9,8 @@ import React, { useState, useEffect } from 'react';
 import { ContentFeed } from '@/components/feed/ContentFeed';
 import { PersonalizedRecommendations } from '@/components/feed/PersonalizedRecommendations';
 import { ContentStatusIndicators } from '@/components/feed/ContentStatusIndicators';
+import { FeedFilters } from '@/components/feed/FeedFilters';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { useRealTimeUpdates } from '@/hooks/useRealTimeUpdates';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -176,7 +178,8 @@ export default function FeedContent() {
   };
 
   return (
-    <div className="space-y-6">
+    <DashboardLayout>
+      <div className="space-y-6">
       {/* Real-time Status Indicator */}
       <div className="flex items-center space-x-2 text-sm">
         <div className={`w-2 h-2 rounded-full ${connected ? 'bg-approved-green' : 'bg-muted'}`}></div>
@@ -362,6 +365,7 @@ export default function FeedContent() {
           />
         </div>
       </div>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }

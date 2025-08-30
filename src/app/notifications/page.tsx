@@ -6,7 +6,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
@@ -445,10 +447,12 @@ function NotificationsContent() {
   );
 }
 
-export default function NotificationsPage() {
+export default function NotificationCenterPage() {
   return (
     <ProtectedRoute>
-      <NotificationsContent />
+      <DashboardLayout>
+        <NotificationsContent />
+      </DashboardLayout>
     </ProtectedRoute>
   );
 }

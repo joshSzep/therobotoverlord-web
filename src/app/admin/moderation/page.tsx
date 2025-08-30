@@ -8,6 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
@@ -545,7 +546,9 @@ function ModerationQueueContent() {
 export default function ModerationQueuePage() {
   return (
     <ProtectedRoute>
-      <ModerationQueueContent />
+      <DashboardLayout>
+        <ModerationQueueContent />
+      </DashboardLayout>
     </ProtectedRoute>
   );
 }

@@ -7,6 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { LoadingState } from '@/components/ui/LoadingSpinner';
@@ -522,7 +523,9 @@ function NotificationSettingsContent() {
 export default function NotificationSettingsPage() {
   return (
     <ProtectedRoute>
-      <NotificationSettingsContent />
+      <DashboardLayout>
+        <NotificationSettingsContent />
+      </DashboardLayout>
     </ProtectedRoute>
   );
 }

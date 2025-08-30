@@ -1,5 +1,5 @@
 /**
- * Dashboard route group layout
+ * Shared Dashboard Layout Component
  * Provides consistent layout for dashboard-related pages
  */
 
@@ -7,16 +7,22 @@ import React from 'react';
 import { AppLayoutWithSidebar } from '@/components/layout/AppLayoutWithSidebar';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 
-export default function DashboardLayout({
-  children,
-}: {
+interface DashboardLayoutProps {
   children: React.ReactNode;
-}) {
+  showSidebar?: boolean;
+  showBreadcrumbs?: boolean;
+}
+
+export function DashboardLayout({ 
+  children, 
+  showSidebar = true, 
+  showBreadcrumbs = true 
+}: DashboardLayoutProps) {
   return (
-    <AppLayoutWithSidebar showSidebar={true}>
+    <AppLayoutWithSidebar showSidebar={showSidebar}>
       <div className="p-4">
         <div className="max-w-7xl mx-auto">
-          <Breadcrumbs className="mb-4" />
+          {showBreadcrumbs && <Breadcrumbs className="mb-4" />}
           {children}
         </div>
       </div>
