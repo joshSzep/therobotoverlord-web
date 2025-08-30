@@ -97,14 +97,14 @@
   - [x] Implement post editing
   - [x] Add post deletion functionality
   - [x] Create post thread view
-  - [ ] Add post search and filtering
+  - [x] Add post search and filtering
 
-- [ ] **Post Moderation**
-  - [ ] Create moderation queue interface
-  - [ ] Implement post approval/rejection
-  - [ ] Add moderation feedback display
-  - [ ] Create post reporting system
-  - [ ] Add ToS violation indicators
+- [x] **Post Moderation**
+  - [x] Create moderation queue interface
+  - [x] Implement post approval/rejection
+  - [x] Add moderation feedback display
+  - [x] Create post reporting system
+  - [x] Add ToS violation indicators
 
 ### Content Display
 - [ ] **Feed Systems**

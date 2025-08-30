@@ -203,9 +203,9 @@ export class PostsService extends BaseService {
   }
 
   /**
-   * Search posts
+   * Search posts (legacy method)
    */
-  async searchPosts(query: string, filters?: Omit<PostFilters, 'search'>): Promise<PaginatedResponse<Post>> {
+  async searchPostsLegacy(query: string, filters?: Omit<PostFilters, 'search'>): Promise<PaginatedResponse<Post>> {
     const params = this.buildParams({ search: query, ...filters });
     return this.getPaginated<Post>('/search', params);
   }
@@ -288,6 +288,26 @@ export class PostsService extends BaseService {
     limit?: number;
   } = {}): Promise<PaginatedResponse<Post>> {
     return this.getPaginated<Post>('/moderation/queue', filters);
+  }
+
+  /**
+   * Search posts with advanced filters
+   */
+  async searchPosts(filters: {
+    query?: string;
+    category?: string;
+    topic?: string;
+    author?: string;
+    tags?: string[];
+    dateRange?: 'day' | 'week' | 'month' | 'year' | 'all';
+    sortBy?: 'relevance' | 'newest' | 'oldest' | 'popular' | 'controversial';
+    status?: 'all' | 'approved' | 'pending' | 'rejected';
+    minScore?: number;
+    hasReplies?: boolean;
+    page?: number;
+    limit?: number;
+  } = {}): Promise<PaginatedResponse<Post>> {
+    return this.getPaginated<Post>('/search', filters);
   }
 
   /**
