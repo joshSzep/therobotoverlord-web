@@ -11,7 +11,8 @@ import {
   useNavigationAnnouncements,
   useLoadingAnnouncements,
   useActionAnnouncements,
-  useStatusAnnouncements 
+  useStatusAnnouncements,
+  useSearchAnnouncements
 } from '@/hooks/useScreenReader';
 
 // Enhanced form with screen reader announcements
