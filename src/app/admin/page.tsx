@@ -6,6 +6,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
@@ -479,6 +480,18 @@ function AdminDashboardContent() {
                 >
                   🔧 Maintenance Mode
                 </Button>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <Link href="/admin/content">
+                  <Button variant="secondary" size="sm" className="w-full">
+                    📝 Content Review
+                  </Button>
+                </Link>
+                <Link href="/admin/audit">
+                  <Button variant="secondary" size="sm" className="w-full">
+                    📋 Audit Logs
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
