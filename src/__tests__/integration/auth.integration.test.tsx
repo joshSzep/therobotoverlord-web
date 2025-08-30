@@ -4,51 +4,81 @@ import { integrationRender } from '../utils/test-utils'
 import React from 'react'
 
 // Mock authentication components and hooks
-const MockLoginForm = ({ onSubmit, loading }: any) => (
-  <form onSubmit={onSubmit} data-testid="login-form">
-    <input
-      name="email"
-      type="email"
-      placeholder="Email"
-      data-testid="email-input"
-    />
-    <input
-      name="password"
-      type="password"
-      placeholder="Password"
-      data-testid="password-input"
-    />
-    <button type="submit" disabled={loading} data-testid="login-button">
-      {loading ? 'Signing in...' : 'Sign In'}
-    </button>
-  </form>
-)
+const MockLoginForm = ({ onSubmit, loading }: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const formData = new FormData(e.target as HTMLFormElement)
+    const data = {
+      email: formData.get('email') as string,
+      password: formData.get('password') as string
+    }
+    onSubmit?.(data)
+  }
 
-const MockSignupForm = ({ onSubmit, loading }: any) => (
-  <form onSubmit={onSubmit} data-testid="signup-form">
-    <input
-      name="username"
-      type="text"
-      placeholder="Username"
-      data-testid="username-input"
-    />
-    <input
-      name="email"
-      type="email"
-      placeholder="Email"
-      data-testid="email-input"
-    />
-    <input
-      name="password"
-      type="password"
-      placeholder="Password"
-      data-testid="password-input"
-    />
-    <button type="submit" disabled={loading} data-testid="signup-button">
-      {loading ? 'Creating account...' : 'Sign Up'}
-    </button>
-  </form>
-)
+  return (
+    <form onSubmit={handleSubmit} data-testid="login-form">
+      <input
+        name="email"
+        type="email"
+        placeholder="Email"
+        data-testid="email-input"
+      />
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        data-testid="password-input"
+      />
+      <button type="submit" disabled={loading} data-testid="login-button">
+        {loading ? 'Signing in...' : 'Sign In'}
+      </button>
+    </form>
+  )
+}
+
+const MockSignupForm = ({ onSubmit, loading, errors }: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const formData = new FormData(e.target as HTMLFormElement)
+    const data = {
+      username: formData.get('username') as string,
+      email: formData.get('email') as string,
+      password: formData.get('password') as string
+    }
+    onSubmit?.(data)
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit} data-testid="signup-form">
+        <input
+          name="username"
+          type="text"
+          placeholder="Username"
+          data-testid="username-input"
+        />
+        {errors?.username && <div data-testid="username-error">{errors.username}</div>}
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          data-testid="email-input"
+        />
+        {errors?.email && <div data-testid="email-error">{errors.email}</div>}
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          data-testid="password-input"
+        />
+        {errors?.password && <div data-testid="password-error">{errors.password}</div>}
+        <button type="submit" disabled={loading} data-testid="signup-button">
+          {loading ? 'Creating account...' : 'Sign Up'}
+        </button>
+      </form>
+    </div>
+  )
+}
 
 // Mock authentication service with stable references
 const mockAuthService = {
@@ -234,20 +264,18 @@ describe('Authentication Flow Integration', () => {
         token: 'mock-jwt-token'
       })
 
-      const TestComponent = ({ signup, loading }: any) => (
-        <MockSignupForm 
-          onSubmit={async (e: any) => {
-            e.preventDefault()
-            const formData = new FormData(e.target)
-            await signup({
-              username: formData.get('username'),
-              email: formData.get('email'),
-              password: formData.get('password')
-            })
-          }}
-          loading={loading}
-        />
-      )
+      const TestComponent = () => {
+        const handleSubmit = async (data: any) => {
+          await mockAuthService.signup(data)
+        }
+
+        return (
+          <MockSignupForm 
+            onSubmit={handleSubmit}
+            loading={false}
+          />
+        )
+      }
 
       integrationRender(<TestComponent />)
 
@@ -270,36 +298,29 @@ describe('Authentication Flow Integration', () => {
       const user = userEvent.setup()
       
       mockAuthService.signup.mockRejectedValueOnce({
-        message: 'Validation failed',
         errors: {
           email: 'Email already exists',
           username: 'Username is taken'
         }
       })
 
-      const TestComponent = ({ signup, loading }: any) => {
+      const TestComponent = () => {
         const [errors, setErrors] = React.useState<any>({})
-
-        const handleSubmit = async (e: any) => {
-          e.preventDefault()
+        
+        const handleSubmit = async (data: any) => {
           try {
-            const formData = new FormData(e.target)
-            await signup({
-              username: formData.get('username'),
-              email: formData.get('email'),
-              password: formData.get('password')
-            })
-          } catch (err: any) {
-            setErrors(err.errors || {})
+            await mockAuthService.signup(data)
+          } catch (error: any) {
+            setErrors(error.errors || {})
           }
         }
 
         return (
-          <div>
-            <MockSignupForm onSubmit={handleSubmit} loading={loading} />
-            {errors.email && <div data-testid="email-error">{errors.email}</div>}
-            {errors.username && <div data-testid="username-error">{errors.username}</div>}
-          </div>
+          <MockSignupForm 
+            onSubmit={handleSubmit}
+            loading={false}
+            errors={errors}
+          />
         )
       }
 
@@ -322,24 +343,33 @@ describe('Authentication Flow Integration', () => {
     it('successfully logs out user', async () => {
       const user = userEvent.setup()
       
-      mockAuthService.logout.mockResolvedValueOnce(true)
+      mockAuthService.logout.mockResolvedValueOnce({})
 
-      const TestComponent = ({ user: currentUser, logout }: any) => (
-        <div>
-          {currentUser ? (
-            <div>
-              <span data-testid="user-info">Welcome, {currentUser.username}</span>
-              <button onClick={logout} data-testid="logout-button">
-                Logout
-              </button>
-            </div>
-          ) : (
-            <span data-testid="logged-out">Not logged in</span>
-          )}
-        </div>
-      )
+      const TestComponent = () => {
+        const [isAuthenticated, setIsAuthenticated] = React.useState(true)
+        
+        const handleLogout = async () => {
+          await mockAuthService.logout()
+          setIsAuthenticated(false)
+        }
 
-      integrationRender(<TestComponent user={{ id: '1', username: 'testuser', email: 'test@example.com' }} />)
+        return (
+          <div>
+            {isAuthenticated ? (
+              <div>
+                <span data-testid="user-info">Welcome, {mockUser.username}</span>
+                <button data-testid="logout-button" onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div data-testid="logged-out">Please log in</div>
+            )}
+          </div>
+        )
+      }
+
+      integrationRender(<TestComponent />)
 
       expect(screen.getByTestId('user-info')).toHaveTextContent('Welcome, testuser')
       
