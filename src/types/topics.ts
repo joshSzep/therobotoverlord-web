@@ -107,12 +107,16 @@ export interface TopicFilters {
   tags?: string[];
   search?: string;
   createdBy?: string;
-  sortBy?: 'newest' | 'oldest' | 'popular' | 'active' | 'posts' | 'participants' | 'alphabetical';
-  timeRange?: 'hour' | 'day' | 'week' | 'month' | 'year' | 'all';
+  sortBy?: 'newest' | 'oldest' | 'popular' | 'active' | 'posts' | 'participants' | 'alphabetical' | 'recent';
+  sortOrder?: 'asc' | 'desc';
+  timeRange?: 'hour' | 'day' | 'week' | 'month' | 'year' | 'all' | 'today' | 'quarter';
   featured?: boolean;
   pinned?: boolean;
   hasActivity?: boolean;
   minPosts?: number;
+  maxPosts?: number;
+  hasSubscription?: boolean;
+  creatorId?: string;
   page?: number;
   limit?: number;
 }

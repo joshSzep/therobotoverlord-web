@@ -4,9 +4,9 @@
  */
 
 import React from 'react';
-import { User, UserRole, UserStatus } from './user';
-import { Post, PostFilters } from './posts';
-import { Topic, TopicFilters } from './topics';
+import { User, UserRole } from './user';
+import { Post, PostType, PostStatus } from './posts';
+import { Topic, TopicCategory, TopicFilters } from './topics';
 import { LeaderboardEntry, Competition, Achievement } from './leaderboard';
 import { Badge, UserBadge } from './badges';
 import { ModerationAction, Report } from './moderation';
@@ -263,7 +263,7 @@ export interface PostFormProps extends FormProps {
 }
 
 // Topic-related component props
-export interface TopicCardProps extends BaseComponentProps {
+export interface TopicCardProps {
   topic: Topic;
   showCategory?: boolean;
   showStats?: boolean;
@@ -271,9 +271,10 @@ export interface TopicCardProps extends BaseComponentProps {
   compact?: boolean;
   onClick?: () => void;
   onSubscribe?: () => void;
+  className?: string;
 }
 
-export interface TopicListProps extends BaseComponentProps, AsyncComponentProps {
+export interface TopicListProps {
   topics: Topic[];
   onTopicClick?: (topic: Topic) => void;
   onSubscribe?: (topicId: string) => void;
@@ -283,6 +284,20 @@ export interface TopicListProps extends BaseComponentProps, AsyncComponentProps 
   onPageChange?: (page: number) => void;
   filters?: TopicFilters;
   onFiltersChange?: (filters: TopicFilters) => void;
+  isLoading?: boolean;
+  error?: string | null;
+  isEmpty?: boolean;
+  emptyText?: string;
+  className?: string;
+}
+
+export interface TopicFiltersProps {
+  filters: TopicFilters;
+  onFiltersChange: (filters: TopicFilters) => void;
+  categories?: TopicCategory[];
+  showAdvanced?: boolean;
+  onToggleAdvanced?: () => void;
+  className?: string;
 }
 
 export interface TopicFormProps extends FormProps {

@@ -238,7 +238,7 @@ export const createReportSchema = z.object({
 export const searchSchema = z.object({
   query: z.string().min(1, 'Search query is required').max(200, 'Query must be less than 200 characters'),
   type: z.enum(['posts', 'topics', 'users', 'all']).default('all'),
-  filters: z.record(z.any()).optional(),
+  filters: z.record(z.string(), z.any()).optional(),
 });
 
 export const paginationSchema = z.object({
@@ -248,7 +248,7 @@ export const paginationSchema = z.object({
 
 // File upload schema
 export const fileUploadSchema = z.object({
-  file: z.instanceof(File, 'File is required'),
+  file: z.instanceof(File, { message: 'File is required' }),
   type: z.enum(['avatar', 'attachment', 'badge_icon', 'category_icon']),
   maxSize: z.number().default(5 * 1024 * 1024), // 5MB default
 });
