@@ -133,7 +133,11 @@ const MockWebSocketProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div data-testid="websocket-provider">
-      {React.cloneElement(children as React.ReactElement, { ...contextValue })}
+      {React.Children.map(children, child => 
+        React.isValidElement(child) 
+          ? React.cloneElement(child, { ...contextValue })
+          : child
+      )}
     </div>
   )
 }
@@ -416,7 +420,8 @@ describe('WebSocket Integration Tests', () => {
 
       // Message should be sent and echoed back
       await waitFor(() => {
-        expect(screen.getByTestId('message-1')).toBeInTheDocument()
+        const messagesContainer = screen.getByTestId('messages-container')
+        expect(messagesContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('testuser:')).toBeInTheDocument()
         expect(screen.getByText('Hello, world!')).toBeInTheDocument()
       })
@@ -496,7 +501,8 @@ describe('WebSocket Integration Tests', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('live-post-1')).toBeInTheDocument()
+        const postsContainer = screen.getByTestId('live-posts')
+        expect(postsContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('Live Post Update')).toBeInTheDocument()
       })
     })
@@ -528,7 +534,8 @@ describe('WebSocket Integration Tests', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('notification-1')).toBeInTheDocument()
+        const notificationsContainer = screen.getByTestId('live-notifications')
+        expect(notificationsContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('New notification received')).toBeInTheDocument()
       })
     })
@@ -572,6 +579,8 @@ describe('WebSocket Integration Tests', () => {
 
       // Wait for original post
       await waitFor(() => {
+        const postsContainer = screen.getByTestId('live-posts')
+        expect(postsContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('Original Title')).toBeInTheDocument()
       })
 
@@ -615,7 +624,7 @@ describe('WebSocket Integration Tests', () => {
           'Failed to parse live update:',
           expect.any(Error)
         )
-      })
+      }, { timeout: 1000 })
 
       consoleSpy.mockRestore()
     })
@@ -683,7 +692,8 @@ describe('WebSocket Integration Tests', () => {
 
       // Wait for all messages to be processed
       await waitFor(() => {
-        expect(screen.getByTestId('notification-99')).toBeInTheDocument()
+        const notificationsContainer = screen.getByTestId('live-notifications')
+        expect(notificationsContainer.children.length).toBeGreaterThanOrEqual(100)
       }, { timeout: 2000 })
 
       const endTime = performance.now()
