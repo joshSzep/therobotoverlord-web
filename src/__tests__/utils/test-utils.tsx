@@ -1,6 +1,29 @@
-import React, { ReactElement } from 'react'
-import { render, RenderOptions } from '@testing-library/react'
+import React from 'react'
+import { render as rtlRender, RenderOptions, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom'
+
+// Types
+interface Post {
+  id: string
+  title: string
+  content: string
+  author: string
+  createdAt: string
+  updatedAt: string
+  tags: string[]
+  category: string
+}
+
+interface User {
+  id: string
+  username: string
+  email: string
+  displayName: string
+  avatar?: string
+  bio?: string
+  createdAt?: string
+}
 
 // Mock providers for testing
 const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -13,151 +36,119 @@ const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
 // Custom render function that includes providers
 const customRender = (
-  ui: ReactElement,
+  ui: React.ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) => {
-  return render(ui, { wrapper: MockProviders, ...options })
-}
+) => rtlRender(ui, { wrapper: MockProviders, ...options })
 
-// Test utilities
-export const createMockUser = (overrides = {}) => ({
+// Mock data creators
+export const createMockPost = (overrides: Partial<Post> = {}): Post => ({
   id: '1',
-  username: 'testuser',
-  email: 'test@example.com',
-  avatar: '/images/avatar.png',
-  role: 'user',
-  createdAt: new Date().toISOString(),
+  title: 'Test Post',
+  content: 'Test content',
+  author: 'testuser',
+  createdAt: '2023-01-01T00:00:00Z',
+  updatedAt: '2023-01-01T00:00:00Z',
+  tags: ['test'],
+  category: 'general',
   ...overrides
 })
 
-export const createMockPost = (overrides = {}) => ({
+export const createMockUser = (overrides: Partial<User> = {}): User => ({
   id: '1',
-  title: 'Test Post',
-  content: 'This is a test post content',
-  author: createMockUser(),
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-  likes: 0,
-  comments: 0,
-  tags: ['test'],
+  username: 'testuser',
+  email: 'test@example.com',
+  displayName: 'Test User',
+  avatar: '/avatars/default.png',
+  bio: 'Test user bio',
+  createdAt: '2023-01-01T00:00:00Z',
   ...overrides
 })
 
 export const createMockTopic = (overrides = {}) => ({
   id: '1',
   title: 'Test Topic',
-  description: 'This is a test topic',
   slug: 'test-topic',
-  postCount: 5,
-  followerCount: 10,
-  createdAt: new Date().toISOString(),
+  description: 'Test topic description',
+  postCount: 10,
   ...overrides
 })
 
-// Mock API responses
-export const mockApiResponse = <T>(data: T, delay = 0) => {
-  return new Promise<T>((resolve) => {
+// API response mocks
+export const mockApiResponse = <T,>(data: T, delay = 0): Promise<T> => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve(data), delay)
   })
 }
 
-export const mockApiError = (message = 'API Error', status = 500, delay = 0) => {
+export const mockApiError = (message = 'API Error', delay = 0): Promise<never> => {
   return new Promise((_, reject) => {
-    setTimeout(() => {
-      const error = new Error(message)
-      ;(error as any).status = status
-      reject(error)
-    }, delay)
+    setTimeout(() => reject(new Error(message)), delay)
   })
 }
 
-// Form testing utilities
-export const fillForm = async (form: HTMLFormElement, data: Record<string, string>) => {
+// Form helpers
+export const fillForm = async (fields: Record<string, string>): Promise<void> => {
   const user = userEvent.setup()
   
-  for (const [name, value] of Object.entries(data)) {
-    const field = form.querySelector(`[name="${name}"]`) as HTMLInputElement
-    if (field) {
-      await user.clear(field)
-      await user.type(field, value)
-    }
+  for (const [label, value] of Object.entries(fields)) {
+    const input = screen.getByLabelText(new RegExp(label, 'i'))
+    await user.clear(input)
+    await user.type(input, value)
   }
 }
 
-export const submitForm = async (form: HTMLFormElement) => {
+export const submitForm = async (submitButton?: HTMLElement) => {
   const user = userEvent.setup()
-  const submitButton = form.querySelector('[type="submit"]') as HTMLButtonElement
-  if (submitButton) {
-    await user.click(submitButton)
-  }
+  const button = submitButton || screen.getByRole('button', { name: /submit/i })
+  await user.click(button)
 }
 
-// Accessibility testing utilities
-export const expectToBeAccessible = async (container: HTMLElement) => {
-  // Check for basic accessibility requirements
-  const headings = container.querySelectorAll('h1, h2, h3, h4, h5, h6')
-  const buttons = container.querySelectorAll('button')
-  const links = container.querySelectorAll('a')
-  const images = container.querySelectorAll('img')
-  const inputs = container.querySelectorAll('input, textarea, select')
-
-  // Check that buttons have accessible names
-  buttons.forEach(button => {
-    expect(
-      button.textContent || 
-      button.getAttribute('aria-label') || 
-      button.getAttribute('aria-labelledby')
-    ).toBeTruthy()
-  })
-
-  // Check that links have accessible names
-  links.forEach(link => {
-    expect(
-      link.textContent || 
-      link.getAttribute('aria-label') || 
-      link.getAttribute('aria-labelledby')
-    ).toBeTruthy()
-  })
-
-  // Check that images have alt text
-  images.forEach(img => {
-    expect(img.getAttribute('alt')).toBeDefined()
-  })
-
-  // Check that form inputs have labels
-  inputs.forEach(input => {
-    const id = input.getAttribute('id')
-    const ariaLabel = input.getAttribute('aria-label')
-    const ariaLabelledby = input.getAttribute('aria-labelledby')
-    
-    if (id) {
-      const label = container.querySelector(`label[for="${id}"]`)
-      expect(label || ariaLabel || ariaLabelledby).toBeTruthy()
-    } else {
-      expect(ariaLabel || ariaLabelledby).toBeTruthy()
-    }
-  })
+// Accessibility helpers
+export const expectAccessibleButton = (button: HTMLElement) => {
+  expect(button).toHaveAttribute('type')
+  expect(button).toHaveAttribute('aria-label')
+  expect(button).not.toHaveAttribute('aria-disabled', 'true')
 }
 
-// Performance testing utilities
-export const measureRenderTime = async (renderFn: () => void) => {
+export const expectAccessibleLink = (link: HTMLElement) => {
+  expect(link).toHaveAttribute('href')
+  expect(link).toHaveAttribute('aria-label')
+  expect(link).not.toHaveAttribute('aria-disabled', 'true')
+}
+
+export const expectAccessibleImage = (img: HTMLElement) => {
+  expect(img).toHaveAttribute('alt')
+}
+
+// Performance helpers
+export const measureRenderTime = async (renderFn: () => void): Promise<number> => {
   const start = performance.now()
   renderFn()
-  const end = performance.now()
-  return end - start
+  await waitFor(() => {})
+  return performance.now() - start
 }
 
-// Mock intersection observer for lazy loading tests
+export const expectPerformance = (duration: number, maxDuration: number) => {
+  expect(duration).toBeLessThan(maxDuration)
+}
+
+// Mock IntersectionObserver
 export const mockIntersectionObserver = (isIntersecting = true) => {
-  const mockObserver = jest.fn().mockImplementation((callback) => ({
-    observe: jest.fn().mockImplementation((element) => {
-      callback([{ target: element, isIntersecting }])
-    }),
-    unobserve: jest.fn(),
+  const mockObserver = {
+    observe: jest.fn(),
     disconnect: jest.fn(),
-  }))
-  
-  global.IntersectionObserver = mockObserver
+    unobserve: jest.fn(),
+  }
+
+  Object.defineProperty(window, 'IntersectionObserver', {
+    writable: true,
+    configurable: true,
+    value: jest.fn().mockImplementation((callback) => {
+      callback([{ isIntersecting }])
+      return mockObserver
+    }),
+  })
+
   return mockObserver
 }
 
@@ -193,9 +184,6 @@ export const customMatchers = {
   }
 }
 
-// Re-export everything from React Testing Library
-export * from '@testing-library/react'
-export { userEvent }
-
-// Export custom render as default render
+// Re-export testing library functions
+export { screen, waitFor, userEvent }
 export { customRender as render }
