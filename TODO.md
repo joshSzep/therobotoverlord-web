@@ -60,14 +60,14 @@
   - [x] Create loading states management
 
 ### API Integration Layer
-- [ ] **Service Layer**
-  - [ ] Create API service classes
-  - [ ] Implement auth service
-  - [ ] Create posts service
-  - [ ] Create topics service
-  - [ ] Create users service
-  - [ ] Create leaderboard service
-  - [ ] Create badges service
+- [x] **Service Layer**
+  - [x] Create API service classes
+  - [x] Implement auth service
+  - [x] Create posts service
+  - [x] Create topics service
+  - [x] Create users service
+  - [x] Create leaderboard service
+  - [x] Create badges service
 
 - [ ] **Type Definitions**
   - [ ] Generate/create TypeScript types from backend schemas

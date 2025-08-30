@@ -27,6 +27,16 @@ export interface Badge {
   earned_at: string;
 }
 
+// User badge (awarded badge with metadata)
+export interface UserBadge {
+  id: string;
+  userId: string;
+  badgeId: string;
+  awardedAt: string;
+  awardedBy?: string;
+  reason?: string;
+}
+
 // User statistics
 export interface UserStats {
   total_posts: number;
