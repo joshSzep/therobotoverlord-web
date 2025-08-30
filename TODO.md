@@ -11,7 +11,7 @@
 
 - [x] **Authentication Flow**
   - [x] Create auth context and provider
-  - [ ] Implement Google OAuth login flow
+  - [x] Implement Google OAuth login flow
   - [x] Add token management (access/refresh)
   - [x] Create login/logout pages
   - [x] Add protected route wrapper
@@ -20,7 +20,7 @@
 - [x] **User Management**
   - [x] Create user context and state management
   - [x] Implement current user fetching
-  - [ ] Add user profile management
+  - [x] Add user profile management
   - [x] Create user type definitions
 
 ### Environment & Configuration

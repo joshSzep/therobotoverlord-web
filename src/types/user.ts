@@ -54,6 +54,9 @@ export interface User {
   id: string;
   email: string;
   name: string;
+  username: string;
+  display_name?: string;
+  bio?: string;
   avatar_url?: string;
   role: UserRole;
   status: UserStatus;
@@ -98,7 +101,8 @@ export interface LoginCredentials {
 // OAuth provider data
 export interface OAuthProvider {
   provider: 'google';
-  code: string;
+  code?: string;
+  token?: string;
   redirect_uri?: string;
 }
 
