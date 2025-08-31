@@ -138,8 +138,8 @@ describe('SEO Utilities', () => {
     })
 
     it('identifies description issues', () => {
-      const shortDesc = { title: 'Test', description: 'Too short', keywords: ['test'] }
-      const longDesc = { title: 'Test', description: 'This is an extremely long meta description that far exceeds the recommended character limit for search engine optimization and should be flagged as too long.', keywords: ['test'] }
+      const shortDesc = { title: 'Valid Title Length For Testing', description: 'Too short', keywords: ['test'] }
+      const longDesc = { title: 'Valid Title Length For Testing', description: 'This is an extremely long meta description that far exceeds the recommended character limit for search engine optimization and should be flagged as too long because it contains way too many characters and goes beyond the 160 character limit that is recommended for optimal SEO performance in search engine results pages.', keywords: ['test'] }
 
       expect(validateMetaTags(shortDesc).warnings).toContain('Description is too short (recommended: 120-160 characters)')
       expect(validateMetaTags(longDesc).warnings).toContain('Description is too long (recommended: 120-160 characters)')
