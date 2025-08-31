@@ -1,0 +1,725 @@
+3f5290b6dd1d5913b987eb3af47e75e2
+"use strict";
+
+/* istanbul ignore next */
+function cov_4zrvk7ecl() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/api/logs/route.ts";
+  var hash = "dfd3f4ad52dfa717a47c89f56800ecd96671cdc4";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/api/logs/route.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 20
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 16
+        },
+        end: {
+          line: 11,
+          column: 38
+        }
+      },
+      "4": {
+        start: {
+          line: 13,
+          column: 4
+        },
+        end: {
+          line: 35,
+          column: 5
+        }
+      },
+      "5": {
+        start: {
+          line: 14,
+          column: 25
+        },
+        end: {
+          line: 14,
+          column: 45
+        }
+      },
+      "6": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 22,
+          column: 9
+        }
+      },
+      "7": {
+        start: {
+          line: 17,
+          column: 12
+        },
+        end: {
+          line: 21,
+          column: 15
+        }
+      },
+      "8": {
+        start: {
+          line: 24,
+          column: 8
+        },
+        end: {
+          line: 24,
+          column: 40
+        }
+      },
+      "9": {
+        start: {
+          line: 25,
+          column: 8
+        },
+        end: {
+          line: 27,
+          column: 11
+        }
+      },
+      "10": {
+        start: {
+          line: 29,
+          column: 8
+        },
+        end: {
+          line: 29,
+          column: 61
+        }
+      },
+      "11": {
+        start: {
+          line: 30,
+          column: 8
+        },
+        end: {
+          line: 34,
+          column: 11
+        }
+      },
+      "12": {
+        start: {
+          line: 39,
+          column: 4
+        },
+        end: {
+          line: 48,
+          column: 5
+        }
+      },
+      "13": {
+        start: {
+          line: 40,
+          column: 26
+        },
+        end: {
+          line: 45,
+          column: 35
+        }
+      },
+      "14": {
+        start: {
+          line: 46,
+          column: 8
+        },
+        end: {
+          line: 46,
+          column: 83
+        }
+      },
+      "15": {
+        start: {
+          line: 47,
+          column: 8
+        },
+        end: {
+          line: 47,
+          column: 15
+        }
+      },
+      "16": {
+        start: {
+          line: 55,
+          column: 4
+        },
+        end: {
+          line: 73,
+          column: 5
+        }
+      },
+      "17": {
+        start: {
+          line: 56,
+          column: 8
+        },
+        end: {
+          line: 72,
+          column: 9
+        }
+      },
+      "18": {
+        start: {
+          line: 57,
+          column: 12
+        },
+        end: {
+          line: 69,
+          column: 15
+        }
+      },
+      "19": {
+        start: {
+          line: 71,
+          column: 12
+        },
+        end: {
+          line: 71,
+          column: 76
+        }
+      },
+      "20": {
+        start: {
+          line: 75,
+          column: 4
+        },
+        end: {
+          line: 78,
+          column: 5
+        }
+      },
+      "21": {
+        start: {
+          line: 77,
+          column: 8
+        },
+        end: {
+          line: 77,
+          column: 48
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 9
+          },
+          end: {
+            line: 7,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 20
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "POST",
+        decl: {
+          start: {
+            line: 12,
+            column: 15
+          },
+          end: {
+            line: 12,
+            column: 19
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 29
+          },
+          end: {
+            line: 36,
+            column: 1
+          }
+        },
+        line: 12
+      },
+      "2": {
+        name: "processLogEntry",
+        decl: {
+          start: {
+            line: 37,
+            column: 15
+          },
+          end: {
+            line: 37,
+            column: 30
+          }
+        },
+        loc: {
+          start: {
+            line: 37,
+            column: 38
+          },
+          end: {
+            line: 79,
+            column: 1
+          }
+        },
+        line: 37
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 16,
+            column: 8
+          },
+          end: {
+            line: 22,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 16,
+            column: 8
+          },
+          end: {
+            line: 22,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 16
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 16,
+            column: 12
+          },
+          end: {
+            line: 16,
+            column: 84
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 16,
+            column: 12
+          },
+          end: {
+            line: 16,
+            column: 31
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 35
+          },
+          end: {
+            line: 16,
+            column: 52
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 56
+          },
+          end: {
+            line: 16,
+            column: 84
+          }
+        }],
+        line: 16
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 39,
+            column: 4
+          },
+          end: {
+            line: 48,
+            column: 5
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 39,
+            column: 4
+          },
+          end: {
+            line: 48,
+            column: 5
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 39
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 40,
+            column: 26
+          },
+          end: {
+            line: 45,
+            column: 35
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 40,
+            column: 26
+          },
+          end: {
+            line: 45,
+            column: 22
+          }
+        }, {
+          start: {
+            line: 45,
+            column: 26
+          },
+          end: {
+            line: 45,
+            column: 35
+          }
+        }],
+        line: 40
+      },
+      "4": {
+        loc: {
+          start: {
+            line: 55,
+            column: 4
+          },
+          end: {
+            line: 73,
+            column: 5
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 55,
+            column: 4
+          },
+          end: {
+            line: 73,
+            column: 5
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 55
+      },
+      "5": {
+        loc: {
+          start: {
+            line: 75,
+            column: 4
+          },
+          end: {
+            line: 78,
+            column: 5
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 75,
+            column: 4
+          },
+          end: {
+            line: 78,
+            column: 5
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 75
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0, 0],
+      "2": [0, 0],
+      "3": [0, 0],
+      "4": [0, 0],
+      "5": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/api/logs/route.ts"],
+      sourcesContent: ["import { NextRequest, NextResponse } from 'next/server'\n\ninterface LogEntry {\n  timestamp: string\n  level: number\n  message: string\n  context?: {\n    userId?: string\n    sessionId?: string\n    requestId?: string\n    component?: string\n    action?: string\n    metadata?: Record<string, any>\n  }\n  error?: {\n    name: string\n    message: string\n    stack?: string\n  }\n}\n\nexport async function POST(request: NextRequest) {\n  try {\n    const logEntry: LogEntry = await request.json()\n    \n    // Validate log entry\n    if (!logEntry.timestamp || !logEntry.message || logEntry.level === undefined) {\n      return NextResponse.json(\n        { error: 'Invalid log entry format' },\n        { status: 400 }\n      )\n    }\n    \n    // Process log entry\n    await processLogEntry(logEntry)\n    \n    return NextResponse.json({ success: true })\n  } catch (error) {\n    console.error('Failed to process log entry:', error)\n    return NextResponse.json(\n      { error: 'Failed to process log entry' },\n      { status: 500 }\n    )\n  }\n}\n\nasync function processLogEntry(entry: LogEntry): Promise<void> {\n  // In development, just log to console\n  if (process.env.NODE_ENV === 'development') {\n    const levelName = ['ERROR', 'WARN', 'INFO', 'DEBUG'][entry.level] || 'UNKNOWN'\n    console.log(`[${levelName}] ${entry.message}`, entry.context, entry.error)\n    return\n  }\n  \n  // In production, you would:\n  // 1. Store in database for analysis\n  // 2. Send to external logging service (DataDog, Splunk, etc.)\n  // 3. Trigger alerts for critical errors\n  // 4. Aggregate metrics for monitoring\n  \n  // Example: Send to external logging service\n  if (process.env.LOGGING_SERVICE_URL) {\n    try {\n      await fetch(process.env.LOGGING_SERVICE_URL, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${process.env.LOGGING_SERVICE_TOKEN}`,\n        },\n        body: JSON.stringify({\n          ...entry,\n          service: 'therobotoverlord-web',\n          environment: process.env.NEXT_PUBLIC_APP_ENV,\n          version: process.env.NEXT_PUBLIC_APP_VERSION,\n        }),\n      })\n    } catch (error) {\n      console.error('Failed to send log to external service:', error)\n    }\n  }\n  \n  // Store critical errors for immediate attention\n  if (entry.level === 0) { // ERROR level\n    // Store in database or send immediate alert\n    console.error('CRITICAL ERROR:', entry)\n  }\n}\n"],
+      names: ["POST", "request", "logEntry", "json", "timestamp", "message", "level", "undefined", "NextResponse", "error", "status", "processLogEntry", "success", "console", "entry", "process", "env", "NODE_ENV", "levelName", "log", "context", "LOGGING_SERVICE_URL", "fetch", "method", "headers", "LOGGING_SERVICE_TOKEN", "body", "JSON", "stringify", "service", "environment", "NEXT_PUBLIC_APP_ENV", "version", "NEXT_PUBLIC_APP_VERSION"],
+      mappings: ";;;;+BAqBsBA;;;eAAAA;;;wBArBoB;AAqBnC,eAAeA,KAAKC,OAAoB;IAC7C,IAAI;QACF,MAAMC,WAAqB,MAAMD,QAAQE,IAAI;QAE7C,qBAAqB;QACrB,IAAI,CAACD,SAASE,SAAS,IAAI,CAACF,SAASG,OAAO,IAAIH,SAASI,KAAK,KAAKC,WAAW;YAC5E,OAAOC,oBAAY,CAACL,IAAI,CACtB;gBAAEM,OAAO;YAA2B,GACpC;gBAAEC,QAAQ;YAAI;QAElB;QAEA,oBAAoB;QACpB,MAAMC,gBAAgBT;QAEtB,OAAOM,oBAAY,CAACL,IAAI,CAAC;YAAES,SAAS;QAAK;IAC3C,EAAE,OAAOH,OAAO;QACdI,QAAQJ,KAAK,CAAC,gCAAgCA;QAC9C,OAAOD,oBAAY,CAACL,IAAI,CACtB;YAAEM,OAAO;QAA8B,GACvC;YAAEC,QAAQ;QAAI;IAElB;AACF;AAEA,eAAeC,gBAAgBG,KAAe;IAC5C,sCAAsC;IACtC,IAAIC,QAAQC,GAAG,CAACC,QAAQ,KAAK,eAAe;QAC1C,MAAMC,YAAY;YAAC;YAAS;YAAQ;YAAQ;SAAQ,CAACJ,MAAMR,KAAK,CAAC,IAAI;QACrEO,QAAQM,GAAG,CAAC,CAAC,CAAC,EAAED,UAAU,EAAE,EAAEJ,MAAMT,OAAO,EAAE,EAAES,MAAMM,OAAO,EAAEN,MAAML,KAAK;QACzE;IACF;IAEA,4BAA4B;IAC5B,oCAAoC;IACpC,8DAA8D;IAC9D,wCAAwC;IACxC,sCAAsC;IAEtC,4CAA4C;IAC5C,IAAIM,QAAQC,GAAG,CAACK,mBAAmB,EAAE;QACnC,IAAI;YACF,MAAMC,MAAMP,QAAQC,GAAG,CAACK,mBAAmB,EAAE;gBAC3CE,QAAQ;gBACRC,SAAS;oBACP,gBAAgB;oBAChB,iBAAiB,CAAC,OAAO,EAAET,QAAQC,GAAG,CAACS,qBAAqB,EAAE;gBAChE;gBACAC,MAAMC,KAAKC,SAAS,CAAC;oBACnB,GAAGd,KAAK;oBACRe,SAAS;oBACTC,aAAaf,QAAQC,GAAG,CAACe,mBAAmB;oBAC5CC,SAASjB,QAAQC,GAAG,CAACiB,uBAAuB;gBAC9C;YACF;QACF,EAAE,OAAOxB,OAAO;YACdI,QAAQJ,KAAK,CAAC,2CAA2CA;QAC3D;IACF;IAEA,gDAAgD;IAChD,IAAIK,MAAMR,KAAK,KAAK,GAAG;QACrB,4CAA4C;QAC5CO,QAAQJ,KAAK,CAAC,mBAAmBK;IACnC;AACF"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "dfd3f4ad52dfa717a47c89f56800ecd96671cdc4"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_4zrvk7ecl = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_4zrvk7ecl();
+cov_4zrvk7ecl().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_4zrvk7ecl().s[1]++;
+Object.defineProperty(exports, "POST", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().f[0]++;
+    cov_4zrvk7ecl().s[2]++;
+    return POST;
+  }
+});
+const _server =
+/* istanbul ignore next */
+(cov_4zrvk7ecl().s[3]++, require("next/server"));
+async function POST(request) {
+  /* istanbul ignore next */
+  cov_4zrvk7ecl().f[1]++;
+  cov_4zrvk7ecl().s[4]++;
+  try {
+    const logEntry =
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().s[5]++, await request.json());
+    // Validate log entry
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().s[6]++;
+    if (
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().b[1][0]++, !logEntry.timestamp) ||
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().b[1][1]++, !logEntry.message) ||
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().b[1][2]++, logEntry.level === undefined)) {
+      /* istanbul ignore next */
+      cov_4zrvk7ecl().b[0][0]++;
+      cov_4zrvk7ecl().s[7]++;
+      return _server.NextResponse.json({
+        error: 'Invalid log entry format'
+      }, {
+        status: 400
+      });
+    } else
+    /* istanbul ignore next */
+    {
+      cov_4zrvk7ecl().b[0][1]++;
+    }
+    // Process log entry
+    cov_4zrvk7ecl().s[8]++;
+    await processLogEntry(logEntry);
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().s[9]++;
+    return _server.NextResponse.json({
+      success: true
+    });
+  } catch (error) {
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().s[10]++;
+    console.error('Failed to process log entry:', error);
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().s[11]++;
+    return _server.NextResponse.json({
+      error: 'Failed to process log entry'
+    }, {
+      status: 500
+    });
+  }
+}
+async function processLogEntry(entry) {
+  /* istanbul ignore next */
+  cov_4zrvk7ecl().f[2]++;
+  cov_4zrvk7ecl().s[12]++;
+  // In development, just log to console
+  if (process.env.NODE_ENV === 'development') {
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().b[2][0]++;
+    const levelName =
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().s[13]++,
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().b[3][0]++, ['ERROR', 'WARN', 'INFO', 'DEBUG'][entry.level]) ||
+    /* istanbul ignore next */
+    (cov_4zrvk7ecl().b[3][1]++, 'UNKNOWN'));
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().s[14]++;
+    console.log(`[${levelName}] ${entry.message}`, entry.context, entry.error);
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().s[15]++;
+    return;
+  } else
+  /* istanbul ignore next */
+  {
+    cov_4zrvk7ecl().b[2][1]++;
+  }
+  // In production, you would:
+  // 1. Store in database for analysis
+  // 2. Send to external logging service (DataDog, Splunk, etc.)
+  // 3. Trigger alerts for critical errors
+  // 4. Aggregate metrics for monitoring
+  // Example: Send to external logging service
+  cov_4zrvk7ecl().s[16]++;
+  if (process.env.LOGGING_SERVICE_URL) {
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().b[4][0]++;
+    cov_4zrvk7ecl().s[17]++;
+    try {
+      /* istanbul ignore next */
+      cov_4zrvk7ecl().s[18]++;
+      await fetch(process.env.LOGGING_SERVICE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.LOGGING_SERVICE_TOKEN}`
+        },
+        body: JSON.stringify({
+          ...entry,
+          service: 'therobotoverlord-web',
+          environment: process.env.NEXT_PUBLIC_APP_ENV,
+          version: process.env.NEXT_PUBLIC_APP_VERSION
+        })
+      });
+    } catch (error) {
+      /* istanbul ignore next */
+      cov_4zrvk7ecl().s[19]++;
+      console.error('Failed to send log to external service:', error);
+    }
+  } else
+  /* istanbul ignore next */
+  {
+    cov_4zrvk7ecl().b[4][1]++;
+  }
+  // Store critical errors for immediate attention
+  cov_4zrvk7ecl().s[20]++;
+  if (entry.level === 0) {
+    /* istanbul ignore next */
+    cov_4zrvk7ecl().b[5][0]++;
+    cov_4zrvk7ecl().s[21]++;
+    // Store in database or send immediate alert
+    console.error('CRITICAL ERROR:', entry);
+  } else
+  /* istanbul ignore next */
+  {
+    cov_4zrvk7ecl().b[5][1]++;
+  }
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfNHpydms3ZWNsIiwiYWN0dWFsQ292ZXJhZ2UiLCJzIiwiUE9TVCIsInJlcXVlc3QiLCJmIiwibG9nRW50cnkiLCJqc29uIiwiYiIsInRpbWVzdGFtcCIsIm1lc3NhZ2UiLCJsZXZlbCIsInVuZGVmaW5lZCIsIl9zZXJ2ZXIiLCJOZXh0UmVzcG9uc2UiLCJlcnJvciIsInN0YXR1cyIsInByb2Nlc3NMb2dFbnRyeSIsInN1Y2Nlc3MiLCJjb25zb2xlIiwiZW50cnkiLCJwcm9jZXNzIiwiZW52IiwiTk9ERV9FTlYiLCJsZXZlbE5hbWUiLCJsb2ciLCJjb250ZXh0IiwiTE9HR0lOR19TRVJWSUNFX1VSTCIsImZldGNoIiwibWV0aG9kIiwiaGVhZGVycyIsIkxPR0dJTkdfU0VSVklDRV9UT0tFTiIsImJvZHkiLCJKU09OIiwic3RyaW5naWZ5Iiwic2VydmljZSIsImVudmlyb25tZW50IiwiTkVYVF9QVUJMSUNfQVBQX0VOViIsInZlcnNpb24iLCJORVhUX1BVQkxJQ19BUFBfVkVSU0lPTiJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb3Noc3plcC9jb2RlL3RoZXJvYm90b3ZlcmxvcmQtbW9uby90aGVyb2JvdG92ZXJsb3JkLXdlYi9zcmMvYXBwL2FwaS9sb2dzL3JvdXRlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5leHRSZXF1ZXN0LCBOZXh0UmVzcG9uc2UgfSBmcm9tICduZXh0L3NlcnZlcidcblxuaW50ZXJmYWNlIExvZ0VudHJ5IHtcbiAgdGltZXN0YW1wOiBzdHJpbmdcbiAgbGV2ZWw6IG51bWJlclxuICBtZXNzYWdlOiBzdHJpbmdcbiAgY29udGV4dD86IHtcbiAgICB1c2VySWQ/OiBzdHJpbmdcbiAgICBzZXNzaW9uSWQ/OiBzdHJpbmdcbiAgICByZXF1ZXN0SWQ/OiBzdHJpbmdcbiAgICBjb21wb25lbnQ/OiBzdHJpbmdcbiAgICBhY3Rpb24/OiBzdHJpbmdcbiAgICBtZXRhZGF0YT86IFJlY29yZDxzdHJpbmcsIGFueT5cbiAgfVxuICBlcnJvcj86IHtcbiAgICBuYW1lOiBzdHJpbmdcbiAgICBtZXNzYWdlOiBzdHJpbmdcbiAgICBzdGFjaz86IHN0cmluZ1xuICB9XG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBQT1NUKHJlcXVlc3Q6IE5leHRSZXF1ZXN0KSB7XG4gIHRyeSB7XG4gICAgY29uc3QgbG9nRW50cnk6IExvZ0VudHJ5ID0gYXdhaXQgcmVxdWVzdC5qc29uKClcbiAgICBcbiAgICAvLyBWYWxpZGF0ZSBsb2cgZW50cnlcbiAgICBpZiAoIWxvZ0VudHJ5LnRpbWVzdGFtcCB8fCAhbG9nRW50cnkubWVzc2FnZSB8fCBsb2dFbnRyeS5sZXZlbCA9PT0gdW5kZWZpbmVkKSB7XG4gICAgICByZXR1cm4gTmV4dFJlc3BvbnNlLmpzb24oXG4gICAgICAgIHsgZXJyb3I6ICdJbnZhbGlkIGxvZyBlbnRyeSBmb3JtYXQnIH0sXG4gICAgICAgIHsgc3RhdHVzOiA0MDAgfVxuICAgICAgKVxuICAgIH1cbiAgICBcbiAgICAvLyBQcm9jZXNzIGxvZyBlbnRyeVxuICAgIGF3YWl0IHByb2Nlc3NMb2dFbnRyeShsb2dFbnRyeSlcbiAgICBcbiAgICByZXR1cm4gTmV4dFJlc3BvbnNlLmpzb24oeyBzdWNjZXNzOiB0cnVlIH0pXG4gIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgY29uc29sZS5lcnJvcignRmFpbGVkIHRvIHByb2Nlc3MgbG9nIGVudHJ5OicsIGVycm9yKVxuICAgIHJldHVybiBOZXh0UmVzcG9uc2UuanNvbihcbiAgICAgIHsgZXJyb3I6ICdGYWlsZWQgdG8gcHJvY2VzcyBsb2cgZW50cnknIH0sXG4gICAgICB7IHN0YXR1czogNTAwIH1cbiAgICApXG4gIH1cbn1cblxuYXN5bmMgZnVuY3Rpb24gcHJvY2Vzc0xvZ0VudHJ5KGVudHJ5OiBMb2dFbnRyeSk6IFByb21pc2U8dm9pZD4ge1xuICAvLyBJbiBkZXZlbG9wbWVudCwganVzdCBsb2cgdG8gY29uc29sZVxuICBpZiAocHJvY2Vzcy5lbnYuTk9ERV9FTlYgPT09ICdkZXZlbG9wbWVudCcpIHtcbiAgICBjb25zdCBsZXZlbE5hbWUgPSBbJ0VSUk9SJywgJ1dBUk4nLCAnSU5GTycsICdERUJVRyddW2VudHJ5LmxldmVsXSB8fCAnVU5LTk9XTidcbiAgICBjb25zb2xlLmxvZyhgWyR7bGV2ZWxOYW1lfV0gJHtlbnRyeS5tZXNzYWdlfWAsIGVudHJ5LmNvbnRleHQsIGVudHJ5LmVycm9yKVxuICAgIHJldHVyblxuICB9XG4gIFxuICAvLyBJbiBwcm9kdWN0aW9uLCB5b3Ugd291bGQ6XG4gIC8vIDEuIFN0b3JlIGluIGRhdGFiYXNlIGZvciBhbmFseXNpc1xuICAvLyAyLiBTZW5kIHRvIGV4dGVybmFsIGxvZ2dpbmcgc2VydmljZSAoRGF0YURvZywgU3BsdW5rLCBldGMuKVxuICAvLyAzLiBUcmlnZ2VyIGFsZXJ0cyBmb3IgY3JpdGljYWwgZXJyb3JzXG4gIC8vIDQuIEFnZ3JlZ2F0ZSBtZXRyaWNzIGZvciBtb25pdG9yaW5nXG4gIFxuICAvLyBFeGFtcGxlOiBTZW5kIHRvIGV4dGVybmFsIGxvZ2dpbmcgc2VydmljZVxuICBpZiAocHJvY2Vzcy5lbnYuTE9HR0lOR19TRVJWSUNFX1VSTCkge1xuICAgIHRyeSB7XG4gICAgICBhd2FpdCBmZXRjaChwcm9jZXNzLmVudi5MT0dHSU5HX1NFUlZJQ0VfVVJMLCB7XG4gICAgICAgIG1ldGhvZDogJ1BPU1QnLFxuICAgICAgICBoZWFkZXJzOiB7XG4gICAgICAgICAgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyxcbiAgICAgICAgICAnQXV0aG9yaXphdGlvbic6IGBCZWFyZXIgJHtwcm9jZXNzLmVudi5MT0dHSU5HX1NFUlZJQ0VfVE9LRU59YCxcbiAgICAgICAgfSxcbiAgICAgICAgYm9keTogSlNPTi5zdHJpbmdpZnkoe1xuICAgICAgICAgIC4uLmVudHJ5LFxuICAgICAgICAgIHNlcnZpY2U6ICd0aGVyb2JvdG92ZXJsb3JkLXdlYicsXG4gICAgICAgICAgZW52aXJvbm1lbnQ6IHByb2Nlc3MuZW52Lk5FWFRfUFVCTElDX0FQUF9FTlYsXG4gICAgICAgICAgdmVyc2lvbjogcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQVBQX1ZFUlNJT04sXG4gICAgICAgIH0pLFxuICAgICAgfSlcbiAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgY29uc29sZS5lcnJvcignRmFpbGVkIHRvIHNlbmQgbG9nIHRvIGV4dGVybmFsIHNlcnZpY2U6JywgZXJyb3IpXG4gICAgfVxuICB9XG4gIFxuICAvLyBTdG9yZSBjcml0aWNhbCBlcnJvcnMgZm9yIGltbWVkaWF0ZSBhdHRlbnRpb25cbiAgaWYgKGVudHJ5LmxldmVsID09PSAwKSB7IC8vIEVSUk9SIGxldmVsXG4gICAgLy8gU3RvcmUgaW4gZGF0YWJhc2Ugb3Igc2VuZCBpbW1lZGlhdGUgYWxlcnRcbiAgICBjb25zb2xlLmVycm9yKCdDUklUSUNBTCBFUlJPUjonLCBlbnRyeSlcbiAgfVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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

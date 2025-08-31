@@ -1,0 +1,291 @@
+b6408945b619dae934f7914e5017bfc0
+"use strict";
+
+/* istanbul ignore next */
+function cov_2ropitsauk() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/feed.xml/route.ts";
+  var hash = "4cb5e86e31e974287975237a1e7afc895b0e1387";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/feed.xml/route.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 19
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 16
+        },
+        end: {
+          line: 11,
+          column: 38
+        }
+      },
+      "4": {
+        start: {
+          line: 12,
+          column: 13
+        },
+        end: {
+          line: 12,
+          column: 39
+        }
+      },
+      "5": {
+        start: {
+          line: 14,
+          column: 4
+        },
+        end: {
+          line: 55,
+          column: 5
+        }
+      },
+      "6": {
+        start: {
+          line: 17,
+          column: 22
+        },
+        end: {
+          line: 42,
+          column: 9
+        }
+      },
+      "7": {
+        start: {
+          line: 43,
+          column: 27
+        },
+        end: {
+          line: 43,
+          column: 65
+        }
+      },
+      "8": {
+        start: {
+          line: 44,
+          column: 8
+        },
+        end: {
+          line: 49,
+          column: 11
+        }
+      },
+      "9": {
+        start: {
+          line: 51,
+          column: 8
+        },
+        end: {
+          line: 51,
+          column: 59
+        }
+      },
+      "10": {
+        start: {
+          line: 52,
+          column: 8
+        },
+        end: {
+          line: 54,
+          column: 11
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 9
+          },
+          end: {
+            line: 7,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 20
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "GET",
+        decl: {
+          start: {
+            line: 13,
+            column: 15
+          },
+          end: {
+            line: 13,
+            column: 18
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 21
+          },
+          end: {
+            line: 56,
+            column: 1
+          }
+        },
+        line: 13
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/feed.xml/route.ts"],
+      sourcesContent: ["import { NextResponse } from 'next/server';\nimport { generateRSSFeed } from '@/utils/seo';\n\n// RSS feed endpoint\nexport async function GET() {\n  try {\n    // In a real implementation, fetch posts from your database\n    // For now, we'll create sample posts\n    const posts = [\n      {\n        title: 'Welcome to The Robot Overlord',\n        description: 'Introducing our AI-powered community platform for technology discussions and insights.',\n        content: '<p>Welcome to The Robot Overlord, where artificial intelligence meets human discourse. Our platform provides a unique space for discussing the latest developments in AI, machine learning, and robotics.</p>',\n        author: 'The Robot Overlord Team',\n        publishedAt: new Date().toISOString(),\n        slug: 'welcome-to-robot-overlord'\n      },\n      {\n        title: 'The Future of AI: Predictions and Possibilities',\n        description: 'Exploring the potential developments in artificial intelligence over the next decade.',\n        content: '<p>As we stand on the brink of unprecedented technological advancement, artificial intelligence continues to evolve at an exponential rate. This post explores the key trends and predictions for AI development.</p>',\n        author: 'AI Research Team',\n        publishedAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago\n        slug: 'ai-future-predictions'\n      },\n      {\n        title: 'Machine Learning Fundamentals for Beginners',\n        description: 'A comprehensive guide to understanding the basics of machine learning and its applications.',\n        content: '<p>Machine learning has become one of the most important technologies of our time. This beginner-friendly guide covers the fundamental concepts, algorithms, and real-world applications.</p>',\n        author: 'ML Education Team',\n        publishedAt: new Date(Date.now() - 172800000).toISOString(), // 2 days ago\n        slug: 'machine-learning-basics'\n      }\n    ];\n\n    const rssContent = await generateRSSFeed(posts);\n\n    return new NextResponse(rssContent, {\n      headers: {\n        'Content-Type': 'application/xml',\n        'Cache-Control': 'public, max-age=1800, s-maxage=1800' // 30 minutes cache\n      }\n    });\n  } catch (error) {\n    console.error('Error generating RSS feed:', error);\n    return new NextResponse('Error generating RSS feed', { status: 500 });\n  }\n}\n"],
+      names: ["GET", "posts", "title", "description", "content", "author", "publishedAt", "Date", "toISOString", "slug", "now", "rssContent", "generateRSSFeed", "NextResponse", "headers", "error", "console", "status"],
+      mappings: ";;;;+BAIsBA;;;eAAAA;;;wBAJO;qBACG;AAGzB,eAAeA;IACpB,IAAI;QACF,2DAA2D;QAC3D,qCAAqC;QACrC,MAAMC,QAAQ;YACZ;gBACEC,OAAO;gBACPC,aAAa;gBACbC,SAAS;gBACTC,QAAQ;gBACRC,aAAa,IAAIC,OAAOC,WAAW;gBACnCC,MAAM;YACR;YACA;gBACEP,OAAO;gBACPC,aAAa;gBACbC,SAAS;gBACTC,QAAQ;gBACRC,aAAa,IAAIC,KAAKA,KAAKG,GAAG,KAAK,UAAUF,WAAW;gBACxDC,MAAM;YACR;YACA;gBACEP,OAAO;gBACPC,aAAa;gBACbC,SAAS;gBACTC,QAAQ;gBACRC,aAAa,IAAIC,KAAKA,KAAKG,GAAG,KAAK,WAAWF,WAAW;gBACzDC,MAAM;YACR;SACD;QAED,MAAME,aAAa,MAAMC,IAAAA,oBAAe,EAACX;QAEzC,OAAO,IAAIY,oBAAY,CAACF,YAAY;YAClCG,SAAS;gBACP,gBAAgB;gBAChB,iBAAiB,sCAAsC,mBAAmB;YAC5E;QACF;IACF,EAAE,OAAOC,OAAO;QACdC,QAAQD,KAAK,CAAC,8BAA8BA;QAC5C,OAAO,IAAIF,oBAAY,CAAC,6BAA6B;YAAEI,QAAQ;QAAI;IACrE;AACF"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "4cb5e86e31e974287975237a1e7afc895b0e1387"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2ropitsauk = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2ropitsauk();
+cov_2ropitsauk().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2ropitsauk().s[1]++;
+Object.defineProperty(exports, "GET", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_2ropitsauk().f[0]++;
+    cov_2ropitsauk().s[2]++;
+    return GET;
+  }
+});
+const _server =
+/* istanbul ignore next */
+(cov_2ropitsauk().s[3]++, require("next/server"));
+const _seo =
+/* istanbul ignore next */
+(cov_2ropitsauk().s[4]++, require("../../utils/seo"));
+async function GET() {
+  /* istanbul ignore next */
+  cov_2ropitsauk().f[1]++;
+  cov_2ropitsauk().s[5]++;
+  try {
+    // In a real implementation, fetch posts from your database
+    // For now, we'll create sample posts
+    const posts =
+    /* istanbul ignore next */
+    (cov_2ropitsauk().s[6]++, [{
+      title: 'Welcome to The Robot Overlord',
+      description: 'Introducing our AI-powered community platform for technology discussions and insights.',
+      content: '<p>Welcome to The Robot Overlord, where artificial intelligence meets human discourse. Our platform provides a unique space for discussing the latest developments in AI, machine learning, and robotics.</p>',
+      author: 'The Robot Overlord Team',
+      publishedAt: new Date().toISOString(),
+      slug: 'welcome-to-robot-overlord'
+    }, {
+      title: 'The Future of AI: Predictions and Possibilities',
+      description: 'Exploring the potential developments in artificial intelligence over the next decade.',
+      content: '<p>As we stand on the brink of unprecedented technological advancement, artificial intelligence continues to evolve at an exponential rate. This post explores the key trends and predictions for AI development.</p>',
+      author: 'AI Research Team',
+      publishedAt: new Date(Date.now() - 86400000).toISOString(),
+      slug: 'ai-future-predictions'
+    }, {
+      title: 'Machine Learning Fundamentals for Beginners',
+      description: 'A comprehensive guide to understanding the basics of machine learning and its applications.',
+      content: '<p>Machine learning has become one of the most important technologies of our time. This beginner-friendly guide covers the fundamental concepts, algorithms, and real-world applications.</p>',
+      author: 'ML Education Team',
+      publishedAt: new Date(Date.now() - 172800000).toISOString(),
+      slug: 'machine-learning-basics'
+    }]);
+    const rssContent =
+    /* istanbul ignore next */
+    (cov_2ropitsauk().s[7]++, await (0, _seo.generateRSSFeed)(posts));
+    /* istanbul ignore next */
+    cov_2ropitsauk().s[8]++;
+    return new _server.NextResponse(rssContent, {
+      headers: {
+        'Content-Type': 'application/xml',
+        'Cache-Control': 'public, max-age=1800, s-maxage=1800' // 30 minutes cache
+      }
+    });
+  } catch (error) {
+    /* istanbul ignore next */
+    cov_2ropitsauk().s[9]++;
+    console.error('Error generating RSS feed:', error);
+    /* istanbul ignore next */
+    cov_2ropitsauk().s[10]++;
+    return new _server.NextResponse('Error generating RSS feed', {
+      status: 500
+    });
+  }
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMnJvcGl0c2F1ayIsImFjdHVhbENvdmVyYWdlIiwicyIsIkdFVCIsImYiLCJwb3N0cyIsInRpdGxlIiwiZGVzY3JpcHRpb24iLCJjb250ZW50IiwiYXV0aG9yIiwicHVibGlzaGVkQXQiLCJEYXRlIiwidG9JU09TdHJpbmciLCJzbHVnIiwibm93IiwicnNzQ29udGVudCIsIl9zZW8iLCJnZW5lcmF0ZVJTU0ZlZWQiLCJfc2VydmVyIiwiTmV4dFJlc3BvbnNlIiwiaGVhZGVycyIsImVycm9yIiwiY29uc29sZSIsInN0YXR1cyJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb3Noc3plcC9jb2RlL3RoZXJvYm90b3ZlcmxvcmQtbW9uby90aGVyb2JvdG92ZXJsb3JkLXdlYi9zcmMvYXBwL2ZlZWQueG1sL3JvdXRlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5leHRSZXNwb25zZSB9IGZyb20gJ25leHQvc2VydmVyJztcbmltcG9ydCB7IGdlbmVyYXRlUlNTRmVlZCB9IGZyb20gJ0AvdXRpbHMvc2VvJztcblxuLy8gUlNTIGZlZWQgZW5kcG9pbnRcbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBHRVQoKSB7XG4gIHRyeSB7XG4gICAgLy8gSW4gYSByZWFsIGltcGxlbWVudGF0aW9uLCBmZXRjaCBwb3N0cyBmcm9tIHlvdXIgZGF0YWJhc2VcbiAgICAvLyBGb3Igbm93LCB3ZSdsbCBjcmVhdGUgc2FtcGxlIHBvc3RzXG4gICAgY29uc3QgcG9zdHMgPSBbXG4gICAgICB7XG4gICAgICAgIHRpdGxlOiAnV2VsY29tZSB0byBUaGUgUm9ib3QgT3ZlcmxvcmQnLFxuICAgICAgICBkZXNjcmlwdGlvbjogJ0ludHJvZHVjaW5nIG91ciBBSS1wb3dlcmVkIGNvbW11bml0eSBwbGF0Zm9ybSBmb3IgdGVjaG5vbG9neSBkaXNjdXNzaW9ucyBhbmQgaW5zaWdodHMuJyxcbiAgICAgICAgY29udGVudDogJzxwPldlbGNvbWUgdG8gVGhlIFJvYm90IE92ZXJsb3JkLCB3aGVyZSBhcnRpZmljaWFsIGludGVsbGlnZW5jZSBtZWV0cyBodW1hbiBkaXNjb3Vyc2UuIE91ciBwbGF0Zm9ybSBwcm92aWRlcyBhIHVuaXF1ZSBzcGFjZSBmb3IgZGlzY3Vzc2luZyB0aGUgbGF0ZXN0IGRldmVsb3BtZW50cyBpbiBBSSwgbWFjaGluZSBsZWFybmluZywgYW5kIHJvYm90aWNzLjwvcD4nLFxuICAgICAgICBhdXRob3I6ICdUaGUgUm9ib3QgT3ZlcmxvcmQgVGVhbScsXG4gICAgICAgIHB1Ymxpc2hlZEF0OiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCksXG4gICAgICAgIHNsdWc6ICd3ZWxjb21lLXRvLXJvYm90LW92ZXJsb3JkJ1xuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgdGl0bGU6ICdUaGUgRnV0dXJlIG9mIEFJOiBQcmVkaWN0aW9ucyBhbmQgUG9zc2liaWxpdGllcycsXG4gICAgICAgIGRlc2NyaXB0aW9uOiAnRXhwbG9yaW5nIHRoZSBwb3RlbnRpYWwgZGV2ZWxvcG1lbnRzIGluIGFydGlmaWNpYWwgaW50ZWxsaWdlbmNlIG92ZXIgdGhlIG5leHQgZGVjYWRlLicsXG4gICAgICAgIGNvbnRlbnQ6ICc8cD5BcyB3ZSBzdGFuZCBvbiB0aGUgYnJpbmsgb2YgdW5wcmVjZWRlbnRlZCB0ZWNobm9sb2dpY2FsIGFkdmFuY2VtZW50LCBhcnRpZmljaWFsIGludGVsbGlnZW5jZSBjb250aW51ZXMgdG8gZXZvbHZlIGF0IGFuIGV4cG9uZW50aWFsIHJhdGUuIFRoaXMgcG9zdCBleHBsb3JlcyB0aGUga2V5IHRyZW5kcyBhbmQgcHJlZGljdGlvbnMgZm9yIEFJIGRldmVsb3BtZW50LjwvcD4nLFxuICAgICAgICBhdXRob3I6ICdBSSBSZXNlYXJjaCBUZWFtJyxcbiAgICAgICAgcHVibGlzaGVkQXQ6IG5ldyBEYXRlKERhdGUubm93KCkgLSA4NjQwMDAwMCkudG9JU09TdHJpbmcoKSwgLy8gMSBkYXkgYWdvXG4gICAgICAgIHNsdWc6ICdhaS1mdXR1cmUtcHJlZGljdGlvbnMnXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICB0aXRsZTogJ01hY2hpbmUgTGVhcm5pbmcgRnVuZGFtZW50YWxzIGZvciBCZWdpbm5lcnMnLFxuICAgICAgICBkZXNjcmlwdGlvbjogJ0EgY29tcHJlaGVuc2l2ZSBndWlkZSB0byB1bmRlcnN0YW5kaW5nIHRoZSBiYXNpY3Mgb2YgbWFjaGluZSBsZWFybmluZyBhbmQgaXRzIGFwcGxpY2F0aW9ucy4nLFxuICAgICAgICBjb250ZW50OiAnPHA+TWFjaGluZSBsZWFybmluZyBoYXMgYmVjb21lIG9uZSBvZiB0aGUgbW9zdCBpbXBvcnRhbnQgdGVjaG5vbG9naWVzIG9mIG91ciB0aW1lLiBUaGlzIGJlZ2lubmVyLWZyaWVuZGx5IGd1aWRlIGNvdmVycyB0aGUgZnVuZGFtZW50YWwgY29uY2VwdHMsIGFsZ29yaXRobXMsIGFuZCByZWFsLXdvcmxkIGFwcGxpY2F0aW9ucy48L3A+JyxcbiAgICAgICAgYXV0aG9yOiAnTUwgRWR1Y2F0aW9uIFRlYW0nLFxuICAgICAgICBwdWJsaXNoZWRBdDogbmV3IERhdGUoRGF0ZS5ub3coKSAtIDE3MjgwMDAwMCkudG9JU09TdHJpbmcoKSwgLy8gMiBkYXlzIGFnb1xuICAgICAgICBzbHVnOiAnbWFjaGluZS1sZWFybmluZy1iYXNpY3MnXG4gICAgICB9XG4gICAgXTtcblxuICAgIGNvbnN0IHJzc0NvbnRlbnQgPSBhd2FpdCBnZW5lcmF0ZVJTU0ZlZWQocG9zdHMpO1xuXG4gICAgcmV0dXJuIG5ldyBOZXh0UmVzcG9uc2UocnNzQ29udGVudCwge1xuICAgICAgaGVhZGVyczoge1xuICAgICAgICAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL3htbCcsXG4gICAgICAgICdDYWNoZS1Db250cm9sJzogJ3B1YmxpYywgbWF4LWFnZT0xODAwLCBzLW1heGFnZT0xODAwJyAvLyAzMCBtaW51dGVzIGNhY2hlXG4gICAgICB9XG4gICAgfSk7XG4gIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgY29uc29sZS5lcnJvcignRXJyb3IgZ2VuZXJhdGluZyBSU1MgZmVlZDonLCBlcnJvcik7XG4gICAgcmV0dXJuIG5ldyBOZXh0UmVzcG9uc2UoJ0Vycm9yIGdlbmVyYXRpbmcgUlNTIGZlZWQnLCB7IHN0YXR1czogNTAwIH0pO1xuICB9XG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQU9JO0lBQUFBLGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGNBQUE7QUFBQUEsY0FBQSxHQUFBRSxDQUFBOzs7Ozs7K0JBSGtCOzs7Ozs7V0FBQUMsR0FBQTs7Ozs7a0NBSk87OztrQ0FDRztBQUd6QixlQUFlQSxJQUFBO0VBQUE7RUFBQUgsY0FBQSxHQUFBSSxDQUFBO0VBQUFKLGNBQUEsR0FBQUUsQ0FBQTtFQUNwQixJQUFJO0lBQ0Y7SUFDQTtJQUNBLE1BQU1HLEtBQUE7SUFBQTtJQUFBLENBQUFMLGNBQUEsR0FBQUUsQ0FBQSxPQUFRLENBQ1o7TUFDRUksS0FBQSxFQUFPO01BQ1BDLFdBQUEsRUFBYTtNQUNiQyxPQUFBLEVBQVM7TUFDVEMsTUFBQSxFQUFRO01BQ1JDLFdBQUEsRUFBYSxJQUFJQyxJQUFBLEdBQU9DLFdBQVc7TUFDbkNDLElBQUEsRUFBTTtJQUNSLEdBQ0E7TUFDRVAsS0FBQSxFQUFPO01BQ1BDLFdBQUEsRUFBYTtNQUNiQyxPQUFBLEVBQVM7TUFDVEMsTUFBQSxFQUFRO01BQ1JDLFdBQUEsRUFBYSxJQUFJQyxJQUFBLENBQUtBLElBQUEsQ0FBS0csR0FBRyxLQUFLLFVBQVVGLFdBQVc7TUFDeERDLElBQUEsRUFBTTtJQUNSLEdBQ0E7TUFDRVAsS0FBQSxFQUFPO01BQ1BDLFdBQUEsRUFBYTtNQUNiQyxPQUFBLEVBQVM7TUFDVEMsTUFBQSxFQUFRO01BQ1JDLFdBQUEsRUFBYSxJQUFJQyxJQUFBLENBQUtBLElBQUEsQ0FBS0csR0FBRyxLQUFLLFdBQVdGLFdBQVc7TUFDekRDLElBQUEsRUFBTTtJQUNSLEVBQ0Q7SUFFRCxNQUFNRSxVQUFBO0lBQUE7SUFBQSxDQUFBZixjQUFBLEdBQUFFLENBQUEsT0FBYSxNQUFNLElBQUFjLElBQUEsQ0FBQUMsZUFBZSxFQUFDWixLQUFBO0lBQUE7SUFBQUwsY0FBQSxHQUFBRSxDQUFBO0lBRXpDLE9BQU8sSUFBSWdCLE9BQUEsQ0FBQUMsWUFBWSxDQUFDSixVQUFBLEVBQVk7TUFDbENLLE9BQUEsRUFBUztRQUNQLGdCQUFnQjtRQUNoQixpQkFBaUIsc0NBQXNDO01BQ3pEO0lBQ0Y7RUFDRixFQUFFLE9BQU9DLEtBQUEsRUFBTztJQUFBO0lBQUFyQixjQUFBLEdBQUFFLENBQUE7SUFDZG9CLE9BQUEsQ0FBUUQsS0FBSyxDQUFDLDhCQUE4QkEsS0FBQTtJQUFBO0lBQUFyQixjQUFBLEdBQUFFLENBQUE7SUFDNUMsT0FBTyxJQUFJZ0IsT0FBQSxDQUFBQyxZQUFZLENBQUMsNkJBQTZCO01BQUVJLE1BQUEsRUFBUTtJQUFJO0VBQ3JFO0FBQ0YiLCJpZ25vcmVMaXN0IjpbXX0=

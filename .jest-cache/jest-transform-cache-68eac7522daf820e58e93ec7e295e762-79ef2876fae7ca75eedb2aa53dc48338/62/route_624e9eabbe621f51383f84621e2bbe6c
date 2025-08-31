@@ -1,0 +1,267 @@
+ef5ec585a1ff378966bc1620fe69d1fc
+"use strict";
+
+/* istanbul ignore next */
+function cov_2khfal9zuh() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/sitemap.xml/route.ts";
+  var hash = "df2df9f5ac565700bbd1cc7364c71063719ad39f";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/sitemap.xml/route.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 19
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 16
+        },
+        end: {
+          line: 11,
+          column: 38
+        }
+      },
+      "4": {
+        start: {
+          line: 13,
+          column: 20
+        },
+        end: {
+          line: 13,
+          column: 83
+        }
+      },
+      "5": {
+        start: {
+          line: 14,
+          column: 20
+        },
+        end: {
+          line: 32,
+          column: 16
+        }
+      },
+      "6": {
+        start: {
+          line: 33,
+          column: 4
+        },
+        end: {
+          line: 38,
+          column: 7
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 9
+          },
+          end: {
+            line: 7,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 20
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "GET",
+        decl: {
+          start: {
+            line: 12,
+            column: 15
+          },
+          end: {
+            line: 12,
+            column: 18
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 21
+          },
+          end: {
+            line: 39,
+            column: 1
+          }
+        },
+        line: 12
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 13,
+            column: 20
+          },
+          end: {
+            line: 13,
+            column: 83
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 13,
+            column: 20
+          },
+          end: {
+            line: 13,
+            column: 52
+          }
+        }, {
+          start: {
+            line: 13,
+            column: 56
+          },
+          end: {
+            line: 13,
+            column: 83
+          }
+        }],
+        line: 13
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/sitemap.xml/route.ts"],
+      sourcesContent: ["import { NextResponse } from 'next/server';\n\n// Main sitemap index\nexport async function GET() {\n  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://robotoverlord.com';\n  \n  const sitemap = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <sitemap>\n    <loc>${baseUrl}/sitemap-static.xml</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n  </sitemap>\n  <sitemap>\n    <loc>${baseUrl}/sitemap-posts.xml</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n  </sitemap>\n  <sitemap>\n    <loc>${baseUrl}/sitemap-topics.xml</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n  </sitemap>\n  <sitemap>\n    <loc>${baseUrl}/sitemap-users.xml</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n  </sitemap>\n</sitemapindex>`;\n\n  return new NextResponse(sitemap, {\n    headers: {\n      'Content-Type': 'application/xml',\n      'Cache-Control': 'public, max-age=3600, s-maxage=3600'\n    }\n  });\n}\n"],
+      names: ["GET", "baseUrl", "process", "env", "NEXT_PUBLIC_SITE_URL", "sitemap", "Date", "toISOString", "NextResponse", "headers"],
+      mappings: ";;;;+BAGsBA;;;eAAAA;;;wBAHO;AAGtB,eAAeA;IACpB,MAAMC,UAAUC,QAAQC,GAAG,CAACC,oBAAoB,IAAI;IAEpD,MAAMC,UAAU,CAAC;;;SAGV,EAAEJ,QAAQ;aACN,EAAE,IAAIK,OAAOC,WAAW,GAAG;;;SAG/B,EAAEN,QAAQ;aACN,EAAE,IAAIK,OAAOC,WAAW,GAAG;;;SAG/B,EAAEN,QAAQ;aACN,EAAE,IAAIK,OAAOC,WAAW,GAAG;;;SAG/B,EAAEN,QAAQ;aACN,EAAE,IAAIK,OAAOC,WAAW,GAAG;;eAEzB,CAAC;IAEd,OAAO,IAAIC,oBAAY,CAACH,SAAS;QAC/BI,SAAS;YACP,gBAAgB;YAChB,iBAAiB;QACnB;IACF;AACF"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "df2df9f5ac565700bbd1cc7364c71063719ad39f"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2khfal9zuh = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2khfal9zuh();
+cov_2khfal9zuh().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2khfal9zuh().s[1]++;
+Object.defineProperty(exports, "GET", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_2khfal9zuh().f[0]++;
+    cov_2khfal9zuh().s[2]++;
+    return GET;
+  }
+});
+const _server =
+/* istanbul ignore next */
+(cov_2khfal9zuh().s[3]++, require("next/server"));
+async function GET() {
+  /* istanbul ignore next */
+  cov_2khfal9zuh().f[1]++;
+  const baseUrl =
+  /* istanbul ignore next */
+  (cov_2khfal9zuh().s[4]++,
+  /* istanbul ignore next */
+  (cov_2khfal9zuh().b[0][0]++, process.env.NEXT_PUBLIC_SITE_URL) ||
+  /* istanbul ignore next */
+  (cov_2khfal9zuh().b[0][1]++, 'https://robotoverlord.com'));
+  const sitemap =
+  /* istanbul ignore next */
+  (cov_2khfal9zuh().s[5]++, `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${baseUrl}/sitemap-static.xml</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/sitemap-posts.xml</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/sitemap-topics.xml</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/sitemap-users.xml</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+</sitemapindex>`);
+  /* istanbul ignore next */
+  cov_2khfal9zuh().s[6]++;
+  return new _server.NextResponse(sitemap, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600'
+    }
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJHRVQiLCJjb3ZfMmtoZmFsOXp1aCIsImYiLCJiYXNlVXJsIiwicyIsImIiLCJwcm9jZXNzIiwiZW52IiwiTkVYVF9QVUJMSUNfU0lURV9VUkwiLCJzaXRlbWFwIiwiRGF0ZSIsInRvSVNPU3RyaW5nIiwiX3NlcnZlciIsIk5leHRSZXNwb25zZSIsImhlYWRlcnMiXSwic291cmNlcyI6WyIvVXNlcnMvam9zaHN6ZXAvY29kZS90aGVyb2JvdG92ZXJsb3JkLW1vbm8vdGhlcm9ib3RvdmVybG9yZC13ZWIvc3JjL2FwcC9zaXRlbWFwLnhtbC9yb3V0ZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBOZXh0UmVzcG9uc2UgfSBmcm9tICduZXh0L3NlcnZlcic7XG5cbi8vIE1haW4gc2l0ZW1hcCBpbmRleFxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIEdFVCgpIHtcbiAgY29uc3QgYmFzZVVybCA9IHByb2Nlc3MuZW52Lk5FWFRfUFVCTElDX1NJVEVfVVJMIHx8ICdodHRwczovL3JvYm90b3ZlcmxvcmQuY29tJztcbiAgXG4gIGNvbnN0IHNpdGVtYXAgPSBgPD94bWwgdmVyc2lvbj1cIjEuMFwiIGVuY29kaW5nPVwiVVRGLThcIj8+XG48c2l0ZW1hcGluZGV4IHhtbG5zPVwiaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOVwiPlxuICA8c2l0ZW1hcD5cbiAgICA8bG9jPiR7YmFzZVVybH0vc2l0ZW1hcC1zdGF0aWMueG1sPC9sb2M+XG4gICAgPGxhc3Rtb2Q+JHtuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCl9PC9sYXN0bW9kPlxuICA8L3NpdGVtYXA+XG4gIDxzaXRlbWFwPlxuICAgIDxsb2M+JHtiYXNlVXJsfS9zaXRlbWFwLXBvc3RzLnhtbDwvbG9jPlxuICAgIDxsYXN0bW9kPiR7bmV3IERhdGUoKS50b0lTT1N0cmluZygpfTwvbGFzdG1vZD5cbiAgPC9zaXRlbWFwPlxuICA8c2l0ZW1hcD5cbiAgICA8bG9jPiR7YmFzZVVybH0vc2l0ZW1hcC10b3BpY3MueG1sPC9sb2M+XG4gICAgPGxhc3Rtb2Q+JHtuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCl9PC9sYXN0bW9kPlxuICA8L3NpdGVtYXA+XG4gIDxzaXRlbWFwPlxuICAgIDxsb2M+JHtiYXNlVXJsfS9zaXRlbWFwLXVzZXJzLnhtbDwvbG9jPlxuICAgIDxsYXN0bW9kPiR7bmV3IERhdGUoKS50b0lTT1N0cmluZygpfTwvbGFzdG1vZD5cbiAgPC9zaXRlbWFwPlxuPC9zaXRlbWFwaW5kZXg+YDtcblxuICByZXR1cm4gbmV3IE5leHRSZXNwb25zZShzaXRlbWFwLCB7XG4gICAgaGVhZGVyczoge1xuICAgICAgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi94bWwnLFxuICAgICAgJ0NhY2hlLUNvbnRyb2wnOiAncHVibGljLCBtYXgtYWdlPTM2MDAsIHMtbWF4YWdlPTM2MDAnXG4gICAgfVxuICB9KTtcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OytCQUdzQjs7Ozs7O1dBQUFBLEdBQUE7Ozs7O2tDQUhPO0FBR3RCLGVBQWVBLElBQUE7RUFBQTtFQUFBQyxjQUFBLEdBQUFDLENBQUE7RUFDcEIsTUFBTUMsT0FBQTtFQUFBO0VBQUEsQ0FBQUYsY0FBQSxHQUFBRyxDQUFBO0VBQVU7RUFBQSxDQUFBSCxjQUFBLEdBQUFJLENBQUEsVUFBQUMsT0FBQSxDQUFRQyxHQUFHLENBQUNDLG9CQUFvQjtFQUFBO0VBQUEsQ0FBQVAsY0FBQSxHQUFBSSxDQUFBLFVBQUk7RUFFcEQsTUFBTUksT0FBQTtFQUFBO0VBQUEsQ0FBQVIsY0FBQSxHQUFBRyxDQUFBLE9BQVU7OztXQUdQRCxPQUFBO2VBQ0ksSUFBSU8sSUFBQSxHQUFPQyxXQUFXOzs7V0FHMUJSLE9BQUE7ZUFDSSxJQUFJTyxJQUFBLEdBQU9DLFdBQVc7OztXQUcxQlIsT0FBQTtlQUNJLElBQUlPLElBQUEsR0FBT0MsV0FBVzs7O1dBRzFCUixPQUFBO2VBQ0ksSUFBSU8sSUFBQSxHQUFPQyxXQUFXOztnQkFFckI7RUFBQTtFQUFBVixjQUFBLEdBQUFHLENBQUE7RUFFZCxPQUFPLElBQUlRLE9BQUEsQ0FBQUMsWUFBWSxDQUFDSixPQUFBLEVBQVM7SUFDL0JLLE9BQUEsRUFBUztNQUNQLGdCQUFnQjtNQUNoQixpQkFBaUI7SUFDbkI7RUFDRjtBQUNGIiwiaWdub3JlTGlzdCI6W119

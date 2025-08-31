@@ -1,12 +1,7 @@
-import {
-  createMockPost,
-  integrationRender as render,
-  screen,
-  userEvent,
-  waitFor,
-} from "@/__tests__/utils/test-utils";
-
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import FeedPage from "@/app/feed/page";
+import { createMockPost, IntegrationMockProviders } from "../utils/test-utils";
 
 // Mock the lazy components
 jest.mock("@/components/lazy/LazyComponents", () => ({
@@ -63,15 +58,38 @@ jest.mock("@/components/lazy/LazyComponents", () => ({
   ),
 }));
 
-// Mock hooks
-const mockUseRealTimeUpdates = jest.fn(() => ({
-  connected: true,
-  isRealTimeEnabled: true,
+// Mock the real-time updates hook
+const mockUseRealTimeUpdates = jest.fn().mockReturnValue({
+  isConnected: true,
+  connectionStatus: 'connected',
   lastUpdate: null,
-}));
+  subscribe: jest.fn(),
+  unsubscribe: jest.fn(),
+})
 
-jest.mock("@/hooks/useRealTimeUpdates", () => ({
-  useRealTimeUpdates: mockUseRealTimeUpdates,
+jest.mock('@/hooks/useRealTimeUpdates', () => ({
+  useRealTimeUpdates: () => ({
+    isConnected: true,
+    connectionStatus: 'connected',
+    lastUpdate: null,
+    subscribe: jest.fn(),
+    unsubscribe: jest.fn(),
+  }),
+}))
+
+// Mock performance monitoring
+const mockUsePerformanceMonitoring = jest.fn().mockReturnValue({
+  startMeasurement: jest.fn(),
+  endMeasurement: jest.fn(),
+  getMetrics: jest.fn().mockReturnValue({}),
+})
+
+jest.mock('@/hooks/usePerformanceMonitoring', () => ({
+  usePerformanceMonitoring: () => ({
+    startMeasurement: jest.fn(),
+    endMeasurement: jest.fn(),
+    getMetrics: jest.fn().mockReturnValue({}),
+  }),
 }));
 
 // Mock other UI components
@@ -94,8 +112,16 @@ jest.mock("@/components/ui/LoadingSpinner", () => ({
 }));
 
 jest.mock("@/components/ui/EmptyState", () => ({
-  EmptyFeedState: () => (
-    <div data-testid="empty-feed-state">Mock Empty Feed State</div>
+  EmptyFeedState: ({ onRefresh }: { onRefresh?: () => void }) => (
+    <div data-testid="empty-feed-state">
+      <h2>No posts yet</h2>
+      <p>Be the first to create a post!</p>
+      {onRefresh && (
+        <button onClick={onRefresh} data-testid="refresh-button">
+          Refresh
+        </button>
+      )}
+    </div>
   ),
 }));
 
@@ -103,20 +129,48 @@ jest.mock("@/components/feed/FeedFilters", () => ({
   FeedFilters: () => <div data-testid="feed-filters">Mock Feed Filters</div>,
 }));
 
-// Mock services
+// Mock services with different behaviors for different tests
 const mockPostsService = {
-  getPosts: jest.fn(),
+  getPosts: jest.fn().mockImplementation(() => {
+    // Default to returning mock posts, but can be overridden per test
+    return Promise.resolve([
+      { id: '1', title: 'Test Post 1', content: 'Content 1', author: 'User1' },
+      { id: '2', title: 'Test Post 2', content: 'Content 2', author: 'User2' }
+    ])
+  }),
   getPost: jest.fn(),
   createPost: jest.fn(),
   updatePost: jest.fn(),
   deletePost: jest.fn(),
 };
 
+const mockTopicsService = {
+  getTopics: jest.fn().mockResolvedValue([]),
+  getTopic: jest.fn(),
+  createTopic: jest.fn(),
+  updateTopic: jest.fn(),
+  deleteTopic: jest.fn(),
+};
+
 jest.mock("@/services", () => ({
-  postsService: mockPostsService,
+  postsService: {
+    getPosts: jest.fn().mockImplementation(() => {
+      return Promise.resolve([
+        { id: '1', title: 'Test Post 1', content: 'Content 1', author: 'User1' },
+        { id: '2', title: 'Test Post 2', content: 'Content 2', author: 'User2' }
+      ])
+    }),
+    getPost: jest.fn(),
+    createPost: jest.fn(),
+    updatePost: jest.fn(),
+    deletePost: jest.fn(),
+  },
   topicsService: {
-    getTopics: jest.fn(),
+    getTopics: jest.fn().mockResolvedValue([]),
     getTopic: jest.fn(),
+    createTopic: jest.fn(),
+    updateTopic: jest.fn(),
+    deleteTopic: jest.fn(),
   },
 }));
 
@@ -256,14 +310,14 @@ describe("Feed Page Integration", () => {
   });
 
   it("shows empty state when no posts", async () => {
-    // Mock empty posts response
-    mockPostsService.getPosts.mockResolvedValueOnce({
-      posts: [],
-      hasMore: false,
-      total: 0,
-    });
-
-    render(<FeedPage />);
+    // Mock empty posts for this test
+    mockPostsService.getPosts.mockResolvedValueOnce([]);
+    
+    render(
+      <IntegrationMockProviders>
+        <FeedPage />
+      </IntegrationMockProviders>
+    );
 
     // Should render the page with empty state component
     await waitFor(() => {

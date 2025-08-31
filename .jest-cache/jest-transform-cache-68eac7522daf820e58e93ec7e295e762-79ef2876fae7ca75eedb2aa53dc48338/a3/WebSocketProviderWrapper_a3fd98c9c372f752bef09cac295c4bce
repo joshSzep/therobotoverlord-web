@@ -1,0 +1,565 @@
+95448e3b28ab7cdb97734da585794ada
+/**
+ * WebSocket Provider Wrapper
+ * Conditionally provides WebSocket connection based on authentication state
+ */'use client';
+"use strict";
+
+/* istanbul ignore next */
+function cov_24mtdtmkjm() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/providers/WebSocketProviderWrapper.tsx";
+  var hash = "2697cc102a0807e8c1c5a1d952ed858cc4eee315";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/providers/WebSocketProviderWrapper.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 12,
+          column: 8
+        },
+        end: {
+          line: 12,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 15,
+          column: 20
+        },
+        end: {
+          line: 15,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 16,
+          column: 29
+        },
+        end: {
+          line: 16,
+          column: 71
+        }
+      },
+      "5": {
+        start: {
+          line: 17,
+          column: 21
+        },
+        end: {
+          line: 17,
+          column: 58
+        }
+      },
+      "6": {
+        start: {
+          line: 18,
+          column: 27
+        },
+        end: {
+          line: 18,
+          column: 58
+        }
+      },
+      "7": {
+        start: {
+          line: 20,
+          column: 4
+        },
+        end: {
+          line: 22,
+          column: 6
+        }
+      },
+      "8": {
+        start: {
+          line: 25,
+          column: 38
+        },
+        end: {
+          line: 25,
+          column: 65
+        }
+      },
+      "9": {
+        start: {
+          line: 27,
+          column: 4
+        },
+        end: {
+          line: 34,
+          column: 5
+        }
+      },
+      "10": {
+        start: {
+          line: 29,
+          column: 22
+        },
+        end: {
+          line: 29,
+          column: 99
+        }
+      },
+      "11": {
+        start: {
+          line: 30,
+          column: 8
+        },
+        end: {
+          line: 33,
+          column: 11
+        }
+      },
+      "12": {
+        start: {
+          line: 36,
+          column: 4
+        },
+        end: {
+          line: 38,
+          column: 7
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 11,
+            column: 9
+          },
+          end: {
+            line: 11,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 20
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        line: 11
+      },
+      "1": {
+        name: "_interop_require_default",
+        decl: {
+          start: {
+            line: 19,
+            column: 9
+          },
+          end: {
+            line: 19,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 19,
+            column: 39
+          },
+          end: {
+            line: 23,
+            column: 1
+          }
+        },
+        line: 19
+      },
+      "2": {
+        name: "WebSocketProviderWrapper",
+        decl: {
+          start: {
+            line: 24,
+            column: 9
+          },
+          end: {
+            line: 24,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 24,
+            column: 48
+          },
+          end: {
+            line: 39,
+            column: 1
+          }
+        },
+        line: 24
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 20,
+            column: 11
+          },
+          end: {
+            line: 22,
+            column: 5
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 20,
+            column: 35
+          },
+          end: {
+            line: 20,
+            column: 38
+          }
+        }, {
+          start: {
+            line: 20,
+            column: 41
+          },
+          end: {
+            line: 22,
+            column: 5
+          }
+        }],
+        line: 20
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 20,
+            column: 11
+          },
+          end: {
+            line: 20,
+            column: 32
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 20,
+            column: 11
+          },
+          end: {
+            line: 20,
+            column: 14
+          }
+        }, {
+          start: {
+            line: 20,
+            column: 18
+          },
+          end: {
+            line: 20,
+            column: 32
+          }
+        }],
+        line: 20
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 27,
+            column: 4
+          },
+          end: {
+            line: 34,
+            column: 5
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 27,
+            column: 4
+          },
+          end: {
+            line: 34,
+            column: 5
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 27
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 27,
+            column: 8
+          },
+          end: {
+            line: 27,
+            column: 31
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 27,
+            column: 8
+          },
+          end: {
+            line: 27,
+            column: 23
+          }
+        }, {
+          start: {
+            line: 27,
+            column: 27
+          },
+          end: {
+            line: 27,
+            column: 31
+          }
+        }],
+        line: 27
+      },
+      "4": {
+        loc: {
+          start: {
+            line: 29,
+            column: 22
+          },
+          end: {
+            line: 29,
+            column: 99
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 29,
+            column: 54
+          },
+          end: {
+            line: 29,
+            column: 94
+          }
+        }, {
+          start: {
+            line: 29,
+            column: 97
+          },
+          end: {
+            line: 29,
+            column: 99
+          }
+        }],
+        line: 29
+      },
+      "5": {
+        loc: {
+          start: {
+            line: 29,
+            column: 54
+          },
+          end: {
+            line: 29,
+            column: 94
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 29,
+            column: 54
+          },
+          end: {
+            line: 29,
+            column: 88
+          }
+        }, {
+          start: {
+            line: 29,
+            column: 92
+          },
+          end: {
+            line: 29,
+            column: 94
+          }
+        }],
+        line: 29
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0],
+      "3": [0, 0],
+      "4": [0, 0],
+      "5": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/providers/WebSocketProviderWrapper.tsx"],
+      sourcesContent: ["/**\n * WebSocket Provider Wrapper\n * Conditionally provides WebSocket connection based on authentication state\n */\n\n'use client';\n\nimport React from 'react';\nimport { useAuth } from '@/contexts/AuthContext';\nimport { WebSocketProvider } from '@/components/WebSocketProvider';\n\ninterface WebSocketProviderWrapperProps {\n  children: React.ReactNode;\n}\n\nexport function WebSocketProviderWrapper({ children }: WebSocketProviderWrapperProps) {\n  const { isAuthenticated, user } = useAuth();\n\n  // Only provide WebSocket connection if user is authenticated\n  if (isAuthenticated && user) {\n    // Get token from localStorage (same as what API client uses)\n    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') || '' : '';\n    \n    return (\n      <WebSocketProvider token={token}>\n        {children}\n      </WebSocketProvider>\n    );\n  }\n\n  // Return children without WebSocket provider if not authenticated\n  return <>{children}</>;\n}\n"],
+      names: ["WebSocketProviderWrapper", "children", "isAuthenticated", "user", "useAuth", "token", "window", "localStorage", "getItem", "WebSocketProvider"],
+      mappings: "AAAA;;;CAGC,GAED;;;;;+BAUgBA;;;eAAAA;;;;8DARE;6BACM;mCACU;;;;;;AAM3B,SAASA,yBAAyB,EAAEC,QAAQ,EAAiC;IAClF,MAAM,EAAEC,eAAe,EAAEC,IAAI,EAAE,GAAGC,IAAAA,oBAAO;IAEzC,6DAA6D;IAC7D,IAAIF,mBAAmBC,MAAM;QAC3B,6DAA6D;QAC7D,MAAME,QAAQ,OAAOC,WAAW,cAAcC,aAAaC,OAAO,CAAC,iBAAiB,KAAK;QAEzF,qBACE,qBAACC,oCAAiB;YAACJ,OAAOA;sBACvBJ;;IAGP;IAEA,kEAAkE;IAClE,qBAAO;kBAAGA;;AACZ"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "2697cc102a0807e8c1c5a1d952ed858cc4eee315"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_24mtdtmkjm = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_24mtdtmkjm();
+cov_24mtdtmkjm().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_24mtdtmkjm().s[1]++;
+Object.defineProperty(exports, "WebSocketProviderWrapper", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_24mtdtmkjm().f[0]++;
+    cov_24mtdtmkjm().s[2]++;
+    return WebSocketProviderWrapper;
+  }
+});
+const _jsxruntime =
+/* istanbul ignore next */
+(cov_24mtdtmkjm().s[3]++, require("react/jsx-runtime"));
+const _react =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_24mtdtmkjm().s[4]++, _interop_require_default(require("react")));
+const _AuthContext =
+/* istanbul ignore next */
+(cov_24mtdtmkjm().s[5]++, require("../../contexts/AuthContext"));
+const _WebSocketProvider =
+/* istanbul ignore next */
+(cov_24mtdtmkjm().s[6]++, require("../WebSocketProvider"));
+function _interop_require_default(obj) {
+  /* istanbul ignore next */
+  cov_24mtdtmkjm().f[1]++;
+  cov_24mtdtmkjm().s[7]++;
+  return /* istanbul ignore next */(cov_24mtdtmkjm().b[1][0]++, obj) &&
+  /* istanbul ignore next */
+  (cov_24mtdtmkjm().b[1][1]++, obj.__esModule) ?
+  /* istanbul ignore next */
+  (cov_24mtdtmkjm().b[0][0]++, obj) :
+  /* istanbul ignore next */
+  (cov_24mtdtmkjm().b[0][1]++, {
+    default: obj
+  });
+}
+function WebSocketProviderWrapper({
+  children
+}) {
+  /* istanbul ignore next */
+  cov_24mtdtmkjm().f[2]++;
+  const {
+    isAuthenticated,
+    user
+  } =
+  /* istanbul ignore next */
+  (cov_24mtdtmkjm().s[8]++, (0, _AuthContext.useAuth)());
+  // Only provide WebSocket connection if user is authenticated
+  /* istanbul ignore next */
+  cov_24mtdtmkjm().s[9]++;
+  if (
+  /* istanbul ignore next */
+  (cov_24mtdtmkjm().b[3][0]++, isAuthenticated) &&
+  /* istanbul ignore next */
+  (cov_24mtdtmkjm().b[3][1]++, user)) {
+    /* istanbul ignore next */
+    cov_24mtdtmkjm().b[2][0]++;
+    // Get token from localStorage (same as what API client uses)
+    const token =
+    /* istanbul ignore next */
+    (cov_24mtdtmkjm().s[10]++, typeof window !== 'undefined' ?
+    /* istanbul ignore next */
+    (cov_24mtdtmkjm().b[4][0]++,
+    /* istanbul ignore next */
+    (cov_24mtdtmkjm().b[5][0]++, localStorage.getItem('auth_token')) ||
+    /* istanbul ignore next */
+    (cov_24mtdtmkjm().b[5][1]++, '')) :
+    /* istanbul ignore next */
+    (cov_24mtdtmkjm().b[4][1]++, ''));
+    /* istanbul ignore next */
+    cov_24mtdtmkjm().s[11]++;
+    return /*#__PURE__*/(0, _jsxruntime.jsx)(_WebSocketProvider.WebSocketProvider, {
+      token: token,
+      children: children
+    });
+  } else
+  /* istanbul ignore next */
+  {
+    cov_24mtdtmkjm().b[2][1]++;
+  }
+  // Return children without WebSocket provider if not authenticated
+  cov_24mtdtmkjm().s[12]++;
+  return /*#__PURE__*/(0, _jsxruntime.jsx)(_jsxruntime.Fragment, {
+    children: children
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJXZWJTb2NrZXRQcm92aWRlcldyYXBwZXIiLCJjaGlsZHJlbiIsImNvdl8yNG10ZHRta2ptIiwiZiIsImlzQXV0aGVudGljYXRlZCIsInVzZXIiLCJzIiwiX0F1dGhDb250ZXh0IiwidXNlQXV0aCIsImIiLCJ0b2tlbiIsIndpbmRvdyIsImxvY2FsU3RvcmFnZSIsImdldEl0ZW0iLCJfanN4cnVudGltZSIsImpzeCIsIl9XZWJTb2NrZXRQcm92aWRlciIsIldlYlNvY2tldFByb3ZpZGVyIiwiRnJhZ21lbnQiXSwic291cmNlcyI6WyIvVXNlcnMvam9zaHN6ZXAvY29kZS90aGVyb2JvdG92ZXJsb3JkLW1vbm8vdGhlcm9ib3RvdmVybG9yZC13ZWIvc3JjL2NvbXBvbmVudHMvcHJvdmlkZXJzL1dlYlNvY2tldFByb3ZpZGVyV3JhcHBlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBXZWJTb2NrZXQgUHJvdmlkZXIgV3JhcHBlclxuICogQ29uZGl0aW9uYWxseSBwcm92aWRlcyBXZWJTb2NrZXQgY29ubmVjdGlvbiBiYXNlZCBvbiBhdXRoZW50aWNhdGlvbiBzdGF0ZVxuICovXG5cbid1c2UgY2xpZW50JztcblxuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IHVzZUF1dGggfSBmcm9tICdAL2NvbnRleHRzL0F1dGhDb250ZXh0JztcbmltcG9ydCB7IFdlYlNvY2tldFByb3ZpZGVyIH0gZnJvbSAnQC9jb21wb25lbnRzL1dlYlNvY2tldFByb3ZpZGVyJztcblxuaW50ZXJmYWNlIFdlYlNvY2tldFByb3ZpZGVyV3JhcHBlclByb3BzIHtcbiAgY2hpbGRyZW46IFJlYWN0LlJlYWN0Tm9kZTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIFdlYlNvY2tldFByb3ZpZGVyV3JhcHBlcih7IGNoaWxkcmVuIH06IFdlYlNvY2tldFByb3ZpZGVyV3JhcHBlclByb3BzKSB7XG4gIGNvbnN0IHsgaXNBdXRoZW50aWNhdGVkLCB1c2VyIH0gPSB1c2VBdXRoKCk7XG5cbiAgLy8gT25seSBwcm92aWRlIFdlYlNvY2tldCBjb25uZWN0aW9uIGlmIHVzZXIgaXMgYXV0aGVudGljYXRlZFxuICBpZiAoaXNBdXRoZW50aWNhdGVkICYmIHVzZXIpIHtcbiAgICAvLyBHZXQgdG9rZW4gZnJvbSBsb2NhbFN0b3JhZ2UgKHNhbWUgYXMgd2hhdCBBUEkgY2xpZW50IHVzZXMpXG4gICAgY29uc3QgdG9rZW4gPSB0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJyA/IGxvY2FsU3RvcmFnZS5nZXRJdGVtKCdhdXRoX3Rva2VuJykgfHwgJycgOiAnJztcbiAgICBcbiAgICByZXR1cm4gKFxuICAgICAgPFdlYlNvY2tldFByb3ZpZGVyIHRva2VuPXt0b2tlbn0+XG4gICAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDwvV2ViU29ja2V0UHJvdmlkZXI+XG4gICAgKTtcbiAgfVxuXG4gIC8vIFJldHVybiBjaGlsZHJlbiB3aXRob3V0IFdlYlNvY2tldCBwcm92aWRlciBpZiBub3QgYXV0aGVudGljYXRlZFxuICByZXR1cm4gPD57Y2hpbGRyZW59PC8+O1xufVxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7O0dBS0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7K0JBVWdCOzs7Ozs7V0FBQUEsd0JBQUE7Ozs7Ozs7O3dFQVJFOzs7a0NBQ007OztrQ0FDVTs7Ozs7Ozs7Ozs7Ozs7O0FBTTNCLFNBQVNBLHlCQUF5QjtFQUFFQztBQUFRLENBQWlDO0VBQUE7RUFBQUMsY0FBQSxHQUFBQyxDQUFBO0VBQ2xGLE1BQU07SUFBRUMsZUFBZTtJQUFFQztFQUFJLENBQUU7RUFBQTtFQUFBLENBQUFILGNBQUEsR0FBQUksQ0FBQSxPQUFHLElBQUFDLFlBQUEsQ0FBQUMsT0FBTztFQUV6QztFQUFBO0VBQUFOLGNBQUEsR0FBQUksQ0FBQTtFQUNBO0VBQUk7RUFBQSxDQUFBSixjQUFBLEdBQUFPLENBQUEsVUFBQUwsZUFBQTtFQUFBO0VBQUEsQ0FBQUYsY0FBQSxHQUFBTyxDQUFBLFVBQW1CSixJQUFBLEdBQU07SUFBQTtJQUFBSCxjQUFBLEdBQUFPLENBQUE7SUFDM0I7SUFDQSxNQUFNQyxLQUFBO0lBQUE7SUFBQSxDQUFBUixjQUFBLEdBQUFJLENBQUEsUUFBUSxPQUFPSyxNQUFBLEtBQVc7SUFBQTtJQUFBLENBQUFULGNBQUEsR0FBQU8sQ0FBQTtJQUFjO0lBQUEsQ0FBQVAsY0FBQSxHQUFBTyxDQUFBLFVBQUFHLFlBQUEsQ0FBYUMsT0FBTyxDQUFDO0lBQUE7SUFBQSxDQUFBWCxjQUFBLEdBQUFPLENBQUEsVUFBaUI7SUFBQTtJQUFBLENBQUFQLGNBQUEsR0FBQU8sQ0FBQSxVQUFLO0lBQUE7SUFBQVAsY0FBQSxHQUFBSSxDQUFBO0lBRXpGLG9CQUNFLElBQUFRLFdBQUEsQ0FBQUMsR0FBQSxFQUFDQyxrQkFBQSxDQUFBQyxpQkFBaUI7TUFBQ1AsS0FBQSxFQUFPQSxLQUFBO2dCQUN2QlQ7O0VBR1A7RUFBQTtFQUFBO0lBQUFDLGNBQUEsR0FBQU8sQ0FBQTtFQUFBO0VBRUE7RUFBQVAsY0FBQSxHQUFBSSxDQUFBO0VBQ0Esb0JBQU8sSUFBQVEsV0FBQSxDQUFBQyxHQUFBLEVBQUFELFdBQUEsQ0FBQUksUUFBQTtjQUFHakI7O0FBQ1oiLCJpZ25vcmVMaXN0IjpbXX0=

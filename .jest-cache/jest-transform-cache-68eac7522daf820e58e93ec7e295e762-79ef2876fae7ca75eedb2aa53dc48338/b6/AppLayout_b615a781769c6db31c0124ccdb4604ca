@@ -1,0 +1,401 @@
+607eec23f5350860cae51b4fe1124a06
+/**
+ * Main application layout wrapper
+ * Provides consistent layout structure for authenticated pages
+ */'use client';
+"use strict";
+
+/* istanbul ignore next */
+function cov_1rl55y8pw9() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/layout/AppLayout.tsx";
+  var hash = "da41fea23985afbe2b401eee30080c265962f4f5";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/layout/AppLayout.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 12,
+          column: 8
+        },
+        end: {
+          line: 12,
+          column: 25
+        }
+      },
+      "3": {
+        start: {
+          line: 15,
+          column: 20
+        },
+        end: {
+          line: 15,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 16,
+          column: 29
+        },
+        end: {
+          line: 16,
+          column: 71
+        }
+      },
+      "5": {
+        start: {
+          line: 17,
+          column: 16
+        },
+        end: {
+          line: 17,
+          column: 47
+        }
+      },
+      "6": {
+        start: {
+          line: 19,
+          column: 4
+        },
+        end: {
+          line: 21,
+          column: 6
+        }
+      },
+      "7": {
+        start: {
+          line: 24,
+          column: 4
+        },
+        end: {
+          line: 33,
+          column: 7
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 11,
+            column: 9
+          },
+          end: {
+            line: 11,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 20
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        line: 11
+      },
+      "1": {
+        name: "_interop_require_default",
+        decl: {
+          start: {
+            line: 18,
+            column: 9
+          },
+          end: {
+            line: 18,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 39
+          },
+          end: {
+            line: 22,
+            column: 1
+          }
+        },
+        line: 18
+      },
+      "2": {
+        name: "AppLayout",
+        decl: {
+          start: {
+            line: 23,
+            column: 9
+          },
+          end: {
+            line: 23,
+            column: 18
+          }
+        },
+        loc: {
+          start: {
+            line: 23,
+            column: 52
+          },
+          end: {
+            line: 34,
+            column: 1
+          }
+        },
+        line: 23
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 19,
+            column: 11
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 19,
+            column: 35
+          },
+          end: {
+            line: 19,
+            column: 38
+          }
+        }, {
+          start: {
+            line: 19,
+            column: 41
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        }],
+        line: 19
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 19,
+            column: 11
+          },
+          end: {
+            line: 19,
+            column: 32
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 19,
+            column: 11
+          },
+          end: {
+            line: 19,
+            column: 14
+          }
+        }, {
+          start: {
+            line: 19,
+            column: 18
+          },
+          end: {
+            line: 19,
+            column: 32
+          }
+        }],
+        line: 19
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 23,
+            column: 31
+          },
+          end: {
+            line: 23,
+            column: 48
+          }
+        },
+        type: "default-arg",
+        locations: [{
+          start: {
+            line: 23,
+            column: 44
+          },
+          end: {
+            line: 23,
+            column: 48
+          }
+        }],
+        line: 23
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 27,
+            column: 12
+          },
+          end: {
+            line: 27,
+            column: 80
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 27,
+            column: 12
+          },
+          end: {
+            line: 27,
+            column: 22
+          }
+        }, {
+          start: {
+            line: 27,
+            column: 40
+          },
+          end: {
+            line: 27,
+            column: 80
+          }
+        }],
+        line: 27
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0],
+      "3": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/layout/AppLayout.tsx"],
+      sourcesContent: ["/**\n * Main application layout wrapper\n * Provides consistent layout structure for authenticated pages\n */\n\n'use client';\n\nimport React from 'react';\nimport { Header } from '@/components/navigation/Header';\n\ninterface AppLayoutProps {\n  children: React.ReactNode;\n  showHeader?: boolean;\n}\n\nexport function AppLayout({ children, showHeader = true }: AppLayoutProps) {\n  return (\n    <div className=\"min-h-screen bg-background\">\n      {showHeader && <Header />}\n      <main className=\"flex-1\">\n        {children}\n      </main>\n    </div>\n  );\n}\n"],
+      names: ["AppLayout", "children", "showHeader", "div", "className", "Header", "main"],
+      mappings: "AAAA;;;CAGC,GAED;;;;;+BAUgBA;;;eAAAA;;;;8DARE;wBACK;;;;;;AAOhB,SAASA,UAAU,EAAEC,QAAQ,EAAEC,aAAa,IAAI,EAAkB;IACvE,qBACE,sBAACC;QAAIC,WAAU;;YACZF,4BAAc,qBAACG,cAAM;0BACtB,qBAACC;gBAAKF,WAAU;0BACbH;;;;AAIT"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "da41fea23985afbe2b401eee30080c265962f4f5"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1rl55y8pw9 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1rl55y8pw9();
+cov_1rl55y8pw9().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1rl55y8pw9().s[1]++;
+Object.defineProperty(exports, "AppLayout", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_1rl55y8pw9().f[0]++;
+    cov_1rl55y8pw9().s[2]++;
+    return AppLayout;
+  }
+});
+const _jsxruntime =
+/* istanbul ignore next */
+(cov_1rl55y8pw9().s[3]++, require("react/jsx-runtime"));
+const _react =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_1rl55y8pw9().s[4]++, _interop_require_default(require("react")));
+const _Header =
+/* istanbul ignore next */
+(cov_1rl55y8pw9().s[5]++, require("../navigation/Header"));
+function _interop_require_default(obj) {
+  /* istanbul ignore next */
+  cov_1rl55y8pw9().f[1]++;
+  cov_1rl55y8pw9().s[6]++;
+  return /* istanbul ignore next */(cov_1rl55y8pw9().b[1][0]++, obj) &&
+  /* istanbul ignore next */
+  (cov_1rl55y8pw9().b[1][1]++, obj.__esModule) ?
+  /* istanbul ignore next */
+  (cov_1rl55y8pw9().b[0][0]++, obj) :
+  /* istanbul ignore next */
+  (cov_1rl55y8pw9().b[0][1]++, {
+    default: obj
+  });
+}
+function AppLayout({
+  children,
+  showHeader =
+  /* istanbul ignore next */
+  (cov_1rl55y8pw9().b[2][0]++, true)
+}) {
+  /* istanbul ignore next */
+  cov_1rl55y8pw9().f[2]++;
+  cov_1rl55y8pw9().s[7]++;
+  return /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+    className: "min-h-screen bg-background",
+    children: [
+    /* istanbul ignore next */
+    (cov_1rl55y8pw9().b[3][0]++, showHeader) &&
+    /* istanbul ignore next */
+    (cov_1rl55y8pw9().b[3][1]++, /*#__PURE__*/(0, _jsxruntime.jsx)(_Header.Header, {})), /*#__PURE__*/(0, _jsxruntime.jsx)("main", {
+      className: "flex-1",
+      children: children
+    })]
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJBcHBMYXlvdXQiLCJjaGlsZHJlbiIsInNob3dIZWFkZXIiLCJjb3ZfMXJsNTV5OHB3OSIsImIiLCJmIiwicyIsIl9qc3hydW50aW1lIiwianN4cyIsImNsYXNzTmFtZSIsImpzeCIsIl9IZWFkZXIiLCJIZWFkZXIiXSwic291cmNlcyI6WyIvVXNlcnMvam9zaHN6ZXAvY29kZS90aGVyb2JvdG92ZXJsb3JkLW1vbm8vdGhlcm9ib3RvdmVybG9yZC13ZWIvc3JjL2NvbXBvbmVudHMvbGF5b3V0L0FwcExheW91dC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBNYWluIGFwcGxpY2F0aW9uIGxheW91dCB3cmFwcGVyXG4gKiBQcm92aWRlcyBjb25zaXN0ZW50IGxheW91dCBzdHJ1Y3R1cmUgZm9yIGF1dGhlbnRpY2F0ZWQgcGFnZXNcbiAqL1xuXG4ndXNlIGNsaWVudCc7XG5cbmltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBIZWFkZXIgfSBmcm9tICdAL2NvbXBvbmVudHMvbmF2aWdhdGlvbi9IZWFkZXInO1xuXG5pbnRlcmZhY2UgQXBwTGF5b3V0UHJvcHMge1xuICBjaGlsZHJlbjogUmVhY3QuUmVhY3ROb2RlO1xuICBzaG93SGVhZGVyPzogYm9vbGVhbjtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIEFwcExheW91dCh7IGNoaWxkcmVuLCBzaG93SGVhZGVyID0gdHJ1ZSB9OiBBcHBMYXlvdXRQcm9wcykge1xuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwibWluLWgtc2NyZWVuIGJnLWJhY2tncm91bmRcIj5cbiAgICAgIHtzaG93SGVhZGVyICYmIDxIZWFkZXIgLz59XG4gICAgICA8bWFpbiBjbGFzc05hbWU9XCJmbGV4LTFcIj5cbiAgICAgICAge2NoaWxkcmVufVxuICAgICAgPC9tYWluPlxuICAgIDwvZGl2PlxuICApO1xufVxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7O0dBS0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7K0JBVWdCOzs7Ozs7V0FBQUEsU0FBQTs7Ozs7Ozs7d0VBUkU7OztrQ0FDSzs7Ozs7Ozs7Ozs7Ozs7O0FBT2hCLFNBQVNBLFVBQVU7RUFBRUMsUUFBUTtFQUFFQyxVQUFBO0VBQUE7RUFBQSxDQUFBQyxjQUFBLEdBQUFDLENBQUEsVUFBYSxJQUFJO0FBQUEsQ0FBa0I7RUFBQTtFQUFBRCxjQUFBLEdBQUFFLENBQUE7RUFBQUYsY0FBQSxHQUFBRyxDQUFBO0VBQ3ZFLG9CQUNFLElBQUFDLFdBQUEsQ0FBQUMsSUFBQSxFQUFDO0lBQUlDLFNBQUEsRUFBVTs7SUFDWjtJQUFBLENBQUFOLGNBQUEsR0FBQUMsQ0FBQSxVQUFBRixVQUFBO0lBQUE7SUFBQSxDQUFBQyxjQUFBLEdBQUFDLENBQUEsdUJBQWMsSUFBQUcsV0FBQSxDQUFBRyxHQUFBLEVBQUNDLE9BQUEsQ0FBQUMsTUFBTSxRLGFBQ3RCLElBQUFMLFdBQUEsQ0FBQUcsR0FBQSxFQUFDO01BQUtELFNBQUEsRUFBVTtnQkFDYlI7OztBQUlUIiwiaWdub3JlTGlzdCI6W119

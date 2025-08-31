@@ -1,0 +1,62 @@
+ac21c946a6df0754d766bba53f859a88
+/**
+ * Post type definitions for The Robot Overlord
+ * Based on backend API schema
+ */"use strict";
+
+/* istanbul ignore next */
+function cov_a63tpu01q() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/types/posts.ts";
+  var hash = "77791ac9c0e5f6f1c95e81b636237b4351c57b75";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/types/posts.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 3
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/types/posts.ts"],
+      sourcesContent: ["/**\n * Post type definitions for The Robot Overlord\n * Based on backend API schema\n */\n\nexport interface Post {\n  id: string;\n  title: string;\n  content: string;\n  authorId: string;\n  author: {\n    id: string;\n    username: string;\n    firstName?: string;\n    lastName?: string;\n    avatar?: string;\n    role: string;\n    loyaltyScore: number;\n    badges?: Array<{\n      id: string;\n      name: string;\n      icon: string;\n      rarity: string;\n    }>;\n  };\n  topicId: string;\n  topic: {\n    id: string;\n    title: string;\n    slug: string;\n    category: {\n      id: string;\n      name: string;\n      color: string;\n    };\n  };\n  parentId?: string; // For replies\n  status: 'draft' | 'published' | 'moderated' | 'removed';\n  moderationStatus: 'pending' | 'approved' | 'rejected' | 'flagged';\n  moderationReason?: string;\n  moderatedBy?: string;\n  moderatedAt?: string;\n  tags: string[];\n  upvotes: number;\n  downvotes: number;\n  score: number;\n  userVote?: 'up' | 'down' | null;\n  replyCount: number;\n  viewCount: number;\n  isPinned: boolean;\n  isLocked: boolean;\n  isEdited: boolean;\n  createdAt: string;\n  updatedAt: string;\n  editedAt?: string;\n  publishedAt?: string;\n  userPermissions?: {\n    canEdit: boolean;\n    canDelete: boolean;\n    canModerate: boolean;\n    canReport: boolean;\n  };\n  editHistory?: Array<{\n    id: string;\n    content: string;\n    editedAt: string;\n    editedBy: string;\n    reason?: string;\n  }>;\n  attachments?: Array<{\n    id: string;\n    filename: string;\n    url: string;\n    type: string;\n    size: number;\n  }>;\n  metadata?: {\n    readTime?: number;\n    wordCount?: number;\n    contentWarnings?: string[];\n  };\n}\n\nexport interface CreatePostRequest {\n  title: string;\n  content: string;\n  topicId: string;\n  parentId?: string;\n  tags?: string[];\n  status?: 'draft' | 'published';\n  attachments?: string[];\n}\n\nexport interface UpdatePostRequest {\n  title?: string;\n  content?: string;\n  tags?: string[];\n  editReason?: string;\n  attachments?: string[];\n}\n\nexport interface PostFilters {\n  topicId?: string;\n  authorId?: string;\n  parentId?: string;\n  status?: Post['status'];\n  moderationStatus?: Post['moderationStatus'];\n  tags?: string[];\n  search?: string;\n  sortBy?: 'newest' | 'oldest' | 'popular' | 'controversial' | 'trending' | 'replies';\n  timeRange?: 'hour' | 'day' | 'week' | 'month' | 'year' | 'all';\n  hasAttachments?: boolean;\n  isPinned?: boolean;\n  isLocked?: boolean;\n  page?: number;\n  limit?: number;\n}\n\nexport interface PostVote {\n  postId: string;\n  userId: string;\n  vote: 'up' | 'down';\n  createdAt: string;\n}\n\nexport interface PostReport {\n  id: string;\n  postId: string;\n  reportedBy: string;\n  reporter: {\n    id: string;\n    username: string;\n  };\n  reason: string;\n  details?: string;\n  status: 'pending' | 'reviewed' | 'dismissed';\n  reviewedBy?: string;\n  reviewedAt?: string;\n  createdAt: string;\n}\n\nexport interface PostModerationAction {\n  id: string;\n  postId: string;\n  action: 'approve' | 'reject' | 'flag' | 'remove' | 'pin' | 'unpin' | 'lock' | 'unlock' | 'edit';\n  reason?: string;\n  moderatedBy: string;\n  moderator: {\n    id: string;\n    username: string;\n    role: string;\n  };\n  previousStatus?: string;\n  newStatus: string;\n  notifyAuthor: boolean;\n  createdAt: string;\n}\n\nexport interface PostAnalytics {\n  postId: string;\n  views: number;\n  uniqueViews: number;\n  engagement: number;\n  engagementRate: number;\n  votingPattern: {\n    upvotes: number;\n    downvotes: number;\n    netScore: number;\n  };\n  replyPattern: Array<{\n    date: string;\n    count: number;\n  }>;\n  viewPattern: Array<{\n    date: string;\n    views: number;\n    uniqueViews: number;\n  }>;\n  moderationActions: number;\n  reportCount: number;\n  shareCount: number;\n  bookmarkCount: number;\n}\n"],
+      names: [],
+      mappings: "AAAA;;;CAGC"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "77791ac9c0e5f6f1c95e81b636237b4351c57b75"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_a63tpu01q = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_a63tpu01q();
+cov_a63tpu01q().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfYTYzdHB1MDFxIiwicGF0aCIsImhhc2giLCJnbG9iYWwiLCJGdW5jdGlvbiIsImdjdiIsImNvdmVyYWdlRGF0YSIsInN0YXRlbWVudE1hcCIsInN0YXJ0IiwibGluZSIsImNvbHVtbiIsImVuZCIsImZuTWFwIiwiYnJhbmNoTWFwIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJ2ZXJzaW9uIiwic291cmNlcyIsInNvdXJjZXNDb250ZW50IiwibmFtZXMiLCJtYXBwaW5ncyIsIl9jb3ZlcmFnZVNjaGVtYSIsImNvdmVyYWdlIiwiYWN0dWFsQ292ZXJhZ2UiXSwic291cmNlcyI6WyIvVXNlcnMvam9zaHN6ZXAvY29kZS90aGVyb2JvdG92ZXJsb3JkLW1vbm8vdGhlcm9ib3RvdmVybG9yZC13ZWIvc3JjL3R5cGVzL3Bvc3RzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogUG9zdCB0eXBlIGRlZmluaXRpb25zIGZvciBUaGUgUm9ib3QgT3ZlcmxvcmRcbiAqIEJhc2VkIG9uIGJhY2tlbmQgQVBJIHNjaGVtYVxuICovXG5cbmV4cG9ydCBpbnRlcmZhY2UgUG9zdCB7XG4gIGlkOiBzdHJpbmc7XG4gIHRpdGxlOiBzdHJpbmc7XG4gIGNvbnRlbnQ6IHN0cmluZztcbiAgYXV0aG9ySWQ6IHN0cmluZztcbiAgYXV0aG9yOiB7XG4gICAgaWQ6IHN0cmluZztcbiAgICB1c2VybmFtZTogc3RyaW5nO1xuICAgIGZpcnN0TmFtZT86IHN0cmluZztcbiAgICBsYXN0TmFtZT86IHN0cmluZztcbiAgICBhdmF0YXI/OiBzdHJpbmc7XG4gICAgcm9sZTogc3RyaW5nO1xuICAgIGxveWFsdHlTY29yZTogbnVtYmVyO1xuICAgIGJhZGdlcz86IEFycmF5PHtcbiAgICAgIGlkOiBzdHJpbmc7XG4gICAgICBuYW1lOiBzdHJpbmc7XG4gICAgICBpY29uOiBzdHJpbmc7XG4gICAgICByYXJpdHk6IHN0cmluZztcbiAgICB9PjtcbiAgfTtcbiAgdG9waWNJZDogc3RyaW5nO1xuICB0b3BpYzoge1xuICAgIGlkOiBzdHJpbmc7XG4gICAgdGl0bGU6IHN0cmluZztcbiAgICBzbHVnOiBzdHJpbmc7XG4gICAgY2F0ZWdvcnk6IHtcbiAgICAgIGlkOiBzdHJpbmc7XG4gICAgICBuYW1lOiBzdHJpbmc7XG4gICAgICBjb2xvcjogc3RyaW5nO1xuICAgIH07XG4gIH07XG4gIHBhcmVudElkPzogc3RyaW5nOyAvLyBGb3IgcmVwbGllc1xuICBzdGF0dXM6ICdkcmFmdCcgfCAncHVibGlzaGVkJyB8ICdtb2RlcmF0ZWQnIHwgJ3JlbW92ZWQnO1xuICBtb2RlcmF0aW9uU3RhdHVzOiAncGVuZGluZycgfCAnYXBwcm92ZWQnIHwgJ3JlamVjdGVkJyB8ICdmbGFnZ2VkJztcbiAgbW9kZXJhdGlvblJlYXNvbj86IHN0cmluZztcbiAgbW9kZXJhdGVkQnk/OiBzdHJpbmc7XG4gIG1vZGVyYXRlZEF0Pzogc3RyaW5nO1xuICB0YWdzOiBzdHJpbmdbXTtcbiAgdXB2b3RlczogbnVtYmVyO1xuICBkb3dudm90ZXM6IG51bWJlcjtcbiAgc2NvcmU6IG51bWJlcjtcbiAgdXNlclZvdGU/OiAndXAnIHwgJ2Rvd24nIHwgbnVsbDtcbiAgcmVwbHlDb3VudDogbnVtYmVyO1xuICB2aWV3Q291bnQ6IG51bWJlcjtcbiAgaXNQaW5uZWQ6IGJvb2xlYW47XG4gIGlzTG9ja2VkOiBib29sZWFuO1xuICBpc0VkaXRlZDogYm9vbGVhbjtcbiAgY3JlYXRlZEF0OiBzdHJpbmc7XG4gIHVwZGF0ZWRBdDogc3RyaW5nO1xuICBlZGl0ZWRBdD86IHN0cmluZztcbiAgcHVibGlzaGVkQXQ/OiBzdHJpbmc7XG4gIHVzZXJQZXJtaXNzaW9ucz86IHtcbiAgICBjYW5FZGl0OiBib29sZWFuO1xuICAgIGNhbkRlbGV0ZTogYm9vbGVhbjtcbiAgICBjYW5Nb2RlcmF0ZTogYm9vbGVhbjtcbiAgICBjYW5SZXBvcnQ6IGJvb2xlYW47XG4gIH07XG4gIGVkaXRIaXN0b3J5PzogQXJyYXk8e1xuICAgIGlkOiBzdHJpbmc7XG4gICAgY29udGVudDogc3RyaW5nO1xuICAgIGVkaXRlZEF0OiBzdHJpbmc7XG4gICAgZWRpdGVkQnk6IHN0cmluZztcbiAgICByZWFzb24/OiBzdHJpbmc7XG4gIH0+O1xuICBhdHRhY2htZW50cz86IEFycmF5PHtcbiAgICBpZDogc3RyaW5nO1xuICAgIGZpbGVuYW1lOiBzdHJpbmc7XG4gICAgdXJsOiBzdHJpbmc7XG4gICAgdHlwZTogc3RyaW5nO1xuICAgIHNpemU6IG51bWJlcjtcbiAgfT47XG4gIG1ldGFkYXRhPzoge1xuICAgIHJlYWRUaW1lPzogbnVtYmVyO1xuICAgIHdvcmRDb3VudD86IG51bWJlcjtcbiAgICBjb250ZW50V2FybmluZ3M/OiBzdHJpbmdbXTtcbiAgfTtcbn1cblxuZXhwb3J0IGludGVyZmFjZSBDcmVhdGVQb3N0UmVxdWVzdCB7XG4gIHRpdGxlOiBzdHJpbmc7XG4gIGNvbnRlbnQ6IHN0cmluZztcbiAgdG9waWNJZDogc3RyaW5nO1xuICBwYXJlbnRJZD86IHN0cmluZztcbiAgdGFncz86IHN0cmluZ1tdO1xuICBzdGF0dXM/OiAnZHJhZnQnIHwgJ3B1Ymxpc2hlZCc7XG4gIGF0dGFjaG1lbnRzPzogc3RyaW5nW107XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgVXBkYXRlUG9zdFJlcXVlc3Qge1xuICB0aXRsZT86IHN0cmluZztcbiAgY29udGVudD86IHN0cmluZztcbiAgdGFncz86IHN0cmluZ1tdO1xuICBlZGl0UmVhc29uPzogc3RyaW5nO1xuICBhdHRhY2htZW50cz86IHN0cmluZ1tdO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIFBvc3RGaWx0ZXJzIHtcbiAgdG9waWNJZD86IHN0cmluZztcbiAgYXV0aG9ySWQ/OiBzdHJpbmc7XG4gIHBhcmVudElkPzogc3RyaW5nO1xuICBzdGF0dXM/OiBQb3N0WydzdGF0dXMnXTtcbiAgbW9kZXJhdGlvblN0YXR1cz86IFBvc3RbJ21vZGVyYXRpb25TdGF0dXMnXTtcbiAgdGFncz86IHN0cmluZ1tdO1xuICBzZWFyY2g/OiBzdHJpbmc7XG4gIHNvcnRCeT86ICduZXdlc3QnIHwgJ29sZGVzdCcgfCAncG9wdWxhcicgfCAnY29udHJvdmVyc2lhbCcgfCAndHJlbmRpbmcnIHwgJ3JlcGxpZXMnO1xuICB0aW1lUmFuZ2U/OiAnaG91cicgfCAnZGF5JyB8ICd3ZWVrJyB8ICdtb250aCcgfCAneWVhcicgfCAnYWxsJztcbiAgaGFzQXR0YWNobWVudHM/OiBib29sZWFuO1xuICBpc1Bpbm5lZD86IGJvb2xlYW47XG4gIGlzTG9ja2VkPzogYm9vbGVhbjtcbiAgcGFnZT86IG51bWJlcjtcbiAgbGltaXQ/OiBudW1iZXI7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgUG9zdFZvdGUge1xuICBwb3N0SWQ6IHN0cmluZztcbiAgdXNlcklkOiBzdHJpbmc7XG4gIHZvdGU6ICd1cCcgfCAnZG93bic7XG4gIGNyZWF0ZWRBdDogc3RyaW5nO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIFBvc3RSZXBvcnQge1xuICBpZDogc3RyaW5nO1xuICBwb3N0SWQ6IHN0cmluZztcbiAgcmVwb3J0ZWRCeTogc3RyaW5nO1xuICByZXBvcnRlcjoge1xuICAgIGlkOiBzdHJpbmc7XG4gICAgdXNlcm5hbWU6IHN0cmluZztcbiAgfTtcbiAgcmVhc29uOiBzdHJpbmc7XG4gIGRldGFpbHM/OiBzdHJpbmc7XG4gIHN0YXR1czogJ3BlbmRpbmcnIHwgJ3Jldmlld2VkJyB8ICdkaXNtaXNzZWQnO1xuICByZXZpZXdlZEJ5Pzogc3RyaW5nO1xuICByZXZpZXdlZEF0Pzogc3RyaW5nO1xuICBjcmVhdGVkQXQ6IHN0cmluZztcbn1cblxuZXhwb3J0IGludGVyZmFjZSBQb3N0TW9kZXJhdGlvbkFjdGlvbiB7XG4gIGlkOiBzdHJpbmc7XG4gIHBvc3RJZDogc3RyaW5nO1xuICBhY3Rpb246ICdhcHByb3ZlJyB8ICdyZWplY3QnIHwgJ2ZsYWcnIHwgJ3JlbW92ZScgfCAncGluJyB8ICd1bnBpbicgfCAnbG9jaycgfCAndW5sb2NrJyB8ICdlZGl0JztcbiAgcmVhc29uPzogc3RyaW5nO1xuICBtb2RlcmF0ZWRCeTogc3RyaW5nO1xuICBtb2RlcmF0b3I6IHtcbiAgICBpZDogc3RyaW5nO1xuICAgIHVzZXJuYW1lOiBzdHJpbmc7XG4gICAgcm9sZTogc3RyaW5nO1xuICB9O1xuICBwcmV2aW91c1N0YXR1cz86IHN0cmluZztcbiAgbmV3U3RhdHVzOiBzdHJpbmc7XG4gIG5vdGlmeUF1dGhvcjogYm9vbGVhbjtcbiAgY3JlYXRlZEF0OiBzdHJpbmc7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgUG9zdEFuYWx5dGljcyB7XG4gIHBvc3RJZDogc3RyaW5nO1xuICB2aWV3czogbnVtYmVyO1xuICB1bmlxdWVWaWV3czogbnVtYmVyO1xuICBlbmdhZ2VtZW50OiBudW1iZXI7XG4gIGVuZ2FnZW1lbnRSYXRlOiBudW1iZXI7XG4gIHZvdGluZ1BhdHRlcm46IHtcbiAgICB1cHZvdGVzOiBudW1iZXI7XG4gICAgZG93bnZvdGVzOiBudW1iZXI7XG4gICAgbmV0U2NvcmU6IG51bWJlcjtcbiAgfTtcbiAgcmVwbHlQYXR0ZXJuOiBBcnJheTx7XG4gICAgZGF0ZTogc3RyaW5nO1xuICAgIGNvdW50OiBudW1iZXI7XG4gIH0+O1xuICB2aWV3UGF0dGVybjogQXJyYXk8e1xuICAgIGRhdGU6IHN0cmluZztcbiAgICB2aWV3czogbnVtYmVyO1xuICAgIHVuaXF1ZVZpZXdzOiBudW1iZXI7XG4gIH0+O1xuICBtb2RlcmF0aW9uQWN0aW9uczogbnVtYmVyO1xuICByZXBvcnRDb3VudDogbnVtYmVyO1xuICBzaGFyZUNvdW50OiBudW1iZXI7XG4gIGJvb2ttYXJrQ291bnQ6IG51bWJlcjtcbn1cbiJdLCJtYXBwaW5ncyI6IkFBQUE7OztHQUdDOztBQUFBO0FBQUEsU0FBQUEsY0FBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsTUFBQSxPQUFBQyxRQUFBO0VBQUEsSUFBQUMsR0FBQTtFQUFBLElBQUFDLFlBQUE7SUFBQUwsSUFBQTtJQUFBTSxZQUFBO01BQUE7UUFBQUMsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7SUFBQTtJQUFBRSxLQUFBO0lBQUFDLFNBQUE7SUFBQUMsQ0FBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtJQUFBQyxDQUFBO0lBQUFDLGNBQUE7TUFBQUMsT0FBQTtNQUFBQyxPQUFBO01BQUFDLGNBQUE7TUFBQUMsS0FBQTtNQUFBQyxRQUFBO0lBQUE7SUFBQUMsZUFBQTtJQUFBckIsSUFBQTtFQUFBO0VBQUEsSUFBQXNCLFFBQUEsR0FBQXJCLE1BQUEsQ0FBQUUsR0FBQSxNQUFBRixNQUFBLENBQUFFLEdBQUE7RUFBQSxLQUFBbUIsUUFBQSxDQUFBdkIsSUFBQSxLQUFBdUIsUUFBQSxDQUFBdkIsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQXNCLFFBQUEsQ0FBQXZCLElBQUEsSUFBQUssWUFBQTtFQUFBO0VBQUEsSUFBQW1CLGNBQUEsR0FBQUQsUUFBQSxDQUFBdkIsSUFBQTtFQUFBIiwiaWdub3JlTGlzdCI6W119

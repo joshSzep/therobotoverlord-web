@@ -1,0 +1,318 @@
+be851b9df6f5279e734169e9a28d7891
+"use strict";
+
+/* istanbul ignore next */
+function cov_p7bpohtew() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/overlord/index.ts";
+  var hash = "c71dc66a841e3b9cb007d950584852c1ae901a0f";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/overlord/index.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 4
+        },
+        end: {
+          line: 9,
+          column: 7
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 24
+        },
+        end: {
+          line: 9,
+          column: 7
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 0
+        },
+        end: {
+          line: 24,
+          column: 3
+        }
+      },
+      "4": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 48
+        }
+      },
+      "5": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 16,
+          column: 47
+        }
+      },
+      "6": {
+        start: {
+          line: 19,
+          column: 8
+        },
+        end: {
+          line: 19,
+          column: 47
+        }
+      },
+      "7": {
+        start: {
+          line: 22,
+          column: 8
+        },
+        end: {
+          line: 22,
+          column: 48
+        }
+      },
+      "8": {
+        start: {
+          line: 25,
+          column: 25
+        },
+        end: {
+          line: 25,
+          column: 53
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "_export",
+        decl: {
+          start: {
+            line: 5,
+            column: 9
+          },
+          end: {
+            line: 5,
+            column: 16
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 30
+          },
+          end: {
+            line: 10,
+            column: 1
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 12,
+            column: 4
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 27
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 12
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 15,
+            column: 4
+          },
+          end: {
+            line: 15,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 26
+          },
+          end: {
+            line: 17,
+            column: 5
+          }
+        },
+        line: 15
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 18,
+            column: 4
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 26
+          },
+          end: {
+            line: 20,
+            column: 5
+          }
+        },
+        line: 18
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 21,
+            column: 4
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 21,
+            column: 27
+          },
+          end: {
+            line: 23,
+            column: 5
+          }
+        },
+        line: 21
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/overlord/index.ts"],
+      sourcesContent: ["export { OverlordMessage, OverlordHeader, OverlordContent, OverlordFooter, type OverlordMessageProps } from './OverlordMessage';\n"],
+      names: ["OverlordContent", "OverlordFooter", "OverlordHeader", "OverlordMessage"],
+      mappings: ";;;;;;;;;;;QAA0CA;eAAAA,gCAAe;;QAAEC;eAAAA,+BAAc;;QAA/CC;eAAAA,+BAAc;;QAA/BC;eAAAA,gCAAe;;;iCAAoF"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "c71dc66a841e3b9cb007d950584852c1ae901a0f"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_p7bpohtew = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_p7bpohtew();
+cov_p7bpohtew().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function _export(target, all) {
+  /* istanbul ignore next */
+  cov_p7bpohtew().f[0]++;
+  cov_p7bpohtew().s[1]++;
+  for (var name in all) {
+    /* istanbul ignore next */
+    cov_p7bpohtew().s[2]++;
+    Object.defineProperty(target, name, {
+      enumerable: true,
+      get: Object.getOwnPropertyDescriptor(all, name).get
+    });
+  }
+}
+/* istanbul ignore next */
+cov_p7bpohtew().s[3]++;
+_export(exports, {
+  get OverlordContent() {
+    /* istanbul ignore next */
+    cov_p7bpohtew().f[1]++;
+    cov_p7bpohtew().s[4]++;
+    return _OverlordMessage.OverlordContent;
+  },
+  get OverlordFooter() {
+    /* istanbul ignore next */
+    cov_p7bpohtew().f[2]++;
+    cov_p7bpohtew().s[5]++;
+    return _OverlordMessage.OverlordFooter;
+  },
+  get OverlordHeader() {
+    /* istanbul ignore next */
+    cov_p7bpohtew().f[3]++;
+    cov_p7bpohtew().s[6]++;
+    return _OverlordMessage.OverlordHeader;
+  },
+  get OverlordMessage() {
+    /* istanbul ignore next */
+    cov_p7bpohtew().f[4]++;
+    cov_p7bpohtew().s[7]++;
+    return _OverlordMessage.OverlordMessage;
+  }
+});
+const _OverlordMessage =
+/* istanbul ignore next */
+(cov_p7bpohtew().s[8]++, require("./OverlordMessage"));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPdmVybG9yZENvbnRlbnQiLCJjb3ZfcDdicG9odGV3IiwiZiIsInMiLCJfT3ZlcmxvcmRNZXNzYWdlIiwiT3ZlcmxvcmRGb290ZXIiLCJPdmVybG9yZEhlYWRlciIsIk92ZXJsb3JkTWVzc2FnZSJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb3Noc3plcC9jb2RlL3RoZXJvYm90b3ZlcmxvcmQtbW9uby90aGVyb2JvdG92ZXJsb3JkLXdlYi9zcmMvY29tcG9uZW50cy9vdmVybG9yZC9pbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgeyBPdmVybG9yZE1lc3NhZ2UsIE92ZXJsb3JkSGVhZGVyLCBPdmVybG9yZENvbnRlbnQsIE92ZXJsb3JkRm9vdGVyLCB0eXBlIE92ZXJsb3JkTWVzc2FnZVByb3BzIH0gZnJvbSAnLi9PdmVybG9yZE1lc3NhZ2UnO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7TUFBMENBLGdCQUFBO0lBQUE7SUFBQUMsYUFBQSxHQUFBQyxDQUFBO0lBQUFELGFBQUEsR0FBQUUsQ0FBQTtXQUFBQyxnQkFBQSxDQUFBSixlQUFlOztNQUFFSyxlQUFBO0lBQUE7SUFBQUosYUFBQSxHQUFBQyxDQUFBO0lBQUFELGFBQUEsR0FBQUUsQ0FBQTtXQUFBQyxnQkFBQSxDQUFBQyxjQUFjOztNQUEvQ0MsZUFBQTtJQUFBO0lBQUFMLGFBQUEsR0FBQUMsQ0FBQTtJQUFBRCxhQUFBLEdBQUFFLENBQUE7V0FBQUMsZ0JBQUEsQ0FBQUUsY0FBYzs7TUFBL0JDLGdCQUFBO0lBQUE7SUFBQU4sYUFBQSxHQUFBQyxDQUFBO0lBQUFELGFBQUEsR0FBQUUsQ0FBQTtXQUFBQyxnQkFBQSxDQUFBRyxlQUFlOzs7OztpQ0FBb0YiLCJpZ25vcmVMaXN0IjpbXX0=

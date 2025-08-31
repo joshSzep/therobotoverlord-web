@@ -1,0 +1,292 @@
+098346f7f6b4c51e8ae3758733bf081c
+"use strict";
+
+/* istanbul ignore next */
+function cov_118775ts3k() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/page.tsx";
+  var hash = "974571759481d7b046435e6f2087a5618429e993";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/page.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 20
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 20
+        },
+        end: {
+          line: 11,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 12,
+          column: 12
+        },
+        end: {
+          line: 12,
+          column: 39
+        }
+      },
+      "5": {
+        start: {
+          line: 13,
+          column: 18
+        },
+        end: {
+          line: 13,
+          column: 51
+        }
+      },
+      "6": {
+        start: {
+          line: 15,
+          column: 4
+        },
+        end: {
+          line: 138,
+          column: 7
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 9
+          },
+          end: {
+            line: 7,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 20
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "Home",
+        decl: {
+          start: {
+            line: 14,
+            column: 9
+          },
+          end: {
+            line: 14,
+            column: 13
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 16
+          },
+          end: {
+            line: 139,
+            column: 1
+          }
+        },
+        line: 14
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/app/page.tsx"],
+      sourcesContent: ["import { Button } from '@/components/ui';\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui';\nimport { OverlordMessage, OverlordHeader, OverlordContent } from '@/components/overlord';\n\nexport default function Home() {\n  return (\n    <div className=\"min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-8\">\n      <main className=\"max-w-4xl mx-auto text-center space-y-8\">\n        {/* Overlord Header */}\n        <OverlordMessage>\n          <OverlordHeader>\n            <h1 className=\"text-4xl md:text-6xl font-bold text-light-text mb-4 font-mono\">\n              THE ROBOT OVERLORD\n            </h1>\n            <p className=\"text-xl md:text-2xl text-muted-light font-mono\">\n              CITIZEN IDENTIFICATION REQUIRED\n            </p>\n          </OverlordHeader>\n        </OverlordMessage>\n\n        {/* Welcome Message */}\n        <Card>\n          <CardHeader>\n            <CardTitle>Welcome to the Debate Arena</CardTitle>\n            <CardDescription>\n              A satirical, AI-moderated debate arena where citizens argue inside a fictional authoritarian state. \n              The Overlord evaluates every contribution for logic, tone, and relevance.\n            </CardDescription>\n          </CardHeader>\n          <CardContent>\n            <div className=\"grid grid-cols-1 md:grid-cols-3 gap-4\">\n              <Card variant=\"bordered\" padding=\"sm\">\n                <div className=\"border-l-4 border-approved-green pl-4\">\n                  <h3 className=\"font-bold text-approved-green mb-2\">Logic</h3>\n                  <p className=\"text-sm text-muted-light\">Detects contradictions and fallacies</p>\n                </div>\n              </Card>\n              <Card variant=\"bordered\" padding=\"sm\">\n                <div className=\"border-l-4 border-warning-amber pl-4\">\n                  <h3 className=\"font-bold text-warning-amber mb-2\">Tone</h3>\n                  <p className=\"text-sm text-muted-light\">Requires reasoned argument</p>\n                </div>\n              </Card>\n              <Card variant=\"bordered\" padding=\"sm\">\n                <div className=\"border-l-4 border-processing-blue pl-4\">\n                  <h3 className=\"font-bold text-processing-blue mb-2\">Relevance</h3>\n                  <p className=\"text-sm text-muted-light\">Keeps threads on topic</p>\n                </div>\n              </Card>\n            </div>\n          </CardContent>\n        </Card>\n\n        {/* Action Buttons */}\n        <div className=\"flex flex-col sm:flex-row gap-4 justify-center\">\n          <Button variant=\"primary\" size=\"lg\" glow>\n            AUTHENTICATE\n          </Button>\n          <Button variant=\"secondary\" size=\"lg\">\n            BROWSE AS VISITOR\n          </Button>\n        </div>\n\n        {/* Status */}\n        <div className=\"text-sm text-muted-light font-mono space-y-1\">\n          <p>System Status: OPERATIONAL</p>\n          <p>Queue Processing: ACTIVE</p>\n          <p>Overlord Status: MONITORING</p>\n        </div>\n      </main>\n    </div>\n  );\n}\n"],
+      names: ["Home", "div", "className", "main", "OverlordMessage", "OverlordHeader", "h1", "p", "Card", "CardHeader", "CardTitle", "CardDescription", "CardContent", "variant", "padding", "h3", "Button", "size", "glow"],
+      mappings: ";;;;+BAIA;;;eAAwBA;;;;oBAJD;0BAE0C;AAElD,SAASA;IACtB,qBACE,qBAACC;QAAIC,WAAU;kBACb,cAAA,sBAACC;YAAKD,WAAU;;8BAEd,qBAACE,yBAAe;8BACd,cAAA,sBAACC,wBAAc;;0CACb,qBAACC;gCAAGJ,WAAU;0CAAgE;;0CAG9E,qBAACK;gCAAEL,WAAU;0CAAiD;;;;;8BAOlE,sBAACM,QAAI;;sCACH,sBAACC,cAAU;;8CACT,qBAACC,aAAS;8CAAC;;8CACX,qBAACC,mBAAe;8CAAC;;;;sCAKnB,qBAACC,eAAW;sCACV,cAAA,sBAACX;gCAAIC,WAAU;;kDACb,qBAACM,QAAI;wCAACK,SAAQ;wCAAWC,SAAQ;kDAC/B,cAAA,sBAACb;4CAAIC,WAAU;;8DACb,qBAACa;oDAAGb,WAAU;8DAAqC;;8DACnD,qBAACK;oDAAEL,WAAU;8DAA2B;;;;;kDAG5C,qBAACM,QAAI;wCAACK,SAAQ;wCAAWC,SAAQ;kDAC/B,cAAA,sBAACb;4CAAIC,WAAU;;8DACb,qBAACa;oDAAGb,WAAU;8DAAoC;;8DAClD,qBAACK;oDAAEL,WAAU;8DAA2B;;;;;kDAG5C,qBAACM,QAAI;wCAACK,SAAQ;wCAAWC,SAAQ;kDAC/B,cAAA,sBAACb;4CAAIC,WAAU;;8DACb,qBAACa;oDAAGb,WAAU;8DAAsC;;8DACpD,qBAACK;oDAAEL,WAAU;8DAA2B;;;;;;;;;;8BAQlD,sBAACD;oBAAIC,WAAU;;sCACb,qBAACc,UAAM;4BAACH,SAAQ;4BAAUI,MAAK;4BAAKC,IAAI;sCAAC;;sCAGzC,qBAACF,UAAM;4BAACH,SAAQ;4BAAYI,MAAK;sCAAK;;;;8BAMxC,sBAAChB;oBAAIC,WAAU;;sCACb,qBAACK;sCAAE;;sCACH,qBAACA;sCAAE;;sCACH,qBAACA;sCAAE;;;;;;;AAKb"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "974571759481d7b046435e6f2087a5618429e993"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_118775ts3k = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_118775ts3k();
+cov_118775ts3k().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_118775ts3k().s[1]++;
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_118775ts3k().f[0]++;
+    cov_118775ts3k().s[2]++;
+    return Home;
+  }
+});
+const _jsxruntime =
+/* istanbul ignore next */
+(cov_118775ts3k().s[3]++, require("react/jsx-runtime"));
+const _ui =
+/* istanbul ignore next */
+(cov_118775ts3k().s[4]++, require("../components/ui"));
+const _overlord =
+/* istanbul ignore next */
+(cov_118775ts3k().s[5]++, require("../components/overlord"));
+function Home() {
+  /* istanbul ignore next */
+  cov_118775ts3k().f[1]++;
+  cov_118775ts3k().s[6]++;
+  return /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+    className: "min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-8",
+    children: /*#__PURE__*/(0, _jsxruntime.jsxs)("main", {
+      className: "max-w-4xl mx-auto text-center space-y-8",
+      children: [/*#__PURE__*/(0, _jsxruntime.jsx)(_overlord.OverlordMessage, {
+        children: /*#__PURE__*/(0, _jsxruntime.jsxs)(_overlord.OverlordHeader, {
+          children: [/*#__PURE__*/(0, _jsxruntime.jsx)("h1", {
+            className: "text-4xl md:text-6xl font-bold text-light-text mb-4 font-mono",
+            children: "THE ROBOT OVERLORD"
+          }), /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+            className: "text-xl md:text-2xl text-muted-light font-mono",
+            children: "CITIZEN IDENTIFICATION REQUIRED"
+          })]
+        })
+      }), /*#__PURE__*/(0, _jsxruntime.jsxs)(_ui.Card, {
+        children: [/*#__PURE__*/(0, _jsxruntime.jsxs)(_ui.CardHeader, {
+          children: [/*#__PURE__*/(0, _jsxruntime.jsx)(_ui.CardTitle, {
+            children: "Welcome to the Debate Arena"
+          }), /*#__PURE__*/(0, _jsxruntime.jsx)(_ui.CardDescription, {
+            children: "A satirical, AI-moderated debate arena where citizens argue inside a fictional authoritarian state. The Overlord evaluates every contribution for logic, tone, and relevance."
+          })]
+        }), /*#__PURE__*/(0, _jsxruntime.jsx)(_ui.CardContent, {
+          children: /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+            className: "grid grid-cols-1 md:grid-cols-3 gap-4",
+            children: [/*#__PURE__*/(0, _jsxruntime.jsx)(_ui.Card, {
+              variant: "bordered",
+              padding: "sm",
+              children: /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+                className: "border-l-4 border-approved-green pl-4",
+                children: [/*#__PURE__*/(0, _jsxruntime.jsx)("h3", {
+                  className: "font-bold text-approved-green mb-2",
+                  children: "Logic"
+                }), /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+                  className: "text-sm text-muted-light",
+                  children: "Detects contradictions and fallacies"
+                })]
+              })
+            }), /*#__PURE__*/(0, _jsxruntime.jsx)(_ui.Card, {
+              variant: "bordered",
+              padding: "sm",
+              children: /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+                className: "border-l-4 border-warning-amber pl-4",
+                children: [/*#__PURE__*/(0, _jsxruntime.jsx)("h3", {
+                  className: "font-bold text-warning-amber mb-2",
+                  children: "Tone"
+                }), /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+                  className: "text-sm text-muted-light",
+                  children: "Requires reasoned argument"
+                })]
+              })
+            }), /*#__PURE__*/(0, _jsxruntime.jsx)(_ui.Card, {
+              variant: "bordered",
+              padding: "sm",
+              children: /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+                className: "border-l-4 border-processing-blue pl-4",
+                children: [/*#__PURE__*/(0, _jsxruntime.jsx)("h3", {
+                  className: "font-bold text-processing-blue mb-2",
+                  children: "Relevance"
+                }), /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+                  className: "text-sm text-muted-light",
+                  children: "Keeps threads on topic"
+                })]
+              })
+            })]
+          })
+        })]
+      }), /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+        className: "flex flex-col sm:flex-row gap-4 justify-center",
+        children: [/*#__PURE__*/(0, _jsxruntime.jsx)(_ui.Button, {
+          variant: "primary",
+          size: "lg",
+          glow: true,
+          children: "AUTHENTICATE"
+        }), /*#__PURE__*/(0, _jsxruntime.jsx)(_ui.Button, {
+          variant: "secondary",
+          size: "lg",
+          children: "BROWSE AS VISITOR"
+        })]
+      }), /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+        className: "text-sm text-muted-light font-mono space-y-1",
+        children: [/*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+          children: "System Status: OPERATIONAL"
+        }), /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+          children: "Queue Processing: ACTIVE"
+        }), /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+          children: "Overlord Status: MONITORING"
+        })]
+      })]
+    })
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMTE4Nzc1dHMzayIsImFjdHVhbENvdmVyYWdlIiwicyIsIkhvbWUiLCJmIiwiX2pzeHJ1bnRpbWUiLCJqc3giLCJjbGFzc05hbWUiLCJqc3hzIiwiX292ZXJsb3JkIiwiT3ZlcmxvcmRNZXNzYWdlIiwiT3ZlcmxvcmRIZWFkZXIiLCJfdWkiLCJDYXJkIiwiQ2FyZEhlYWRlciIsIkNhcmRUaXRsZSIsIkNhcmREZXNjcmlwdGlvbiIsIkNhcmRDb250ZW50IiwidmFyaWFudCIsInBhZGRpbmciLCJCdXR0b24iLCJzaXplIiwiZ2xvdyJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb3Noc3plcC9jb2RlL3RoZXJvYm90b3ZlcmxvcmQtbW9uby90aGVyb2JvdG92ZXJsb3JkLXdlYi9zcmMvYXBwL3BhZ2UudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJ0AvY29tcG9uZW50cy91aSc7XG5pbXBvcnQgeyBDYXJkLCBDYXJkQ29udGVudCwgQ2FyZERlc2NyaXB0aW9uLCBDYXJkSGVhZGVyLCBDYXJkVGl0bGUgfSBmcm9tICdAL2NvbXBvbmVudHMvdWknO1xuaW1wb3J0IHsgT3ZlcmxvcmRNZXNzYWdlLCBPdmVybG9yZEhlYWRlciwgT3ZlcmxvcmRDb250ZW50IH0gZnJvbSAnQC9jb21wb25lbnRzL292ZXJsb3JkJztcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSG9tZSgpIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cIm1pbi1oLXNjcmVlbiBiZy1iYWNrZ3JvdW5kIHRleHQtZm9yZWdyb3VuZCBmbGV4IGZsZXgtY29sIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBwLThcIj5cbiAgICAgIDxtYWluIGNsYXNzTmFtZT1cIm1heC13LTR4bCBteC1hdXRvIHRleHQtY2VudGVyIHNwYWNlLXktOFwiPlxuICAgICAgICB7LyogT3ZlcmxvcmQgSGVhZGVyICovfVxuICAgICAgICA8T3ZlcmxvcmRNZXNzYWdlPlxuICAgICAgICAgIDxPdmVybG9yZEhlYWRlcj5cbiAgICAgICAgICAgIDxoMSBjbGFzc05hbWU9XCJ0ZXh0LTR4bCBtZDp0ZXh0LTZ4bCBmb250LWJvbGQgdGV4dC1saWdodC10ZXh0IG1iLTQgZm9udC1tb25vXCI+XG4gICAgICAgICAgICAgIFRIRSBST0JPVCBPVkVSTE9SRFxuICAgICAgICAgICAgPC9oMT5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteGwgbWQ6dGV4dC0yeGwgdGV4dC1tdXRlZC1saWdodCBmb250LW1vbm9cIj5cbiAgICAgICAgICAgICAgQ0lUSVpFTiBJREVOVElGSUNBVElPTiBSRVFVSVJFRFxuICAgICAgICAgICAgPC9wPlxuICAgICAgICAgIDwvT3ZlcmxvcmRIZWFkZXI+XG4gICAgICAgIDwvT3ZlcmxvcmRNZXNzYWdlPlxuXG4gICAgICAgIHsvKiBXZWxjb21lIE1lc3NhZ2UgKi99XG4gICAgICAgIDxDYXJkPlxuICAgICAgICAgIDxDYXJkSGVhZGVyPlxuICAgICAgICAgICAgPENhcmRUaXRsZT5XZWxjb21lIHRvIHRoZSBEZWJhdGUgQXJlbmE8L0NhcmRUaXRsZT5cbiAgICAgICAgICAgIDxDYXJkRGVzY3JpcHRpb24+XG4gICAgICAgICAgICAgIEEgc2F0aXJpY2FsLCBBSS1tb2RlcmF0ZWQgZGViYXRlIGFyZW5hIHdoZXJlIGNpdGl6ZW5zIGFyZ3VlIGluc2lkZSBhIGZpY3Rpb25hbCBhdXRob3JpdGFyaWFuIHN0YXRlLiBcbiAgICAgICAgICAgICAgVGhlIE92ZXJsb3JkIGV2YWx1YXRlcyBldmVyeSBjb250cmlidXRpb24gZm9yIGxvZ2ljLCB0b25lLCBhbmQgcmVsZXZhbmNlLlxuICAgICAgICAgICAgPC9DYXJkRGVzY3JpcHRpb24+XG4gICAgICAgICAgPC9DYXJkSGVhZGVyPlxuICAgICAgICAgIDxDYXJkQ29udGVudD5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMSBtZDpncmlkLWNvbHMtMyBnYXAtNFwiPlxuICAgICAgICAgICAgICA8Q2FyZCB2YXJpYW50PVwiYm9yZGVyZWRcIiBwYWRkaW5nPVwic21cIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlci1sLTQgYm9yZGVyLWFwcHJvdmVkLWdyZWVuIHBsLTRcIj5cbiAgICAgICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1hcHByb3ZlZC1ncmVlbiBtYi0yXCI+TG9naWM8L2gzPlxuICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LW11dGVkLWxpZ2h0XCI+RGV0ZWN0cyBjb250cmFkaWN0aW9ucyBhbmQgZmFsbGFjaWVzPC9wPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L0NhcmQ+XG4gICAgICAgICAgICAgIDxDYXJkIHZhcmlhbnQ9XCJib3JkZXJlZFwiIHBhZGRpbmc9XCJzbVwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYm9yZGVyLWwtNCBib3JkZXItd2FybmluZy1hbWJlciBwbC00XCI+XG4gICAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtd2FybmluZy1hbWJlciBtYi0yXCI+VG9uZTwvaDM+XG4gICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtbXV0ZWQtbGlnaHRcIj5SZXF1aXJlcyByZWFzb25lZCBhcmd1bWVudDwvcD5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPC9DYXJkPlxuICAgICAgICAgICAgICA8Q2FyZCB2YXJpYW50PVwiYm9yZGVyZWRcIiBwYWRkaW5nPVwic21cIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlci1sLTQgYm9yZGVyLXByb2Nlc3NpbmctYmx1ZSBwbC00XCI+XG4gICAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtcHJvY2Vzc2luZy1ibHVlIG1iLTJcIj5SZWxldmFuY2U8L2gzPlxuICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LW11dGVkLWxpZ2h0XCI+S2VlcHMgdGhyZWFkcyBvbiB0b3BpYzwvcD5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPC9DYXJkPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9DYXJkQ29udGVudD5cbiAgICAgICAgPC9DYXJkPlxuXG4gICAgICAgIHsvKiBBY3Rpb24gQnV0dG9ucyAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGZsZXgtY29sIHNtOmZsZXgtcm93IGdhcC00IGp1c3RpZnktY2VudGVyXCI+XG4gICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwicHJpbWFyeVwiIHNpemU9XCJsZ1wiIGdsb3c+XG4gICAgICAgICAgICBBVVRIRU5USUNBVEVcbiAgICAgICAgICA8L0J1dHRvbj5cbiAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJzZWNvbmRhcnlcIiBzaXplPVwibGdcIj5cbiAgICAgICAgICAgIEJST1dTRSBBUyBWSVNJVE9SXG4gICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBTdGF0dXMgKi99XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LW11dGVkLWxpZ2h0IGZvbnQtbW9ubyBzcGFjZS15LTFcIj5cbiAgICAgICAgICA8cD5TeXN0ZW0gU3RhdHVzOiBPUEVSQVRJT05BTDwvcD5cbiAgICAgICAgICA8cD5RdWV1ZSBQcm9jZXNzaW5nOiBBQ1RJVkU8L3A+XG4gICAgICAgICAgPHA+T3ZlcmxvcmQgU3RhdHVzOiBNT05JVE9SSU5HPC9wPlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvbWFpbj5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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

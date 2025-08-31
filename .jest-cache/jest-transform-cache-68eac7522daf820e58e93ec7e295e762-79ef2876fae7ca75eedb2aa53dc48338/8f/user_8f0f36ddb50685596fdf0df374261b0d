@@ -1,0 +1,418 @@
+0b89050ea597431573239372ecdbe16b
+/**
+ * User type definitions for The Robot Overlord
+ * Based on backend API schema
+ */ // User role enum
+"use strict";
+
+/* istanbul ignore next */
+function cov_13moyphpsp() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/types/user.ts";
+  var hash = "bc6dc4509f12ba646e069bfda07b427863b46292";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/types/user.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 13,
+          column: 7
+        }
+      },
+      "2": {
+        start: {
+          line: 10,
+          column: 24
+        },
+        end: {
+          line: 13,
+          column: 7
+        }
+      },
+      "3": {
+        start: {
+          line: 15,
+          column: 0
+        },
+        end: {
+          line: 22,
+          column: 3
+        }
+      },
+      "4": {
+        start: {
+          line: 17,
+          column: 8
+        },
+        end: {
+          line: 17,
+          column: 24
+        }
+      },
+      "5": {
+        start: {
+          line: 20,
+          column: 8
+        },
+        end: {
+          line: 20,
+          column: 26
+        }
+      },
+      "6": {
+        start: {
+          line: 23,
+          column: 29
+        },
+        end: {
+          line: 28,
+          column: 5
+        }
+      },
+      "7": {
+        start: {
+          line: 24,
+          column: 4
+        },
+        end: {
+          line: 24,
+          column: 36
+        }
+      },
+      "8": {
+        start: {
+          line: 25,
+          column: 4
+        },
+        end: {
+          line: 25,
+          column: 40
+        }
+      },
+      "9": {
+        start: {
+          line: 26,
+          column: 4
+        },
+        end: {
+          line: 26,
+          column: 32
+        }
+      },
+      "10": {
+        start: {
+          line: 27,
+          column: 4
+        },
+        end: {
+          line: 27,
+          column: 20
+        }
+      },
+      "11": {
+        start: {
+          line: 29,
+          column: 31
+        },
+        end: {
+          line: 34,
+          column: 5
+        }
+      },
+      "12": {
+        start: {
+          line: 30,
+          column: 4
+        },
+        end: {
+          line: 30,
+          column: 36
+        }
+      },
+      "13": {
+        start: {
+          line: 31,
+          column: 4
+        },
+        end: {
+          line: 31,
+          column: 42
+        }
+      },
+      "14": {
+        start: {
+          line: 32,
+          column: 4
+        },
+        end: {
+          line: 32,
+          column: 36
+        }
+      },
+      "15": {
+        start: {
+          line: 33,
+          column: 4
+        },
+        end: {
+          line: 33,
+          column: 22
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "_export",
+        decl: {
+          start: {
+            line: 9,
+            column: 9
+          },
+          end: {
+            line: 9,
+            column: 16
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 30
+          },
+          end: {
+            line: 14,
+            column: 1
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 16,
+            column: 4
+          },
+          end: {
+            line: 16,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 20
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        line: 16
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 19,
+            column: 4
+          },
+          end: {
+            line: 19,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 19,
+            column: 22
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        },
+        line: 19
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 23,
+            column: 29
+          },
+          end: {
+            line: 23,
+            column: 30
+          }
+        },
+        loc: {
+          start: {
+            line: 23,
+            column: 48
+          },
+          end: {
+            line: 28,
+            column: 1
+          }
+        },
+        line: 23
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 29,
+            column: 31
+          },
+          end: {
+            line: 29,
+            column: 32
+          }
+        },
+        loc: {
+          start: {
+            line: 29,
+            column: 52
+          },
+          end: {
+            line: 34,
+            column: 1
+          }
+        },
+        line: 29
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/types/user.ts"],
+      sourcesContent: ["/**\n * User type definitions for The Robot Overlord\n * Based on backend API schema\n */\n\n// User role enum\nexport enum UserRole {\n  CITIZEN = 'citizen',\n  MODERATOR = 'moderator', \n  ADMIN = 'admin'\n}\n\n// User status enum\nexport enum UserStatus {\n  ACTIVE = 'active',\n  SUSPENDED = 'suspended',\n  BANNED = 'banned'\n}\n\n// Badge type\nexport interface Badge {\n  id: string;\n  name: string;\n  description: string;\n  icon_url?: string;\n  rarity: 'common' | 'rare' | 'epic' | 'legendary';\n  earned_at: string;\n}\n\n// User badge (awarded badge with metadata)\nexport interface UserBadge {\n  id: string;\n  userId: string;\n  badgeId: string;\n  awardedAt: string;\n  awardedBy?: string;\n  reason?: string;\n}\n\n// User statistics\nexport interface UserStats {\n  total_posts: number;\n  approved_posts: number;\n  rejected_posts: number;\n  pending_posts: number;\n  loyalty_score: number;\n  reputation_score: number;\n  badges_count: number;\n  rank_position?: number;\n}\n\n// Main User interface\nexport interface User {\n  id: string;\n  email: string;\n  name: string;\n  username: string;\n  display_name?: string;\n  bio?: string;\n  avatar_url?: string;\n  role: UserRole;\n  status: UserStatus;\n  loyalty_score: number;\n  reputation_score: number;\n  created_at: string;\n  updated_at: string;\n  last_login?: string;\n  is_verified: boolean;\n  \n  // Optional expanded data\n  stats?: UserStats;\n  badges?: Badge[];\n}\n\n// User profile update payload\nexport interface UserProfileUpdate {\n  name?: string;\n  avatar_url?: string;\n}\n\n// Authentication token data\nexport interface AuthTokens {\n  access_token: string;\n  refresh_token: string;\n  token_type: string;\n  expires_in: number;\n}\n\n// Authentication response\nexport interface AuthResponse {\n  user: User;\n  tokens: AuthTokens;\n}\n\n// Login credentials\nexport interface LoginCredentials {\n  email: string;\n  password: string;\n}\n\n// OAuth provider data\nexport interface OAuthProvider {\n  provider: 'google';\n  code?: string;\n  token?: string;\n  redirect_uri?: string;\n}\n\n// Current user context data\nexport interface CurrentUser extends User {\n  permissions: string[];\n  preferences: UserPreferences;\n}\n\n// User preferences\nexport interface UserPreferences {\n  theme: 'dark' | 'light' | 'auto';\n  notifications_enabled: boolean;\n  email_notifications: boolean;\n  show_loyalty_score: boolean;\n}\n\n// Leaderboard entry\nexport interface LeaderboardEntry {\n  user: User;\n  rank: number;\n  loyalty_score: number;\n  reputation_score: number;\n  badges_count: number;\n  recent_activity: string;\n}\n\n// User activity log entry\nexport interface UserActivity {\n  id: string;\n  user_id: string;\n  action: string;\n  description: string;\n  metadata?: Record<string, any>;\n  created_at: string;\n}\n\n// User search filters\nexport interface UserSearchFilters {\n  query?: string;\n  role?: UserRole;\n  status?: UserStatus;\n  min_loyalty_score?: number;\n  max_loyalty_score?: number;\n  has_badges?: boolean;\n  sort_by?: 'loyalty_score' | 'reputation_score' | 'created_at' | 'name';\n  sort_order?: 'asc' | 'desc';\n  limit?: number;\n  offset?: number;\n}\n\n// User search response\nexport interface UserSearchResponse {\n  users: User[];\n  total: number;\n  page: number;\n  per_page: number;\n  has_more: boolean;\n}\n"],
+      names: ["UserRole", "UserStatus"],
+      mappings: "AAAA;;;CAGC,GAED,iBAAiB;;;;;;;;;;;;QACLA;eAAAA;;QAOAC;eAAAA;;;AAPL,IAAA,AAAKD,kCAAAA;;;;WAAAA;;AAOL,IAAA,AAAKC,oCAAAA;;;;WAAAA"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "bc6dc4509f12ba646e069bfda07b427863b46292"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_13moyphpsp = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_13moyphpsp();
+cov_13moyphpsp().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function _export(target, all) {
+  /* istanbul ignore next */
+  cov_13moyphpsp().f[0]++;
+  cov_13moyphpsp().s[1]++;
+  for (var name in all) {
+    /* istanbul ignore next */
+    cov_13moyphpsp().s[2]++;
+    Object.defineProperty(target, name, {
+      enumerable: true,
+      get: Object.getOwnPropertyDescriptor(all, name).get
+    });
+  }
+}
+/* istanbul ignore next */
+cov_13moyphpsp().s[3]++;
+_export(exports, {
+  get UserRole() {
+    /* istanbul ignore next */
+    cov_13moyphpsp().f[1]++;
+    cov_13moyphpsp().s[4]++;
+    return UserRole;
+  },
+  get UserStatus() {
+    /* istanbul ignore next */
+    cov_13moyphpsp().f[2]++;
+    cov_13moyphpsp().s[5]++;
+    return UserStatus;
+  }
+});
+var UserRole =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_13moyphpsp().s[6]++, function (UserRole) {
+  /* istanbul ignore next */
+  cov_13moyphpsp().f[3]++;
+  cov_13moyphpsp().s[7]++;
+  UserRole["CITIZEN"] = "citizen";
+  /* istanbul ignore next */
+  cov_13moyphpsp().s[8]++;
+  UserRole["MODERATOR"] = "moderator";
+  /* istanbul ignore next */
+  cov_13moyphpsp().s[9]++;
+  UserRole["ADMIN"] = "admin";
+  /* istanbul ignore next */
+  cov_13moyphpsp().s[10]++;
+  return UserRole;
+}({}));
+var UserStatus =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_13moyphpsp().s[11]++, function (UserStatus) {
+  /* istanbul ignore next */
+  cov_13moyphpsp().f[4]++;
+  cov_13moyphpsp().s[12]++;
+  UserStatus["ACTIVE"] = "active";
+  /* istanbul ignore next */
+  cov_13moyphpsp().s[13]++;
+  UserStatus["SUSPENDED"] = "suspended";
+  /* istanbul ignore next */
+  cov_13moyphpsp().s[14]++;
+  UserStatus["BANNED"] = "banned";
+  /* istanbul ignore next */
+  cov_13moyphpsp().s[15]++;
+  return UserStatus;
+}({}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMTNtb3lwaHBzcCIsImFjdHVhbENvdmVyYWdlIiwicyIsIlVzZXJSb2xlIiwiZiIsIlVzZXJTdGF0dXMiXSwic291cmNlcyI6WyIvVXNlcnMvam9zaHN6ZXAvY29kZS90aGVyb2JvdG92ZXJsb3JkLW1vbm8vdGhlcm9ib3RvdmVybG9yZC13ZWIvc3JjL3R5cGVzL3VzZXIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBVc2VyIHR5cGUgZGVmaW5pdGlvbnMgZm9yIFRoZSBSb2JvdCBPdmVybG9yZFxuICogQmFzZWQgb24gYmFja2VuZCBBUEkgc2NoZW1hXG4gKi9cblxuLy8gVXNlciByb2xlIGVudW1cbmV4cG9ydCBlbnVtIFVzZXJSb2xlIHtcbiAgQ0lUSVpFTiA9ICdjaXRpemVuJyxcbiAgTU9ERVJBVE9SID0gJ21vZGVyYXRvcicsIFxuICBBRE1JTiA9ICdhZG1pbidcbn1cblxuLy8gVXNlciBzdGF0dXMgZW51bVxuZXhwb3J0IGVudW0gVXNlclN0YXR1cyB7XG4gIEFDVElWRSA9ICdhY3RpdmUnLFxuICBTVVNQRU5ERUQgPSAnc3VzcGVuZGVkJyxcbiAgQkFOTkVEID0gJ2Jhbm5lZCdcbn1cblxuLy8gQmFkZ2UgdHlwZVxuZXhwb3J0IGludGVyZmFjZSBCYWRnZSB7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgZGVzY3JpcHRpb246IHN0cmluZztcbiAgaWNvbl91cmw/OiBzdHJpbmc7XG4gIHJhcml0eTogJ2NvbW1vbicgfCAncmFyZScgfCAnZXBpYycgfCAnbGVnZW5kYXJ5JztcbiAgZWFybmVkX2F0OiBzdHJpbmc7XG59XG5cbi8vIFVzZXIgYmFkZ2UgKGF3YXJkZWQgYmFkZ2Ugd2l0aCBtZXRhZGF0YSlcbmV4cG9ydCBpbnRlcmZhY2UgVXNlckJhZGdlIHtcbiAgaWQ6IHN0cmluZztcbiAgdXNlcklkOiBzdHJpbmc7XG4gIGJhZGdlSWQ6IHN0cmluZztcbiAgYXdhcmRlZEF0OiBzdHJpbmc7XG4gIGF3YXJkZWRCeT86IHN0cmluZztcbiAgcmVhc29uPzogc3RyaW5nO1xufVxuXG4vLyBVc2VyIHN0YXRpc3RpY3NcbmV4cG9ydCBpbnRlcmZhY2UgVXNlclN0YXRzIHtcbiAgdG90YWxfcG9zdHM6IG51bWJlcjtcbiAgYXBwcm92ZWRfcG9zdHM6IG51bWJlcjtcbiAgcmVqZWN0ZWRfcG9zdHM6IG51bWJlcjtcbiAgcGVuZGluZ19wb3N0czogbnVtYmVyO1xuICBsb3lhbHR5X3Njb3JlOiBudW1iZXI7XG4gIHJlcHV0YXRpb25fc2NvcmU6IG51bWJlcjtcbiAgYmFkZ2VzX2NvdW50OiBudW1iZXI7XG4gIHJhbmtfcG9zaXRpb24/OiBudW1iZXI7XG59XG5cbi8vIE1haW4gVXNlciBpbnRlcmZhY2VcbmV4cG9ydCBpbnRlcmZhY2UgVXNlciB7XG4gIGlkOiBzdHJpbmc7XG4gIGVtYWlsOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgdXNlcm5hbWU6IHN0cmluZztcbiAgZGlzcGxheV9uYW1lPzogc3RyaW5nO1xuICBiaW8/OiBzdHJpbmc7XG4gIGF2YXRhcl91cmw/OiBzdHJpbmc7XG4gIHJvbGU6IFVzZXJSb2xlO1xuICBzdGF0dXM6IFVzZXJTdGF0dXM7XG4gIGxveWFsdHlfc2NvcmU6IG51bWJlcjtcbiAgcmVwdXRhdGlvbl9zY29yZTogbnVtYmVyO1xuICBjcmVhdGVkX2F0OiBzdHJpbmc7XG4gIHVwZGF0ZWRfYXQ6IHN0cmluZztcbiAgbGFzdF9sb2dpbj86IHN0cmluZztcbiAgaXNfdmVyaWZpZWQ6IGJvb2xlYW47XG4gIFxuICAvLyBPcHRpb25hbCBleHBhbmRlZCBkYXRhXG4gIHN0YXRzPzogVXNlclN0YXRzO1xuICBiYWRnZXM/OiBCYWRnZVtdO1xufVxuXG4vLyBVc2VyIHByb2ZpbGUgdXBkYXRlIHBheWxvYWRcbmV4cG9ydCBpbnRlcmZhY2UgVXNlclByb2ZpbGVVcGRhdGUge1xuICBuYW1lPzogc3RyaW5nO1xuICBhdmF0YXJfdXJsPzogc3RyaW5nO1xufVxuXG4vLyBBdXRoZW50aWNhdGlvbiB0b2tlbiBkYXRhXG5leHBvcnQgaW50ZXJmYWNlIEF1dGhUb2tlbnMge1xuICBhY2Nlc3NfdG9rZW46IHN0cmluZztcbiAgcmVmcmVzaF90b2tlbjogc3RyaW5nO1xuICB0b2tlbl90eXBlOiBzdHJpbmc7XG4gIGV4cGlyZXNfaW46IG51bWJlcjtcbn1cblxuLy8gQXV0aGVudGljYXRpb24gcmVzcG9uc2VcbmV4cG9ydCBpbnRlcmZhY2UgQXV0aFJlc3BvbnNlIHtcbiAgdXNlcjogVXNlcjtcbiAgdG9rZW5zOiBBdXRoVG9rZW5zO1xufVxuXG4vLyBMb2dpbiBjcmVkZW50aWFsc1xuZXhwb3J0IGludGVyZmFjZSBMb2dpbkNyZWRlbnRpYWxzIHtcbiAgZW1haWw6IHN0cmluZztcbiAgcGFzc3dvcmQ6IHN0cmluZztcbn1cblxuLy8gT0F1dGggcHJvdmlkZXIgZGF0YVxuZXhwb3J0IGludGVyZmFjZSBPQXV0aFByb3ZpZGVyIHtcbiAgcHJvdmlkZXI6ICdnb29nbGUnO1xuICBjb2RlPzogc3RyaW5nO1xuICB0b2tlbj86IHN0cmluZztcbiAgcmVkaXJlY3RfdXJpPzogc3RyaW5nO1xufVxuXG4vLyBDdXJyZW50IHVzZXIgY29udGV4dCBkYXRhXG5leHBvcnQgaW50ZXJmYWNlIEN1cnJlbnRVc2VyIGV4dGVuZHMgVXNlciB7XG4gIHBlcm1pc3Npb25zOiBzdHJpbmdbXTtcbiAgcHJlZmVyZW5jZXM6IFVzZXJQcmVmZXJlbmNlcztcbn1cblxuLy8gVXNlciBwcmVmZXJlbmNlc1xuZXhwb3J0IGludGVyZmFjZSBVc2VyUHJlZmVyZW5jZXMge1xuICB0aGVtZTogJ2RhcmsnIHwgJ2xpZ2h0JyB8ICdhdXRvJztcbiAgbm90aWZpY2F0aW9uc19lbmFibGVkOiBib29sZWFuO1xuICBlbWFpbF9ub3RpZmljYXRpb25zOiBib29sZWFuO1xuICBzaG93X2xveWFsdHlfc2NvcmU6IGJvb2xlYW47XG59XG5cbi8vIExlYWRlcmJvYXJkIGVudHJ5XG5leHBvcnQgaW50ZXJmYWNlIExlYWRlcmJvYXJkRW50cnkge1xuICB1c2VyOiBVc2VyO1xuICByYW5rOiBudW1iZXI7XG4gIGxveWFsdHlfc2NvcmU6IG51bWJlcjtcbiAgcmVwdXRhdGlvbl9zY29yZTogbnVtYmVyO1xuICBiYWRnZXNfY291bnQ6IG51bWJlcjtcbiAgcmVjZW50X2FjdGl2aXR5OiBzdHJpbmc7XG59XG5cbi8vIFVzZXIgYWN0aXZpdHkgbG9nIGVudHJ5XG5leHBvcnQgaW50ZXJmYWNlIFVzZXJBY3Rpdml0eSB7XG4gIGlkOiBzdHJpbmc7XG4gIHVzZXJfaWQ6IHN0cmluZztcbiAgYWN0aW9uOiBzdHJpbmc7XG4gIGRlc2NyaXB0aW9uOiBzdHJpbmc7XG4gIG1ldGFkYXRhPzogUmVjb3JkPHN0cmluZywgYW55PjtcbiAgY3JlYXRlZF9hdDogc3RyaW5nO1xufVxuXG4vLyBVc2VyIHNlYXJjaCBmaWx0ZXJzXG5leHBvcnQgaW50ZXJmYWNlIFVzZXJTZWFyY2hGaWx0ZXJzIHtcbiAgcXVlcnk/OiBzdHJpbmc7XG4gIHJvbGU/OiBVc2VyUm9sZTtcbiAgc3RhdHVzPzogVXNlclN0YXR1cztcbiAgbWluX2xveWFsdHlfc2NvcmU/OiBudW1iZXI7XG4gIG1heF9sb3lhbHR5X3Njb3JlPzogbnVtYmVyO1xuICBoYXNfYmFkZ2VzPzogYm9vbGVhbjtcbiAgc29ydF9ieT86ICdsb3lhbHR5X3Njb3JlJyB8ICdyZXB1dGF0aW9uX3Njb3JlJyB8ICdjcmVhdGVkX2F0JyB8ICduYW1lJztcbiAgc29ydF9vcmRlcj86ICdhc2MnIHwgJ2Rlc2MnO1xuICBsaW1pdD86IG51bWJlcjtcbiAgb2Zmc2V0PzogbnVtYmVyO1xufVxuXG4vLyBVc2VyIHNlYXJjaCByZXNwb25zZVxuZXhwb3J0IGludGVyZmFjZSBVc2VyU2VhcmNoUmVzcG9uc2Uge1xuICB1c2VyczogVXNlcltdO1xuICB0b3RhbDogbnVtYmVyO1xuICBwYWdlOiBudW1iZXI7XG4gIHBlcl9wYWdlOiBudW1iZXI7XG4gIGhhc19tb3JlOiBib29sZWFuO1xufVxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7O0dBQUEsQ0FLQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFDWTtJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBQUFBLGNBQUEsR0FBQUUsQ0FBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7TUFBQUMsU0FBQTtJQUFBO0lBQUFILGNBQUEsR0FBQUksQ0FBQTtJQUFBSixjQUFBLEdBQUFFLENBQUE7V0FBQUMsUUFBQTs7TUFPQUUsV0FBQTtJQUFBO0lBQUFMLGNBQUEsR0FBQUksQ0FBQTtJQUFBSixjQUFBLEdBQUFFLENBQUE7V0FBQUcsVUFBQTs7O0FBUEwsSUFBQUYsUUFBSztBQUFBO0FBQUEsY0FBQUgsY0FBQSxHQUFBRSxDQUFBLGlCQUFBQyxRQUFBO0VBQUE7RUFBQUgsY0FBQSxHQUFBSSxDQUFBO0VBQUFKLGNBQUEsR0FBQUUsQ0FBQTs7Ozs7Ozs7OztTQUFBQyxRQUFBOztBQU9MLElBQUFFLFVBQUs7QUFBQTtBQUFBLGNBQUFMLGNBQUEsR0FBQUUsQ0FBQSxrQkFBQUcsVUFBQTtFQUFBO0VBQUFMLGNBQUEsR0FBQUksQ0FBQTtFQUFBSixjQUFBLEdBQUFFLENBQUE7Ozs7Ozs7Ozs7U0FBQUcsVUFBQSIsImlnbm9yZUxpc3QiOltdfQ==

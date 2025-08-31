@@ -1,0 +1,387 @@
+079166010215ae1fd26d79deed0d6edd
+"use strict";
+
+/* istanbul ignore next */
+function cov_rmp2tvygn() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/ui/Input.tsx";
+  var hash = "55c44181f317bcccbdd6e16ee8b718befc6129bb";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/ui/Input.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 21
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 20
+        },
+        end: {
+          line: 11,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 12,
+          column: 15
+        },
+        end: {
+          line: 12,
+          column: 31
+        }
+      },
+      "5": {
+        start: {
+          line: 13,
+          column: 15
+        },
+        end: {
+          line: 13,
+          column: 41
+        }
+      },
+      "6": {
+        start: {
+          line: 14,
+          column: 28
+        },
+        end: {
+          line: 39,
+          column: 2
+        }
+      },
+      "7": {
+        start: {
+          line: 15,
+          column: 24
+        },
+        end: {
+          line: 15,
+          column: 233
+        }
+      },
+      "8": {
+        start: {
+          line: 16,
+          column: 21
+        },
+        end: {
+          line: 20,
+          column: 5
+        }
+      },
+      "9": {
+        start: {
+          line: 21,
+          column: 4
+        },
+        end: {
+          line: 38,
+          column: 7
+        }
+      },
+      "10": {
+        start: {
+          line: 40,
+          column: 0
+        },
+        end: {
+          line: 40,
+          column: 28
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 9
+          },
+          end: {
+            line: 7,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 20
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 14,
+            column: 51
+          },
+          end: {
+            line: 14,
+            column: 52
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 118
+          },
+          end: {
+            line: 39,
+            column: 1
+          }
+        },
+        line: 14
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 14,
+            column: 65
+          },
+          end: {
+            line: 14,
+            column: 84
+          }
+        },
+        type: "default-arg",
+        locations: [{
+          start: {
+            line: 14,
+            column: 75
+          },
+          end: {
+            line: 14,
+            column: 84
+          }
+        }],
+        line: 14
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 24,
+            column: 12
+          },
+          end: {
+            line: 27,
+            column: 14
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 24,
+            column: 12
+          },
+          end: {
+            line: 24,
+            column: 17
+          }
+        }, {
+          start: {
+            line: 24,
+            column: 35
+          },
+          end: {
+            line: 27,
+            column: 14
+          }
+        }],
+        line: 24
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 33,
+            column: 12
+          },
+          end: {
+            line: 36,
+            column: 14
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 33,
+            column: 12
+          },
+          end: {
+            line: 33,
+            column: 17
+          }
+        }, {
+          start: {
+            line: 33,
+            column: 35
+          },
+          end: {
+            line: 36,
+            column: 14
+          }
+        }],
+        line: 33
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/ui/Input.tsx"],
+      sourcesContent: ["import { InputHTMLAttributes, forwardRef } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport interface InputProps extends InputHTMLAttributes<HTMLInputElement> {\n  variant?: 'default' | 'error' | 'success';\n  label?: string;\n  error?: string;\n}\n\nconst Input = forwardRef<HTMLInputElement, InputProps>(\n  ({ className, variant = 'default', label, error, ...props }, ref) => {\n    const baseClasses = 'w-full px-4 py-3 bg-surface-dark border text-light-text placeholder:text-muted-light focus:outline-none focus:ring-2 focus:ring-overlord-red focus:ring-offset-2 focus:ring-offset-background transition-colors';\n    \n    const variants = {\n      default: 'border-muted-light focus:border-overlord-red',\n      error: 'border-rejected-red focus:border-rejected-red focus:ring-rejected-red',\n      success: 'border-approved-green focus:border-approved-green focus:ring-approved-green'\n    };\n\n    return (\n      <div className=\"space-y-2\">\n        {label && (\n          <label className=\"block text-sm font-medium text-light-text\">\n            {label}\n          </label>\n        )}\n        <input\n          className={cn(\n            baseClasses,\n            variants[variant],\n            className\n          )}\n          ref={ref}\n          {...props}\n        />\n        {error && (\n          <p className=\"text-sm text-rejected-red\">{error}</p>\n        )}\n      </div>\n    );\n  }\n);\n\nInput.displayName = 'Input';\n\nexport { Input };\n"],
+      names: ["Input", "forwardRef", "className", "variant", "label", "error", "props", "ref", "baseClasses", "variants", "default", "success", "div", "input", "cn", "p", "displayName"],
+      mappings: ";;;;+BA6CSA;;;eAAAA;;;;uBA7CuC;uBAC7B;AAQnB,MAAMA,sBAAQC,IAAAA,iBAAU,EACtB,CAAC,EAAEC,SAAS,EAAEC,UAAU,SAAS,EAAEC,KAAK,EAAEC,KAAK,EAAE,GAAGC,OAAO,EAAEC;IAC3D,MAAMC,cAAc;IAEpB,MAAMC,WAAW;QACfC,SAAS;QACTL,OAAO;QACPM,SAAS;IACX;IAEA,qBACE,sBAACC;QAAIV,WAAU;;YACZE,uBACC,qBAACA;gBAAMF,WAAU;0BACdE;;0BAGL,qBAACS;gBACCX,WAAWY,IAAAA,SAAE,EACXN,aACAC,QAAQ,CAACN,QAAQ,EACjBD;gBAEFK,KAAKA;gBACJ,GAAGD,KAAK;;YAEVD,uBACC,qBAACU;gBAAEb,WAAU;0BAA6BG;;;;AAIlD;AAGFL,MAAMgB,WAAW,GAAG"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "55c44181f317bcccbdd6e16ee8b718befc6129bb"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_rmp2tvygn = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_rmp2tvygn();
+cov_rmp2tvygn().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_rmp2tvygn().s[1]++;
+Object.defineProperty(exports, "Input", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_rmp2tvygn().f[0]++;
+    cov_rmp2tvygn().s[2]++;
+    return Input;
+  }
+});
+const _jsxruntime =
+/* istanbul ignore next */
+(cov_rmp2tvygn().s[3]++, require("react/jsx-runtime"));
+const _react =
+/* istanbul ignore next */
+(cov_rmp2tvygn().s[4]++, require("react"));
+const _utils =
+/* istanbul ignore next */
+(cov_rmp2tvygn().s[5]++, require("../../lib/utils"));
+const Input =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_rmp2tvygn().s[6]++, (0, _react.forwardRef)(({
+  className,
+  variant =
+  /* istanbul ignore next */
+  (cov_rmp2tvygn().b[0][0]++, 'default'),
+  label,
+  error,
+  ...props
+}, ref) => {
+  /* istanbul ignore next */
+  cov_rmp2tvygn().f[1]++;
+  const baseClasses =
+  /* istanbul ignore next */
+  (cov_rmp2tvygn().s[7]++, 'w-full px-4 py-3 bg-surface-dark border text-light-text placeholder:text-muted-light focus:outline-none focus:ring-2 focus:ring-overlord-red focus:ring-offset-2 focus:ring-offset-background transition-colors');
+  const variants =
+  /* istanbul ignore next */
+  (cov_rmp2tvygn().s[8]++, {
+    default: 'border-muted-light focus:border-overlord-red',
+    error: 'border-rejected-red focus:border-rejected-red focus:ring-rejected-red',
+    success: 'border-approved-green focus:border-approved-green focus:ring-approved-green'
+  });
+  /* istanbul ignore next */
+  cov_rmp2tvygn().s[9]++;
+  return /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+    className: "space-y-2",
+    children: [
+    /* istanbul ignore next */
+    (cov_rmp2tvygn().b[1][0]++, label) &&
+    /* istanbul ignore next */
+    (cov_rmp2tvygn().b[1][1]++, /*#__PURE__*/(0, _jsxruntime.jsx)("label", {
+      className: "block text-sm font-medium text-light-text",
+      children: label
+    })), /*#__PURE__*/(0, _jsxruntime.jsx)("input", {
+      className: (0, _utils.cn)(baseClasses, variants[variant], className),
+      ref: ref,
+      ...props
+    }),
+    /* istanbul ignore next */
+    (cov_rmp2tvygn().b[2][0]++, error) &&
+    /* istanbul ignore next */
+    (cov_rmp2tvygn().b[2][1]++, /*#__PURE__*/(0, _jsxruntime.jsx)("p", {
+      className: "text-sm text-rejected-red",
+      children: error
+    }))]
+  });
+}));
+/* istanbul ignore next */
+cov_rmp2tvygn().s[10]++;
+Input.displayName = 'Input';
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3Zfcm1wMnR2eWduIiwiYWN0dWFsQ292ZXJhZ2UiLCJzIiwiSW5wdXQiLCJfcmVhY3QiLCJmb3J3YXJkUmVmIiwiY2xhc3NOYW1lIiwidmFyaWFudCIsImIiLCJsYWJlbCIsImVycm9yIiwicHJvcHMiLCJyZWYiLCJmIiwiYmFzZUNsYXNzZXMiLCJ2YXJpYW50cyIsImRlZmF1bHQiLCJzdWNjZXNzIiwiX2pzeHJ1bnRpbWUiLCJqc3hzIiwianN4IiwiX3V0aWxzIiwiY24iLCJkaXNwbGF5TmFtZSJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb3Noc3plcC9jb2RlL3RoZXJvYm90b3ZlcmxvcmQtbW9uby90aGVyb2JvdG92ZXJsb3JkLXdlYi9zcmMvY29tcG9uZW50cy91aS9JbnB1dC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5wdXRIVE1MQXR0cmlidXRlcywgZm9yd2FyZFJlZiB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IGNuIH0gZnJvbSAnQC9saWIvdXRpbHMnO1xuXG5leHBvcnQgaW50ZXJmYWNlIElucHV0UHJvcHMgZXh0ZW5kcyBJbnB1dEhUTUxBdHRyaWJ1dGVzPEhUTUxJbnB1dEVsZW1lbnQ+IHtcbiAgdmFyaWFudD86ICdkZWZhdWx0JyB8ICdlcnJvcicgfCAnc3VjY2Vzcyc7XG4gIGxhYmVsPzogc3RyaW5nO1xuICBlcnJvcj86IHN0cmluZztcbn1cblxuY29uc3QgSW5wdXQgPSBmb3J3YXJkUmVmPEhUTUxJbnB1dEVsZW1lbnQsIElucHV0UHJvcHM+KFxuICAoeyBjbGFzc05hbWUsIHZhcmlhbnQgPSAnZGVmYXVsdCcsIGxhYmVsLCBlcnJvciwgLi4ucHJvcHMgfSwgcmVmKSA9PiB7XG4gICAgY29uc3QgYmFzZUNsYXNzZXMgPSAndy1mdWxsIHB4LTQgcHktMyBiZy1zdXJmYWNlLWRhcmsgYm9yZGVyIHRleHQtbGlnaHQtdGV4dCBwbGFjZWhvbGRlcjp0ZXh0LW11dGVkLWxpZ2h0IGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1vdmVybG9yZC1yZWQgZm9jdXM6cmluZy1vZmZzZXQtMiBmb2N1czpyaW5nLW9mZnNldC1iYWNrZ3JvdW5kIHRyYW5zaXRpb24tY29sb3JzJztcbiAgICBcbiAgICBjb25zdCB2YXJpYW50cyA9IHtcbiAgICAgIGRlZmF1bHQ6ICdib3JkZXItbXV0ZWQtbGlnaHQgZm9jdXM6Ym9yZGVyLW92ZXJsb3JkLXJlZCcsXG4gICAgICBlcnJvcjogJ2JvcmRlci1yZWplY3RlZC1yZWQgZm9jdXM6Ym9yZGVyLXJlamVjdGVkLXJlZCBmb2N1czpyaW5nLXJlamVjdGVkLXJlZCcsXG4gICAgICBzdWNjZXNzOiAnYm9yZGVyLWFwcHJvdmVkLWdyZWVuIGZvY3VzOmJvcmRlci1hcHByb3ZlZC1ncmVlbiBmb2N1czpyaW5nLWFwcHJvdmVkLWdyZWVuJ1xuICAgIH07XG5cbiAgICByZXR1cm4gKFxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTJcIj5cbiAgICAgICAge2xhYmVsICYmIChcbiAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiYmxvY2sgdGV4dC1zbSBmb250LW1lZGl1bSB0ZXh0LWxpZ2h0LXRleHRcIj5cbiAgICAgICAgICAgIHtsYWJlbH1cbiAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICApfVxuICAgICAgICA8aW5wdXRcbiAgICAgICAgICBjbGFzc05hbWU9e2NuKFxuICAgICAgICAgICAgYmFzZUNsYXNzZXMsXG4gICAgICAgICAgICB2YXJpYW50c1t2YXJpYW50XSxcbiAgICAgICAgICAgIGNsYXNzTmFtZVxuICAgICAgICAgICl9XG4gICAgICAgICAgcmVmPXtyZWZ9XG4gICAgICAgICAgey4uLnByb3BzfVxuICAgICAgICAvPlxuICAgICAgICB7ZXJyb3IgJiYgKFxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1yZWplY3RlZC1yZWRcIj57ZXJyb3J9PC9wPlxuICAgICAgICApfVxuICAgICAgPC9kaXY+XG4gICAgKTtcbiAgfVxuKTtcblxuSW5wdXQuZGlzcGxheU5hbWUgPSAnSW5wdXQnO1xuXG5leHBvcnQgeyBJbnB1dCB9O1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQWFVO0lBQUFBLGFBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGFBQUE7QUFBQUEsYUFBQSxHQUFBRSxDQUFBOzs7Ozs7K0JBZ0NEOzs7Ozs7V0FBQUMsS0FBQTs7Ozs7Ozs7aUNBN0N1Qzs7O2lDQUM3QjtBQVFuQixNQUFNQSxLQUFBO0FBQUE7QUFBQSxjQUFBSCxhQUFBLEdBQUFFLENBQUEsT0FBUSxJQUFBRSxNQUFBLENBQUFDLFVBQVUsRUFDdEIsQ0FBQztFQUFFQyxTQUFTO0VBQUVDLE9BQUE7RUFBQTtFQUFBLENBQUFQLGFBQUEsR0FBQVEsQ0FBQSxVQUFVLFNBQVM7RUFBRUMsS0FBSztFQUFFQyxLQUFLO0VBQUUsR0FBR0M7QUFBQSxDQUFPLEVBQUVDLEdBQUE7RUFBQTtFQUFBWixhQUFBLEdBQUFhLENBQUE7RUFDM0QsTUFBTUMsV0FBQTtFQUFBO0VBQUEsQ0FBQWQsYUFBQSxHQUFBRSxDQUFBLE9BQWM7RUFFcEIsTUFBTWEsUUFBQTtFQUFBO0VBQUEsQ0FBQWYsYUFBQSxHQUFBRSxDQUFBLE9BQVc7SUFDZmMsT0FBQSxFQUFTO0lBQ1ROLEtBQUEsRUFBTztJQUNQTyxPQUFBLEVBQVM7RUFDWDtFQUFBO0VBQUFqQixhQUFBLEdBQUFFLENBQUE7RUFFQSxvQkFDRSxJQUFBZ0IsV0FBQSxDQUFBQyxJQUFBLEVBQUM7SUFBSWIsU0FBQSxFQUFVOztJQUNaO0lBQUEsQ0FBQU4sYUFBQSxHQUFBUSxDQUFBLFVBQUFDLEtBQUE7SUFBQTtJQUFBLENBQUFULGFBQUEsR0FBQVEsQ0FBQSx1QkFDQyxJQUFBVSxXQUFBLENBQUFFLEdBQUEsRUFBQztNQUFNZCxTQUFBLEVBQVU7Z0JBQ2RHO3NCQUdMLElBQUFTLFdBQUEsQ0FBQUUsR0FBQSxFQUFDO01BQ0NkLFNBQUEsRUFBVyxJQUFBZSxNQUFBLENBQUFDLEVBQUUsRUFDWFIsV0FBQSxFQUNBQyxRQUFRLENBQUNSLE9BQUEsQ0FBUSxFQUNqQkQsU0FBQTtNQUVGTSxHQUFBLEVBQUtBLEdBQUE7TUFDSixHQUFHRDs7SUFFTDtJQUFBLENBQUFYLGFBQUEsR0FBQVEsQ0FBQSxVQUFBRSxLQUFBO0lBQUE7SUFBQSxDQUFBVixhQUFBLEdBQUFRLENBQUEsdUJBQ0MsSUFBQVUsV0FBQSxDQUFBRSxHQUFBLEVBQUM7TUFBRWQsU0FBQSxFQUFVO2dCQUE2Qkk7OztBQUlsRDtBQUFBO0FBQUFWLGFBQUEsR0FBQUUsQ0FBQTtBQUdGQyxLQUFBLENBQU1vQixXQUFXLEdBQUciLCJpZ25vcmVMaXN0IjpbXX0=

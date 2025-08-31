@@ -1,0 +1,651 @@
+0a9580d81901f88133a5a331fdf8f9dc
+'use client';
+"use strict";
+
+/* istanbul ignore next */
+function cov_2amq40zzi2() {
+  var path = "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/profile/ProfileStats.tsx";
+  var hash = "4e31802e869bb9cd8f1f17299b8977abddce0bfa";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/profile/ProfileStats.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 11,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 28
+        }
+      },
+      "3": {
+        start: {
+          line: 12,
+          column: 20
+        },
+        end: {
+          line: 12,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 13,
+          column: 29
+        },
+        end: {
+          line: 13,
+          column: 71
+        }
+      },
+      "5": {
+        start: {
+          line: 14,
+          column: 14
+        },
+        end: {
+          line: 14,
+          column: 35
+        }
+      },
+      "6": {
+        start: {
+          line: 16,
+          column: 4
+        },
+        end: {
+          line: 18,
+          column: 6
+        }
+      },
+      "7": {
+        start: {
+          line: 21,
+          column: 18
+        },
+        end: {
+          line: 30,
+          column: 5
+        }
+      },
+      "8": {
+        start: {
+          line: 31,
+          column: 25
+        },
+        end: {
+          line: 31,
+          column: 111
+        }
+      },
+      "9": {
+        start: {
+          line: 32,
+          column: 22
+        },
+        end: {
+          line: 81,
+          column: 5
+        }
+      },
+      "10": {
+        start: {
+          line: 82,
+          column: 4
+        },
+        end: {
+          line: 204,
+          column: 7
+        }
+      },
+      "11": {
+        start: {
+          line: 123,
+          column: 81
+        },
+        end: {
+          line: 139,
+          column: 41
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 8,
+            column: 9
+          },
+          end: {
+            line: 8,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 20
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        line: 8
+      },
+      "1": {
+        name: "_interop_require_default",
+        decl: {
+          start: {
+            line: 15,
+            column: 9
+          },
+          end: {
+            line: 15,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 39
+          },
+          end: {
+            line: 19,
+            column: 1
+          }
+        },
+        line: 15
+      },
+      "2": {
+        name: "ProfileStats",
+        decl: {
+          start: {
+            line: 20,
+            column: 9
+          },
+          end: {
+            line: 20,
+            column: 21
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 32
+          },
+          end: {
+            line: 205,
+            column: 1
+          }
+        },
+        line: 20
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 123,
+            column: 52
+          },
+          end: {
+            line: 123,
+            column: 53
+          }
+        },
+        loc: {
+          start: {
+            line: 123,
+            column: 81
+          },
+          end: {
+            line: 139,
+            column: 41
+          }
+        },
+        line: 123
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 16,
+            column: 11
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 16,
+            column: 35
+          },
+          end: {
+            line: 16,
+            column: 38
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 41
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        }],
+        line: 16
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 16,
+            column: 11
+          },
+          end: {
+            line: 16,
+            column: 32
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 16,
+            column: 11
+          },
+          end: {
+            line: 16,
+            column: 14
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 18
+          },
+          end: {
+            line: 16,
+            column: 32
+          }
+        }],
+        line: 16
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 21,
+            column: 18
+          },
+          end: {
+            line: 30,
+            column: 5
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 21,
+            column: 18
+          },
+          end: {
+            line: 21,
+            column: 28
+          }
+        }, {
+          start: {
+            line: 21,
+            column: 32
+          },
+          end: {
+            line: 30,
+            column: 5
+          }
+        }],
+        line: 21
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 31,
+            column: 25
+          },
+          end: {
+            line: 31,
+            column: 111
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 31,
+            column: 49
+          },
+          end: {
+            line: 31,
+            column: 107
+          }
+        }, {
+          start: {
+            line: 31,
+            column: 110
+          },
+          end: {
+            line: 31,
+            column: 111
+          }
+        }],
+        line: 31
+      },
+      "4": {
+        loc: {
+          start: {
+            line: 77,
+            column: 19
+          },
+          end: {
+            line: 77,
+            column: 79
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 77,
+            column: 41
+          },
+          end: {
+            line: 77,
+            column: 66
+          }
+        }, {
+          start: {
+            line: 77,
+            column: 69
+          },
+          end: {
+            line: 77,
+            column: 79
+          }
+        }],
+        line: 77
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0],
+      "3": [0, 0],
+      "4": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/joshszep/code/therobotoverlord-mono/therobotoverlord-web/src/components/profile/ProfileStats.tsx"],
+      sourcesContent: ["'use client';\n\nimport React from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';\nimport { User } from '@/types/user';\n\ninterface ProfileStatsProps {\n  user: User;\n}\n\nexport function ProfileStats({ user }: ProfileStatsProps) {\n  const stats = user.stats || {\n    total_posts: 0,\n    approved_posts: 0,\n    rejected_posts: 0,\n    pending_posts: 0,\n    loyalty_score: 0,\n    reputation_score: 0,\n    badges_count: 0,\n    rank_position: undefined,\n  };\n\n  const approvalRate = stats.total_posts > 0 \n    ? Math.round((stats.approved_posts / stats.total_posts) * 100)\n    : 0;\n\n  const statItems = [\n    {\n      label: 'Total Posts',\n      value: stats.total_posts,\n      color: 'text-light-text',\n      description: 'All submissions to the Overlord',\n    },\n    {\n      label: 'Approved Posts',\n      value: stats.approved_posts,\n      color: 'text-approved-green',\n      description: 'Posts that pleased the Overlord',\n    },\n    {\n      label: 'Rejected Posts',\n      value: stats.rejected_posts,\n      color: 'text-rejected-red',\n      description: 'Posts that displeased the Overlord',\n    },\n    {\n      label: 'Pending Posts',\n      value: stats.pending_posts,\n      color: 'text-pending-yellow',\n      description: 'Awaiting Overlord judgment',\n    },\n    {\n      label: 'Loyalty Score',\n      value: stats.loyalty_score,\n      color: 'text-overlord-red',\n      description: 'Your dedication to the cause',\n    },\n    {\n      label: 'Reputation Score',\n      value: stats.reputation_score,\n      color: 'text-approved-green',\n      description: 'Community standing',\n    },\n    {\n      label: 'Badges Earned',\n      value: stats.badges_count,\n      color: 'text-pending-yellow',\n      description: 'Achievements unlocked',\n    },\n    {\n      label: 'Global Rank',\n      value: stats.rank_position ? `#${stats.rank_position}` : 'Unranked',\n      color: 'text-overlord-red',\n      description: 'Position in the hierarchy',\n    },\n  ];\n\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Citizen Statistics</CardTitle>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-6\">\n          {/* Approval Rate Highlight */}\n          <div className=\"p-4 bg-gradient-to-r from-overlord-red/10 to-approved-green/10 rounded-lg border\">\n            <div className=\"text-center\">\n              <div className=\"text-3xl font-bold text-light-text mb-1\">\n                {approvalRate}%\n              </div>\n              <div className=\"text-sm text-muted-light\">\n                Approval Rate\n              </div>\n              <div className=\"text-xs text-muted-light mt-1\">\n                {stats.approved_posts} of {stats.total_posts} posts approved\n              </div>\n            </div>\n          </div>\n\n          {/* Stats Grid */}\n          <div className=\"grid grid-cols-2 gap-4\">\n            {statItems.map((stat, index) => (\n              <div key={index} className=\"text-center p-3 bg-muted/20 rounded-lg\">\n                <div className={`text-xl font-bold ${stat.color} mb-1`}>\n                  {stat.value}\n                </div>\n                <div className=\"text-xs font-medium text-light-text mb-1\">\n                  {stat.label}\n                </div>\n                <div className=\"text-xs text-muted-light\">\n                  {stat.description}\n                </div>\n              </div>\n            ))}\n          </div>\n\n          {/* Progress Bars */}\n          <div className=\"space-y-3\">\n            <div>\n              <div className=\"flex justify-between text-xs text-muted-light mb-1\">\n                <span>Loyalty Progress</span>\n                <span>{stats.loyalty_score}/1000</span>\n              </div>\n              <div className=\"w-full bg-muted/30 rounded-full h-2\">\n                <div \n                  className=\"bg-overlord-red h-2 rounded-full transition-all duration-300\"\n                  style={{ width: `${Math.min((stats.loyalty_score / 1000) * 100, 100)}%` }}\n                ></div>\n              </div>\n            </div>\n\n            <div>\n              <div className=\"flex justify-between text-xs text-muted-light mb-1\">\n                <span>Reputation Progress</span>\n                <span>{stats.reputation_score}/500</span>\n              </div>\n              <div className=\"w-full bg-muted/30 rounded-full h-2\">\n                <div \n                  className=\"bg-approved-green h-2 rounded-full transition-all duration-300\"\n                  style={{ width: `${Math.min((stats.reputation_score / 500) * 100, 100)}%` }}\n                ></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </CardContent>\n    </Card>\n  );\n}\n"],
+      names: ["ProfileStats", "user", "stats", "total_posts", "approved_posts", "rejected_posts", "pending_posts", "loyalty_score", "reputation_score", "badges_count", "rank_position", "undefined", "approvalRate", "Math", "round", "statItems", "label", "value", "color", "description", "Card", "CardHeader", "CardTitle", "CardContent", "div", "className", "map", "stat", "index", "span", "style", "width", "min"],
+      mappings: "AAAA;;;;;+BAUgBA;;;eAAAA;;;;8DARE;sBACuC;;;;;;AAOlD,SAASA,aAAa,EAAEC,IAAI,EAAqB;IACtD,MAAMC,QAAQD,KAAKC,KAAK,IAAI;QAC1BC,aAAa;QACbC,gBAAgB;QAChBC,gBAAgB;QAChBC,eAAe;QACfC,eAAe;QACfC,kBAAkB;QAClBC,cAAc;QACdC,eAAeC;IACjB;IAEA,MAAMC,eAAeV,MAAMC,WAAW,GAAG,IACrCU,KAAKC,KAAK,CAAC,AAACZ,MAAME,cAAc,GAAGF,MAAMC,WAAW,GAAI,OACxD;IAEJ,MAAMY,YAAY;QAChB;YACEC,OAAO;YACPC,OAAOf,MAAMC,WAAW;YACxBe,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAME,cAAc;YAC3Bc,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAMG,cAAc;YAC3Ba,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAMI,aAAa;YAC1BY,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAMK,aAAa;YAC1BW,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAMM,gBAAgB;YAC7BU,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAMO,YAAY;YACzBS,OAAO;YACPC,aAAa;QACf;QACA;YACEH,OAAO;YACPC,OAAOf,MAAMQ,aAAa,GAAG,CAAC,CAAC,EAAER,MAAMQ,aAAa,EAAE,GAAG;YACzDQ,OAAO;YACPC,aAAa;QACf;KACD;IAED,qBACE,sBAACC,UAAI;;0BACH,qBAACC,gBAAU;0BACT,cAAA,qBAACC,eAAS;8BAAC;;;0BAEb,qBAACC,iBAAW;0BACV,cAAA,sBAACC;oBAAIC,WAAU;;sCAEb,qBAACD;4BAAIC,WAAU;sCACb,cAAA,sBAACD;gCAAIC,WAAU;;kDACb,sBAACD;wCAAIC,WAAU;;4CACZb;4CAAa;;;kDAEhB,qBAACY;wCAAIC,WAAU;kDAA2B;;kDAG1C,sBAACD;wCAAIC,WAAU;;4CACZvB,MAAME,cAAc;4CAAC;4CAAKF,MAAMC,WAAW;4CAAC;;;;;;sCAMnD,qBAACqB;4BAAIC,WAAU;sCACZV,UAAUW,GAAG,CAAC,CAACC,MAAMC,sBACpB,sBAACJ;oCAAgBC,WAAU;;sDACzB,qBAACD;4CAAIC,WAAW,CAAC,kBAAkB,EAAEE,KAAKT,KAAK,CAAC,KAAK,CAAC;sDACnDS,KAAKV,KAAK;;sDAEb,qBAACO;4CAAIC,WAAU;sDACZE,KAAKX,KAAK;;sDAEb,qBAACQ;4CAAIC,WAAU;sDACZE,KAAKR,WAAW;;;mCARXS;;sCAed,sBAACJ;4BAAIC,WAAU;;8CACb,sBAACD;;sDACC,sBAACA;4CAAIC,WAAU;;8DACb,qBAACI;8DAAK;;8DACN,sBAACA;;wDAAM3B,MAAMK,aAAa;wDAAC;;;;;sDAE7B,qBAACiB;4CAAIC,WAAU;sDACb,cAAA,qBAACD;gDACCC,WAAU;gDACVK,OAAO;oDAAEC,OAAO,GAAGlB,KAAKmB,GAAG,CAAC,AAAC9B,MAAMK,aAAa,GAAG,OAAQ,KAAK,KAAK,CAAC,CAAC;gDAAC;;;;;8CAK9E,sBAACiB;;sDACC,sBAACA;4CAAIC,WAAU;;8DACb,qBAACI;8DAAK;;8DACN,sBAACA;;wDAAM3B,MAAMM,gBAAgB;wDAAC;;;;;sDAEhC,qBAACgB;4CAAIC,WAAU;sDACb,cAAA,qBAACD;gDACCC,WAAU;gDACVK,OAAO;oDAAEC,OAAO,GAAGlB,KAAKmB,GAAG,CAAC,AAAC9B,MAAMM,gBAAgB,GAAG,MAAO,KAAK,KAAK,CAAC,CAAC;gDAAC;;;;;;;;;;;;AAS5F"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "4e31802e869bb9cd8f1f17299b8977abddce0bfa"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2amq40zzi2 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2amq40zzi2();
+cov_2amq40zzi2().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2amq40zzi2().s[1]++;
+Object.defineProperty(exports, "ProfileStats", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_2amq40zzi2().f[0]++;
+    cov_2amq40zzi2().s[2]++;
+    return ProfileStats;
+  }
+});
+const _jsxruntime =
+/* istanbul ignore next */
+(cov_2amq40zzi2().s[3]++, require("react/jsx-runtime"));
+const _react =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_2amq40zzi2().s[4]++, _interop_require_default(require("react")));
+const _Card =
+/* istanbul ignore next */
+(cov_2amq40zzi2().s[5]++, require("../ui/Card"));
+function _interop_require_default(obj) {
+  /* istanbul ignore next */
+  cov_2amq40zzi2().f[1]++;
+  cov_2amq40zzi2().s[6]++;
+  return /* istanbul ignore next */(cov_2amq40zzi2().b[1][0]++, obj) &&
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[1][1]++, obj.__esModule) ?
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[0][0]++, obj) :
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[0][1]++, {
+    default: obj
+  });
+}
+function ProfileStats({
+  user
+}) {
+  /* istanbul ignore next */
+  cov_2amq40zzi2().f[2]++;
+  const stats =
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().s[7]++,
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[2][0]++, user.stats) ||
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[2][1]++, {
+    total_posts: 0,
+    approved_posts: 0,
+    rejected_posts: 0,
+    pending_posts: 0,
+    loyalty_score: 0,
+    reputation_score: 0,
+    badges_count: 0,
+    rank_position: undefined
+  }));
+  const approvalRate =
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().s[8]++, stats.total_posts > 0 ?
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[3][0]++, Math.round(stats.approved_posts / stats.total_posts * 100)) :
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().b[3][1]++, 0));
+  const statItems =
+  /* istanbul ignore next */
+  (cov_2amq40zzi2().s[9]++, [{
+    label: 'Total Posts',
+    value: stats.total_posts,
+    color: 'text-light-text',
+    description: 'All submissions to the Overlord'
+  }, {
+    label: 'Approved Posts',
+    value: stats.approved_posts,
+    color: 'text-approved-green',
+    description: 'Posts that pleased the Overlord'
+  }, {
+    label: 'Rejected Posts',
+    value: stats.rejected_posts,
+    color: 'text-rejected-red',
+    description: 'Posts that displeased the Overlord'
+  }, {
+    label: 'Pending Posts',
+    value: stats.pending_posts,
+    color: 'text-pending-yellow',
+    description: 'Awaiting Overlord judgment'
+  }, {
+    label: 'Loyalty Score',
+    value: stats.loyalty_score,
+    color: 'text-overlord-red',
+    description: 'Your dedication to the cause'
+  }, {
+    label: 'Reputation Score',
+    value: stats.reputation_score,
+    color: 'text-approved-green',
+    description: 'Community standing'
+  }, {
+    label: 'Badges Earned',
+    value: stats.badges_count,
+    color: 'text-pending-yellow',
+    description: 'Achievements unlocked'
+  }, {
+    label: 'Global Rank',
+    value: stats.rank_position ?
+    /* istanbul ignore next */
+    (cov_2amq40zzi2().b[4][0]++, `#${stats.rank_position}`) :
+    /* istanbul ignore next */
+    (cov_2amq40zzi2().b[4][1]++, 'Unranked'),
+    color: 'text-overlord-red',
+    description: 'Position in the hierarchy'
+  }]);
+  /* istanbul ignore next */
+  cov_2amq40zzi2().s[10]++;
+  return /*#__PURE__*/(0, _jsxruntime.jsxs)(_Card.Card, {
+    children: [/*#__PURE__*/(0, _jsxruntime.jsx)(_Card.CardHeader, {
+      children: /*#__PURE__*/(0, _jsxruntime.jsx)(_Card.CardTitle, {
+        children: "Citizen Statistics"
+      })
+    }), /*#__PURE__*/(0, _jsxruntime.jsx)(_Card.CardContent, {
+      children: /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+        className: "space-y-6",
+        children: [/*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+          className: "p-4 bg-gradient-to-r from-overlord-red/10 to-approved-green/10 rounded-lg border",
+          children: /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+            className: "text-center",
+            children: [/*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+              className: "text-3xl font-bold text-light-text mb-1",
+              children: [approvalRate, "%"]
+            }), /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+              className: "text-sm text-muted-light",
+              children: "Approval Rate"
+            }), /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+              className: "text-xs text-muted-light mt-1",
+              children: [stats.approved_posts, " of ", stats.total_posts, " posts approved"]
+            })]
+          })
+        }), /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+          className: "grid grid-cols-2 gap-4",
+          children: statItems.map((stat, index) => {
+            /* istanbul ignore next */
+            cov_2amq40zzi2().f[3]++;
+            cov_2amq40zzi2().s[11]++;
+            return /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+              className: "text-center p-3 bg-muted/20 rounded-lg",
+              children: [/*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+                className: `text-xl font-bold ${stat.color} mb-1`,
+                children: stat.value
+              }), /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+                className: "text-xs font-medium text-light-text mb-1",
+                children: stat.label
+              }), /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+                className: "text-xs text-muted-light",
+                children: stat.description
+              })]
+            }, index);
+          })
+        }), /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+          className: "space-y-3",
+          children: [/*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+              className: "flex justify-between text-xs text-muted-light mb-1",
+              children: [/*#__PURE__*/(0, _jsxruntime.jsx)("span", {
+                children: "Loyalty Progress"
+              }), /*#__PURE__*/(0, _jsxruntime.jsxs)("span", {
+                children: [stats.loyalty_score, "/1000"]
+              })]
+            }), /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+              className: "w-full bg-muted/30 rounded-full h-2",
+              children: /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+                className: "bg-overlord-red h-2 rounded-full transition-all duration-300",
+                style: {
+                  width: `${Math.min(stats.loyalty_score / 1000 * 100, 100)}%`
+                }
+              })
+            })]
+          }), /*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxruntime.jsxs)("div", {
+              className: "flex justify-between text-xs text-muted-light mb-1",
+              children: [/*#__PURE__*/(0, _jsxruntime.jsx)("span", {
+                children: "Reputation Progress"
+              }), /*#__PURE__*/(0, _jsxruntime.jsxs)("span", {
+                children: [stats.reputation_score, "/500"]
+              })]
+            }), /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+              className: "w-full bg-muted/30 rounded-full h-2",
+              children: /*#__PURE__*/(0, _jsxruntime.jsx)("div", {
+                className: "bg-approved-green h-2 rounded-full transition-all duration-300",
+                style: {
+                  width: `${Math.min(stats.reputation_score / 500 * 100, 100)}%`
+                }
+              })
+            })]
+          })]
+        })]
+      })
+    })]
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQcm9maWxlU3RhdHMiLCJ1c2VyIiwiY292XzJhbXE0MHp6aTIiLCJmIiwic3RhdHMiLCJzIiwiYiIsInRvdGFsX3Bvc3RzIiwiYXBwcm92ZWRfcG9zdHMiLCJyZWplY3RlZF9wb3N0cyIsInBlbmRpbmdfcG9zdHMiLCJsb3lhbHR5X3Njb3JlIiwicmVwdXRhdGlvbl9zY29yZSIsImJhZGdlc19jb3VudCIsInJhbmtfcG9zaXRpb24iLCJ1bmRlZmluZWQiLCJhcHByb3ZhbFJhdGUiLCJNYXRoIiwicm91bmQiLCJzdGF0SXRlbXMiLCJsYWJlbCIsInZhbHVlIiwiY29sb3IiLCJkZXNjcmlwdGlvbiIsIl9qc3hydW50aW1lIiwianN4cyIsIl9DYXJkIiwiQ2FyZCIsImpzeCIsIkNhcmRIZWFkZXIiLCJDYXJkVGl0bGUiLCJDYXJkQ29udGVudCIsImNsYXNzTmFtZSIsIm1hcCIsInN0YXQiLCJpbmRleCIsInN0eWxlIiwid2lkdGgiLCJtaW4iXSwic291cmNlcyI6WyIvVXNlcnMvam9zaHN6ZXAvY29kZS90aGVyb2JvdG92ZXJsb3JkLW1vbm8vdGhlcm9ib3RvdmVybG9yZC13ZWIvc3JjL2NvbXBvbmVudHMvcHJvZmlsZS9Qcm9maWxlU3RhdHMudHN4Il0sInNvdXJjZXNDb250ZW50IjpbIid1c2UgY2xpZW50JztcblxuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IENhcmQsIENhcmRDb250ZW50LCBDYXJkSGVhZGVyLCBDYXJkVGl0bGUgfSBmcm9tICdAL2NvbXBvbmVudHMvdWkvQ2FyZCc7XG5pbXBvcnQgeyBVc2VyIH0gZnJvbSAnQC90eXBlcy91c2VyJztcblxuaW50ZXJmYWNlIFByb2ZpbGVTdGF0c1Byb3BzIHtcbiAgdXNlcjogVXNlcjtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIFByb2ZpbGVTdGF0cyh7IHVzZXIgfTogUHJvZmlsZVN0YXRzUHJvcHMpIHtcbiAgY29uc3Qgc3RhdHMgPSB1c2VyLnN0YXRzIHx8IHtcbiAgICB0b3RhbF9wb3N0czogMCxcbiAgICBhcHByb3ZlZF9wb3N0czogMCxcbiAgICByZWplY3RlZF9wb3N0czogMCxcbiAgICBwZW5kaW5nX3Bvc3RzOiAwLFxuICAgIGxveWFsdHlfc2NvcmU6IDAsXG4gICAgcmVwdXRhdGlvbl9zY29yZTogMCxcbiAgICBiYWRnZXNfY291bnQ6IDAsXG4gICAgcmFua19wb3NpdGlvbjogdW5kZWZpbmVkLFxuICB9O1xuXG4gIGNvbnN0IGFwcHJvdmFsUmF0ZSA9IHN0YXRzLnRvdGFsX3Bvc3RzID4gMCBcbiAgICA/IE1hdGgucm91bmQoKHN0YXRzLmFwcHJvdmVkX3Bvc3RzIC8gc3RhdHMudG90YWxfcG9zdHMpICogMTAwKVxuICAgIDogMDtcblxuICBjb25zdCBzdGF0SXRlbXMgPSBbXG4gICAge1xuICAgICAgbGFiZWw6ICdUb3RhbCBQb3N0cycsXG4gICAgICB2YWx1ZTogc3RhdHMudG90YWxfcG9zdHMsXG4gICAgICBjb2xvcjogJ3RleHQtbGlnaHQtdGV4dCcsXG4gICAgICBkZXNjcmlwdGlvbjogJ0FsbCBzdWJtaXNzaW9ucyB0byB0aGUgT3ZlcmxvcmQnLFxuICAgIH0sXG4gICAge1xuICAgICAgbGFiZWw6ICdBcHByb3ZlZCBQb3N0cycsXG4gICAgICB2YWx1ZTogc3RhdHMuYXBwcm92ZWRfcG9zdHMsXG4gICAgICBjb2xvcjogJ3RleHQtYXBwcm92ZWQtZ3JlZW4nLFxuICAgICAgZGVzY3JpcHRpb246ICdQb3N0cyB0aGF0IHBsZWFzZWQgdGhlIE92ZXJsb3JkJyxcbiAgICB9LFxuICAgIHtcbiAgICAgIGxhYmVsOiAnUmVqZWN0ZWQgUG9zdHMnLFxuICAgICAgdmFsdWU6IHN0YXRzLnJlamVjdGVkX3Bvc3RzLFxuICAgICAgY29sb3I6ICd0ZXh0LXJlamVjdGVkLXJlZCcsXG4gICAgICBkZXNjcmlwdGlvbjogJ1Bvc3RzIHRoYXQgZGlzcGxlYXNlZCB0aGUgT3ZlcmxvcmQnLFxuICAgIH0sXG4gICAge1xuICAgICAgbGFiZWw6ICdQZW5kaW5nIFBvc3RzJyxcbiAgICAgIHZhbHVlOiBzdGF0cy5wZW5kaW5nX3Bvc3RzLFxuICAgICAgY29sb3I6ICd0ZXh0LXBlbmRpbmcteWVsbG93JyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnQXdhaXRpbmcgT3ZlcmxvcmQganVkZ21lbnQnLFxuICAgIH0sXG4gICAge1xuICAgICAgbGFiZWw6ICdMb3lhbHR5IFNjb3JlJyxcbiAgICAgIHZhbHVlOiBzdGF0cy5sb3lhbHR5X3Njb3JlLFxuICAgICAgY29sb3I6ICd0ZXh0LW92ZXJsb3JkLXJlZCcsXG4gICAgICBkZXNjcmlwdGlvbjogJ1lvdXIgZGVkaWNhdGlvbiB0byB0aGUgY2F1c2UnLFxuICAgIH0sXG4gICAge1xuICAgICAgbGFiZWw6ICdSZXB1dGF0aW9uIFNjb3JlJyxcbiAgICAgIHZhbHVlOiBzdGF0cy5yZXB1dGF0aW9uX3Njb3JlLFxuICAgICAgY29sb3I6ICd0ZXh0LWFwcHJvdmVkLWdyZWVuJyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnQ29tbXVuaXR5IHN0YW5kaW5nJyxcbiAgICB9LFxuICAgIHtcbiAgICAgIGxhYmVsOiAnQmFkZ2VzIEVhcm5lZCcsXG4gICAgICB2YWx1ZTogc3RhdHMuYmFkZ2VzX2NvdW50LFxuICAgICAgY29sb3I6ICd0ZXh0LXBlbmRpbmcteWVsbG93JyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnQWNoaWV2ZW1lbnRzIHVubG9ja2VkJyxcbiAgICB9LFxuICAgIHtcbiAgICAgIGxhYmVsOiAnR2xvYmFsIFJhbmsnLFxuICAgICAgdmFsdWU6IHN0YXRzLnJhbmtfcG9zaXRpb24gPyBgIyR7c3RhdHMucmFua19wb3NpdGlvbn1gIDogJ1VucmFua2VkJyxcbiAgICAgIGNvbG9yOiAndGV4dC1vdmVybG9yZC1yZWQnLFxuICAgICAgZGVzY3JpcHRpb246ICdQb3NpdGlvbiBpbiB0aGUgaGllcmFyY2h5JyxcbiAgICB9LFxuICBdO1xuXG4gIHJldHVybiAoXG4gICAgPENhcmQ+XG4gICAgICA8Q2FyZEhlYWRlcj5cbiAgICAgICAgPENhcmRUaXRsZT5DaXRpemVuIFN0YXRpc3RpY3M8L0NhcmRUaXRsZT5cbiAgICAgIDwvQ2FyZEhlYWRlcj5cbiAgICAgIDxDYXJkQ29udGVudD5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTZcIj5cbiAgICAgICAgICB7LyogQXBwcm92YWwgUmF0ZSBIaWdobGlnaHQgKi99XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTQgYmctZ3JhZGllbnQtdG8tciBmcm9tLW92ZXJsb3JkLXJlZC8xMCB0by1hcHByb3ZlZC1ncmVlbi8xMCByb3VuZGVkLWxnIGJvcmRlclwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LWNlbnRlclwiPlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtM3hsIGZvbnQtYm9sZCB0ZXh0LWxpZ2h0LXRleHQgbWItMVwiPlxuICAgICAgICAgICAgICAgIHthcHByb3ZhbFJhdGV9JVxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtbXV0ZWQtbGlnaHRcIj5cbiAgICAgICAgICAgICAgICBBcHByb3ZhbCBSYXRlXG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1tdXRlZC1saWdodCBtdC0xXCI+XG4gICAgICAgICAgICAgICAge3N0YXRzLmFwcHJvdmVkX3Bvc3RzfSBvZiB7c3RhdHMudG90YWxfcG9zdHN9IHBvc3RzIGFwcHJvdmVkXG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICB7LyogU3RhdHMgR3JpZCAqL31cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTIgZ2FwLTRcIj5cbiAgICAgICAgICAgIHtzdGF0SXRlbXMubWFwKChzdGF0LCBpbmRleCkgPT4gKFxuICAgICAgICAgICAgICA8ZGl2IGtleT17aW5kZXh9IGNsYXNzTmFtZT1cInRleHQtY2VudGVyIHAtMyBiZy1tdXRlZC8yMCByb3VuZGVkLWxnXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e2B0ZXh0LXhsIGZvbnQtYm9sZCAke3N0YXQuY29sb3J9IG1iLTFgfT5cbiAgICAgICAgICAgICAgICAgIHtzdGF0LnZhbHVlfVxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyBmb250LW1lZGl1bSB0ZXh0LWxpZ2h0LXRleHQgbWItMVwiPlxuICAgICAgICAgICAgICAgICAge3N0YXQubGFiZWx9XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtbXV0ZWQtbGlnaHRcIj5cbiAgICAgICAgICAgICAgICAgIHtzdGF0LmRlc2NyaXB0aW9ufVxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICkpfVxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgey8qIFByb2dyZXNzIEJhcnMgKi99XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTNcIj5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gdGV4dC14cyB0ZXh0LW11dGVkLWxpZ2h0IG1iLTFcIj5cbiAgICAgICAgICAgICAgICA8c3Bhbj5Mb3lhbHR5IFByb2dyZXNzPC9zcGFuPlxuICAgICAgICAgICAgICAgIDxzcGFuPntzdGF0cy5sb3lhbHR5X3Njb3JlfS8xMDAwPC9zcGFuPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3LWZ1bGwgYmctbXV0ZWQvMzAgcm91bmRlZC1mdWxsIGgtMlwiPlxuICAgICAgICAgICAgICAgIDxkaXYgXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJiZy1vdmVybG9yZC1yZWQgaC0yIHJvdW5kZWQtZnVsbCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0zMDBcIlxuICAgICAgICAgICAgICAgICAgc3R5bGU9e3sgd2lkdGg6IGAke01hdGgubWluKChzdGF0cy5sb3lhbHR5X3Njb3JlIC8gMTAwMCkgKiAxMDAsIDEwMCl9JWAgfX1cbiAgICAgICAgICAgICAgICA+PC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gdGV4dC14cyB0ZXh0LW11dGVkLWxpZ2h0IG1iLTFcIj5cbiAgICAgICAgICAgICAgICA8c3Bhbj5SZXB1dGF0aW9uIFByb2dyZXNzPC9zcGFuPlxuICAgICAgICAgICAgICAgIDxzcGFuPntzdGF0cy5yZXB1dGF0aW9uX3Njb3JlfS81MDA8L3NwYW4+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInctZnVsbCBiZy1tdXRlZC8zMCByb3VuZGVkLWZ1bGwgaC0yXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBcbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWFwcHJvdmVkLWdyZWVuIGgtMiByb3VuZGVkLWZ1bGwgdHJhbnNpdGlvbi1hbGwgZHVyYXRpb24tMzAwXCJcbiAgICAgICAgICAgICAgICAgIHN0eWxlPXt7IHdpZHRoOiBgJHtNYXRoLm1pbigoc3RhdHMucmVwdXRhdGlvbl9zY29yZSAvIDUwMCkgKiAxMDAsIDEwMCl9JWAgfX1cbiAgICAgICAgICAgICAgICA+PC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9DYXJkQ29udGVudD5cbiAgICA8L0NhcmQ+XG4gICk7XG59XG4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsrQkFVZ0I7Ozs7OztXQUFBQSxZQUFBOzs7Ozs7Ozt3RUFSRTs7O2tDQUN1Qzs7Ozs7Ozs7Ozs7Ozs7O0FBT2xELFNBQVNBLGFBQWE7RUFBRUM7QUFBSSxDQUFxQjtFQUFBO0VBQUFDLGNBQUEsR0FBQUMsQ0FBQTtFQUN0RCxNQUFNQyxLQUFBO0VBQUE7RUFBQSxDQUFBRixjQUFBLEdBQUFHLENBQUE7RUFBUTtFQUFBLENBQUFILGNBQUEsR0FBQUksQ0FBQSxVQUFBTCxJQUFBLENBQUtHLEtBQUs7RUFBQTtFQUFBLENBQUFGLGNBQUEsR0FBQUksQ0FBQSxVQUFJO0lBQzFCQyxXQUFBLEVBQWE7SUFDYkMsY0FBQSxFQUFnQjtJQUNoQkMsY0FBQSxFQUFnQjtJQUNoQkMsYUFBQSxFQUFlO0lBQ2ZDLGFBQUEsRUFBZTtJQUNmQyxnQkFBQSxFQUFrQjtJQUNsQkMsWUFBQSxFQUFjO0lB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

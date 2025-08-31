@@ -29,6 +29,8 @@ interface User {
 const mockLogin = jest.fn()
 const mockLoginWithGoogle = jest.fn()
 const mockLogout = jest.fn()
+const mockRegister = jest.fn()
+const mockUpdateProfile = jest.fn()
 const mockRefreshToken = jest.fn()
 const mockClearError = jest.fn()
 const mockUpdateUser = jest.fn()
@@ -125,7 +127,19 @@ const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 }
 
 // Specialized mock provider for integration tests with stable state
-const IntegrationMockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const IntegrationMockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const mockAuthValue = {
+    user: { id: '1', username: 'testuser', email: 'test@example.com', displayName: 'Test User' },
+    isAuthenticated: true,
+    isLoading: false,
+    login: mockLogin,
+    loginWithGoogle: mockLoginWithGoogle,
+    logout: mockLogout,
+    register: mockRegister,
+    updateProfile: mockUpdateProfile,
+    refreshToken: mockRefreshToken,
+  }
+  
   return (
     <div data-testid="mock-provider-wrapper">
       {children}
