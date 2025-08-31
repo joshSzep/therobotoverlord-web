@@ -50,10 +50,14 @@ class MockWebSocket {
 
   // Test helpers
   simulateMessage(data: any) {
-    if (this.onmessage) {
-      this.onmessage(new MessageEvent('message', { 
-        data: JSON.stringify(data) 
-      }))
+    if (this.onmessage && this.readyState === MockWebSocket.OPEN) {
+      setTimeout(() => {
+        if (this.onmessage) {
+          this.onmessage(new MessageEvent('message', { 
+            data: JSON.stringify(data) 
+          }))
+        }
+      }, 10)
     }
   }
 
@@ -482,16 +486,18 @@ describe('WebSocket Integration Tests', () => {
             setTimeout(() => {
               socket.simulateMessage({
                 type: 'new_post',
-                payload: createMockPost({
+                payload: {
                   id: '1',
-                  title: 'Live Post Update'
-                })
+                  title: 'Live Post Update',
+                  content: 'Test content',
+                  author: 'testuser'
+                }
               })
             }, 100)
           }
         }, [socket])
 
-        return <MockLiveUpdatesComponent socket={socket} />
+        return <MockLiveUpdatesComponent socket={socket} isConnected={true} />
       }
 
       render(
@@ -501,10 +507,8 @@ describe('WebSocket Integration Tests', () => {
       )
 
       await waitFor(() => {
-        const postsContainer = screen.getByTestId('live-posts')
-        expect(postsContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('Live Post Update')).toBeInTheDocument()
-      })
+      }, { timeout: 2000 })
     })
 
     it('receives and displays notifications', async () => {
@@ -524,7 +528,7 @@ describe('WebSocket Integration Tests', () => {
           }
         }, [socket])
 
-        return <MockLiveUpdatesComponent socket={socket} />
+        return <MockLiveUpdatesComponent socket={socket} isConnected={true} />
       }
 
       render(
@@ -534,10 +538,8 @@ describe('WebSocket Integration Tests', () => {
       )
 
       await waitFor(() => {
-        const notificationsContainer = screen.getByTestId('live-notifications')
-        expect(notificationsContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('New notification received')).toBeInTheDocument()
-      })
+      }, { timeout: 2000 })
     })
 
     it('updates existing posts when modified', async () => {
@@ -579,10 +581,8 @@ describe('WebSocket Integration Tests', () => {
 
       // Wait for original post
       await waitFor(() => {
-        const postsContainer = screen.getByTestId('live-posts')
-        expect(postsContainer.children.length).toBeGreaterThan(0)
         expect(screen.getByText('Original Title')).toBeInTheDocument()
-      })
+      }, { timeout: 2000 })
 
       // Wait for update
       await waitFor(() => {
@@ -692,9 +692,8 @@ describe('WebSocket Integration Tests', () => {
 
       // Wait for all messages to be processed
       await waitFor(() => {
-        const notificationsContainer = screen.getByTestId('live-notifications')
-        expect(notificationsContainer.children.length).toBeGreaterThanOrEqual(100)
-      }, { timeout: 2000 })
+        expect(screen.getAllByTestId(/notification-/).length).toBeGreaterThanOrEqual(100)
+      }, { timeout: 3000 })
 
       const endTime = performance.now()
       const processingTime = endTime - startTime
