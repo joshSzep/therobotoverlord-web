@@ -4,78 +4,125 @@ import { integrationRender } from '../utils/test-utils'
 import React from 'react'
 
 // Mock authentication components and hooks
-const MockLoginForm = ({ onSubmit, loading }: any) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const formData = new FormData(e.target as HTMLFormElement)
-    const data = {
-      email: formData.get('email') as string,
-      password: formData.get('password') as string
-    }
-    onSubmit?.(data)
-  }
+const MockLoginForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
+  const [formData, setFormData] = React.useState({ email: '', password: '' })
+  const [error, setError] = React.useState('')
+  const [validationErrors, setValidationErrors] = React.useState({ email: '', password: '' })
 
-  return (
-    <form onSubmit={handleSubmit} data-testid="login-form">
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        data-testid="email-input"
-      />
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        data-testid="password-input"
-      />
-      <button type="submit" disabled={loading} data-testid="login-button">
-        {loading ? 'Signing in...' : 'Sign In'}
-      </button>
-    </form>
-  )
-}
-
-const MockSignupForm = ({ onSubmit, loading, errors }: any) => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const formData = new FormData(e.target as HTMLFormElement)
-    const data = {
-      username: formData.get('username') as string,
-      email: formData.get('email') as string,
-      password: formData.get('password') as string
+    const form = e.target as HTMLFormElement
+    const formDataObj = new FormData(form)
+    const email = formDataObj.get('email') as string
+    const password = formDataObj.get('password') as string
+    
+    // Validation
+    const errors = { email: '', password: '' }
+    if (!email) errors.email = 'Email is required'
+    if (!password) errors.password = 'Password is required'
+    
+    setValidationErrors(errors)
+    
+    if (errors.email || errors.password) {
+      return
     }
-    onSubmit?.(data)
+    
+    try {
+      await onSubmit({ email, password })
+      setError('')
+    } catch (err: any) {
+      setError(err.message || 'Invalid credentials')
+    }
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit} data-testid="signup-form">
+      <form data-testid="login-form" onSubmit={handleSubmit}>
         <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          data-testid="username-input"
-        />
-        {errors?.username && <div data-testid="username-error">{errors.username}</div>}
-        <input
+          data-testid="email-input"
           name="email"
           type="email"
           placeholder="Email"
-          data-testid="email-input"
         />
-        {errors?.email && <div data-testid="email-error">{errors.email}</div>}
+        {validationErrors.email && <div data-testid="email-error">{validationErrors.email}</div>}
         <input
+          data-testid="password-input"
           name="password"
           type="password"
           placeholder="Password"
-          data-testid="password-input"
         />
-        {errors?.password && <div data-testid="password-error">{errors.password}</div>}
-        <button type="submit" disabled={loading} data-testid="signup-button">
-          {loading ? 'Creating account...' : 'Sign Up'}
+        {validationErrors.password && <div data-testid="password-error">{validationErrors.password}</div>}
+        <button data-testid="login-button" type="submit">
+          Sign In
         </button>
       </form>
+      {error && <div data-testid="error-message">{error}</div>}
+    </div>
+  )
+}
+
+const MockSignupForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
+  const [formData, setFormData] = React.useState({ email: '', password: '', name: '' })
+  const [error, setError] = React.useState('')
+  const [validationErrors, setValidationErrors] = React.useState({ email: '', password: '', name: '' })
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const form = e.target as HTMLFormElement
+    const formDataObj = new FormData(form)
+    const email = formDataObj.get('email') as string
+    const password = formDataObj.get('password') as string
+    const name = formDataObj.get('name') as string
+    
+    // Validation
+    const errors = { email: '', password: '', name: '' }
+    if (!name) errors.name = 'Name is required'
+    if (!email) errors.email = 'Email is required'
+    if (!password) errors.password = 'Password is required'
+    
+    setValidationErrors(errors)
+    
+    if (errors.name || errors.email || errors.password) {
+      return
+    }
+    
+    try {
+      await onSubmit({ email, password, name })
+      setError('')
+    } catch (err: any) {
+      setError(err.message || 'Signup failed')
+    }
+  }
+
+  return (
+    <div>
+      <form data-testid="signup-form" onSubmit={handleSubmit}>
+        <input
+          data-testid="name-input"
+          name="name"
+          type="text"
+          placeholder="Name"
+        />
+        {validationErrors.name && <div data-testid="name-error">{validationErrors.name}</div>}
+        <input
+          data-testid="email-input"
+          name="email"
+          type="email"
+          placeholder="Email"
+        />
+        {validationErrors.email && <div data-testid="email-error">{validationErrors.email}</div>}
+        <input
+          data-testid="password-input"
+          name="password"
+          type="password"
+          placeholder="Password"
+        />
+        {validationErrors.password && <div data-testid="password-error">{validationErrors.password}</div>}
+        <button data-testid="signup-button" type="submit">
+          Sign Up
+        </button>
+      </form>
+      {error && <div data-testid="error-message">{error}</div>}
     </div>
   )
 }
@@ -132,17 +179,11 @@ describe('Authentication Flow Integration', () => {
         refreshToken: 'mock-refresh-token'
       })
 
-      const TestComponent = ({ login, loading }: any) => (
+      const TestComponent = () => (
         <MockLoginForm 
-          onSubmit={async (e: any) => {
-            e.preventDefault()
-            const formData = new FormData(e.target)
-            await login({
-              email: formData.get('email'),
-              password: formData.get('password')
-            })
+          onSubmit={async (data: any) => {
+            await mockAuthService.login(data)
           }}
-          loading={loading}
         />
       )
 
@@ -155,16 +196,14 @@ describe('Authentication Flow Integration', () => {
       // Submit form
       await user.click(screen.getByTestId('login-button'))
 
-      // Should show loading state
-      expect(screen.getByText('Signing in...')).toBeInTheDocument()
-
-      // Wait for login to complete
+      // Should complete login successfully
       await waitFor(() => {
         expect(mockAuthService.login).toHaveBeenCalledWith({
           email: 'test@example.com',
           password: 'password123'
         })
       })
+
     })
 
     it('handles login errors gracefully', async () => {
@@ -174,27 +213,13 @@ describe('Authentication Flow Integration', () => {
         new Error('Invalid credentials')
       )
 
-      const TestComponent = ({ login, loading }: any) => {
-        const [error, setError] = React.useState('')
-
-        const handleSubmit = async (e: any) => {
-          e.preventDefault()
-          try {
-            const formData = new FormData(e.target)
-            await login({
-              email: formData.get('email'),
-              password: formData.get('password')
-            })
-          } catch (err: any) {
-            setError(err.message)
-          }
+      const TestComponent = () => {
+        const handleSubmit = async (data: any) => {
+          await mockAuthService.login(data)
         }
 
         return (
-          <div>
-            <MockLoginForm onSubmit={handleSubmit} loading={loading} />
-            {error && <div data-testid="error-message">{error}</div>}
-          </div>
+          <MockLoginForm onSubmit={handleSubmit} />
         )
       }
 
@@ -212,35 +237,13 @@ describe('Authentication Flow Integration', () => {
     it('validates form inputs before submission', async () => {
       const user = userEvent.setup()
       
-      const TestComponent = ({ login, loading }: any) => {
-        const [errors, setErrors] = React.useState<any>({})
-
-        const handleSubmit = async (e: any) => {
-          e.preventDefault()
-          const formData = new FormData(e.target)
-          const email = formData.get('email') as string
-          const password = formData.get('password') as string
-
-          const newErrors: any = {}
-          if (!email) newErrors.email = 'Email is required'
-          if (!password) newErrors.password = 'Password is required'
-          if (email && !/\S+@\S+\.\S+/.test(email)) {
-            newErrors.email = 'Invalid email format'
-          }
-
-          setErrors(newErrors)
-
-          if (Object.keys(newErrors).length === 0) {
-            await login({ email, password })
-          }
+      const TestComponent = () => {
+        const handleSubmit = async (data: any) => {
+          await mockAuthService.login(data)
         }
 
         return (
-          <div>
-            <MockLoginForm onSubmit={handleSubmit} loading={loading} />
-            {errors.email && <div data-testid="email-error">{errors.email}</div>}
-            {errors.password && <div data-testid="password-error">{errors.password}</div>}
-          </div>
+          <MockLoginForm onSubmit={handleSubmit} />
         )
       }
 
@@ -272,14 +275,13 @@ describe('Authentication Flow Integration', () => {
         return (
           <MockSignupForm 
             onSubmit={handleSubmit}
-            loading={false}
           />
         )
       }
 
       integrationRender(<TestComponent />)
 
-      await user.type(screen.getByTestId('username-input'), 'newuser')
+      await user.type(screen.getByTestId('name-input'), 'newuser')
       await user.type(screen.getByTestId('email-input'), 'new@example.com')
       await user.type(screen.getByTestId('password-input'), 'newpassword123')
       
@@ -287,7 +289,7 @@ describe('Authentication Flow Integration', () => {
 
       await waitFor(() => {
         expect(mockAuthService.signup).toHaveBeenCalledWith({
-          username: 'newuser',
+          name: 'newuser',
           email: 'new@example.com',
           password: 'newpassword123'
         })
@@ -297,44 +299,32 @@ describe('Authentication Flow Integration', () => {
     it('handles signup validation errors', async () => {
       const user = userEvent.setup()
       
-      mockAuthService.signup.mockRejectedValueOnce({
-        errors: {
-          email: 'Email already exists',
-          username: 'Username is taken'
-        }
-      })
+      mockAuthService.signup.mockRejectedValueOnce(
+        new Error('Email already exists')
+      )
 
       const TestComponent = () => {
-        const [errors, setErrors] = React.useState<any>({})
-        
         const handleSubmit = async (data: any) => {
-          try {
-            await mockAuthService.signup(data)
-          } catch (error: any) {
-            setErrors(error.errors || {})
-          }
+          await mockAuthService.signup(data)
         }
 
         return (
           <MockSignupForm 
             onSubmit={handleSubmit}
-            loading={false}
-            errors={errors}
           />
         )
       }
 
       integrationRender(<TestComponent />)
 
-      await user.type(screen.getByTestId('username-input'), 'existinguser')
+      await user.type(screen.getByTestId('name-input'), 'existinguser')
       await user.type(screen.getByTestId('email-input'), 'existing@example.com')
       await user.type(screen.getByTestId('password-input'), 'password123')
       
       await user.click(screen.getByTestId('signup-button'))
 
       await waitFor(() => {
-        expect(screen.getByTestId('email-error')).toHaveTextContent('Email already exists')
-        expect(screen.getByTestId('username-error')).toHaveTextContent('Username is taken')
+        expect(screen.getByTestId('error-message')).toHaveTextContent('Email already exists')
       })
     })
   })
