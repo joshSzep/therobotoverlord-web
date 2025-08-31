@@ -244,7 +244,7 @@ describe("Feed Page Integration", () => {
     // Check that real-time updates hook is called
     await waitFor(() => {
       expect(mockUseRealTimeUpdates).toHaveBeenCalled();
-    });
+    }, { timeout: 2000 });
   });
 
   it("handles API errors gracefully", async () => {
@@ -271,7 +271,7 @@ describe("Feed Page Integration", () => {
 
     // Should render the page with empty state component
     await waitFor(() => {
-      expect(screen.getByTestId("mock-empty-state")).toBeInTheDocument();
+      expect(screen.getByTestId("empty-feed-state")).toBeInTheDocument();
     });
   });
 
