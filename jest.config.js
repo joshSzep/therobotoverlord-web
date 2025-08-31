@@ -26,6 +26,7 @@ const customJestConfig = {
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
     '<rootDir>/e2e/',
+    '<rootDir>/src/__tests__/utils/test-utils.tsx',
   ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',

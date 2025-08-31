@@ -153,7 +153,7 @@ const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 }
 
 // Create a proper AuthContext mock
-const AuthContext = React.createContext<any>(null)
+const AuthContext = React.createContext<unknown>(null)
 
 // Specialized mock provider for integration tests with stable state
 export const IntegrationMockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
