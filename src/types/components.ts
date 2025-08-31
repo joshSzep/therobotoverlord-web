@@ -3,9 +3,9 @@
  * Common interfaces for component props and shared component types
  */
 
-import React from 'react';
+import * as React from 'react';
 import { User, UserRole } from './user';
-import { Post, PostType, PostStatus } from './posts';
+import { Post, PostType, PostStatus, PostFilters } from './posts';
 import { Topic, TopicCategory, TopicFilters } from './topics';
 import { LeaderboardEntry, Competition, Achievement } from './leaderboard';
 import { Badge, UserBadge } from './badges';

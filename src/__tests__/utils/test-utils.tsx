@@ -26,28 +26,7 @@ interface User {
 }
 
 // Create stable mock functions to prevent re-renders
-const mockLogin = jest.fn()
-const mockLoginWithGoogle = jest.fn()
-const mockLogout = jest.fn()
-const mockRegister = jest.fn()
-const mockUpdateProfile = jest.fn()
-const mockRefreshToken = jest.fn()
-const mockClearError = jest.fn()
-const mockUpdateUser = jest.fn()
 
-// Mock AuthContext for testing
-const mockAuthContext = {
-  user: null,
-  isAuthenticated: false,
-  isLoading: false,
-  error: null,
-  login: mockLogin,
-  loginWithGoogle: mockLoginWithGoogle,
-  logout: mockLogout,
-  refreshToken: mockRefreshToken,
-  clearError: mockClearError,
-  updateUser: mockUpdateUser,
-}
 
 // Mock the AuthContext
 jest.mock('@/contexts/AuthContext', () => ({
@@ -153,12 +132,11 @@ const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 }
 
 // Create a proper AuthContext mock
-const AuthContext = React.createContext<unknown>(null)
 
 // Specialized mock provider for integration tests with stable state
 export const IntegrationMockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Create stable mock context value to prevent re-renders
-  const mockAuthValue = React.useMemo(() => ({
+  React.useMemo(() => ({
     user: { 
       id: '1', 
       username: 'testuser', 

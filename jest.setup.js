@@ -31,7 +31,7 @@ jest.mock('next/navigation', () => ({
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props) => {
-    // eslint-disable-next-line @next/next/no-img-element
+     
     return React.createElement('img', { ...props, alt: props.alt || '' })
   },
 }))
@@ -156,6 +156,7 @@ global.console = {
 
 // Setup custom matchers
 expect.extend({
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   toBeInTheDocument: require('@testing-library/jest-dom/matchers').toBeInTheDocument,
 })
 

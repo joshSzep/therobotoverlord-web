@@ -1,8 +1,7 @@
 import React from "react";
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FeedPage from "@/app/feed/page";
-import { IntegrationMockProviders } from "../utils/test-utils";
 import { postsService, topicsService } from "@/services";
 import { useRealTimeUpdates } from "@/hooks/useRealTimeUpdates";
 
@@ -72,13 +71,12 @@ jest.mock("@/components/lazy/LazyComponents", () => ({
   LazyContentFeed: ({
     items = [],
     onLoadMore,
-    hasMore = true,
     isLoadingMore,
   }: {
     items?: Array<{
       id: string;
       type: string;
-      data: any;
+      data: unknown;
     }>;
     onLoadMore?: () => void;
     hasMore?: boolean;
@@ -87,12 +85,15 @@ jest.mock("@/components/lazy/LazyComponents", () => ({
     <div data-testid="content-feed">
       <div data-testid="lazy-content-feed">
         <h2>Mock Content Feed</h2>
-        {items.map((item) => (
-          <div key={item.id} data-testid={`feed-item-${item.id}`}>
-            <h3>{item.data.title || "Mock Item"}</h3>
-            <p>{item.data.content || "Mock content"}</p>
-          </div>
-        ))}
+        {items.map((item) => {
+          const data = item.data as { title?: string; content?: string };
+          return (
+            <div key={item.id} data-testid={`feed-item-${item.id}`}>
+              <h3>{data.title || "Mock Item"}</h3>
+              <p>{data.content || "Mock content"}</p>
+            </div>
+          );
+        })}
         <button
           onClick={onLoadMore}
           disabled={isLoadingMore}
@@ -129,11 +130,6 @@ jest.mock("@/hooks/useRealTimeUpdates", () => {
 });
 
 // Mock performance monitoring
-const mockUsePerformanceMonitoring = jest.fn().mockReturnValue({
-  startMeasurement: jest.fn(),
-  endMeasurement: jest.fn(),
-  getMetrics: jest.fn().mockReturnValue({}),
-});
 
 jest.mock('@/hooks/usePerformanceMonitoring', () => ({
   usePerformanceMonitoring: () => ({

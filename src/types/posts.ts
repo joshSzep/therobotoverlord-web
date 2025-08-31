@@ -3,10 +3,16 @@
  * Based on backend API schema
  */
 
+// Post type enums
+export type PostType = 'text' | 'link' | 'image' | 'video' | 'poll' | 'discussion';
+export type PostStatus = 'draft' | 'published' | 'moderated' | 'removed';
+export type PostModerationStatus = 'pending' | 'approved' | 'rejected' | 'flagged';
+
 export interface Post {
   id: string;
   title: string;
   content: string;
+  type?: PostType;
   authorId: string;
   author: {
     id: string;
@@ -35,8 +41,8 @@ export interface Post {
     };
   };
   parentId?: string; // For replies
-  status: 'draft' | 'published' | 'moderated' | 'removed';
-  moderationStatus: 'pending' | 'approved' | 'rejected' | 'flagged';
+  status: PostStatus;
+  moderationStatus: PostModerationStatus;
   moderationReason?: string;
   moderatedBy?: string;
   moderatedAt?: string;
