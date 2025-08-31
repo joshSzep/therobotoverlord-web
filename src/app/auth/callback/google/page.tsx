@@ -34,9 +34,9 @@ export default function GoogleCallbackPage() {
 
         // Redirect to dashboard on success
         router.push('/dashboard');
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Google OAuth callback error:', error);
-        setError(error.message || 'Authentication failed');
+        setError((error as Error).message || 'Authentication failed');
         
         // Redirect to login with error after 3 seconds
         setTimeout(() => {

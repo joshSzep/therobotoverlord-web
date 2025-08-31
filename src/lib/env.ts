@@ -51,7 +51,7 @@ function validateEnvironment(): EnvironmentConfig {
     WS_URL: requiredVars.WS_URL!,
     DEBUG: process.env.NEXT_PUBLIC_DEBUG === 'true',
     GOOGLE_CLIENT_ID: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-    NODE_ENV: (process.env.NODE_ENV as any) || 'development',
+    NODE_ENV: (process.env.NODE_ENV as 'development' | 'production' | 'test') || 'development',
   };
 }
 

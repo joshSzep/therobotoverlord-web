@@ -42,7 +42,7 @@ export function ContentFeed({
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasMore && !isLoadingMore) {
+        if (entries[0]?.isIntersecting && hasMore && !isLoadingMore) {
           onLoadMore();
         }
       },
@@ -321,7 +321,7 @@ export function ContentFeed({
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Feed Items */}
-      {items.map((item) => (
+      {items?.map((item) => (
         item.type === 'post' ? renderPostItem(item) : renderTopicItem(item)
       ))}
 
@@ -344,7 +344,7 @@ export function ContentFeed({
           <div className="text-center">
             <div className="text-2xl mb-2">🎯</div>
             <p className="text-muted-light text-sm">
-              You've reached the end of your feed
+              You&apos;ve reached the end of your feed
             </p>
             <p className="text-muted-light text-xs mt-1">
               Try adjusting your filters or check back later

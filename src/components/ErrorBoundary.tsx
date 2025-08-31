@@ -24,7 +24,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    captureReactError(error, errorInfo)
+    captureReactError(error, { componentStack: errorInfo.componentStack || '' })
   }
 
   resetError = () => {
@@ -71,7 +71,7 @@ function DefaultErrorFallback({ error, resetError }: { error: Error; resetError:
               Something went wrong
             </h3>
             <div className="mt-2 text-sm text-gray-500">
-              <p>We've encountered an unexpected error. Our team has been notified.</p>
+              <p>We&apos;ve encountered an unexpected error. Our team has been notified.</p>
             </div>
           </div>
         </div>

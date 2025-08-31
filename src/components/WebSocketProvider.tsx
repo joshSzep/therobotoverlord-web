@@ -10,8 +10,8 @@ import { useWebSocket, WebSocketClient } from '@/lib/websocket';
 interface WebSocketContextType {
   connected: boolean;
   client: WebSocketClient | null;
-  subscribe: (eventType: string, handler: (data: any) => void) => void;
-  unsubscribe: (eventType: string, handler: (data: any) => void) => void;
+  subscribe: (eventType: string, handler: (data: unknown) => void) => void;
+  unsubscribe: (eventType: string, handler: (data: unknown) => void) => void;
   subscribeToChannel: (channel: string) => void;
   sendChatMessage: (message: string, conversationId?: string) => void;
 }

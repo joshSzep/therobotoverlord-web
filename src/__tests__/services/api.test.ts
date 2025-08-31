@@ -236,8 +236,8 @@ describe('API Service Layer', () => {
         ok: true,
         json: async () => {
           throw new Error('Invalid JSON')
-        },
-      } as Response)
+        }
+      } as unknown as Response)
 
       await expect(mockApiService.fetchPosts()).rejects.toThrow('Invalid JSON')
     })

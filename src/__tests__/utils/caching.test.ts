@@ -58,7 +58,7 @@ describe('Caching Utilities', () => {
       cache.get('key1')
       
       const stats = cache.getStats()
-      expect(stats.entries[0].hits).toBe(2)
+      expect(stats.entries[0]?.hits).toBe(2)
     })
 
     it('deletes specific keys', () => {

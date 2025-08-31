@@ -12,7 +12,7 @@ import { User } from '@/types/user';
 
 export interface RealTimeEvent {
   type: string;
-  data: any;
+  data: unknown;
   timestamp: string;
   userId?: string;
 }
@@ -71,7 +71,7 @@ export interface NotificationEvent {
     category: 'system' | 'moderation' | 'achievement' | 'social';
     priority: 'low' | 'medium' | 'high';
     actionUrl?: string;
-    metadata?: Record<string, any>;
+    metadata?: Record<string, unknown>;
   };
 }
 
@@ -89,7 +89,8 @@ export function useRealTimeUpdates() {
   const { addNotification } = useAppStore();
 
   // Handle post updates
-  const handlePostUpdate = useCallback((event: PostUpdateEvent) => {
+  const handlePostUpdate = useCallback((data: unknown) => {
+    const event = data as PostUpdateEvent;
     switch (event.type) {
       case 'post_created':
         addNotification({
@@ -132,7 +133,8 @@ export function useRealTimeUpdates() {
   }, [addNotification]);
 
   // Handle topic updates
-  const handleTopicUpdate = useCallback((event: TopicUpdateEvent) => {
+  const handleTopicUpdate = useCallback((data: unknown) => {
+    const event = data as TopicUpdateEvent;
     switch (event.type) {
       case 'topic_created':
         addNotification({
@@ -153,7 +155,8 @@ export function useRealTimeUpdates() {
   }, [addNotification]);
 
   // Handle moderation events
-  const handleModerationEvent = useCallback((event: ModerationEvent) => {
+  const handleModerationEvent = useCallback((data: unknown) => {
+    const event = data as ModerationEvent;
     switch (event.type) {
       case 'moderation_queue_updated':
         addNotification({
@@ -182,7 +185,8 @@ export function useRealTimeUpdates() {
   }, [addNotification]);
 
   // Handle notifications
-  const handleNotification = useCallback((event: NotificationEvent) => {
+  const handleNotification = useCallback((data: unknown) => {
+    const event = data as NotificationEvent;
     const notificationType = event.data.priority === 'high' ? 'error' : 
                            event.data.priority === 'medium' ? 'warning' : 'info';
 
@@ -215,7 +219,8 @@ export function useRealTimeUpdates() {
   }, [addNotification]);
 
   // Handle user activity
-  const handleUserActivity = useCallback((event: UserActivityEvent) => {
+  const handleUserActivity = useCallback((data: unknown) => {
+    const event = data as UserActivityEvent;
     // This could be used for showing online status, typing indicators, etc.
     // For now, we'll just log it
     console.log('User activity:', event);
@@ -272,7 +277,8 @@ export function usePostRealTimeUpdates(postId?: string) {
   useEffect(() => {
     if (!connected || !postId) return;
 
-    const handlePostSpecificUpdate = (event: PostUpdateEvent) => {
+    const handlePostSpecificUpdate = (data: unknown) => {
+      const event = data as PostUpdateEvent;
       if (event.post.id === postId) {
         // Notify about post updates for the specific post
         addNotification({
@@ -303,7 +309,8 @@ export function useModerationRealTimeUpdates() {
   useEffect(() => {
     if (!connected) return;
 
-    const handleModerationUpdate = (event: ModerationEvent) => {
+    const handleModerationUpdate = (data: unknown) => {
+      const event = data as ModerationEvent;
       if (event.type === 'moderation_queue_updated') {
         addNotification({
           type: 'warning',

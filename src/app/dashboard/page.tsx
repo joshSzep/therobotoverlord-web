@@ -154,7 +154,7 @@ function DashboardContent() {
           <OverlordContent>
             <p className="text-sm">
               Welcome back, Citizen {user?.name}. Your loyalty score is being continuously monitored.
-              Participate actively to maintain your standing in the Robot Overlord's domain.
+              Participate actively to maintain your standing in the Robot Overlord&apos;s domain.
             </p>
           </OverlordContent>
         </OverlordMessage>
@@ -166,7 +166,7 @@ function DashboardContent() {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-2xl font-bold text-light-text">Loyalty Score</h3>
-                <p className="text-muted-light">Your standing in the Robot Overlord's domain</p>
+                <p className="text-muted-light">Your standing in the Robot Overlord&apos;s domain</p>
               </div>
               <div className="text-right">
                 <div className="text-4xl font-bold text-overlord-red">{loyaltyScore.toLocaleString()}</div>

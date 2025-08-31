@@ -60,10 +60,11 @@ export function WebSocketMonitor({ showDetails = false, className = '' }: WebSoc
       }));
     };
 
-    const handleConnectionStats = (data: any) => {
+    const handleConnectionStats = (data: unknown) => {
+      const statsData = data as Record<string, any>;
       setStats(prev => ({
         ...prev,
-        ...data
+        ...statsData
       }));
     };
 

@@ -275,7 +275,7 @@ env-info:
 # === GIT & CI/CD ===
 
 # Run pre-commit checks
-pre-commit: check test
+pre-commit: lint type-check test
     @echo "✅ Pre-commit checks passed"
 
 # Prepare for commit

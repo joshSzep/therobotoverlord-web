@@ -6,7 +6,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 // API Response wrapper type
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data: T;
   message?: string;
   success: boolean;
@@ -17,7 +17,7 @@ export interface ApiError {
   message: string;
   status: number;
   code?: string;
-  details?: any;
+  details?: unknown;
 }
 
 // Request retry configuration
@@ -229,7 +229,7 @@ class ApiClient {
   /**
    * GET request
    */
-  public async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  public async get<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.get<T>(url, config);
     return response.data;
   }
@@ -237,7 +237,7 @@ class ApiClient {
   /**
    * POST request
    */
-  public async post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async post<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.post<T>(url, data, config);
     return response.data;
   }
@@ -245,7 +245,7 @@ class ApiClient {
   /**
    * PUT request
    */
-  public async put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async put<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.put<T>(url, data, config);
     return response.data;
   }
@@ -253,7 +253,7 @@ class ApiClient {
   /**
    * PATCH request
    */
-  public async patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async patch<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.patch<T>(url, data, config);
     return response.data;
   }
@@ -261,7 +261,7 @@ class ApiClient {
   /**
    * DELETE request
    */
-  public async delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  public async delete<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.delete<T>(url, config);
     return response.data;
   }
@@ -269,7 +269,7 @@ class ApiClient {
   /**
    * Upload file with progress tracking
    */
-  public async uploadFile<T = any>(
+  public async uploadFile<T = unknown>(
     url: string, 
     file: File, 
     onProgress?: (progress: number) => void

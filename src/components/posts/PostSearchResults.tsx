@@ -78,7 +78,7 @@ export function PostSearchResults({
           <p className="text-sm text-muted-light">
             {totalCount} post{totalCount !== 1 ? 's' : ''} found
             {searchQuery && (
-              <span> for "<span className="text-overlord-red">{searchQuery}</span>"</span>
+              <span> for &quot;<span className="text-overlord-red">{searchQuery}</span>&quot;</span>
             )}
           </p>
         </div>
@@ -100,7 +100,7 @@ export function PostSearchResults({
                     href={`/posts/${post.id}`}
                     className="text-xl font-bold text-light-text hover:text-overlord-red transition-colors line-clamp-2"
                   >
-                    {highlightText(post.title, searchQuery)}
+                    No results found for &quot;{searchQuery}&quot;. Try adjusting your search terms.
                   </Link>
                   
                   {post.topic && (

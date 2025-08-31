@@ -116,9 +116,9 @@ export function GoogleOAuthButton({
         redirect_uri: window.location.origin + '/auth/callback/google',
       });
       onSuccess?.();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Google OAuth login failed:', error);
-      onError?.(error.message || 'Google Sign-In failed');
+      onError?.((error as Error).message || 'Google Sign-In failed');
     }
   };
 
@@ -201,7 +201,7 @@ function GoogleSignInButton({ theme, size, text, disabled, onError }: GoogleSign
       window.google.accounts.id.renderButton(buttonRef.current, {
         theme,
         size: googleSize,
-        text: `${text}_with` as any,
+        text: `${text}_with` as 'signin_with' | 'signup_with' | 'continue_with' | 'signin',
         shape: 'rectangular',
         logo_alignment: 'left',
         width: '100%',

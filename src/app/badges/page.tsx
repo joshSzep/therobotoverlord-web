@@ -399,7 +399,7 @@ export default function BadgesPage() {
                     <div className="flex-1">
                       <div className="font-medium text-light-text">
                         {notification.isNew && <span className="text-overlord-red mr-2">NEW!</span>}
-                        You earned "{notification.badgeName}"
+                        You earned &quot;{notification.badgeName}&quot;
                       </div>
                       <div className="text-sm text-muted-light">
                         {formatDate(notification.earnedAt)}
@@ -424,7 +424,7 @@ export default function BadgesPage() {
                   onChange={(e) => setSelectedCategory(e.target.value as any)}
                   className="px-3 py-1 bg-dark-bg border border-muted/20 rounded text-light-text text-sm focus:border-overlord-red focus:outline-none"
                 >
-                  <option value="all">All Categories</option>
+                  <option value="">All Categories</option>
                   <option value="participation">📝 Participation</option>
                   <option value="quality">💎 Quality</option>
                   <option value="social">👥 Social</option>
@@ -441,7 +441,7 @@ export default function BadgesPage() {
                   onChange={(e) => setSelectedRarity(e.target.value as any)}
                   className="px-3 py-1 bg-dark-bg border border-muted/20 rounded text-light-text text-sm focus:border-overlord-red focus:outline-none"
                 >
-                  <option value="all">All Rarities</option>
+                  <option value="">All Rarities</option>
                   <option value="common">Common</option>
                   <option value="uncommon">Uncommon</option>
                   <option value="rare">Rare</option>
@@ -492,7 +492,7 @@ export default function BadgesPage() {
                 <div className="space-y-3">
                   <div>
                     <h3 className="text-lg font-bold text-light-text">{badge.name}</h3>
-                    <p className="text-sm text-muted-light mt-1">{badge.description}</p>
+                    <p className="text-sm text-muted-light">You haven&apos;t earned any badges yet. Start participating to unlock achievements!</p>
                   </div>
 
                   {/* Category and Rarity */}

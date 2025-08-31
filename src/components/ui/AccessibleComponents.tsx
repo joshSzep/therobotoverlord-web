@@ -275,7 +275,7 @@ export const AccessibleSearch: React.FC<{
   value: string;
   onChange: (value: string) => void;
   onSearch: (query: string) => void;
-  results?: any[];
+  results?: unknown[];
   isSearching?: boolean;
   placeholder?: string;
   className?: string;

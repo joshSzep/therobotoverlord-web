@@ -28,13 +28,13 @@ export function OverlordChat({ userId, conversationId }: OverlordChatProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleOverlordMessage = (data: any) => {
+    const handleOverlordMessage = (data: unknown) => {
       const newMessage: ChatMessage = {
-        id: data.metadata?.message_id || Date.now().toString(),
-        message: data.message,
+        id: (data as any).metadata?.message_id || Date.now().toString(),
+        message: (data as any).message,
         is_overlord: true,
-        timestamp: data.metadata?.timestamp || new Date().toISOString(),
-        response_to: data.response_to,
+        timestamp: (data as any).metadata?.timestamp || new Date().toISOString(),
+        response_to: (data as any).response_to,
       };
       
       setMessages(prev => [...prev, newMessage]);

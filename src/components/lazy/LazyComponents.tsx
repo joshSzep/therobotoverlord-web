@@ -227,7 +227,7 @@ export const LazyMarkdownEditor = dynamic(
 );
 
 // Utility function for creating lazy components with custom loading
-export const createLazyComponent = <T extends React.ComponentType<any>>(
+export const createLazyComponent = <T extends React.ComponentType<Record<string, unknown>>>(
   importFn: () => Promise<{ default: T }>,
   options: {
     loading?: React.ComponentType;
@@ -235,17 +235,15 @@ export const createLazyComponent = <T extends React.ComponentType<any>>(
     skeleton?: React.ComponentType;
   } = {}
 ) => {
-  const { loading, ssr = false, skeleton } = options;
-  
   return dynamic(importFn, {
     loading: () => LoadingComponent ? React.createElement(LoadingComponent) : React.createElement('div', null, 'Loading...'),
-    ssr
+    ssr: options.ssr || false
   });
 };
 
 // Hook for preloading components
 export const usePreloadComponent = () => {
-  const preload = (importFn: () => Promise<any>) => {
+  const preload = (importFn: () => Promise<unknown>) => {
     // Preload the component when user hovers or when we anticipate they'll need it
     importFn();
   };
@@ -253,7 +251,7 @@ export const usePreloadComponent = () => {
   return { preload };
 };
 
-export default {
+const LazyComponents = {
   LazyAdminDashboard,
   LazyAdminAuditLogs,
   LazyAdminAppeals,
@@ -280,3 +278,5 @@ export default {
   createLazyComponent,
   usePreloadComponent
 };
+
+export default LazyComponents;

@@ -73,7 +73,7 @@ export function collectPerformanceMetrics(): Promise<PerformanceMetrics> {
     new PerformanceObserver((list) => {
       const entries = list.getEntries()
       if (entries.length > 0) {
-        metrics.lcp = entries[entries.length - 1].startTime
+        metrics.lcp = entries[entries.length - 1]?.startTime || 0
       }
       checkComplete()
     }).observe({ entryTypes: ['largest-contentful-paint'] })
@@ -92,9 +92,8 @@ export function collectPerformanceMetrics(): Promise<PerformanceMetrics> {
     let clsValue = 0
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        const layoutShift = entry as any
-        if (!layoutShift.hadRecentInput) {
-          clsValue += layoutShift.value
+        if (!(entry as any).hadRecentInput) {
+          clsValue += (entry as any).value
         }
       }
       metrics.cls = clsValue

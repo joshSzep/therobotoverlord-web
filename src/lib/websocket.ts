@@ -4,7 +4,7 @@
 
 export interface WebSocketMessage {
   event_type: string;
-  data: any;
+  data: unknown;
   timestamp: string;
   user_id?: string;
   message_id?: string;
@@ -23,7 +23,7 @@ export class WebSocketClient {
   private reconnectAttempts = 0;
   private reconnectTimer: NodeJS.Timeout | null = null;
   private isConnecting = false;
-  private eventHandlers: Map<string, Set<(data: any) => void>> = new Map();
+  private eventHandlers: Map<string, Set<(data: unknown) => void>> = new Map();
   private connectionHandlers: Set<(connected: boolean) => void> = new Set();
 
   constructor(config: WebSocketConfig) {
@@ -104,7 +104,7 @@ export class WebSocketClient {
     return this.ws?.readyState === WebSocket.OPEN;
   }
 
-  send(message: any): void {
+  send(message: unknown): void {
     if (!this.isConnected()) {
       console.warn('WebSocket not connected, message not sent:', message);
       return;
@@ -117,14 +117,14 @@ export class WebSocketClient {
     }
   }
 
-  subscribe(eventType: string, handler: (data: any) => void): void {
+  subscribe(eventType: string, handler: (data: unknown) => void): void {
     if (!this.eventHandlers.has(eventType)) {
       this.eventHandlers.set(eventType, new Set());
     }
     this.eventHandlers.get(eventType)!.add(handler);
   }
 
-  unsubscribe(eventType: string, handler: (data: any) => void): void {
+  unsubscribe(eventType: string, handler: (data: unknown) => void): void {
     const handlers = this.eventHandlers.get(eventType);
     if (handlers) {
       handlers.delete(handler);
@@ -252,15 +252,15 @@ export function useWebSocket(options: UseWebSocketOptions) {
     };
   }, [options.url, options.token]);
 
-  const subscribe = (eventType: string, handler: (data: any) => void) => {
+  const subscribe = (eventType: string, handler: (data: unknown) => void) => {
     clientRef.current?.subscribe(eventType, handler);
   };
 
-  const unsubscribe = (eventType: string, handler: (data: any) => void) => {
+  const unsubscribe = (eventType: string, handler: (data: unknown) => void) => {
     clientRef.current?.unsubscribe(eventType, handler);
   };
 
-  const send = (message: any) => {
+  const send = (message: unknown) => {
     clientRef.current?.send(message);
   };
 

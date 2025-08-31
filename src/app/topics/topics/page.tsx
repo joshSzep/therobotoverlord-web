@@ -48,7 +48,7 @@ export default function TopicsPage() {
       setIsLoading(true);
       setError(null);
 
-      const categoriesResponse = await topicsService.getCategories() as any;
+      const categoriesResponse = await topicsService.getCategories() as unknown;
       const response = await topicsService.getTopics({
         page,
         limit: 20,
@@ -58,12 +58,12 @@ export default function TopicsPage() {
         sortBy: currentFilters.sortBy === 'recent' ? 'newest' : (currentFilters.sortBy === 'alphabetical' ? 'newest' : currentFilters.sortBy),
         timeRange: currentFilters.timeRange === 'hour' || currentFilters.timeRange === 'today' || currentFilters.timeRange === 'quarter' ? 'day' : currentFilters.timeRange,
         tags: currentFilters.tags,
-      });
+      }) as unknown;
 
-      if (response.success && response.data) {
-        setTopics(response.data.data || []);
-        setCurrentPage(response.data.pagination?.page || 1);
-        setTotalPages(response.data.pagination?.totalPages || 1);
+      if ((response as any).success) {
+        setTopics((response as any).data || []);
+        setCurrentPage((response as any).data?.pagination?.page || 1);
+        setTotalPages((response as any).data?.pagination?.totalPages || 1);
       } else {
         throw new Error('Failed to load topics');
       }
@@ -83,7 +83,7 @@ export default function TopicsPage() {
   // Load categories
   const loadCategories = async () => {
     try {
-      const response: ApiResponse<TopicCategory[]> = await topicsService.getCategories();
+      const response = await topicsService.getCategories() as any;
       if (response.success && response.data) {
         setCategories(response.data);
       }

@@ -430,7 +430,7 @@ function NotificationsContent() {
               <div>
                 <h3 className="font-medium text-light-text">Notification Preferences</h3>
                 <p className="text-sm text-muted-light mt-1">
-                  Customize which notifications you receive and how you're notified.
+                  Customize which notifications you receive and how you&apos;re notified.
                 </p>
               </div>
               <Button

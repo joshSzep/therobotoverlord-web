@@ -164,12 +164,12 @@ export default function PostDetailPage() {
   };
 
   // Handle reply submission
-  const handleReplySubmit = async (replyData: any) => {
+  const handleReplySubmit = async (replyData: unknown) => {
     if (!post) return;
 
     try {
       const response = await postsService.createPost({
-        ...replyData,
+        ...(replyData as any),
         topicId: post.topicId,
         parentId: post.id,
       });

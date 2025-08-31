@@ -149,7 +149,7 @@ function NotificationSettingsContent() {
   };
 
   // Update preference
-  const updatePreference = (section: keyof NotificationPreferences, key: string, value: any) => {
+  const updatePreference = (section: keyof NotificationPreferences, key: string, value: unknown) => {
     setPreferences(prev => ({
       ...prev,
       [section]: {

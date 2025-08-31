@@ -18,9 +18,9 @@ export abstract class BaseService {
    */
   protected async get<T>(
     endpoint: string,
-    params?: Record<string, any>
+    params?: Record<string, unknown>
   ): Promise<ApiResponse<T>> {
-    const response = await apiClient.get(`${this.baseUrl}${endpoint}`, { params });
+    const response = await apiClient.get(`${this.baseUrl}${endpoint}`, { params }) as any;
     return response.data;
   }
 
@@ -29,10 +29,10 @@ export abstract class BaseService {
    */
   protected async post<T>(
     endpoint: string,
-    data?: any,
+    data?: unknown,
     config?: any
   ): Promise<ApiResponse<T>> {
-    const response = await apiClient.post(`${this.baseUrl}${endpoint}`, data, config);
+    const response = await apiClient.post(`${this.baseUrl}${endpoint}`, data, config) as any;
     return response.data;
   }
 
@@ -41,10 +41,10 @@ export abstract class BaseService {
    */
   protected async put<T>(
     endpoint: string,
-    data?: any,
+    data?: unknown,
     config?: any
   ): Promise<ApiResponse<T>> {
-    const response = await apiClient.put(`${this.baseUrl}${endpoint}`, data, config);
+    const response = await apiClient.put(`${this.baseUrl}${endpoint}`, data, config) as any;
     return response.data;
   }
 
@@ -53,10 +53,10 @@ export abstract class BaseService {
    */
   protected async patch<T>(
     endpoint: string,
-    data?: any,
+    data?: unknown,
     config?: any
   ): Promise<ApiResponse<T>> {
-    const response = await apiClient.patch(`${this.baseUrl}${endpoint}`, data, config);
+    const response = await apiClient.patch(`${this.baseUrl}${endpoint}`, data, config) as any;
     return response.data;
   }
 
@@ -67,7 +67,7 @@ export abstract class BaseService {
     endpoint: string,
     config?: any
   ): Promise<ApiResponse<T>> {
-    const response = await apiClient.delete(`${this.baseUrl}${endpoint}`, config);
+    const response = await apiClient.delete(`${this.baseUrl}${endpoint}`, config) as any;
     return response.data;
   }
 
@@ -76,14 +76,14 @@ export abstract class BaseService {
    */
   protected async getPaginated<T>(
     endpoint: string,
-    params?: Record<string, any>
+    params?: Record<string, unknown>
   ): Promise<PaginatedResponse<T>> {
     const response = await this.get<T[]>(endpoint, params);
     
     // Extract pagination info from headers or response
     const totalCount = response.metadata?.totalCount || 0;
-    const page = params?.page || 1;
-    const limit = params?.limit || 10;
+    const page = Number(params?.page) || 1;
+    const limit = Number(params?.limit) || 10;
     const totalPages = Math.ceil(totalCount / limit);
 
     return {
@@ -103,7 +103,7 @@ export abstract class BaseService {
   /**
    * Build query parameters for API requests
    */
-  protected buildParams(params: Record<string, any>): Record<string, string> {
+  protected buildParams(params: any): Record<string, string> {
     const cleanParams: Record<string, string> = {};
     
     Object.entries(params).forEach(([key, value]) => {
@@ -125,7 +125,7 @@ export abstract class BaseService {
   protected async uploadFile<T>(
     endpoint: string,
     file: File,
-    additionalData?: Record<string, any>
+    additionalData?: Record<string, unknown>
   ): Promise<ApiResponse<T>> {
     const formData = new FormData();
     formData.append('file', file);
@@ -136,11 +136,11 @@ export abstract class BaseService {
       });
     }
 
-    const response = await apiClient.post(`${this.baseUrl}${endpoint}`, formData, {
+    const response = await apiClient.post(`${this.baseUrl}${endpoint}/upload`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-    });
+    }) as any;
 
     return response.data;
   }
@@ -150,11 +150,11 @@ export abstract class BaseService {
    */
   protected async batch<T>(
     endpoint: string,
-    operations: Array<{ method: string; data?: any; id?: string }>
+    operations: Array<{ method: string; data?: unknown; id?: string }>
   ): Promise<ApiResponse<T[]>> {
     const response = await apiClient.post(`${this.baseUrl}${endpoint}/batch`, {
       operations,
-    });
+    }) as any;
 
     return response.data;
   }

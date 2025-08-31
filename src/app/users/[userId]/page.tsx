@@ -50,7 +50,7 @@ interface UserActivity {
 export default function UserProfilePage() {
   const params = useParams();
   const userId = params.userId as string;
-  const { addNotification, currentUser } = useAppStore();
+  const { addNotification, currentUser } = useAppStore() as any;
   
   const [user, setUser] = useState<User | null>(null);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
@@ -71,7 +71,7 @@ export default function UserProfilePage() {
       // Load user basic info
       const userResponse = await usersService.getUserById(userId);
       if (userResponse.data) {
-        setUser(userResponse.data);
+        setUser(userResponse.data as any);
       }
 
       // Load user statistics (mock data for now)
@@ -92,15 +92,15 @@ export default function UserProfilePage() {
       setUserStats(mockStats);
 
       // Load recent posts
-      const postsResponse = await postsService.getPostsByUser(userId, { limit: 5 });
+      const postsResponse = await postsService.getPostsByUser(userId, 1, 5);
       if (postsResponse.data) {
         setRecentPosts(postsResponse.data);
       }
 
       // Load recent topics
-      const topicsResponse = await topicsService.getTopicsByUser(userId, { limit: 5 });
+      const topicsResponse = await topicsService.getTopicsByUser(userId, 1, 5);
       if (topicsResponse.data) {
-        setRecentTopics(topicsResponse.data);
+        setRecentTopics(topicsResponse.data as any);
       }
 
       // Load recent activity (mock data)
@@ -661,7 +661,7 @@ export default function UserProfilePage() {
             User Not Found
           </h3>
           <p className="text-muted-light">
-            The user profile you're looking for doesn't exist or has been removed.
+            The user profile you&apos;re looking for doesn&apos;t exist or has been removed.
           </p>
         </div>
       )}

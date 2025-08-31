@@ -24,7 +24,7 @@ export interface ModerationAction {
   expiresAt?: string;
   notifyTarget: boolean;
   isPublic: boolean;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   createdAt: string;
   reversedAt?: string;
   reversedBy?: string;
@@ -116,7 +116,7 @@ export interface ModerationRule {
   conditions: Array<{
     field: string;
     operator: 'equals' | 'contains' | 'matches' | 'greater_than' | 'less_than';
-    value: any;
+    value: unknown;
     weight: number;
   }>;
   actions: Array<{

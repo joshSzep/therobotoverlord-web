@@ -71,10 +71,24 @@ export class UsersService extends BaseService {
   }
 
   /**
+   * Alias for getUser - Get user by ID
+   */
+  async getUserById(userId: string): Promise<ApiResponse<UserProfile>> {
+    return this.getUser(userId);
+  }
+
+  /**
    * Update user profile
    */
   async updateProfile(userId: string, data: UpdateProfileData): Promise<ApiResponse<UserProfile>> {
     return this.patch(`/${userId}`, data);
+  }
+
+  /**
+   * Alias for updateProfile - Update user
+   */
+  async updateUser(userId: string, data: UpdateProfileData): Promise<ApiResponse<UserProfile>> {
+    return this.updateProfile(userId, data);
   }
 
   /**
@@ -112,7 +126,7 @@ export class UsersService extends BaseService {
     id: string;
     type: 'post_created' | 'post_voted' | 'topic_created' | 'badge_earned' | 'level_up';
     description: string;
-    metadata: Record<string, any>;
+    metadata: Record<string, unknown>;
     createdAt: string;
   }>> {
     return this.getPaginated(`/${userId}/activity`, { page, limit });
@@ -184,7 +198,7 @@ export class UsersService extends BaseService {
     title: string;
     message: string;
     isRead: boolean;
-    metadata: Record<string, any>;
+    metadata: Record<string, unknown>;
     createdAt: string;
   }>> {
     return this.getPaginated('/notifications', { page, limit });
@@ -309,7 +323,7 @@ export class UsersService extends BaseService {
     reason?: string;
     moderatedBy: string;
     moderatedAt: string;
-    details?: Record<string, any>;
+    details?: Record<string, unknown>;
   }>>> {
     return this.get(`/${userId}/moderation/history`);
   }

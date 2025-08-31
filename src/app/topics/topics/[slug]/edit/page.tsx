@@ -70,11 +70,11 @@ export default function EditTopicPage() {
   }, [topicSlug]);
 
   // Handle topic update
-  const handleTopicSubmit = async (topicData: any) => {
+  const handleTopicSubmit = async (topicData: unknown) => {
     if (!topic) return;
 
     try {
-      const response = await topicsService.updateTopic(topic.id, topicData);
+      const response = await topicsService.updateTopic(topic.id, topicData as any);
 
       if (response.success && response.data) {
         addNotification({

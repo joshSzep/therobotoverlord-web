@@ -11,7 +11,7 @@ interface ActivityItem {
   title: string;
   description: string;
   timestamp: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 interface ProfileActivityProps {
@@ -29,7 +29,7 @@ export function ProfileActivity({ userId }: ProfileActivityProps) {
         setIsLoading(true);
         const userActivity = await apiClient.get<ActivityItem[]>(`/users/${userId}/activity`);
         setActivities(userActivity || []);
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Failed to fetch activity:', error);
         setError('Failed to load activity');
         // Mock data for development

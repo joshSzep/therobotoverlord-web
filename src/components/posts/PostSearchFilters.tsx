@@ -65,9 +65,9 @@ export function PostSearchFilters({
         const response = await topicsService.getCategories();
         if (response.data) {
           // Map categories to include postCount
-          const mappedCategories = response.data.map((cat: any) => ({
-            ...cat,
-            postCount: cat.postCount || 0
+          const mappedCategories = response.data.map((cat: unknown) => ({
+            ...(cat as any),
+            postCount: (cat as any).postCount || 0
           }));
           setCategories(mappedCategories);
         }
@@ -97,13 +97,13 @@ export function PostSearchFilters({
         });
         if (response.data) {
           // Map topics to include postCount in category
-          const mappedTopics = response.data.map((topic: any) => ({
-            ...topic,
+          const mappedTopics = response.data.map((topic: unknown) => ({
+            ...(topic as any),
             category: {
-              ...topic.category,
-              postCount: topic.category.postCount || 0
+              ...(topic as any).category,
+              postCount: (topic as any).category.postCount || 0
             },
-            postCount: topic.postCount || 0
+            postCount: (topic as any).postCount || 0
           }));
           setTopics(mappedTopics);
         }
@@ -117,7 +117,7 @@ export function PostSearchFilters({
     loadTopics();
   }, [filters.category]);
 
-  const handleFilterChange = (key: string, value: any) => {
+  const handleFilterChange = (key: string, value: unknown) => {
     const newFilters = { ...filters, [key]: value };
     
     // Clear topic when category changes

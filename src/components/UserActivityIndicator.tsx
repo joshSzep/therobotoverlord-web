@@ -31,18 +31,20 @@ export function UserActivityIndicator({
   const [userActivities, setUserActivities] = useState<Map<string, UserActivity>>(new Map());
 
   useEffect(() => {
-    const handleUserOnline = (data: UserActivity) => {
+    const handleUserOnline = (data: unknown) => {
+      const activity = data as UserActivity;
       setUserActivities(prev => {
         const updated = new Map(prev);
-        updated.set(data.user_id, { ...data, status: 'online' });
+        updated.set(activity.user_id, activity);
         return updated;
       });
     };
 
-    const handleUserOffline = (data: UserActivity) => {
+    const handleUserOffline = (data: unknown) => {
+      const activity = data as UserActivity;
       setUserActivities(prev => {
         const updated = new Map(prev);
-        updated.set(data.user_id, { ...data, status: 'offline' });
+        updated.set(activity.user_id, activity);
         return updated;
       });
     };
@@ -157,15 +159,17 @@ export function OnlineUsersList({ maxUsers = 10, className = '' }: OnlineUsersLi
   const [onlineUsers, setOnlineUsers] = useState<UserActivity[]>([]);
 
   useEffect(() => {
-    const handleUserOnline = (data: UserActivity) => {
+    const handleUserOnline = (data: unknown) => {
+      const activity = data as UserActivity;
       setOnlineUsers(prev => {
-        const filtered = prev.filter(u => u.user_id !== data.user_id);
-        return [...filtered, { ...data, status: 'online' }].slice(0, maxUsers);
+        const filtered = prev.filter(u => u.user_id !== activity.user_id);
+        return [...filtered, { ...activity, status: 'online' as const }].slice(0, maxUsers);
       });
     };
 
-    const handleUserOffline = (data: UserActivity) => {
-      setOnlineUsers(prev => prev.filter(u => u.user_id !== data.user_id));
+    const handleUserOffline = (data: unknown) => {
+      const activity = data as UserActivity;
+      setOnlineUsers(prev => prev.filter(u => u.user_id !== activity.user_id));
     };
 
     if (connected) {

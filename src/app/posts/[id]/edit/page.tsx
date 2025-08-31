@@ -61,11 +61,11 @@ export default function EditPostPage() {
   }, [postId]);
 
   // Handle post update
-  const handlePostSubmit = async (postData: any) => {
+  const handlePostSubmit = async (postData: unknown) => {
     if (!post) return;
 
     try {
-      const response = await postsService.updatePost(post.id, postData);
+      const response = await postsService.updatePost(post.id, postData as any);
 
       if (response.success && response.data) {
         addNotification({

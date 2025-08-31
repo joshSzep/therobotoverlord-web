@@ -38,11 +38,7 @@ export function RelatedTopics({
 
       const response = await topicsService.getRelatedTopics(topicId, limit);
       if (response.success && response.data) {
-        // Filter out the current topic if it appears in related topics
-        const filteredTopics = response.data.filter(
-          topic => topic.slug !== currentTopicSlug
-        );
-        setRelatedTopics(filteredTopics);
+        setRelatedTopics(response.data as Topic[]);
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load related topics';
@@ -206,7 +202,7 @@ export function RelatedTopics({
                   <span>{formatNumber(topic.subscriberCount)} subscribers</span>
                   <span>{formatNumber(topic.viewCount)} views</span>
                 </div>
-                <span>{formatDate(topic.lastActivityAt || topic.createdAt)}</span>
+                <span>{formatDate(topic.updatedAt || topic.createdAt)}</span>
               </div>
 
               {/* Tags (if any) */}

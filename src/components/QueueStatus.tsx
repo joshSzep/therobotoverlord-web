@@ -25,16 +25,16 @@ export function QueueStatus({ userId }: QueueStatusProps) {
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
   useEffect(() => {
-    const handleQueueUpdate = (data: QueuePosition) => {
+    const handleQueueUpdate = (data: unknown) => {
       setQueuePositions(prev => {
         const updated = new Map(prev);
-        updated.set(data.queue_type, data);
+        updated.set((data as QueuePosition).queue_type, data as QueuePosition);
         return updated;
       });
       setLastUpdate(new Date());
     };
 
-    const handleQueueStatusChange = (data: any) => {
+    const handleQueueStatusChange = (data: unknown) => {
       // Handle general queue status changes
       setLastUpdate(new Date());
     };

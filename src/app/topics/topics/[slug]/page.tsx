@@ -144,12 +144,12 @@ export default function TopicDetailPage() {
   };
 
   // Handle post creation
-  const handlePostSubmit = async (postData: any) => {
+  const handlePostSubmit = async (postData: unknown) => {
     if (!topic) return;
 
     try {
       const response = await postsService.createPost({
-        ...postData,
+        ...(postData as any),
         topicId: topic.id,
       });
 

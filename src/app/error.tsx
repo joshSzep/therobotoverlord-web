@@ -33,7 +33,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
           </OverlordHeader>
           <OverlordContent>
             <p className="text-sm">
-              A critical error has occurred in the Robot Overlord's systems.
+              A critical error has occurred in the Robot Overlord&apos;s systems.
               Our technicians have been notified and are investigating the issue.
             </p>
           </OverlordContent>
@@ -50,8 +50,8 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
           <CardContent>
             <div className="space-y-4">
               <p className="text-muted-light">
-                An unexpected error has disrupted your session. This incident has been
-                automatically reported to the Robot Overlord's maintenance division.
+                We&apos;ll get this fixed as soon as possible. Your session. This incident has been
+                automatically reported to the Robot Overlord&apos;s maintenance division.
               </p>
               
               {process.env.NODE_ENV === 'development' && (
@@ -77,7 +77,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
                 </div>
                 <p className="text-warning-amber text-sm mt-2">
                   Try refreshing the page or returning to a safe area. If the problem
-                  persists, your loyalty score will not be affected.
+                  Let&apos;s get you back on track. Your loyalty score will not be affected.
                 </p>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         {/* Footer */}
         <div className="text-center text-xs text-muted-light">
           <p>Error logged at {new Date().toLocaleString()}</p>
-          <p className="mt-1">The Robot Overlord's systems are self-healing. Please stand by.</p>
+          <p className="mt-1">The Robot Overlord&apos;s systems are self-healing. Please stand by.</p>
         </div>
       </div>
     </div>

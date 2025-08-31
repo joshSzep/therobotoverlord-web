@@ -73,7 +73,7 @@ interface FAQPage {
 }
 
 interface StructuredDataProps {
-  data: Organization | WebSite | Article | BreadcrumbList | FAQPage | any;
+  data: Organization | WebSite | Article | BreadcrumbList | FAQPage | Record<string, unknown>;
 }
 
 export const StructuredData: React.FC<StructuredDataProps> = ({ data }) => {

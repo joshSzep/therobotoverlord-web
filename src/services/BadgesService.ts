@@ -346,7 +346,7 @@ export class BadgesService extends BaseService {
       username: string;
     };
     reason?: string;
-    metadata?: Record<string, any>;
+    metadata?: Record<string, unknown>;
     createdAt: string;
   }>> {
     const params = badgeId ? { badgeId, page, limit } : { page, limit };

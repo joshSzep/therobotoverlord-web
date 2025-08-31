@@ -54,9 +54,9 @@ export default function CreateTopicPage() {
   }, []);
 
   // Handle topic creation
-  const handleTopicSubmit = async (topicData: any) => {
+  const handleTopicSubmit = async (topicData: unknown) => {
     try {
-      const response = await topicsService.createTopic(topicData);
+      const response = await topicsService.createTopic(topicData as any);
 
       if (response.success && response.data) {
         addNotification({

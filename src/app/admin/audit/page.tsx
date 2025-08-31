@@ -25,7 +25,7 @@ interface AuditLogEntry {
   action: string;
   resource: string;
   resourceId: string;
-  details: Record<string, any>;
+  details: Record<string, unknown>;
   ipAddress: string;
   userAgent: string;
   severity: 'low' | 'medium' | 'high' | 'critical';
@@ -379,7 +379,7 @@ function AuditLogContent() {
                           {Object.entries(entry.details).map(([key, value]) => (
                             <div key={key} className="flex justify-between">
                               <span className="capitalize">{key.replace(/_/g, ' ')}:</span>
-                              <span>{typeof value === 'object' ? JSON.stringify(value) : value}</span>
+                              <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
                             </div>
                           ))}
                         </div>

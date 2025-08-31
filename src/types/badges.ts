@@ -15,7 +15,7 @@ export interface Badge {
     target: number;
     timeframe?: 'day' | 'week' | 'month' | 'year' | 'all';
     description: string;
-    metadata?: Record<string, any>;
+    metadata?: Record<string, unknown>;
   }>;
   rewards: {
     loyaltyPoints: number;
@@ -52,7 +52,7 @@ export interface UserBadge {
   };
   reason?: string;
   isVisible: boolean;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface BadgeProgress {
@@ -138,7 +138,7 @@ export interface BadgeAward {
   };
   reason?: string;
   isManual: boolean;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   createdAt: string;
 }
 
@@ -229,9 +229,9 @@ export interface BadgeAuditLog {
     role: string;
   };
   reason?: string;
-  previousData?: Record<string, any>;
-  newData?: Record<string, any>;
-  metadata?: Record<string, any>;
+  previousData?: Record<string, unknown>;
+  newData?: Record<string, unknown>;
+  metadata?: Record<string, unknown>;
   ipAddress?: string;
   userAgent?: string;
   createdAt: string;

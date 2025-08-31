@@ -91,7 +91,7 @@ export default function LogoutPage() {
               Logout Successful
             </h2>
             <p className="text-muted-light mb-6">
-              You have been successfully logged out of the Robot Overlord system.
+              You&apos;ve been logged out successfully. logged out of the Robot Overlord system.
               All authentication tokens have been cleared.
             </p>
 
@@ -121,7 +121,7 @@ export default function LogoutPage() {
         {/* Footer Message */}
         <div className="text-center text-xs text-muted-light">
           <p>Your session data has been securely cleared.</p>
-          <p className="mt-1">The Overlord's surveillance continues. Stay vigilant.</p>
+          <p className="mt-1">The Overlord&apos;s surveillance continues. Stay vigilant.</p>
         </div>
       </div>
     </div>

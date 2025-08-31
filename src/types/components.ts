@@ -72,7 +72,7 @@ export interface BreadcrumbProps extends BaseComponentProps {
 
 // Form component props
 export interface FormProps extends BaseComponentProps {
-  onSubmit: (data: any) => void | Promise<void>;
+  onSubmit: (data: unknown) => void | Promise<void>;
   isSubmitting?: boolean;
   submitText?: string;
   cancelText?: string;
@@ -220,8 +220,8 @@ export interface UserListProps extends BaseComponentProps, AsyncComponentProps {
   currentPage?: number;
   totalPages?: number;
   onPageChange?: (page: number) => void;
-  filters?: any;
-  onFiltersChange?: (filters: any) => void;
+  filters?: unknown;
+  onFiltersChange?: (filters: unknown) => void;
 }
 
 // Post-related component props
@@ -360,11 +360,11 @@ export interface BadgeListProps extends BaseComponentProps {
 
 // Moderation component props
 export interface ModerationQueueProps extends BaseComponentProps, AsyncComponentProps {
-  items: any[];
+  items: unknown[];
   onAction?: (itemId: string, action: ModerationAction) => void;
   onAssign?: (itemId: string, moderatorId: string) => void;
-  filters?: any;
-  onFiltersChange?: (filters: any) => void;
+  filters?: unknown;
+  onFiltersChange?: (filters: unknown) => void;
 }
 
 export interface ReportCardProps extends BaseComponentProps {
@@ -391,13 +391,13 @@ export interface SearchProps extends BaseComponentProps {
 
 export interface SearchResultsProps extends BaseComponentProps, AsyncComponentProps {
   query: string;
-  results: any[];
+  results: unknown[];
   type?: 'posts' | 'topics' | 'users' | 'all';
   onTypeChange?: (type: string) => void;
-  onResultClick?: (result: any) => void;
+  onResultClick?: (result: unknown) => void;
   showFilters?: boolean;
-  filters?: any;
-  onFiltersChange?: (filters: any) => void;
+  filters?: unknown;
+  onFiltersChange?: (filters: unknown) => void;
 }
 
 // Pagination component props
@@ -414,8 +414,8 @@ export interface PaginationProps extends BaseComponentProps {
 
 // Filter component props
 export interface FilterProps extends BaseComponentProps {
-  filters: Record<string, any>;
-  onChange: (filters: Record<string, any>) => void;
+  filters: Record<string, unknown>;
+  onChange: (filters: Record<string, unknown>) => void;
   onReset?: () => void;
   options: Record<string, {
     type: 'select' | 'multiselect' | 'range' | 'date' | 'boolean';
@@ -438,7 +438,7 @@ export interface DataTableProps<T> extends BaseComponentProps, AsyncComponentPro
     label: string;
     sortable?: boolean;
     width?: string;
-    render?: (value: any, item: T) => React.ReactNode;
+    render?: (value: unknown, item: T) => React.ReactNode;
   }>;
   sortBy?: string;
   sortOrder?: 'asc' | 'desc';

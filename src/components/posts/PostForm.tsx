@@ -12,7 +12,7 @@ import { useAppStore } from '@/stores/appStore';
 import { Post } from '@/types/posts';
 
 interface PostFormProps {
-  onSubmit: (postData: any) => void;
+  onSubmit: (postData: unknown) => void;
   onCancel: () => void;
   initialData?: Partial<Post>;
   topicId?: string;
@@ -98,7 +98,7 @@ export function PostForm({
   };
 
   // Handle input changes
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     setFormData(prev => ({
       ...prev,
       [field]: value

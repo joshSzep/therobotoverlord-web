@@ -30,7 +30,7 @@ export const usePerformanceMonitoring = (componentName?: string) => {
       duration: renderTime
     };
     
-    performanceEntries.current.push(entry);
+    performanceEntries.current.push(entry as any);
     
     if (renderTime > 16) { // > 16ms indicates potential performance issue
       console.warn(`Slow render: ${componentName} took ${renderTime}ms`);
@@ -88,7 +88,7 @@ export const usePerformanceMonitoring = (componentName?: string) => {
       const observer = new PerformanceObserver((list) => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1];
-        console.log('LCP:', lastEntry.startTime);
+        console.log('LCP:', lastEntry?.startTime);
       });
       observer.observe({ entryTypes: ['largest-contentful-paint'] });
     };
@@ -113,9 +113,9 @@ export const usePerformanceMonitoring = (componentName?: string) => {
       let clsValue = 0;
       const observer = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        entries.forEach((entry: any) => {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value;
+        entries.forEach((entry: unknown) => {
+          if (!(entry as any).hadRecentInput) {
+            clsValue += (entry as any).value;
           }
         });
         console.log('CLS:', clsValue);
@@ -136,7 +136,7 @@ export const usePerformanceMonitoring = (componentName?: string) => {
     monitorWebVitals();
     
     return () => {
-      measureRenderTime();
+      measureRenderTime('component', 0);
     };
   }, [monitorWebVitals, measureRenderTime]);
 
@@ -250,6 +250,7 @@ export const PerformanceMonitor: React.FC<{
       
       return cleanup;
     }
+    return undefined;
   }, [enableLogging, monitorNetworkRequests, reportMetrics, checkMemoryUsage]);
 
   return <>{children}</>;

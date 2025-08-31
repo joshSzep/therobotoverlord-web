@@ -21,7 +21,7 @@ export function ProfileBadges({ user }: ProfileBadgesProps) {
         setIsLoading(true);
         const userBadges = await apiClient.get<BadgeType[]>(`/users/${user.id}/badges`);
         setBadges(userBadges || []);
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Failed to fetch badges:', error);
         setError('Failed to load badges');
       } finally {

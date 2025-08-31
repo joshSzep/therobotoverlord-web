@@ -155,12 +155,12 @@ export const useFocusManagement = () => {
     if (event.shiftKey) {
       if (document.activeElement === firstElement) {
         event.preventDefault();
-        lastElement.focus();
+        lastElement?.focus();
       }
     } else {
       if (document.activeElement === lastElement) {
         event.preventDefault();
-        firstElement.focus();
+        firstElement?.focus();
       }
     }
   }, [getFocusableElements]);
@@ -247,7 +247,7 @@ export const useDropdownNavigation = (
       const items = getMenuItems();
       if (items.length > 0) {
         currentIndexRef.current = 0;
-        items[0].focus();
+        items[0]?.focus();
       }
     } else {
       currentIndexRef.current = -1;

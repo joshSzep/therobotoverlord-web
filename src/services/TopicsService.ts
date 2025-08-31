@@ -111,6 +111,13 @@ export class TopicsService extends BaseService {
   }
 
   /**
+   * Get topics by user ID
+   */
+  async getTopicsByUser(userId: string, page = 1, limit = 20): Promise<PaginatedResponse<Topic>> {
+    return this.getPaginated<Topic>('', { createdBy: userId, page, limit });
+  }
+
+  /**
    * Get single topic by ID or slug
    */
   async getTopic(identifier: string): Promise<ApiResponse<Topic>> {

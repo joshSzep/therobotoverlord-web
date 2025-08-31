@@ -53,15 +53,15 @@ export function ModerationFeedback({
 
       if (response.success && response.data) {
         // Map the response data to match our interface
-        const mappedHistory = response.data.map((item: any, index: number) => ({
-          id: item.id || `history-${index}`,
-          action: item.action,
-          reason: item.reason,
-          moderatedBy: item.moderatedBy,
-          moderatedAt: item.moderatedAt,
-          previousStatus: item.previousStatus,
-          newStatus: item.newStatus || item.action,
-          notifyAuthor: item.notifyAuthor || false,
+        const mappedHistory = response.data.map((item: unknown, index: number) => ({
+          id: (item as any).id || `history-${index}`,
+          action: (item as any).action,
+          reason: (item as any).reason,
+          moderatedBy: (item as any).moderatedBy,
+          moderatedAt: (item as any).moderatedAt,
+          previousStatus: (item as any).previousStatus,
+          newStatus: (item as any).newStatus || (item as any).action,
+          notifyAuthor: (item as any).notifyAuthor || false,
         }));
         setHistory(mappedHistory);
       }
@@ -293,7 +293,7 @@ export function ModerationFeedback({
             <div>
               <span className="text-muted-light">Last Action:</span>
               <span className="ml-2 text-light-text font-medium">
-                {history.length > 0 ? formatDate(history[0].moderatedAt) : 'None'}
+                {history.length > 0 ? formatDate(history[0]?.moderatedAt || '') : 'None'}
               </span>
             </div>
           </div>

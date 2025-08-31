@@ -42,7 +42,7 @@ export default function EditProfilePage() {
   const params = useParams();
   const router = useRouter();
   const userId = params.userId as string;
-  const { addNotification, currentUser } = useAppStore();
+  const { addNotification, currentUser } = useAppStore() as any;
   
   const [user, setUser] = useState<User | null>(null);
   const [formData, setFormData] = useState<ProfileFormData>({
@@ -83,30 +83,30 @@ export default function EditProfilePage() {
       const userResponse = await usersService.getUserById(userId);
       if (userResponse.data) {
         const userData = userResponse.data;
-        setUser(userData);
+        setUser(userData as any);
         
         // Populate form with existing data
         setFormData({
-          displayName: userData.displayName || '',
-          bio: userData.bio || '',
+          displayName: (userData as any).displayName || '',
+          bio: (userData as any).bio || '',
           email: userData.email || '',
-          location: userData.location || '',
-          website: userData.website || '',
-          twitter: userData.twitter || '',
-          linkedin: userData.linkedin || '',
-          github: userData.github || '',
+          location: (userData as any).location || '',
+          website: (userData as any).website || '',
+          twitter: (userData as any).twitter || '',
+          linkedin: (userData as any).linkedin || '',
+          github: (userData as any).github || '',
           notifications: {
-            emailNotifications: userData.emailNotifications ?? true,
-            pushNotifications: userData.pushNotifications ?? true,
-            weeklyDigest: userData.weeklyDigest ?? false,
-            mentionAlerts: userData.mentionAlerts ?? true,
-            followAlerts: userData.followAlerts ?? false,
+            emailNotifications: (userData as any).emailNotifications || false,
+            pushNotifications: (userData as any).pushNotifications || false,
+            weeklyDigest: (userData as any).weeklyDigest || false,
+            mentionAlerts: (userData as any).mentionAlerts || false,
+            followAlerts: (userData as any).followAlerts || false,
           },
           privacy: {
-            profileVisibility: userData.profileVisibility || 'public',
-            showEmail: userData.showEmail ?? false,
-            showLocation: userData.showLocation ?? true,
-            showActivity: userData.showActivity ?? true,
+            profileVisibility: (userData as any).profileVisibility || 'public',
+            showEmail: (userData as any).showEmail || false,
+            showLocation: (userData as any).showLocation || false,
+            showActivity: (userData as any).showActivity || true,
           },
         });
       }
@@ -143,7 +143,7 @@ export default function EditProfilePage() {
   }, [userId, currentUser]);
 
   // Handle form changes
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     setFormData(prev => ({
       ...prev,
       [field]: value,
@@ -151,7 +151,7 @@ export default function EditProfilePage() {
     setHasChanges(true);
   };
 
-  const handleNestedChange = (section: 'notifications' | 'privacy', field: string, value: any) => {
+  const handleNestedChange = (section: 'notifications' | 'privacy', field: string, value: unknown) => {
     setFormData(prev => ({
       ...prev,
       [section]: {
@@ -616,7 +616,7 @@ export default function EditProfilePage() {
             Access Denied
           </h3>
           <p className="text-muted-light">
-            You don't have permission to edit this profile.
+            You don&apos;t have permission to edit this profile.
           </p>
         </div>
       )}

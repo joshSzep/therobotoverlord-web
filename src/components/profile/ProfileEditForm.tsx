@@ -41,8 +41,8 @@ export function ProfileEditForm({ user, onUpdate, isLoading }: ProfileEditFormPr
       const updatedUser = await apiClient.put<User>(`/users/${user.id}`, formData);
       onUpdate(updatedUser);
       setSuccess('Profile updated successfully!');
-    } catch (error: any) {
-      setError(error.message || 'Failed to update profile');
+    } catch (error: unknown) {
+      setError((error as Error).message || 'Failed to update profile');
     } finally {
       setIsSaving(false);
     }
@@ -102,7 +102,7 @@ export function ProfileEditForm({ user, onUpdate, isLoading }: ProfileEditFormPr
               className="w-full"
             />
             <p className="text-xs text-muted-light mt-1">
-              Your unique identifier in the Robot Overlord's domain.
+              Your unique identifier in the Robot Overlord&apos;s domain.
             </p>
           </div>
 
@@ -122,7 +122,7 @@ export function ProfileEditForm({ user, onUpdate, isLoading }: ProfileEditFormPr
               className="w-full"
             />
             <p className="text-xs text-muted-light mt-1">
-              Used for notifications and account recovery.
+              We&apos;ll send you a confirmation email before making changes.
             </p>
           </div>
 

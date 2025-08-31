@@ -110,6 +110,13 @@ export class PostsService extends BaseService {
   }
 
   /**
+   * Get posts by user ID
+   */
+  async getPostsByUser(userId: string, page = 1, limit = 20): Promise<PaginatedResponse<Post>> {
+    return this.getPaginated<Post>('', { authorId: userId, page, limit });
+  }
+
+  /**
    * Get single post by ID
    */
   async getPost(id: string): Promise<ApiResponse<Post>> {

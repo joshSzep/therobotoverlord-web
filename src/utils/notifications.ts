@@ -116,7 +116,7 @@ async function sendWebhookNotification(webhook: WebhookConfig, payload: Notifica
 /**
  * Format payload for different webhook types
  */
-function formatPayloadForWebhook(format: WebhookConfig['format'], payload: NotificationPayload): any {
+function formatPayloadForWebhook(format: WebhookConfig['format'], payload: NotificationPayload): unknown {
   const emoji = getStatusEmoji(payload.status)
   const color = getStatusColor(payload.status)
   

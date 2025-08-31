@@ -199,7 +199,7 @@ export function PostReporting({
           </Button>
         </div>
         <p className="text-sm text-muted-light">
-          Reporting: <span className="text-light-text font-medium">"{postTitle}"</span>
+          Reporting: <span className="text-light-text font-medium">&quot;{postTitle}&quot;</span>
         </p>
       </CardHeader>
 

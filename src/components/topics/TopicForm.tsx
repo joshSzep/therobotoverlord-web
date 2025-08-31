@@ -12,7 +12,7 @@ import { useAppStore } from '@/stores/appStore';
 import { Topic, TopicCategory } from '@/types/topics';
 
 interface TopicFormProps {
-  onSubmit: (topicData: any) => void;
+  onSubmit: (topicData: unknown) => void;
   onCancel: () => void;
   initialData?: Partial<Topic>;
   categories: TopicCategory[];
@@ -107,20 +107,20 @@ export function TopicForm({
   };
 
   // Handle input changes
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     if (field.startsWith('initialPost.')) {
       const postField = field.split('.')[1];
       setFormData(prev => ({
         ...prev,
         initialPost: {
           ...prev.initialPost,
-          [postField]: value
+          [postField as string]: value
         }
       }));
     } else {
       setFormData(prev => ({
         ...prev,
-        [field]: value
+        [field as string]: value
       }));
     }
     

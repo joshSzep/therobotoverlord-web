@@ -172,8 +172,8 @@ export const AccessibleFormField: React.FC<{
       
       {React.cloneElement(children as React.ReactElement, {
         id,
+        'aria-labelledby': undefined,
         'aria-describedby': describedBy,
-        'aria-invalid': error ? 'true' : 'false',
         'aria-required': required,
       } as any)}
       

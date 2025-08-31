@@ -29,7 +29,7 @@ export function ModerationFilters({
   totalCount,
   className = '',
 }: ModerationFiltersProps) {
-  const handleFilterChange = (key: keyof ModerationFiltersType, value: any) => {
+  const handleFilterChange = (key: keyof ModerationFiltersType, value: unknown) => {
     const newFilters = { ...filters, [key]: value };
     onFiltersChange(newFilters);
   };
@@ -189,7 +189,7 @@ export function ModerationFilters({
               onClick={() => onFiltersChange({ ...filters, status: 'pending', dateRange: 'day' })}
               className="w-full justify-start"
             >
-              ⚡ Today's Pending
+              ⚡ Today&apos;s Pending
             </Button>
             <Button
               variant={filters.status === 'flagged' ? 'primary' : 'ghost'}

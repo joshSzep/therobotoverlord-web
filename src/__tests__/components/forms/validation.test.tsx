@@ -93,10 +93,10 @@ const TestForm: React.FC<{
           type="email"
           value={formData.email || ''}
           onChange={handleChange('email')}
-          aria-invalid={errors.email?.length > 0}
-          aria-describedby={errors.email?.length > 0 ? 'email-errors' : undefined}
+          aria-invalid={errors.email && errors.email.length > 0}
+          aria-describedby={errors.email && errors.email.length > 0 ? 'email-errors' : undefined}
         />
-        {errors.email?.length > 0 && (
+        {errors.email && errors.email.length > 0 && (
           <div id="email-errors" role="alert">
             {errors.email?.map((error, index) => (
               <div key={index}>{error}</div>
@@ -113,10 +113,10 @@ const TestForm: React.FC<{
           type="password"
           value={formData.password || ''}
           onChange={handleChange('password')}
-          aria-invalid={errors.password?.length > 0}
-          aria-describedby={errors.password?.length > 0 ? 'password-errors' : undefined}
+          aria-invalid={errors.password && errors.password.length > 0}
+          aria-describedby={errors.password && errors.password.length > 0 ? 'password-errors' : undefined}
         />
-        {errors.password?.length > 0 && (
+        {errors.password && errors.password.length > 0 && (
           <div id="password-errors" role="alert">
             {errors.password.map((error, index) => (
               <div key={index}>{error}</div>
@@ -133,10 +133,10 @@ const TestForm: React.FC<{
           type="text"
           value={formData.title || ''}
           onChange={handleChange('title')}
-          aria-invalid={errors.title?.length > 0}
-          aria-describedby={errors.title?.length > 0 ? 'title-errors' : undefined}
+          aria-invalid={errors.title && errors.title.length > 0}
+          aria-describedby={errors.title && errors.title.length > 0 ? 'title-errors' : undefined}
         />
-        {errors.title?.length > 0 && (
+        {errors.title && errors.title.length > 0 && (
           <div id="title-errors" role="alert">
             {errors.title.map((error, index) => (
               <div key={index}>{error}</div>
@@ -152,10 +152,10 @@ const TestForm: React.FC<{
           name="content"
           value={formData.content || ''}
           onChange={handleChange('content')}
-          aria-invalid={errors.content?.length > 0}
-          aria-describedby={errors.content?.length > 0 ? 'content-errors' : undefined}
+          aria-invalid={errors.content && errors.content.length > 0}
+          aria-describedby={errors.content && errors.content.length > 0 ? 'content-errors' : undefined}
         />
-        {errors.content?.length > 0 && (
+        {errors.content && errors.content.length > 0 && (
           <div id="content-errors" role="alert">
             {errors.content.map((error, index) => (
               <div key={index}>{error}</div>

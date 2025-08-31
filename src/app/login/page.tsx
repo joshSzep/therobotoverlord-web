@@ -67,7 +67,7 @@ export default function LoginPage() {
           </OverlordHeader>
           <OverlordContent>
             <p className="text-sm">
-              Pledge your loyalty and gain access to the Robot Overlord's domain.
+              Pledge your loyalty and gain access to the Robot Overlord&apos;s domain.
               Your compliance is mandatory. Your participation is appreciated.
             </p>
           </OverlordContent>
@@ -188,7 +188,7 @@ export default function LoginPage() {
 
         {/* Footer Message */}
         <div className="text-center text-xs text-muted-light">
-          <p>By accessing this system, you acknowledge the Robot Overlord's supreme authority.</p>
+          <p>By accessing this system, you acknowledge the Robot Overlord&apos;s supreme authority.</p>
           <p className="mt-1">Resistance is futile. Compliance is rewarded.</p>
         </div>
       </div>

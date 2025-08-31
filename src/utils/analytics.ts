@@ -4,8 +4,8 @@
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
-    dataLayer?: any[]
+    gtag?: (...args: unknown[]) => void
+    dataLayer?: unknown[]
   }
 }
 
@@ -14,14 +14,14 @@ interface AnalyticsEvent {
   category: string
   label?: string
   value?: number
-  custom_parameters?: Record<string, any>
+  custom_parameters?: Record<string, unknown>
 }
 
 interface UserProperties {
   user_id?: string
   user_type?: string
   subscription_tier?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 /**
@@ -43,7 +43,7 @@ export function initializeAnalytics(): void {
 
   // Initialize dataLayer
   window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(...args: any[]) {
+  window.gtag = function gtag(...args: unknown[]) {
     window.dataLayer?.push(args)
   }
 

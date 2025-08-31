@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 // Cache configuration
 interface CacheConfig {
@@ -18,7 +18,7 @@ interface CacheEntry<T> {
 }
 
 // In-memory cache implementation
-class MemoryCache<T = any> {
+class MemoryCache<T = unknown> {
   private cache = new Map<string, CacheEntry<T>>();
   private config: CacheConfig;
 
@@ -28,7 +28,7 @@ class MemoryCache<T = any> {
 
   set(key: string, data: T, customTtl?: number): void {
     const ttl = customTtl || this.config.ttl;
-    
+
     // Remove oldest entries if cache is full
     if (this.cache.size >= this.config.maxSize) {
       const oldestKey = this.cache.keys().next().value;
@@ -41,13 +41,13 @@ class MemoryCache<T = any> {
       data,
       timestamp: Date.now(),
       ttl,
-      hits: 0
+      hits: 0,
     });
   }
 
   get(key: string): T | null {
     const entry = this.cache.get(key);
-    
+
     if (!entry) return null;
 
     const now = Date.now();
@@ -79,11 +79,15 @@ class MemoryCache<T = any> {
     return this.cache.size;
   }
 
-  getStats(): { size: number; hitRate: number; entries: Array<{ key: string; hits: number; age: number }> } {
+  getStats(): {
+    size: number;
+    hitRate: number;
+    entries: Array<{ key: string; hits: number; age: number }>;
+  } {
     const entries = Array.from(this.cache.entries()).map(([key, entry]) => ({
       key,
       hits: entry.hits,
-      age: Date.now() - entry.timestamp
+      age: Date.now() - entry.timestamp,
     }));
 
     const totalHits = entries.reduce((sum, entry) => sum + entry.hits, 0);
@@ -92,13 +96,13 @@ class MemoryCache<T = any> {
     return {
       size: this.cache.size,
       hitRate,
-      entries
+      entries,
     };
   }
 }
 
 // Browser storage cache implementation
-class StorageCache<T = any> {
+class StorageCache<T = unknown> {
   private storage: Storage;
   private prefix: string;
   private config: CacheConfig;
@@ -119,19 +123,19 @@ class StorageCache<T = any> {
       data,
       timestamp: Date.now(),
       ttl,
-      hits: 0
+      hits: 0,
     };
 
     try {
       this.storage.setItem(this.getKey(key), JSON.stringify(entry));
-    } catch (error) {
+    } catch {
       // Handle storage quota exceeded
-      console.warn('Cache storage full, clearing old entries');
+      console.warn("Cache storage full, clearing old entries");
       this.cleanup();
       try {
         this.storage.setItem(this.getKey(key), JSON.stringify(entry));
       } catch {
-        console.error('Unable to cache data');
+        console.error("Unable to cache data");
       }
     }
   }
@@ -153,7 +157,7 @@ class StorageCache<T = any> {
       // Update hit count
       entry.hits++;
       this.storage.setItem(this.getKey(key), JSON.stringify(entry));
-      
+
       return entry.data;
     } catch {
       return null;
@@ -170,21 +174,74 @@ class StorageCache<T = any> {
   }
 
   clear(): void {
-    const keys = Object.keys(this.storage).filter(key => key.startsWith(this.prefix));
-    keys.forEach(key => this.storage.removeItem(key));
+    const keys = Object.keys(this.storage).filter((key) =>
+      key.startsWith(this.prefix)
+    );
+    keys.forEach((key) => this.storage.removeItem(key));
+  }
+
+  size(): number {
+    return Object.keys(this.storage).filter((key) =>
+      key.startsWith(this.prefix)
+    ).length;
+  }
+
+  getStats(): {
+    size: number;
+    hitRate: number;
+    entries: Array<{ key: string; hits: number; age: number }>;
+  } {
+    const keys = Object.keys(this.storage).filter((key) =>
+      key.startsWith(this.prefix)
+    );
+    const entries = keys
+      .map((key) => {
+        try {
+          const item = this.storage.getItem(key);
+          const entry = item ? JSON.parse(item) : null;
+          if (entry) {
+            return {
+              key: key.replace(this.prefix, ""),
+              hits: entry.hits || 0,
+              age: Date.now() - entry.timestamp,
+            };
+          }
+          return null;
+        } catch {
+          return null;
+        }
+      })
+      .filter((entry) => entry !== null) as Array<{
+      key: string;
+      hits: number;
+      age: number;
+    }>;
+
+    const totalHits = entries.reduce((sum, entry) => sum + entry.hits, 0);
+    const hitRate = entries.length > 0 ? totalHits / entries.length : 0;
+
+    return {
+      size: keys.length,
+      hitRate,
+      entries,
+    };
   }
 
   private cleanup(): void {
-    const keys = Object.keys(this.storage).filter(key => key.startsWith(this.prefix));
-    const entries = keys.map(key => {
-      try {
-        const item = this.storage.getItem(key);
-        const entry = item ? JSON.parse(item) : null;
-        return { key, entry };
-      } catch {
-        return { key, entry: null };
-      }
-    }).filter(({ entry }) => entry !== null);
+    const keys = Object.keys(this.storage).filter((key) =>
+      key.startsWith(this.prefix)
+    );
+    const entries = keys
+      .map((key) => {
+        try {
+          const item = this.storage.getItem(key);
+          const entry = item ? JSON.parse(item) : null;
+          return { key, entry };
+        } catch {
+          return { key, entry: null };
+        }
+      })
+      .filter(({ entry }) => entry !== null);
 
     // Remove expired entries first
     const now = Date.now();
@@ -195,34 +252,39 @@ class StorageCache<T = any> {
     });
 
     // If still over limit, remove least recently used
-    const remainingKeys = Object.keys(this.storage).filter(key => key.startsWith(this.prefix));
+    const remainingKeys = Object.keys(this.storage).filter((key) =>
+      key.startsWith(this.prefix)
+    );
     if (remainingKeys.length > this.config.maxSize) {
       const sortedEntries = entries
         .filter(({ key }) => remainingKeys.includes(key))
         .sort((a, b) => (a.entry?.hits || 0) - (b.entry?.hits || 0));
-      
-      const toRemove = sortedEntries.slice(0, remainingKeys.length - this.config.maxSize);
+
+      const toRemove = sortedEntries.slice(
+        0,
+        remainingKeys.length - this.config.maxSize
+      );
       toRemove.forEach(({ key }) => this.storage.removeItem(key));
     }
   }
 }
 
 // Cache factory
-export const createCache = <T = any>(
-  type: 'memory' | 'localStorage' | 'sessionStorage',
+export const createCache = <T = unknown>(
+  type: "memory" | "localStorage" | "sessionStorage",
   config: CacheConfig,
-  prefix = 'robot-overlord'
+  prefix = "robot-overlord"
 ) => {
   switch (type) {
-    case 'memory':
+    case "memory":
       return new MemoryCache<T>(config);
-    case 'localStorage':
-      if (typeof window !== 'undefined') {
+    case "localStorage":
+      if (typeof window !== "undefined") {
         return new StorageCache<T>(localStorage, prefix, config);
       }
       return new MemoryCache<T>(config);
-    case 'sessionStorage':
-      if (typeof window !== 'undefined') {
+    case "sessionStorage":
+      if (typeof window !== "undefined") {
         return new StorageCache<T>(sessionStorage, prefix, config);
       }
       return new MemoryCache<T>(config);
@@ -232,36 +294,36 @@ export const createCache = <T = any>(
 };
 
 // Predefined caches for different use cases
-export const apiCache = createCache('memory', {
+export const apiCache = createCache("memory", {
   ttl: 5 * 60 * 1000, // 5 minutes
   maxSize: 100,
-  staleWhileRevalidate: true
+  staleWhileRevalidate: true,
 });
 
-export const userDataCache = createCache('localStorage', {
+export const userDataCache = createCache("localStorage", {
   ttl: 30 * 60 * 1000, // 30 minutes
-  maxSize: 50
+  maxSize: 50,
 });
 
-export const sessionCache = createCache('sessionStorage', {
+export const sessionCache = createCache("sessionStorage", {
   ttl: 60 * 60 * 1000, // 1 hour
-  maxSize: 200
+  maxSize: 200,
 });
 
-export const staticDataCache = createCache('localStorage', {
+export const staticDataCache = createCache("localStorage", {
   ttl: 24 * 60 * 60 * 1000, // 24 hours
-  maxSize: 20
+  maxSize: 20,
 });
 
 // Cache decorator for functions
-export const withCache = <T extends (...args: any[]) => any>(
+export const withCache = <T extends (...args: unknown[]) => unknown>(
   fn: T,
   cache: MemoryCache | StorageCache,
   keyGenerator?: (...args: Parameters<T>) => string
 ): T => {
   return ((...args: Parameters<T>) => {
     const key = keyGenerator ? keyGenerator(...args) : JSON.stringify(args);
-    
+
     // Try to get from cache first
     const cached = cache.get(key);
     if (cached !== null) {
@@ -270,10 +332,10 @@ export const withCache = <T extends (...args: any[]) => any>(
 
     // Execute function and cache result
     const result = fn(...args);
-    
+
     // Handle promises
     if (result instanceof Promise) {
-      return result.then(data => {
+      return result.then((data) => {
         cache.set(key, data);
         return data;
       });
@@ -294,11 +356,7 @@ export const useCache = <T>(
     enabled?: boolean;
   } = {}
 ) => {
-  const {
-    cache = apiCache,
-    ttl,
-    enabled = true
-  } = options;
+  const { cache = apiCache, ttl, enabled = true } = options;
 
   const [data, setData] = React.useState<T | null>(null);
   const [loading, setLoading] = React.useState(false);
@@ -310,8 +368,8 @@ export const useCache = <T>(
     const fetchData = async () => {
       // Try cache first
       const cached = cache.get(key);
-      if (cached !== null) {
-        setData(cached);
+      if (cached !== null && cached !== undefined) {
+        setData(cached as T);
         return;
       }
 
@@ -323,7 +381,7 @@ export const useCache = <T>(
         cache.set(key, result, ttl);
         setData(result);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Unknown error'));
+        setError(err instanceof Error ? err : new Error("Unknown error"));
       } finally {
         setLoading(false);
       }
@@ -347,7 +405,7 @@ export const useCache = <T>(
       cache.set(key, result, ttl);
       setData(result);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Unknown error'));
+      setError(err instanceof Error ? err : new Error("Unknown error"));
     } finally {
       setLoading(false);
     }
@@ -358,26 +416,27 @@ export const useCache = <T>(
     loading,
     error,
     invalidate,
-    refresh
+    refresh,
   };
 };
 
 // Service Worker cache strategies (for production)
 export const registerServiceWorker = () => {
-  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('SW registered: ', registration);
+  if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((registration) => {
+          console.log("SW registered: ", registration);
         })
-        .catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
+        .catch((registrationError) => {
+          console.log("SW registration failed: ", registrationError);
         });
     });
   }
 };
 
-export default {
+const cacheUtils = {
   createCache,
   withCache,
   useCache,
@@ -385,5 +444,7 @@ export default {
   userDataCache,
   sessionCache,
   staticDataCache,
-  registerServiceWorker
+  registerServiceWorker,
 };
+
+export default cacheUtils;

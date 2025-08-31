@@ -21,7 +21,7 @@ export function TopicFilters({
 }: TopicFiltersProps) {
   const [localFilters, setLocalFilters] = useState<TopicFiltersType>(filters);
 
-  const handleFilterChange = (key: keyof TopicFiltersType, value: any) => {
+  const handleFilterChange = (key: keyof TopicFiltersType, value: unknown) => {
     const newFilters = { ...localFilters, [key]: value };
     setLocalFilters(newFilters);
     onFiltersChange(newFilters);
@@ -266,41 +266,39 @@ export function TopicFilters({
           </>
         )}
 
-        {/* Quick Filter Buttons */}
-        <div className="pt-4 border-t border-muted/20">
+        <div>
           <label className="block text-sm font-medium text-light-text mb-2">
-            Quick Filters
+            Category
           </label>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant={localFilters.status === 'featured' ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => handleFilterChange('status', localFilters.status === 'featured' ? undefined : 'featured')}
-            >
-              ⭐ Featured
-            </Button>
-            <Button
-              variant={localFilters.status === 'pinned' ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => handleFilterChange('status', localFilters.status === 'pinned' ? undefined : 'pinned')}
-            >
-              📌 Pinned
-            </Button>
-            <Button
-              variant={localFilters.hasSubscription === true ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => handleFilterChange('hasSubscription', localFilters.hasSubscription === true ? undefined : true)}
-            >
-              🔔 Subscribed
-            </Button>
-            <Button
-              variant={localFilters.timeRange === 'week' ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => handleFilterChange('timeRange', localFilters.timeRange === 'week' ? undefined : 'week')}
-            >
-              📅 This Week
-            </Button>
-          </div>
+          <select
+            value={localFilters.categoryId || ''}
+            onChange={(e) => handleFilterChange('categoryId', e.target.value || undefined)}
+            className="w-full px-3 py-2 bg-dark-bg border border-muted/30 rounded-md text-light-text focus:outline-none focus:ring-2 focus:ring-overlord-red focus:border-transparent"
+          >
+            <option value="">All Categories</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.icon} {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant={localFilters.hasSubscription === true ? 'primary' : 'ghost'}
+            size="sm"
+            onClick={() => handleFilterChange('hasSubscription', localFilters.hasSubscription === true ? undefined : true)}
+          >
+            🔔 Subscribed
+          </Button>
+          <Button
+            variant={localFilters.timeRange === 'week' ? 'primary' : 'ghost'}
+            size="sm"
+            onClick={() => handleFilterChange('timeRange', localFilters.timeRange === 'week' ? undefined : 'week')}
+          >
+            📅 This Week
+          </Button>
         </div>
       </CardContent>
     </Card>

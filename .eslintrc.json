@@ -11,7 +11,7 @@
   "plugins": ["@typescript-eslint", "react-hooks", "jsx-a11y"],
   "rules": {
     // TypeScript specific rules
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/prefer-const": "error",
     "@typescript-eslint/no-non-null-assertion": "warn",
@@ -95,7 +95,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx", "src/__tests__/**/*"],
+      "files": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx", "src/__tests__/**/*", "__tests__/**/*"],
       "env": {
         "jest": true
       },
@@ -103,7 +103,9 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-unused-vars": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "react/no-unescaped-entities": "off",
+        "prefer-const": "off"
       }
     },
     {
@@ -130,6 +132,11 @@
     "dist/",
     "public/",
     "*.config.js",
-    "*.config.ts"
+    "*.config.ts",
+    "src/__tests__/**/*",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }

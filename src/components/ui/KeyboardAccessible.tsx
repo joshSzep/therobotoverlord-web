@@ -113,8 +113,9 @@ export const KeyboardTabs: React.FC<{
     }
     
     tabRefs.current[newIndex]?.focus();
-    if (tabs[newIndex]) {
-      onTabChange(tabs[newIndex].id);
+    const selectedTab = tabs[newIndex];
+    if (selectedTab?.id) {
+      onTabChange(selectedTab.id);
     }
   };
 

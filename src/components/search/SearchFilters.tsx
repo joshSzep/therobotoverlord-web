@@ -30,7 +30,7 @@ export function SearchFilters({
   totalResults,
   className = '',
 }: SearchFiltersProps) {
-  const handleFilterChange = (key: keyof SearchFiltersType, value: any) => {
+  const handleFilterChange = (key: keyof SearchFiltersType, value: unknown) => {
     const newFilters = { ...filters, [key]: value };
     onFiltersChange(newFilters);
   };

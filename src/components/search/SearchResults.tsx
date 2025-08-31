@@ -32,7 +32,7 @@ interface SearchResult {
   };
   createdAt: string;
   lastActive?: string;
-  stats?: any;
+  stats?: unknown;
 }
 
 interface SearchResultsProps {
@@ -44,7 +44,7 @@ interface SearchResultsProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
-  filters: any;
+  filters: unknown;
   className?: string;
 }
 
@@ -132,13 +132,13 @@ export function SearchResults({
                   <span>by {result.author.username}</span>
                 )}
                 <span>{formatDate(result.createdAt)}</span>
-                {result.stats && (
+                {result.stats ? (
                   <>
-                    <span>{formatNumber(result.stats.posts)} posts</span>
-                    <span>{formatNumber(result.stats.participants)} participants</span>
-                    <span>{formatNumber(result.stats.views)} views</span>
+                    <span>{formatNumber((result.stats as any).posts)} posts</span>
+                    <span>{formatNumber((result.stats as any).participants)} participants</span>
+                    <span>{formatNumber((result.stats as any).views)} views</span>
                   </>
-                )}
+                ) : null}
               </div>
               <div className="text-sm font-medium text-overlord-red">
                 {result.score}% match
@@ -186,13 +186,13 @@ export function SearchResults({
                   <span>by {result.author.username}</span>
                 )}
                 <span>{formatDate(result.createdAt)}</span>
-                {result.stats && (
+                {result.stats ? (
                   <>
-                    <span className="text-approved-green">↑ {result.stats.upvotes}</span>
-                    <span className="text-rejected-red">↓ {result.stats.downvotes}</span>
-                    <span>{result.stats.replies} replies</span>
+                    <span className="text-approved-green">↑ {(result.stats as any).upvotes}</span>
+                    <span className="text-rejected-red">↓ {(result.stats as any).downvotes}</span>
+                    <span>{(result.stats as any).replies} replies</span>
                   </>
-                )}
+                ) : null}
               </div>
               <div className="text-sm font-medium text-overlord-red">
                 {result.score}% match
@@ -241,13 +241,13 @@ export function SearchResults({
                 {result.lastActive && (
                   <span>Active {formatDate(result.lastActive)}</span>
                 )}
-                {result.stats && (
+                {result.stats ? (
                   <>
-                    <span className="text-overlord-red">{formatNumber(result.stats.loyaltyScore)} points</span>
-                    <span>{result.stats.posts} posts</span>
-                    <span>{result.stats.topics} topics</span>
+                    <span className="text-overlord-red">{formatNumber((result.stats as any).loyaltyScore)} points</span>
+                    <span>{(result.stats as any).posts} posts</span>
+                    <span>{(result.stats as any).topics} topics</span>
                   </>
-                )}
+                ) : null}
               </div>
               <div className="text-sm font-medium text-overlord-red">
                 {result.score}% match
@@ -278,7 +278,7 @@ export function SearchResults({
     const pages = [];
     const maxVisiblePages = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
     if (endPage - startPage + 1 < maxVisiblePages) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);

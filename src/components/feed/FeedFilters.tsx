@@ -19,7 +19,7 @@ interface FeedFiltersProps {
     sortBy: 'newest' | 'popular' | 'trending' | 'personalized';
     showFollowing: boolean;
   };
-  onFiltersChange: (filters: any) => void;
+  onFiltersChange: (filters: unknown) => void;
   totalItems: number;
   className?: string;
 }
@@ -46,9 +46,9 @@ export function FeedFilters({
       try {
         const response = await topicsService.getCategories();
         if (response.data) {
-          const mappedCategories = response.data.map((cat: any) => ({
-            ...cat,
-            postCount: cat.postCount || 0
+          const mappedCategories = response.data.map((cat: unknown) => ({
+            ...(cat as any),
+            postCount: (cat as any).postCount || 0
           }));
           setCategories(mappedCategories);
         }
@@ -62,7 +62,7 @@ export function FeedFilters({
     loadCategories();
   }, []);
 
-  const handleFilterChange = (key: string, value: any) => {
+  const handleFilterChange = (key: string, value: unknown) => {
     onFiltersChange({ [key]: value });
   };
 

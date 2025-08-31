@@ -30,6 +30,7 @@ interface SearchBarProps {
   placeholder?: string;
   showResults?: boolean;
   onSearch?: (query: string, results: SearchResult[]) => void;
+  onSelect?: (result: SearchResult) => void;
   className?: string;
 }
 
@@ -37,6 +38,7 @@ export function SearchBar({
   placeholder = "Search topics, posts, and users...",
   showResults = true,
   onSearch,
+  onSelect,
   className = '',
 }: SearchBarProps) {
   const router = useRouter();
@@ -50,7 +52,7 @@ export function SearchBar({
   
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const searchTimeout = useRef<NodeJS.Timeout>();
+  const searchTimeout = useRef<NodeJS.Timeout | null>(null);
 
   // Mock search function - replace with actual API call
   const performSearch = async (searchQuery: string): Promise<SearchResult[]> => {
@@ -61,7 +63,7 @@ export function SearchBar({
     const mockResults: SearchResult[] = [
       {
         id: '1',
-        type: 'topic',
+        type: 'topic' as const,
         title: 'AI Ethics Discussion',
         description: 'Exploring the ethical implications of artificial intelligence',
         url: '/topics/ai-ethics-discussion',
@@ -73,7 +75,7 @@ export function SearchBar({
       },
       {
         id: '2',
-        type: 'post',
+        type: 'post' as const,
         title: 'Machine Learning Best Practices',
         description: 'A comprehensive guide to ML implementation',
         url: '/topics/ml-guide/posts/123',
@@ -86,7 +88,7 @@ export function SearchBar({
       },
       {
         id: '3',
-        type: 'user',
+        type: 'user' as const,
         title: 'robot_master',
         description: 'Senior AI Engineer | 1,250 loyalty points',
         url: '/users/robot_master',
@@ -113,6 +115,10 @@ export function SearchBar({
     setIsSearching(true);
     
     try {
+      const selectedResult = results.find(result => result.title.toLowerCase() === searchQuery.toLowerCase());
+      if (selectedResult) {
+        onSelect?.(selectedResult);
+      }
       const searchResults = await performSearch(searchQuery);
       setResults(searchResults);
       setShowDropdown(true);
@@ -187,7 +193,10 @@ export function SearchBar({
       case 'Enter':
         e.preventDefault();
         if (selectedIndex >= 0 && selectedIndex < results.length) {
-          handleResultSelect(results[selectedIndex]);
+          const selectedResult = results[selectedIndex];
+          if (selectedResult) {
+            handleResultSelect(selectedResult);
+          }
         } else {
           handleSubmit(e);
         }
@@ -342,14 +351,14 @@ export function SearchBar({
                     onClick={handleSubmit}
                     className="w-full px-4 py-2 text-left text-sm text-overlord-red hover:bg-overlord-red/10 transition-colors"
                   >
-                    View all results for "{query}" →
+                    View all results for &quot;{query}&quot; →
                   </button>
                 </div>
               </div>
             ) : query.length >= 2 && !isSearching ? (
               <div className="px-4 py-6 text-center text-muted-light">
                 <div className="text-2xl mb-2">🤖</div>
-                <p>No results found for "{query}"</p>
+                <p>No results found for &quot;{query}&quot;</p>
                 <p className="text-xs mt-1">Try different keywords or check spelling</p>
               </div>
             ) : null}

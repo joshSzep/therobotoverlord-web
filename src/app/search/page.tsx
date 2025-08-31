@@ -27,7 +27,7 @@ export default function SearchPage() {
   const { addNotification } = useAppStore();
   
   const [query, setQuery] = useState(searchParams.get('q') || '');
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<unknown[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [totalResults, setTotalResults] = useState(0);
@@ -176,7 +176,7 @@ export default function SearchPage() {
           <div className="lg:col-span-3">
             <SearchResults
               query={query}
-              results={results}
+              results={results as any}
               isLoading={isLoading}
               error={error}
               totalResults={totalResults}

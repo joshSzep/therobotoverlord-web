@@ -107,8 +107,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } else {
         throw new Error('Failed to fetch user data after login');
       }
-    } catch (error: any) {
-      setError(error.message || 'Login failed');
+    } catch (error: unknown) {
+      setError((error as Error).message || 'Login failed');
       clearTokens();
       throw error;
     } finally {
@@ -136,8 +136,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } else {
         throw new Error('Failed to fetch user data after OAuth login');
       }
-    } catch (error: any) {
-      setError(error.message || 'Google login failed');
+    } catch (error: unknown) {
+      setError((error as Error).message || 'Google login failed');
       clearTokens();
       throw error;
     } finally {
@@ -167,7 +167,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       if (currentUser) {
         setUser(currentUser);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Token refresh failed:', error);
       // If refresh fails, logout user
       await logout();
@@ -194,9 +194,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       clearTokens();
       setUser(null);
       setError(null);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Logout error:', error);
-      setError(error.message || 'Logout failed');
+      setError((error as Error).message || 'Logout failed');
     } finally {
       setIsLoading(false);
     }

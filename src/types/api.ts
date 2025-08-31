@@ -50,7 +50,7 @@ export interface PaginationInfo {
 export interface ApiError {
   code: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   field?: string;
   type: 'validation' | 'authentication' | 'authorization' | 'not_found' | 'server_error' | 'rate_limit' | 'business_logic';
   timestamp: string;
@@ -74,7 +74,7 @@ export interface BulkOperationResponse<T> {
 export interface SearchResponse<T> {
   results: T[];
   query: string;
-  filters?: Record<string, any>;
+  filters?: Record<string, unknown>;
   facets?: Record<string, Array<{
     value: string;
     count: number;
@@ -88,7 +88,7 @@ export interface SearchResponse<T> {
 // WebSocket message types
 export interface WebSocketMessage {
   type: string;
-  payload: any;
+  payload: unknown;
   timestamp: string;
   id?: string;
   userId?: string;
@@ -100,13 +100,13 @@ export interface RealtimeEvent {
   type: 'post_created' | 'post_updated' | 'post_deleted' | 'post_voted' | 
         'topic_created' | 'topic_updated' | 'user_joined' | 'user_left' | 
         'notification' | 'moderation_action' | 'badge_awarded' | 'leaderboard_updated';
-  data: any;
+  data: unknown;
   userId?: string;
   topicId?: string;
   postId?: string;
   targetUsers?: string[];
   timestamp: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 // File upload response

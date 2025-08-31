@@ -108,12 +108,12 @@ export default function FeedContent() {
         });
 
         if (topicsResponse.data) {
-          const topicItems: FeedItem[] = topicsResponse.data.map((topic: any) => ({
-            id: `topic-${topic.id}`,
+          const topicItems: FeedItem[] = topicsResponse.data.map((topic: unknown) => ({
+            id: `topic-${(topic as any).id}`,
             type: 'topic' as const,
             data: topic as Topic,
-            timestamp: topic.createdAt,
-            relevanceScore: topic.postCount,
+            timestamp: (topic as any).createdAt,
+            relevanceScore: (topic as any).postCount,
           }));
           feedData.push(...topicItems);
         }
@@ -275,7 +275,7 @@ export default function FeedContent() {
         <div className="lg:col-span-1">
           <FeedFilters
             filters={filters}
-            onFiltersChange={handleFiltersChange}
+            onFiltersChange={handleFiltersChange as any}
             totalItems={feedItems.length}
           />
         </div>

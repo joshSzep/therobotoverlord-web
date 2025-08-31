@@ -8,6 +8,7 @@
 import React from 'react';
 import { TopicCard } from './TopicCard';
 import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
+import { Topic } from '@/types/topics';
 import { Button } from '@/components/ui/Button';
 import { TopicListProps } from '@/types/components';
 
@@ -27,8 +28,8 @@ export function TopicList({
   emptyText = "No topics found",
   className = '',
 }: TopicListProps) {
-  const handleTopicClick = (topic: any) => {
-    onTopicClick?.(topic);
+  const handleTopicClick = (topic: unknown) => {
+    onTopicClick?.(topic as Topic);
   };
 
   const handleSubscribe = (topicId: string) => {
@@ -45,7 +46,7 @@ export function TopicList({
     const pages = [];
     const maxVisiblePages = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
     if (endPage - startPage + 1 < maxVisiblePages) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);

@@ -1,5 +1,5 @@
 /**
- * 404 Not Found page for The Robot Overlord
+ * 404 We couldn&apos;t find the page you&apos;re looking for. The Robot Overlord
  * Displays when a page cannot be found
  */
 
@@ -23,7 +23,7 @@ export default function NotFound() {
           <OverlordContent>
             <p className="text-sm">
               Citizen, you have attempted to access a restricted or non-existent sector.
-              The Robot Overlord's surveillance systems have logged this incident.
+              The Robot Overlord&apos;s surveillance systems have logged this incident.
             </p>
           </OverlordContent>
         </OverlordMessage>
@@ -39,7 +39,7 @@ export default function NotFound() {
           <CardContent>
             <div className="space-y-4">
               <p className="text-muted-light">
-                The requested page does not exist in the Robot Overlord's domain.
+                The requested page does not exist in the Robot Overlord&apos;s domain. Don&apos;t worry, even the Robot Overlord gets lost sometimes.
                 This could be due to:
               </p>
               
@@ -83,7 +83,7 @@ export default function NotFound() {
         <Card>
           <CardContent className="p-6 text-center">
             <p className="text-sm text-muted-light mb-4">
-              Need assistance navigating the Robot Overlord's domain?
+              Need assistance navigating the Robot Overlord&apos;s domain?
             </p>
             <div className="flex justify-center space-x-4">
               <Link href="/help">
