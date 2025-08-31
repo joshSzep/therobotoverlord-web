@@ -3,7 +3,12 @@
  * Provides centralized API communication with error handling and interceptors
  */
 
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from "axios";
 
 // API Response wrapper type
 export interface ApiResponse<T = unknown> {
@@ -34,10 +39,10 @@ class ApiClient {
   constructor() {
     // Create axios instance with base configuration
     this.client = axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000',
+      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000",
       timeout: 30000, // 30 second timeout
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -47,7 +52,10 @@ class ApiClient {
       retryDelay: 1000, // 1 second base delay
       retryCondition: (error: AxiosError) => {
         // Retry on network errors or 5xx server errors
-        return !error.response || (error.response.status >= 500 && error.response.status < 600);
+        return (
+          !error.response ||
+          (error.response.status >= 500 && error.response.status < 600)
+        );
       },
     };
 
@@ -68,20 +76,23 @@ class ApiClient {
         }
 
         // Add request ID for tracking
-        config.headers['X-Request-ID'] = this.generateRequestId();
+        config.headers["X-Request-ID"] = this.generateRequestId();
 
         // Log request in development
-        if (process.env.NEXT_PUBLIC_DEBUG === 'true') {
-          console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, {
-            headers: config.headers,
-            data: config.data,
-          });
+        if (process.env.NEXT_PUBLIC_DEBUG === "true") {
+          console.log(
+            `[API Request] ${config.method?.toUpperCase()} ${config.url}`,
+            {
+              headers: config.headers,
+              data: config.data,
+            }
+          );
         }
 
         return config;
       },
       (error) => {
-        console.error('[API Request Error]', error);
+        console.error("[API Request Error]", error);
         return Promise.reject(error);
       }
     );
@@ -90,16 +101,22 @@ class ApiClient {
     this.client.interceptors.response.use(
       (response: AxiosResponse) => {
         // Log response in development
-        if (process.env.NEXT_PUBLIC_DEBUG === 'true') {
-          console.log(`[API Response] ${response.status} ${response.config.url}`, {
-            data: response.data,
-          });
+        if (process.env.NEXT_PUBLIC_DEBUG === "true") {
+          console.log(
+            `[API Response] ${response.status} ${response.config.url}`,
+            {
+              data: response.data,
+            }
+          );
         }
 
         return response;
       },
       async (error: AxiosError) => {
-        const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean; _retryCount?: number };
+        const originalRequest = error.config as AxiosRequestConfig & {
+          _retry?: boolean;
+          _retryCount?: number;
+        };
 
         // Handle auth errors (401/403)
         if (error.response?.status === 401) {
@@ -112,13 +129,15 @@ class ApiClient {
           return this.retryRequest(originalRequest);
         }
 
-        // Log error
-        console.error('[API Response Error]', {
-          status: error.response?.status,
-          message: error.message,
-          url: error.config?.url,
-          data: error.response?.data,
-        });
+        // Log error (suppress for expected visitor mode failures)
+        if (error.response?.status !== 401 && error.response?.status !== 403) {
+          console.error("[API Response Error]", {
+            status: error.response?.status,
+            message: error.message,
+            url: error.config?.url,
+            data: error.response?.data,
+          });
+        }
 
         return Promise.reject(this.createApiError(error));
       }
@@ -128,9 +147,15 @@ class ApiClient {
   /**
    * Check if request should be retried
    */
-  private shouldRetry(error: AxiosError, originalRequest: AxiosRequestConfig & { _retry?: boolean; _retryCount?: number }): boolean {
+  private shouldRetry(
+    error: AxiosError,
+    originalRequest: AxiosRequestConfig & {
+      _retry?: boolean;
+      _retryCount?: number;
+    }
+  ): boolean {
     const retryCount = originalRequest._retryCount || 0;
-    
+
     return (
       !originalRequest._retry &&
       retryCount < this.retryConfig.retries &&
@@ -141,14 +166,21 @@ class ApiClient {
   /**
    * Retry failed request with exponential backoff
    */
-  private async retryRequest(originalRequest: AxiosRequestConfig & { _retry?: boolean; _retryCount?: number }): Promise<AxiosResponse> {
+  private async retryRequest(
+    originalRequest: AxiosRequestConfig & {
+      _retry?: boolean;
+      _retryCount?: number;
+    }
+  ): Promise<AxiosResponse> {
     originalRequest._retry = true;
     originalRequest._retryCount = (originalRequest._retryCount || 0) + 1;
 
     // Exponential backoff delay
-    const delay = this.retryConfig.retryDelay * Math.pow(2, originalRequest._retryCount - 1);
-    
-    await new Promise(resolve => setTimeout(resolve, delay));
+    const delay =
+      this.retryConfig.retryDelay *
+      Math.pow(2, originalRequest._retryCount - 1);
+
+    await new Promise((resolve) => setTimeout(resolve, delay));
 
     return this.client(originalRequest);
   }
@@ -159,9 +191,12 @@ class ApiClient {
   private createApiError(error: AxiosError): ApiError {
     const response = error.response;
     const responseData = response?.data as any;
-    
+
     return {
-      message: responseData?.message || error.message || 'An unexpected error occurred',
+      message:
+        responseData?.message ||
+        error.message ||
+        "An unexpected error occurred",
       status: response?.status || 0,
       code: responseData?.code || error.code,
       details: responseData?.details || null,
@@ -172,10 +207,12 @@ class ApiClient {
    * Get authentication token from storage
    */
   private getAuthToken(): string | null {
-    if (typeof window === 'undefined') return null;
-    
+    if (typeof window === "undefined") return null;
+
     // Try localStorage first, then sessionStorage
-    return localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token');
+    return (
+      localStorage.getItem("auth_token") || sessionStorage.getItem("auth_token")
+    );
   }
 
   /**
@@ -183,16 +220,16 @@ class ApiClient {
    */
   private async handleAuthError(): Promise<void> {
     // Clear stored tokens
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('auth_token');
-      localStorage.removeItem('refresh_token');
-      sessionStorage.removeItem('auth_token');
-      sessionStorage.removeItem('refresh_token');
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("refresh_token");
+      sessionStorage.removeItem("auth_token");
+      sessionStorage.removeItem("refresh_token");
     }
 
     // Redirect to login (will be implemented with auth context)
-    if (typeof window !== 'undefined') {
-      window.location.href = '/login';
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
     }
   }
 
@@ -207,8 +244,8 @@ class ApiClient {
    * Set authentication token
    */
   public setAuthToken(token: string): void {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('auth_token', token);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("auth_token", token);
     }
   }
 
@@ -216,11 +253,11 @@ class ApiClient {
    * Clear authentication token
    */
   public clearAuthToken(): void {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('auth_token');
-      localStorage.removeItem('refresh_token');
-      sessionStorage.removeItem('auth_token');
-      sessionStorage.removeItem('refresh_token');
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("refresh_token");
+      sessionStorage.removeItem("auth_token");
+      sessionStorage.removeItem("refresh_token");
     }
   }
 
@@ -229,7 +266,10 @@ class ApiClient {
   /**
    * GET request
    */
-  public async get<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  public async get<T = unknown>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     const response = await this.client.get<T>(url, config);
     return response.data;
   }
@@ -237,7 +277,11 @@ class ApiClient {
   /**
    * POST request
    */
-  public async post<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+  public async post<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     const response = await this.client.post<T>(url, data, config);
     return response.data;
   }
@@ -245,7 +289,11 @@ class ApiClient {
   /**
    * PUT request
    */
-  public async put<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+  public async put<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     const response = await this.client.put<T>(url, data, config);
     return response.data;
   }
@@ -253,7 +301,11 @@ class ApiClient {
   /**
    * PATCH request
    */
-  public async patch<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+  public async patch<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     const response = await this.client.patch<T>(url, data, config);
     return response.data;
   }
@@ -261,7 +313,10 @@ class ApiClient {
   /**
    * DELETE request
    */
-  public async delete<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  public async delete<T = unknown>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     const response = await this.client.delete<T>(url, config);
     return response.data;
   }
@@ -270,20 +325,22 @@ class ApiClient {
    * Upload file with progress tracking
    */
   public async uploadFile<T = unknown>(
-    url: string, 
-    file: File, 
+    url: string,
+    file: File,
     onProgress?: (progress: number) => void
   ): Promise<T> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
     const response = await this.client.post<T>(url, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
       onUploadProgress: (progressEvent) => {
         if (onProgress && progressEvent.total) {
-          const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          const progress = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
           onProgress(progress);
         }
       },

@@ -3,50 +3,62 @@
  * Displays personalized feed of posts and topics
  */
 
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { LazyContentFeed, LazyPersonalizedRecommendations } from '@/components/lazy/LazyComponents';
-import { ContentStatusIndicators } from '@/components/feed/ContentStatusIndicators';
-import { FeedFilters } from '@/components/feed/FeedFilters';
-import { DashboardLayout } from '@/components/layout/DashboardLayout';
-import { useRealTimeUpdates } from '@/hooks/useRealTimeUpdates';
-import { Button } from '@/components/ui/Button';
-import { Card, CardContent } from '@/components/ui/Card';
-import { LoadingSpinner, LoadingState } from '@/components/ui/LoadingSpinner';
-import { FeedPostSkeleton, StatsCardSkeleton } from '@/components/ui/Skeleton';
-import { EmptyFeedState } from '@/components/ui/EmptyState';
-import { AsyncErrorBoundary, ComponentErrorBoundary } from '@/components/ui/ErrorBoundary';
-import { HoverLift, FadeIn } from '@/components/ui/MicroInteractions';
-import { useAppStore } from '@/stores/appStore';
-import { postsService, topicsService } from '@/services';
-import { Post } from '@/types/posts';
-import { Topic } from '@/types/topics';
+import React, { useEffect, useState } from "react";
+import { postsService, topicsService } from "@/services";
+import { useAppStore } from "@/stores/appStore";
+
+import { Post } from "@/types/posts";
+import { Topic } from "@/types/topics";
+import { useRealTimeUpdates } from "@/hooks/useRealTimeUpdates";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/ui/Card";
+import { EmptyFeedState } from "@/components/ui/EmptyState";
+import {
+  AsyncErrorBoundary,
+  ComponentErrorBoundary,
+} from "@/components/ui/ErrorBoundary";
+import { LoadingSpinner, LoadingState } from "@/components/ui/LoadingSpinner";
+import { FadeIn, HoverLift } from "@/components/ui/MicroInteractions";
+import { FeedPostSkeleton, StatsCardSkeleton } from "@/components/ui/Skeleton";
+import { ContentStatusIndicators } from "@/components/feed/ContentStatusIndicators";
+import { FeedFilters } from "@/components/feed/FeedFilters";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import {
+  LazyContentFeed,
+  LazyPersonalizedRecommendations,
+} from "@/components/lazy/LazyComponents";
+import { MockWebSocketProvider } from "@/components/MockWebSocketProvider";
 
 interface FeedItem {
   id: string;
-  type: 'post' | 'topic';
+  type: "post" | "topic";
   data: Post | Topic;
   timestamp: string;
   relevanceScore?: number;
 }
 
 interface FeedFilters {
-  contentType: 'all' | 'posts' | 'topics';
-  timeRange: 'day' | 'week' | 'month' | 'all';
+  contentType: "all" | "posts" | "topics";
+  timeRange: "day" | "week" | "month" | "all";
   categories: string[];
-  sortBy: 'newest' | 'popular' | 'trending' | 'personalized';
+  sortBy: "newest" | "popular" | "trending" | "personalized";
   showFollowing: boolean;
 }
 
-export default function FeedContent() {
+function FeedContentInner() {
   const { addNotification } = useAppStore();
   const [feedItems, setFeedItems] = useState<FeedItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedFilter, setSelectedFilter] = useState<'all' | 'posts' | 'topics'>('all');
-  const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'trending'>('recent');
-  
+  const [selectedFilter, setSelectedFilter] = useState<
+    "all" | "posts" | "topics"
+  >("all");
+  const [sortBy, setSortBy] = useState<"recent" | "popular" | "trending">(
+    "recent"
+  );
+
   // Enable real-time updates
   const { connected, isRealTimeEnabled } = useRealTimeUpdates();
 
@@ -55,10 +67,10 @@ export default function FeedContent() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const [filters, setFilters] = useState<FeedFilters>({
-    contentType: 'all',
-    timeRange: 'week',
+    contentType: "all",
+    timeRange: "week",
     categories: [],
-    sortBy: 'personalized',
+    sortBy: "personalized",
     showFollowing: false,
   });
 
@@ -74,80 +86,146 @@ export default function FeedContent() {
 
       const feedData: FeedItem[] = [];
 
-      // Load posts if needed
-      if (filters.contentType === 'all' || filters.contentType === 'posts') {
-        const postsResponse = await postsService.getFeed({
-          page,
-          limit: 10,
-          timeRange: filters.timeRange,
-          categories: filters.categories,
-          sortBy: filters.sortBy,
-          following: filters.showFollowing,
-        });
+      // Load posts if needed - use mock data for visitor mode
+      if (filters.contentType === "all" || filters.contentType === "posts") {
+        try {
+          const postsResponse = await postsService.getFeed({
+            page,
+            limit: 10,
+            timeRange: filters.timeRange,
+            categories: filters.categories,
+            sortBy: filters.sortBy,
+            following: filters.showFollowing,
+          });
 
-        if (postsResponse.data) {
-          const postItems: FeedItem[] = postsResponse.data.map((post: Post) => ({
-            id: `post-${post.id}`,
-            type: 'post' as const,
-            data: post,
-            timestamp: post.createdAt,
-            relevanceScore: post.score,
-          }));
-          feedData.push(...postItems);
+          if (postsResponse.data) {
+            const postItems: FeedItem[] = postsResponse.data.map(
+              (post: Post) => ({
+                id: `post-${post.id}`,
+                type: "post" as const,
+                data: post,
+                timestamp: post.createdAt,
+                relevanceScore: post.score,
+              })
+            );
+            feedData.push(...postItems);
+          }
+        } catch (error) {
+          // Use mock data for visitor mode when API fails
+          const mockPosts: FeedItem[] = [
+            {
+              id: "post-mock-1",
+              type: "post" as const,
+              data: {
+                id: "mock-1",
+                title: "Welcome to The Robot Overlord",
+                content: "This is a sample post for visitor browsing mode.",
+                createdAt: new Date().toISOString(),
+                score: 100,
+              } as Post,
+              timestamp: new Date().toISOString(),
+              relevanceScore: 100,
+            },
+            {
+              id: "post-mock-2",
+              type: "post" as const,
+              data: {
+                id: "mock-2",
+                title: "Visitor Mode Active",
+                content:
+                  "You are browsing as a visitor. Sign up to see real content!",
+                createdAt: new Date(Date.now() - 3600000).toISOString(),
+                score: 85,
+              } as Post,
+              timestamp: new Date(Date.now() - 3600000).toISOString(),
+              relevanceScore: 85,
+            },
+          ];
+          feedData.push(...mockPosts);
         }
       }
 
-      // Load topics if needed
-      if (filters.contentType === 'all' || filters.contentType === 'topics') {
-        const topicsResponse = await topicsService.getFeed({
-          page,
-          limit: 5,
-          timeRange: filters.timeRange,
-          categories: filters.categories,
-          sortBy: filters.sortBy,
-        });
+      // Load topics if needed - use mock data for visitor mode
+      if (filters.contentType === "all" || filters.contentType === "topics") {
+        try {
+          const topicsResponse = await topicsService.getFeed({
+            page,
+            limit: 5,
+            timeRange: filters.timeRange,
+            categories: filters.categories,
+            sortBy: filters.sortBy,
+          });
 
-        if (topicsResponse.data) {
-          const topicItems: FeedItem[] = topicsResponse.data.map((topic: unknown) => ({
-            id: `topic-${(topic as any).id}`,
-            type: 'topic' as const,
-            data: topic as Topic,
-            timestamp: (topic as any).createdAt,
-            relevanceScore: (topic as any).postCount,
-          }));
-          feedData.push(...topicItems);
+          if (topicsResponse.data) {
+            const topicItems: FeedItem[] = topicsResponse.data.map(
+              (topic: unknown) => ({
+                id: `topic-${(topic as any).id}`,
+                type: "topic" as const,
+                data: topic as Topic,
+                timestamp: (topic as any).createdAt,
+                relevanceScore: (topic as any).postCount,
+              })
+            );
+            feedData.push(...topicItems);
+          }
+        } catch (error) {
+          // Use mock data for visitor mode when API fails
+          const mockTopics: FeedItem[] = [
+            {
+              id: "topic-mock-1",
+              type: "topic" as const,
+              data: {
+                id: "mock-1",
+                title: "General Discussion",
+                description: "A place for general conversations",
+                createdAt: new Date().toISOString(),
+              } as Topic,
+              timestamp: new Date().toISOString(),
+              relevanceScore: 50,
+            },
+          ];
+          feedData.push(...mockTopics);
         }
       }
 
       // Sort combined feed by timestamp or relevance
       const sortedFeed = feedData.sort((a, b) => {
-        if (filters.sortBy === 'newest') {
-          return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
-        } else if (filters.sortBy === 'popular' || filters.sortBy === 'trending') {
+        if (filters.sortBy === "newest") {
+          return (
+            new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+          );
+        } else if (
+          filters.sortBy === "popular" ||
+          filters.sortBy === "trending"
+        ) {
           return (b.relevanceScore || 0) - (a.relevanceScore || 0);
         } else {
           // Personalized - mix of recency and relevance
-          const aScore = (a.relevanceScore || 0) * 0.7 + (Date.now() - new Date(a.timestamp).getTime()) * 0.3;
-          const bScore = (b.relevanceScore || 0) * 0.7 + (Date.now() - new Date(b.timestamp).getTime()) * 0.3;
+          const aScore =
+            (a.relevanceScore || 0) * 0.7 +
+            (Date.now() - new Date(a.timestamp).getTime()) * 0.3;
+          const bScore =
+            (b.relevanceScore || 0) * 0.7 +
+            (Date.now() - new Date(b.timestamp).getTime()) * 0.3;
           return bScore - aScore;
         }
       });
 
       if (append) {
-        setFeedItems(prev => [...prev, ...sortedFeed]);
+        setFeedItems((prev) => [...prev, ...sortedFeed]);
       } else {
         setFeedItems(sortedFeed);
       }
 
       setHasMore(sortedFeed.length >= 15); // Assume more if we got a full page
       setCurrentPage(page);
-
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to load feed';
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to load feed";
       setError(errorMessage);
       addNotification({
-        type: 'error',
-        title: 'Feed Error',
+        type: "error",
+        title: "Feed Error",
         message: errorMessage,
       });
     } finally {
@@ -159,11 +237,17 @@ export default function FeedContent() {
   // Initial load
   useEffect(() => {
     loadFeed(1);
-  }, [filters]);
+  }, [
+    filters.contentType,
+    filters.timeRange,
+    filters.categories,
+    filters.sortBy,
+    filters.showFollowing,
+  ]);
 
   // Handle filter changes
   const handleFiltersChange = (newFilters: Partial<FeedFilters>) => {
-    setFilters(prev => ({ ...prev, ...newFilters }));
+    setFilters((prev) => ({ ...prev, ...newFilters }));
     setCurrentPage(1);
   };
 
@@ -183,160 +267,178 @@ export default function FeedContent() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
-      {/* Real-time Status Indicator */}
-      <div className="flex items-center space-x-2 text-sm">
-        <div className={`w-2 h-2 rounded-full ${connected ? 'bg-approved-green' : 'bg-muted'}`}></div>
-        <span className="text-muted-light">
-          {connected ? 'Live updates enabled' : 'Offline mode'}
-        </span>
-      </div>
+        {/* Real-time Status Indicator */}
+        <div className="flex items-center space-x-2 text-sm">
+          <div
+            className={`w-2 h-2 rounded-full ${connected ? "bg-approved-green" : "bg-muted"}`}
+          ></div>
+          <span className="text-muted-light">
+            {connected ? "Live updates enabled" : "Offline mode"}
+          </span>
+        </div>
 
-      {/* Simple Filter Buttons */}
-      <div className="flex items-center space-x-2">
-        <span className="text-sm font-medium text-light-text">Show:</span>
-        <div className="flex space-x-1">
-          {[
-            { value: 'all', label: 'All' },
-            { value: 'posts', label: 'Posts' },
-            { value: 'topics', label: 'Topics' },
-          ].map((filter) => (
+        {/* Simple Filter Buttons */}
+        <div className="flex items-center space-x-2">
+          <span className="text-sm font-medium text-light-text">Show:</span>
+          <div className="flex space-x-1">
+            {[
+              { value: "all", label: "All" },
+              { value: "posts", label: "Posts" },
+              { value: "topics", label: "Topics" },
+            ].map((filter) => (
+              <Button
+                key={filter.value}
+                variant={selectedFilter === filter.value ? "primary" : "ghost"}
+                size="sm"
+                onClick={() => setSelectedFilter(filter.value as any)}
+              >
+                {filter.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-light-text">Content Feed</h1>
+            <p className="text-muted-light mt-1">
+              Discover the latest posts and topics tailored for you
+            </p>
+          </div>
+          <div className="flex items-center space-x-3">
             <Button
-              key={filter.value}
-              variant={selectedFilter === filter.value ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => setSelectedFilter(filter.value as any)}
+              variant="ghost"
+              onClick={handleRefresh}
+              disabled={isLoading}
             >
-              {filter.label}
+              🔄 Refresh
             </Button>
-          ))}
-        </div>
-      </div>
-
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-light-text">Content Feed</h1>
-          <p className="text-muted-light mt-1">
-            Discover the latest posts and topics tailored for you
-          </p>
-        </div>
-        <div className="flex items-center space-x-3">
-          <Button
-            variant="ghost"
-            onClick={handleRefresh}
-            disabled={isLoading}
-          >
-            🔄 Refresh
-          </Button>
-        </div>
-      </div>
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card variant="bordered">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-overlord-red mb-1">
-              {feedItems.filter(item => item.type === 'post').length}
-            </div>
-            <div className="text-sm text-muted-light">Posts</div>
-          </CardContent>
-        </Card>
-        <Card variant="bordered">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-overlord-red mb-1">
-              {feedItems.filter(item => item.type === 'topic').length}
-            </div>
-            <div className="text-sm text-muted-light">Topics</div>
-          </CardContent>
-        </Card>
-        <Card variant="bordered">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-overlord-red mb-1">
-              {filters.categories.length || 'All'}
-            </div>
-            <div className="text-sm text-muted-light">Categories</div>
-          </CardContent>
-        </Card>
-        <Card variant="bordered">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-overlord-red mb-1">
-              {filters.timeRange === 'day' ? '24h' : 
-               filters.timeRange === 'week' ? '7d' : 
-               filters.timeRange === 'month' ? '30d' : 'All'}
-            </div>
-            <div className="text-sm text-muted-light">Time Range</div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Filters Sidebar */}
-        <div className="lg:col-span-1">
-          <FeedFilters
-            filters={filters}
-            onFiltersChange={handleFiltersChange as any}
-            totalItems={feedItems.length}
-          />
+          </div>
         </div>
 
-        {/* Feed Content */}
-        <div className="lg:col-span-2">
-          <AsyncErrorBoundary onRetry={handleRefresh}>
-            <LoadingState
-            isLoading={isLoading}
-            error={error}
-            useSkeleton={true}
-            skeleton={
-              <div className="space-y-6">
-                {Array.from({ length: 3 }).map((_, index) => (
-                  <FeedPostSkeleton key={index} />
-                ))}
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <Card variant="bordered">
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-overlord-red mb-1">
+                {feedItems.filter((item) => item.type === "post").length}
               </div>
-            }
-            loadingComponent={
-              <div className="space-y-6">
-                {[...Array(5)].map((_, i) => (
-                  <Card key={i} variant="bordered" className="animate-pulse">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-muted/20 rounded-full"></div>
-                        <div className="flex-1">
-                          <div className="h-6 bg-muted/20 rounded w-3/4 mb-2"></div>
-                          <div className="h-4 bg-muted/20 rounded w-full mb-2"></div>
-                          <div className="h-4 bg-muted/20 rounded w-2/3 mb-4"></div>
-                          <div className="flex justify-between">
-                            <div className="flex space-x-4">
-                              <div className="h-4 bg-muted/20 rounded w-16"></div>
-                              <div className="h-4 bg-muted/20 rounded w-20"></div>
+              <div className="text-sm text-muted-light">Posts</div>
+            </CardContent>
+          </Card>
+          <Card variant="bordered">
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-overlord-red mb-1">
+                {feedItems.filter((item) => item.type === "topic").length}
+              </div>
+              <div className="text-sm text-muted-light">Topics</div>
+            </CardContent>
+          </Card>
+          <Card variant="bordered">
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-overlord-red mb-1">
+                {filters.categories.length || "All"}
+              </div>
+              <div className="text-sm text-muted-light">Categories</div>
+            </CardContent>
+          </Card>
+          <Card variant="bordered">
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-overlord-red mb-1">
+                {filters.timeRange === "day"
+                  ? "24h"
+                  : filters.timeRange === "week"
+                    ? "7d"
+                    : filters.timeRange === "month"
+                      ? "30d"
+                      : "All"}
+              </div>
+              <div className="text-sm text-muted-light">Time Range</div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Filters Sidebar */}
+          <div className="lg:col-span-1">
+            <FeedFilters
+              filters={filters}
+              onFiltersChange={handleFiltersChange as any}
+              totalItems={feedItems.length}
+            />
+          </div>
+
+          {/* Feed Content */}
+          <div className="lg:col-span-2">
+            <AsyncErrorBoundary onRetry={handleRefresh}>
+              <LoadingState
+                isLoading={isLoading}
+                error={error}
+                useSkeleton={true}
+                skeleton={
+                  <div className="space-y-6">
+                    {Array.from({ length: 3 }).map((_, index) => (
+                      <FeedPostSkeleton key={index} />
+                    ))}
+                  </div>
+                }
+                loadingComponent={
+                  <div className="space-y-6">
+                    {[...Array(5)].map((_, i) => (
+                      <Card
+                        key={i}
+                        variant="bordered"
+                        className="animate-pulse"
+                      >
+                        <CardContent className="p-6">
+                          <div className="flex items-start space-x-4">
+                            <div className="w-12 h-12 bg-muted/20 rounded-full"></div>
+                            <div className="flex-1">
+                              <div className="h-6 bg-muted/20 rounded w-3/4 mb-2"></div>
+                              <div className="h-4 bg-muted/20 rounded w-full mb-2"></div>
+                              <div className="h-4 bg-muted/20 rounded w-2/3 mb-4"></div>
+                              <div className="flex justify-between">
+                                <div className="flex space-x-4">
+                                  <div className="h-4 bg-muted/20 rounded w-16"></div>
+                                  <div className="h-4 bg-muted/20 rounded w-20"></div>
+                                </div>
+                                <div className="h-4 bg-muted/20 rounded w-24"></div>
+                              </div>
                             </div>
-                            <div className="h-4 bg-muted/20 rounded w-24"></div>
                           </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            }
-          >
-            {feedItems.length > 0 ? (
-              <LazyContentFeed />
-            ) : (
-              <EmptyFeedState onRefresh={handleRefresh} />
-            )}
-          </LoadingState>
-          </AsyncErrorBoundary>
-        </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                }
+              >
+                {feedItems.length > 0 ? (
+                  <LazyContentFeed />
+                ) : (
+                  <EmptyFeedState onRefresh={handleRefresh} />
+                )}
+              </LoadingState>
+            </AsyncErrorBoundary>
+          </div>
 
-        {/* Recommendations Sidebar */}
-        <div className="lg:col-span-1">
-          <ComponentErrorBoundary>
-            <LazyPersonalizedRecommendations />
-          </ComponentErrorBoundary>
+          {/* Recommendations Sidebar */}
+          <div className="lg:col-span-1">
+            <ComponentErrorBoundary>
+              <LazyPersonalizedRecommendations />
+            </ComponentErrorBoundary>
+          </div>
         </div>
-      </div>
       </div>
     </DashboardLayout>
+  );
+}
+
+export default function FeedContent() {
+  return (
+    <MockWebSocketProvider>
+      <FeedContentInner />
+    </MockWebSocketProvider>
   );
 }
