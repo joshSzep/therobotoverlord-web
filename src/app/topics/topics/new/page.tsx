@@ -31,7 +31,7 @@ export default function CreateTopicPage() {
 
       const response = await topicsService.getCategories();
       if (response.success && response.data) {
-        setCategories(response.data);
+        setCategories(response.data as TopicCategory[]);
       } else {
         throw new Error('Failed to load categories');
       }

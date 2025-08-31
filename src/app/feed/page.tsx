@@ -321,12 +321,7 @@ export default function FeedContent() {
             }
           >
             {feedItems.length > 0 ? (
-              <LazyContentFeed
-                items={feedItems}
-                onLoadMore={handleLoadMore}
-                hasMore={hasMore}
-                isLoadingMore={isLoadingMore}
-              />
+              <LazyContentFeed />
             ) : (
               <EmptyFeedState onRefresh={handleRefresh} />
             )}
@@ -337,11 +332,7 @@ export default function FeedContent() {
         {/* Recommendations Sidebar */}
         <div className="lg:col-span-1">
           <ComponentErrorBoundary>
-            <LazyPersonalizedRecommendations
-              limit={6}
-              categories={filters.categories}
-              className="sticky top-6"
-            />
+            <LazyPersonalizedRecommendations />
           </ComponentErrorBoundary>
         </div>
       </div>

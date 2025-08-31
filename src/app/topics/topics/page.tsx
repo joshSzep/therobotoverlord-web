@@ -48,23 +48,24 @@ export default function TopicsPage() {
       setIsLoading(true);
       setError(null);
 
+      const categoriesResponse = await topicsService.getCategories() as any;
       const response = await topicsService.getTopics({
         page,
         limit: 20,
         search: currentFilters.search,
         categoryId: currentFilters.categoryId,
         status: currentFilters.status,
-        sortBy: currentFilters.sortBy === 'recent' ? 'newest' : currentFilters.sortBy,
-        timeRange: currentFilters.timeRange,
+        sortBy: currentFilters.sortBy === 'recent' ? 'newest' : (currentFilters.sortBy === 'alphabetical' ? 'newest' : currentFilters.sortBy),
+        timeRange: currentFilters.timeRange === 'hour' || currentFilters.timeRange === 'today' || currentFilters.timeRange === 'quarter' ? 'day' : currentFilters.timeRange,
         tags: currentFilters.tags,
       });
 
       if (response.success && response.data) {
-        setTopics(response.data.data);
-        setCurrentPage(response.data.pagination.page);
-        setTotalPages(response.data.pagination.totalPages);
+        setTopics(response.data.data || []);
+        setCurrentPage(response.data.pagination?.page || 1);
+        setTotalPages(response.data.pagination?.totalPages || 1);
       } else {
-        throw new Error(response.errors?.[0]?.message || 'Failed to load topics');
+        throw new Error('Failed to load topics');
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load topics';
@@ -122,14 +123,14 @@ export default function TopicsPage() {
       if (!topic) return;
 
       if (topic.userSubscribed) {
-        await topicsService.unsubscribe(topicId);
+        await topicsService.unsubscribeTopic(topicId);
         addNotification({
           type: 'success',
           title: 'Unsubscribed',
           message: `You have unsubscribed from "${topic.title}"`,
         });
       } else {
-        await topicsService.subscribe(topicId);
+        await topicsService.subscribeTopic(topicId);
         addNotification({
           type: 'success',
           title: 'Subscribed',

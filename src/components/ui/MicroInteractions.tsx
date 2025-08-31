@@ -104,6 +104,7 @@ export const BounceIn: React.FC<{
       const timer = setTimeout(() => setShouldAnimate(false), 600);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [trigger]);
 
   return (
@@ -128,9 +129,10 @@ export const ShakeAnimation: React.FC<{
   useEffect(() => {
     if (trigger) {
       setShouldShake(true);
-      const timer = setTimeout(() => setShouldShake(false), 500);
+      const timer = setTimeout(() => setShouldShake(false), 2000);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [trigger]);
 
   return (
@@ -216,9 +218,12 @@ export const FadeIn: React.FC<{
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), delay);
-    return () => clearTimeout(timer);
-  }, [delay]);
+    if (isVisible) {
+      const timer = setTimeout(() => setIsVisible(false), duration);
+      return () => clearTimeout(timer);
+    }
+    return undefined;
+  }, [isVisible, duration]);
 
   return (
     <div
@@ -341,6 +346,7 @@ export const AnimatedProgressBar: React.FC<{
     } else {
       setAnimatedProgress(progress);
     }
+    return undefined;
   }, [progress, animated]);
 
   return (

@@ -113,7 +113,9 @@ export const KeyboardTabs: React.FC<{
     }
     
     tabRefs.current[newIndex]?.focus();
-    onTabChange(tabs[newIndex].id);
+    if (tabs[newIndex]) {
+      onTabChange(tabs[newIndex].id);
+    }
   };
 
   return (
@@ -193,7 +195,9 @@ export const KeyboardList: React.FC<{
       case 'Enter':
       case ' ':
         event.preventDefault();
-        items[index].onClick?.();
+        if (items[index]) {
+          items[index].onClick?.();
+        }
         break;
       default:
         return;
@@ -330,7 +334,7 @@ export const KeyboardSearch: React.FC<{
         break;
       case 'Enter':
         event.preventDefault();
-        if (selectedIndex >= 0) {
+        if (selectedIndex >= 0 && suggestions[selectedIndex]) {
           onSelect?.(suggestions[selectedIndex]);
           setShowSuggestions(false);
           setSelectedIndex(-1);

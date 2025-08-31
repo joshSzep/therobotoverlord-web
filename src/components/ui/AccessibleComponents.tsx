@@ -357,6 +357,7 @@ export const AccessibleNotification: React.FC<{
       const timer = setTimeout(onClose, duration);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [type, title, message, announceNotification, autoClose, onClose, duration]);
 
   const getTypeStyles = (type: string) => {

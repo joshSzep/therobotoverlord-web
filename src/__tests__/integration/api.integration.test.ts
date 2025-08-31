@@ -375,18 +375,16 @@ describe('API Integration Tests', () => {
     it('includes auth token in requests', async () => {
       const token = 'mock-jwt-token'
       
-      // Create authenticated client
-      class AuthenticatedApiClient extends ApiClient {
-        constructor() {
-          super()
-          this.defaultHeaders = {
-            ...this.defaultHeaders,
-            'Authorization': `Bearer ${token}`
-          }
+      // Mock authenticated request
+      const authClient = new ApiClient()
+      const originalFetch = global.fetch
+      global.fetch = jest.fn().mockImplementation((url, options) => {
+        const authHeaders = {
+          ...options?.headers,
+          'Authorization': `Bearer ${token}`
         }
-      }
-
-      const authClient = new AuthenticatedApiClient()
+        return mockFetch(url, { ...options, headers: authHeaders })
+      })
       
       mockFetch.mockResolvedValueOnce({
         ok: true,

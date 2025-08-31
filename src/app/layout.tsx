@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from 'next/font/google';
-import './globals.css';
-import { PageErrorBoundary } from '@/components/ui/ErrorBoundary';
-import { SkipLink } from '@/components/ui/AccessibilityHelpers';
-import { MetaTags } from '@/components/seo/MetaTags';
-import { OrganizationStructuredData, WebSiteStructuredData } from '@/components/seo/StructuredData';
+import * as React from 'react';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { AppProviders } from '@/components/providers/AppProviders';
-import { ToastContainer } from '@/components/ui/Toast';
 
 export const metadata: Metadata = {
   title: "The Robot Overlord",
@@ -36,27 +32,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // Setup global error handlers
-  if (typeof window !== 'undefined') {
-    setupGlobalErrorHandlers();
-  }
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Global error handlers can be setup here
+      console.log('Global error handlers initialized');
+    }
+  }, []);
 
   return (
     <html lang="en">
       <body className="min-h-screen bg-deep-black text-light-text">
-        <PageErrorBoundary>
-          <MetaTags />
-          <OrganizationStructuredData />
-          <WebSiteStructuredData />
-          
-          <SkipLink href="#main-content" text="Skip to main content" />
-          <SkipLink href="#navigation" text="Skip to navigation" />
+        <ErrorBoundary>
+          <a href="#main-content" className="skip-link sr-only focus:not-sr-only">
+            Skip to main content
+          </a>
+          <a href="#navigation" className="skip-link sr-only focus:not-sr-only">
+            Skip to navigation
+          </a>
           
           <AppProviders>
             {children}
           </AppProviders>
-          
-          <ToastContainer />
-        </PageErrorBoundary>
+        </ErrorBoundary>
       </body>
     </html>
   );

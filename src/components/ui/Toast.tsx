@@ -24,6 +24,7 @@ function Toast({ notification }: ToastProps) {
 
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [notification.duration, notification.id, removeNotification]);
 
   const getToastStyles = (type: Notification['type']) => {
