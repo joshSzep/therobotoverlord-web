@@ -313,11 +313,7 @@ describe("Feed Page Integration", () => {
     // Mock empty posts for this test
     mockPostsService.getPosts.mockResolvedValueOnce([]);
     
-    render(
-      <IntegrationMockProviders>
-        <FeedPage />
-      </IntegrationMockProviders>
-    );
+    render(<FeedPage />);
 
     // Should render the page with empty state component
     await waitFor(() => {
@@ -368,7 +364,9 @@ describe("Feed Page Integration", () => {
     Object.defineProperty(window, "scrollTo", {
       value: mockScrollTo,
       writable: true,
+      configurable: true,
     });
+
     Object.defineProperty(window, "scrollY", {
       value: 0,
       writable: true,

@@ -52,8 +52,34 @@ const mockAuthContext = {
 // Mock the AuthContext
 jest.mock('@/contexts/AuthContext', () => ({
   AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  useAuth: () => mockAuthContext,
-  useRequireAuth: () => mockAuthContext,
+  useAuth: () => ({
+    user: { id: '1', username: 'testuser', email: 'test@example.com', displayName: 'Test User' },
+    isAuthenticated: true,
+    isLoading: false,
+    error: null,
+    login: jest.fn(),
+    loginWithGoogle: jest.fn(),
+    logout: jest.fn(),
+    register: jest.fn(),
+    updateProfile: jest.fn(),
+    refreshToken: jest.fn(),
+    clearError: jest.fn(),
+    updateUser: jest.fn(),
+  }),
+  useRequireAuth: () => ({
+    user: { id: '1', username: 'testuser', email: 'test@example.com', displayName: 'Test User' },
+    isAuthenticated: true,
+    isLoading: false,
+    error: null,
+    login: jest.fn(),
+    loginWithGoogle: jest.fn(),
+    logout: jest.fn(),
+    register: jest.fn(),
+    updateProfile: jest.fn(),
+    refreshToken: jest.fn(),
+    clearError: jest.fn(),
+    updateUser: jest.fn(),
+  }),
 }))
 
 // Mock Zustand store
@@ -126,20 +152,33 @@ const MockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   return <>{children}</>
 }
 
+// Create a proper AuthContext mock
+const AuthContext = React.createContext<any>(null)
+
 // Specialized mock provider for integration tests with stable state
 export const IntegrationMockProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const mockAuthValue = {
-    user: { id: '1', username: 'testuser', email: 'test@example.com', displayName: 'Test User' },
+  // Create stable mock context value to prevent re-renders
+  const mockAuthValue = React.useMemo(() => ({
+    user: { 
+      id: '1', 
+      username: 'testuser', 
+      email: 'test@example.com', 
+      displayName: 'Test User',
+      name: 'Test User'
+    },
     isAuthenticated: true,
     isLoading: false,
-    login: mockLogin,
-    loginWithGoogle: mockLoginWithGoogle,
-    logout: mockLogout,
-    register: mockRegister,
-    updateProfile: mockUpdateProfile,
-    refreshToken: mockRefreshToken,
-  }
-  
+    error: null,
+    login: jest.fn(),
+    loginWithGoogle: jest.fn(),
+    logout: jest.fn(),
+    register: jest.fn(),
+    updateProfile: jest.fn(),
+    refreshToken: jest.fn(),
+    clearError: jest.fn(),
+    updateUser: jest.fn(),
+  }), []);
+
   return (
     <div data-testid="mock-provider-wrapper">
       {children}

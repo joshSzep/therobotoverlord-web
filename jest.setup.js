@@ -1,23 +1,29 @@
 import '@testing-library/jest-dom'
 
 // Mock Next.js router
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+    back: jest.fn(),
+    pathname: '/feed',
+    query: {},
+    asPath: '/feed',
+    route: '/feed',
+  }),
+}))
+
+// Mock Next.js navigation
 jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      push: jest.fn(),
-      replace: jest.fn(),
-      prefetch: jest.fn(),
-      back: jest.fn(),
-      forward: jest.fn(),
-      refresh: jest.fn(),
-    }
-  },
-  useSearchParams() {
-    return new URLSearchParams()
-  },
-  usePathname() {
-    return '/'
-  },
+  usePathname: () => '/feed',
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+    back: jest.fn(),
+  }),
+  useSearchParams: () => new URLSearchParams(),
 }))
 
 // Mock Next.js Image component
@@ -25,8 +31,53 @@ jest.mock('next/image', () => ({
   __esModule: true,
   default: (props) => {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img {...props} />
+    return React.createElement('img', { ...props, alt: props.alt || '' })
   },
+}))
+
+// Mock AuthContext globally
+jest.mock('@/contexts/AuthContext', () => ({
+  AuthProvider: ({ children }) => children,
+  useAuth: () => ({
+    user: { 
+      id: '1', 
+      username: 'testuser', 
+      email: 'test@example.com', 
+      displayName: 'Test User',
+      name: 'Test User'
+    },
+    isAuthenticated: true,
+    isLoading: false,
+    error: null,
+    login: jest.fn(),
+    loginWithGoogle: jest.fn(),
+    logout: jest.fn(),
+    register: jest.fn(),
+    updateProfile: jest.fn(),
+    refreshToken: jest.fn(),
+    clearError: jest.fn(),
+    updateUser: jest.fn(),
+  }),
+  useRequireAuth: () => ({
+    user: { 
+      id: '1', 
+      username: 'testuser', 
+      email: 'test@example.com', 
+      displayName: 'Test User',
+      name: 'Test User'
+    },
+    isAuthenticated: true,
+    isLoading: false,
+    error: null,
+    login: jest.fn(),
+    loginWithGoogle: jest.fn(),
+    logout: jest.fn(),
+    register: jest.fn(),
+    updateProfile: jest.fn(),
+    refreshToken: jest.fn(),
+    clearError: jest.fn(),
+    updateUser: jest.fn(),
+  }),
 }))
 
 // Mock IntersectionObserver
