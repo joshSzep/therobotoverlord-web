@@ -9,6 +9,15 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
+  
+  // Performance optimizations
+  maxWorkers: '50%', // Use half of available CPU cores
+  cache: true,
+  cacheDirectory: '<rootDir>/.jest-cache',
+  
+  // Faster test execution
+  testTimeout: 10000, // 10 second timeout for all tests
+  
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you based on your tsconfig.json paths)
     '^@/(.*)$': '<rootDir>/src/$1'
@@ -46,10 +55,9 @@ const customJestConfig = {
     '^.+\\.module\\.(css|sass|scss)$',
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  // watchPlugins: [
-  //   'jest-watch-typeahead/filename',
-  //   'jest-watch-typeahead/testname',
-  // ],
+  
+  // Optimize test execution order
+  testSequencer: '@jest/test-sequencer',
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
