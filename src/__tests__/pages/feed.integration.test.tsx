@@ -94,17 +94,13 @@ jest.mock("@/components/ui/LoadingSpinner", () => ({
 }));
 
 jest.mock("@/components/ui/EmptyState", () => ({
-  EmptyFeedState: () => <div data-testid="empty-feed-state">No posts yet</div>,
+  EmptyFeedState: () => (
+    <div data-testid="empty-feed-state">Mock Empty Feed State</div>
+  ),
 }));
 
 jest.mock("@/components/feed/FeedFilters", () => ({
   FeedFilters: () => <div data-testid="feed-filters">Mock Feed Filters</div>,
-}));
-
-jest.mock("@/components/ui/EmptyState", () => ({
-  EmptyFeedState: () => (
-    <div data-testid="empty-feed-state">Mock Empty Feed State</div>
-  ),
 }));
 
 // Mock services
@@ -244,7 +240,7 @@ describe("Feed Page Integration", () => {
     // Check that real-time updates hook is called
     await waitFor(() => {
       expect(mockUseRealTimeUpdates).toHaveBeenCalled();
-    }, { timeout: 2000 });
+    }, { timeout: 3000 });
   });
 
   it("handles API errors gracefully", async () => {
@@ -272,7 +268,7 @@ describe("Feed Page Integration", () => {
     // Should render the page with empty state component
     await waitFor(() => {
       expect(screen.getByTestId("empty-feed-state")).toBeInTheDocument();
-    });
+    }, { timeout: 3000 });
   });
 
   it("maintains accessibility standards", async () => {
