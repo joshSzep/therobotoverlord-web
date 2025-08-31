@@ -45,19 +45,21 @@ Sentry.init({
   
   // Additional configuration
   integrations: [
-    new Sentry.BrowserTracing({
-      // Set sampling rate for performance monitoring
-      tracePropagationTargets: [
-        'localhost',
-        /^https:\/\/api\.therobotoverlord\.com/,
-        /^https:\/\/therobotoverlord\.com/,
-      ],
-    }),
-    new Sentry.Replay({
+    // Browser tracing integration for performance monitoring
+    Sentry.browserTracingIntegration(),
+    // Session replay integration
+    Sentry.replayIntegration({
       // Capture replays on errors and a sample of sessions
       maskAllText: false,
       blockAllMedia: false,
     }),
+  ],
+  
+  // Trace propagation targets
+  tracePropagationTargets: [
+    'localhost',
+    /^https:\/\/api\.therobotoverlord\.com/,
+    /^https:\/\/therobotoverlord\.com/,
   ],
   
   // User context

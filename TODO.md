@@ -36,11 +36,11 @@
   - [x] Update import statements for proper type resolution
 
 #### 1.2 Fix Sentry Configuration
-- [ ] **Fix `sentry.client.config.ts` (2 errors)**
-  - [ ] Update Sentry configuration for latest SDK version
-  - [ ] Fix deprecated `startTransaction` method usage
-- [ ] **Fix `sentry.server.config.ts` (1 error)**
-  - [ ] Align server config with client config fixes
+- [x] **Fix `sentry.client.config.ts` (2 errors)** ✅
+  - [x] Update Sentry configuration for latest SDK version
+  - [x] Fix deprecated `startTransaction` method usage
+- [x] **Fix `sentry.server.config.ts` (1 error)** ✅
+  - [x] Align server config with client config fixes
 
 #### 1.3 Fix App Layout Critical Errors
 - [ ] **Fix `src/app/layout.tsx` (5 errors)**

@@ -39,7 +39,7 @@ Sentry.init({
   
   // Server integrations
   integrations: [
-    new Sentry.Integrations.Http({ tracing: true }),
+    Sentry.httpIntegration(),
   ],
   
   // Initial scope for server
