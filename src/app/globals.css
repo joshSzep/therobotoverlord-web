@@ -1,107 +1,42 @@
+@import "../styles/components.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import '../styles/components.css';
-
-/* Robot Overlord Theme - Dark Mode Primary */
-:root {
-  /* Core Brand Colors */
-  --overlord-red: #FF4757;
-  --authority-red: #FF3742;
-  --deep-black: #0C0C0C;
-  --surface-dark: #1A1A1A;
-  --steel-dark: #2A2A2A;
-  
-  /* Text Colors */
-  --light-text: #E8E8E8;
-  --muted-light: #D1D5DB;
-  --muted-dark: #6B7280;
-  
-  /* Status Colors */
-  --approved-green: #4ECDC4;
-  --warning-amber: #FFD93D;
-  --rejected-red: #FF6B6B;
-  --processing-blue: #74B9FF;
-  
-  /* Theme Variables */
-  --background: var(--deep-black);
-  --foreground: var(--light-text);
-  --surface: var(--surface-dark);
-  --border: var(--muted-light);
-  --primary: var(--overlord-red);
-}
-
-@theme inline {
-  /* Tailwind CSS v4 Theme Configuration */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-primary: var(--primary);
-  --color-border: var(--border);
-  
-  /* Brand Colors */
-  --color-overlord-red: var(--overlord-red);
-  --color-authority-red: var(--authority-red);
-  --color-deep-black: var(--deep-black);
-  --color-surface-dark: var(--surface-dark);
-  --color-steel-dark: var(--steel-dark);
-  --color-light-text: var(--light-text);
-  --color-muted-light: var(--muted-light);
-  
-  /* Status Colors */
-  --color-approved-green: var(--approved-green);
-  --color-warning-amber: var(--warning-amber);
-  --color-rejected-red: var(--rejected-red);
-  --color-processing-blue: var(--processing-blue);
-  
-  /* Typography */
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
-  --font-display: "Impact", "Arial Black", sans-serif;
-}
-
-/* Base Styles */
-* {
-  border-color: var(--border);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 /* Overlord Message Styling */
-.overlord-message {
-  background: linear-gradient(135deg, var(--deep-black) 0%, var(--surface-dark) 100%);
-  border: 3px solid var(--overlord-red);
-  box-shadow: 
-    0 0 20px rgba(255, 71, 87, 0.3),
-    inset 0 0 20px rgba(255, 71, 87, 0.1);
-  font-family: var(--font-mono);
-  position: relative;
-}
+@layer components {
+  .overlord-message {
+    background: linear-gradient(
+      135deg,
+      theme("colors.deep-black") 0%,
+      theme("colors.surface-dark") 100%
+    );
+    border: 3px solid theme("colors.overlord-red");
+    box-shadow:
+      0 0 20px rgba(255, 71, 87, 0.3),
+      inset 0 0 20px rgba(255, 71, 87, 0.1);
+    font-family: theme("fontFamily.mono");
+    position: relative;
+  }
 
-.overlord-message::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, var(--overlord-red), var(--authority-red));
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0.7;
-  filter: blur(4px);
+  .overlord-message::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+      45deg,
+      theme("colors.overlord-red"),
+      theme("colors.authority-red")
+    );
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(4px);
+  }
 }
 
 /* Glow Effects */

@@ -78,7 +78,7 @@
 }
 
 .form-textarea {
-  @apply form-input resize-vertical min-h-[100px];
+  @apply form-input resize-y min-h-[100px];
 }
 
 .form-select {
@@ -360,19 +360,19 @@
 
 /* Animation utilities */
 .fade-in {
-  @apply animate-in fade-in duration-200;
+  @apply animate-pulse duration-200;
 }
 
 .slide-in-from-right {
-  @apply animate-in slide-in-from-right duration-300;
+  @apply animate-bounce duration-300;
 }
 
 .slide-in-from-left {
-  @apply animate-in slide-in-from-left duration-300;
+  @apply animate-bounce duration-300;
 }
 
 .scale-in {
-  @apply animate-in zoom-in duration-200;
+  @apply animate-pulse duration-200;
 }
 
 /* Focus management */
@@ -385,15 +385,15 @@
   .print-hidden {
     @apply hidden;
   }
-  
+
   .print-only {
     @apply block;
   }
-  
+
   .print-break-before {
     page-break-before: always;
   }
-  
+
   .print-break-after {
     page-break-after: always;
   }
