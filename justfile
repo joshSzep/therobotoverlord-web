@@ -23,6 +23,12 @@ dev-port port="3000":
 dev-turbo:
     npm run dev -- --turbo
 
+# Stop development server
+stop:
+    @echo "🛑 Stopping web development server..."
+    @pkill -f "next dev" || echo "No development server running"
+    @echo "✅ Web development server stopped"
+
 # Clean all build artifacts and node_modules
 clean:
     rm -rf .next
