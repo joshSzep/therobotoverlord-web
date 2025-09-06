@@ -13,7 +13,8 @@ const apiClient = axios.create({
 // Request interceptor for auth headers
 apiClient.interceptors.request.use(
   (config) => {
-    // Add any auth tokens here when implemented
+    // Cookies are automatically included with withCredentials: true
+    // No need to manually add auth headers for cookie-based auth
     return config;
   },
   (error) => {
@@ -21,11 +22,33 @@ apiClient.interceptors.request.use(
   }
 );
 
-// Response interceptor for error handling
+// Response interceptor for error handling and token refresh
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => {
-    // Handle common errors here
+  async (error) => {
+    const originalRequest = error.config;
+    
+    // If we get a 401 and haven't already tried to refresh
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      
+      try {
+        // Try to refresh tokens
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/auth/refresh`, {
+          method: 'POST',
+          credentials: 'include',
+        });
+        
+        // Retry the original request
+        return apiClient(originalRequest);
+      } catch (refreshError) {
+        // Refresh failed, redirect to login or handle as needed
+        console.error('Token refresh failed:', refreshError);
+        // Don't redirect here as it might be called from server-side
+        // Let the auth context handle the redirect
+      }
+    }
+    
     console.error('API Error:', error.response?.data || error.message);
     return Promise.reject(error);
   }

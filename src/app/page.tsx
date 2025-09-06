@@ -4,6 +4,7 @@ import React from "react";
 import { OverlordHeader } from "@/components/overlord/OverlordHeader";
 import { TopicCard } from "@/components/ui/TopicCard";
 import { LoadingState, ErrorState } from "@/components/ui/LoadingState";
+import { AuthStatus } from "@/components/auth";
 import { useTopics } from "@/lib/queries";
 import type { Topic } from "@/types/api";
 
@@ -35,6 +36,11 @@ export default function MainFeed() {
   return (
     <div className="min-h-screen bg-overlord-robot-core">
       <div className="mx-auto max-w-3xl px-6 py-10">
+        {/* Authentication Status */}
+        <div className="flex justify-end mb-6">
+          <AuthStatus showLogoutAll={true} />
+        </div>
+
         {/* Hexagonal Emblem header */}
         <OverlordHeader />
 
