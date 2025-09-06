@@ -84,10 +84,6 @@ export const TopicCard: React.FC<TopicCardProps> = ({ topic, className = "" }) =
             <div className={`text-xs font-bold uppercase tracking-wider ${getStatusColor(topic.status)}`}>
               {getStatusLabel(topic.status)}
             </div>
-            {/* Status Badge */}
-            <div className="absolute -top-2 -right-2 bg-overlord-gold text-overlord-dark px-2 py-1 text-xs font-bold uppercase tracking-wider clip-hexagon">
-              {topic.status}
-            </div>
           </div>
         </div>
 
