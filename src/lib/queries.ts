@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { topicsApi, postsApi } from './api';
+import { topicsApi, postsApi, leaderboardApi } from './api';
 import type { Topic, Post, PostThread, TopicsFilters, PaginatedResponse } from '@/types/api';
 
 // Query keys factory for consistent caching
@@ -12,6 +12,9 @@ export const queryKeys = {
   posts: ['posts'] as const,
   topicPosts: (topicId: string, filters?: { limit?: number; offset?: number }) => [...queryKeys.posts, 'topic', topicId, filters] as const,
   post: (id: string) => [...queryKeys.posts, id] as const,
+  leaderboard: ['leaderboard'] as const,
+  leaderboardStats: () => [...queryKeys.leaderboard, 'stats'] as const,
+  userRank: (userId: string) => [...queryKeys.leaderboard, 'user', userId] as const,
 };
 
 // Custom hooks for topics
@@ -85,6 +88,31 @@ export const usePost = (
     queryKey: queryKeys.post(id),
     queryFn: () => postsApi.getPost(id),
     enabled: !!id,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    ...options,
+  });
+};
+
+// Custom hooks for leaderboard
+export const useLeaderboardStats = (
+  options?: UseQueryOptions<any>
+) => {
+  return useQuery({
+    queryKey: queryKeys.leaderboardStats(),
+    queryFn: () => leaderboardApi.getStats(),
+    staleTime: 10 * 60 * 1000, // 10 minutes - stats don't change frequently
+    ...options,
+  });
+};
+
+export const useUserRank = (
+  userId: string,
+  options?: UseQueryOptions<any>
+) => {
+  return useQuery({
+    queryKey: queryKeys.userRank(userId),
+    queryFn: () => leaderboardApi.getUserRank(userId),
+    enabled: !!userId,
     staleTime: 5 * 60 * 1000, // 5 minutes
     ...options,
   });

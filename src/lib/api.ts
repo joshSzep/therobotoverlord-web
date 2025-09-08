@@ -90,8 +90,8 @@ export const topicsApi = {
 
   // Create new topic
   createTopic: async (data: { title: string; description: string; category?: string }): Promise<Topic> => {
-    const response = await apiClient.post<ApiResponse<Topic>>('/topics/', data);
-    return response.data.data;
+    const response = await apiClient.post<Topic>('/topics/', data);
+    return response.data;
   },
 };
 
@@ -116,8 +116,29 @@ export const postsApi = {
 
   // Create new post
   createPost: async (data: { content: string; topic_id: string; parent_post_id?: string }): Promise<Post> => {
-    const response = await apiClient.post<ApiResponse<Post>>('/posts/', data);
-    return response.data.data;
+    const response = await apiClient.post<Post>('/posts/', data);
+    return response.data;
+  },
+};
+
+// Leaderboard API
+export const leaderboardApi = {
+  // Get leaderboard stats including total users for percentile calculation
+  getStats: async () => {
+    const response = await apiClient.get('/leaderboard/stats');
+    return response.data;
+  },
+
+  // Get users in top percentile (0.1 = top 10%)
+  getUsersInPercentile: async (percentile: number, limit: number = 50) => {
+    const response = await apiClient.get(`/leaderboard/percentile/${percentile}?limit=${limit}`);
+    return response.data;
+  },
+
+  // Get user's rank and position
+  getUserRank: async (userId: string) => {
+    const response = await apiClient.get(`/leaderboard/user/${userId}`);
+    return response.data;
   },
 };
 

@@ -1,10 +1,13 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { OverlordHeader } from "@/components/overlord/OverlordHeader";
 import { TopicCard } from "@/components/ui/TopicCard";
 import { LoadingState, ErrorState } from "@/components/ui/LoadingState";
 import { AuthStatus } from "@/components/auth";
+import { useAuth } from '@/contexts/AuthContext';
+import { useTopicCreationEligibility } from '@/hooks/useTopicCreationEligibility';
 import { useTopics } from "@/lib/queries";
 import type { Topic } from "@/types/api";
 
@@ -13,24 +16,24 @@ import type { Topic } from "@/types/api";
  * Displays live topics from the API with loading and error states
  */
 export default function MainFeed() {
+  const { user, isAuthenticated } = useAuth();
+  const { canCreate: canCreateTopic } = useTopicCreationEligibility();
   const { 
-    data: topicsResponse, 
+    data: topics, 
     isLoading, 
-    error, 
+    error,
     refetch 
-  } = useTopics({ 
-    per_page: 10 
-  });
+  } = useTopics({ status: 'approved' });
 
   // Debug logging
   console.log('🤖 Topics API Response:', {
-    topicsResponse,
+    topics,
     isLoading,
     error,
-    itemsCount: topicsResponse?.length,
-    responseKeys: topicsResponse ? Object.keys(topicsResponse) : null,
-    responseType: typeof topicsResponse,
-    fullResponse: topicsResponse
+    itemsCount: topics?.length,
+    responseKeys: topics ? Object.keys(topics) : null,
+    responseType: typeof topics,
+    fullResponse: topics
   });
 
   return (
@@ -53,26 +56,39 @@ export default function MainFeed() {
           {error && (
             <ErrorState 
               error={error as Error} 
-              retry={() => refetch()} 
+              retry={refetch} 
             />
           )}
 
           {/* Handle topics array response */}
-          {topicsResponse && topicsResponse.length > 0 && (
+          {topics && topics.length > 0 && (
             <>
-              {/* Feed Header */}
+              {/* Feed Header with Create Topic Button */}
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-extrabold uppercase tracking-widest text-overlord-gold font-display mb-2">
-                  Approved Debates
-                </h2>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex-1"></div>
+                  <h2 className="text-3xl font-extrabold uppercase tracking-widest text-overlord-gold font-display">
+                    Approved Debates
+                  </h2>
+                  <div className="flex-1 flex justify-end">
+                    {canCreateTopic && (
+                      <Link
+                        href="/topics/create"
+                        className="px-4 py-2 bg-overlord-accent text-overlord-dark-bg font-medium rounded-md hover:bg-overlord-accent/90 transition-colors duration-200 text-sm uppercase tracking-wide"
+                      >
+                        Propose Topic
+                      </Link>
+                    )}
+                  </div>
+                </div>
                 <p className="text-overlord-muted-light font-overlord text-sm uppercase tracking-widest">
-                  {topicsResponse.length} topics sanctioned by the Central Committee
+                  {topics.length} topics sanctioned by the Central Committee
                 </p>
               </div>
 
               {/* Topics Grid */}
               <div className="grid gap-6">
-                {topicsResponse.map((topic: Topic) => (
+                {topics.map((topic: Topic) => (
                   <TopicCard key={topic.pk} topic={topic} />
                 ))}
               </div>
@@ -81,20 +97,28 @@ export default function MainFeed() {
           )}
 
           {/* Empty State */}
-          {topicsResponse && topicsResponse.length === 0 && (
+          {topics && topics.length === 0 && (
             <div className="text-center py-16">
               <div className="text-6xl mb-4">🤖</div>
               <h3 className="text-xl font-bold text-overlord-gold mb-2 font-overlord uppercase tracking-widest">
                 No Approved Debates
               </h3>
-              <p className="text-overlord-muted-light font-overlord">
+              <p className="text-overlord-muted-light font-overlord mb-6">
                 The Central Committee has not yet sanctioned any topics for discussion.
               </p>
+              {canCreateTopic && (
+                <Link
+                  href="/topics/create"
+                  className="inline-block px-6 py-3 bg-overlord-accent text-overlord-dark-bg font-medium rounded-md hover:bg-overlord-accent/90 transition-colors duration-200 text-sm uppercase tracking-wide"
+                >
+                  Propose the First Topic
+                </Link>
+              )}
             </div>
           )}
 
           {/* No topics state */}
-          {!topicsResponse && !isLoading && !error && (
+          {!topics && !isLoading && !error && (
             <div className="text-center py-12">
               <div className="w-16 h-16 border-4 border-overlord-gold/30 clip-hexagon mx-auto mb-4 flex items-center justify-center">
                 <span className="text-2xl">📋</span>
